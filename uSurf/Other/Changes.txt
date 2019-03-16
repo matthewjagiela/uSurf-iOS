@@ -1,0 +1,156 @@
+6.0 The Big One:
+-A total rewrite: The app has been completely rewritten to be better optimized!
+- WebKit: With WebKit features such as swipe navigation have been implemented
+- iPad: No more toolbar! Everything is now in the navigation  bar!
+- There are new icons all throughout the app!
+- Long pressing the add button will allow you to add a bookmark, just pressing it will add a tab….
+- Option to clear all history!
+- Better version information: A lot less mess ups when it comes to consistency with information
+
+5.3.4:
+- It’s that time of year again! Snow is falling! Enjoy!
+- Fixed a problem where on iPhone you could not change your homepage.
+
+5.2:
+-Added button to download uTime
+-New font around the map to match other uApps apps.
+-Added a popover view to change the homepage (iPad)
+-Fixed issue with iPad and portrait fullscreen.
+-UI Fixes (other than font changes)
+
+5.1:
+-Added open in Safari to iPhone Share Sheet.
+-Replaced Home with Single Square for Settings View.
+-URL Field Will Clear Text When You Tap It!
+-Split Tabs into iPhone and iPad Sections.
+-Made it so share sheet follows theming rules.
+-Fixed issue when switching to light theme the tables had the previous themes color…
+-Fixed Issue Where Adding A Tab in Split Screen didn’t add it to iCloud…
+-Fixed issue where adding a bookmark in split screen did nothing…
+
+
+Older Versions:
+Version 5.0.1:
+-Fixed issue when choosing a history item on iPhone would bring up the iPad UI….
+Version 5:
+-Added iCloud Syncing For Bookmarks!
+-Added iCloud Syncing For Tabs!
+-Home Screen *Can* be Synced With iCloud!
+-iCloud Syncing Also Works For Split-Screen!
+-Added Themes to Tab View.
+-Added Themes to Bookmark View.
+-Added Themes to History View.
+-Fixed theming issues with first time setup — Oops.
+-Fixed the positioning of the left history button in split screen.
+-Fixed issue with rotating the iPad and full screen.
+-Fixed issue with the blur view (iPad Settings).
+-Fixed issue where hitting “Close” on history view would bring you to split screen somehow (iPhone).
+-Fixed issue when changing orientation will cause the homepage view to be off centered (iPad).
+-Fixed Issue where going to change the homepage will result in a blank browser window on return (iPhone)
+4.2.1:
+-Added a new icon for split screen (half square)
+-Added a new icon for single screen (full square).
+-UI Fixes.
+4.2:
+Time to give split screen some love…
+-Added history to split screen
+-Added retina icons to split screen
+-Added home button to split screen
+-Fixed issue when changing orientation in split-screen the share sheet would move…
+-Fixed issue when sharing on split screen iPad the Twitter and Facebook icons weren’t there.
+
+4.1:
+-Removed Snow (Time for some warm weather!)
+-Changed Icon (The old one wasn’t doing it for me)
+-Made it so when you add a bookmark the current URL Shows in the field
+-Adding a new tab will now bring you back to your homepage and show that you have added a tab.
+-Added share sheet to iPhone 4s/5(s)
+-Enough of the icons not being retina, I have made the icons higher quality (will be in split screen soon I promise)!
+-Added new sharing icons for Facebook and twitter.
+-Fixed issue on iPhone where back and forward gesture arrows wouldn’t show.
+-Fixed issue with changing the home page on iPhone
+-Fixed issue with auto-correct and adding a bookmark
+-UI Fixes and additions.
+-Added back support for iOS 8!
+
+4.0.1:
+-Fixed issue with fullscreen and iPhone laying flat...(oops?)
+-Fixed issue with iPad Share and Support Buttons
+-Fixed issue with blur sheet for homepage (iPad Pro)
+
+Time for some upgrades…
+4.0:
+-Added new icons for various things around the app!
+-Added full screen browsing to iPhone in Landscape Mode!
+-Added Option For Full Screen Browsing on iPad (Landscape)!
+-Added buttons in views for split screen users(finally).
+-Starting to incorporate 3D Touch (iPhone 6S/6S+)
+-Added the ability to have a home page
+-Added some neat little animations with our new features!(This actually took a lot of time so I wanted to make it known)
+-For iPhone 6 and higher there is a new share sheet!
+-Fixed animations with share sheet!
+-Fixed issues with the right URL Bar…
+-Fixed issues with the setting layout (iPhone 4 and 5)
+-The snow will be sticking around for now!
+
+
+What's New:
+The 2016 Update (3.3)!
+-Decided to remove the green theme because it was hard to see.
+-Keeping the snow throughout the winter!
+-Brought back the old icon
+-Speed improvements
+-UI Improvements
+
+3.2
+-Added Green Theme For A More Holiday Vibe
+-Added snow into our info panel because Winter
+-Changed the icon to be a little more holiday oriented.
+-Must have iOS 9 for the snow to run…
+-Fixed the issue where the textField for iPhone would not scroll to the top.
+-Minor UI Changes
+
+3.1.1:
+-Added Support For iPad Pro!
+-Made it so you can use split screen in landscape.
+-Thanks to some clever tricks you can now use split screen in iOS 9's multiwindow mode on iPad!
+3.1:
+-Added Color Themes To iPad!
+-Added Gesture Recognizer Indicator When Navigating with gestures
+-Removed Gestures For Split Screen
+-Added It So You Can Delete Certain History Items
+-Added alert that will not allow split screen with iPad in Landscape
+-Fixed Issues with iPhone Theme and Adding Bookmark View
+-Fixed Issue with split screen http:// input
+-Fixed Issue with autolayout and Bookmark adder
+-Fixed issue where the blur effect didn't go over the toolbar
+-Multiple small UI Fixes
+-Fixed issue where deleted tabs / bookmarks came back...
+
+3.0.1
+-UI Fixes
+-I know of the iPhone textField Issue. Working on a fix now.
+Version 3.0:
+-Support for iOS 9
+-uSurf Allows For Split Screen Multitasking on iPad Air and iPad Air 2! This will allow you to surf the web while doing other activities (one web view).
+-Added gestures for navigation. Use 2 fingers and swipe to the right to go back in your browsing history.
+-Swipe towards the left with 2 fingers to go forward in your browsing history.
+-Tapping the blur effect in the share sheet on Split Screen will close the share sheet.
+-Added History so you can see where you are browsing from.
+-UI Improvements
+
+Version 2.1.1:
+-Added Animations to custom share sheet (iPad).
+-Fixed error where http:// would cause an error... Somehow code got messed up sorry!
+Version 2.1:
+-Fixed theme changing (Split Screen)
+-Added Custom Share Sheet to split screen.
+-UI Fixes
+
+2.0:
+-iPhone Version! We finally came to the iPhone and brought with us some colored themes! Expect those to be on the iPad Soon!
+-Secure web browsing! We will automatically bring you to your sites using https! (If the site doesn't load it is probably because it doesn't accept https (like our support site) so put the http:// before the url or search it!)
+-New way to share pages in single view (split coming soon!) Hit the action and a popup window appears.
+-New way to add bookmarks: Hit the same action button and hit the plus!
+-Share sheet in single view DOES NOT change with the theme.
+-Updated UI
