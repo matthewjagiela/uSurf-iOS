@@ -49,6 +49,7 @@
 		3460A5F8210BC9450029B03C /* ThemeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3460A5F7210BC9450029B03C /* ThemeHandler.swift */; };
 		3481ECD4216D192C0006006C /* starry_sky_galaxy_stars_125852_2780x2780.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3481ECD3216D192A0006006C /* starry_sky_galaxy_stars_125852_2780x2780.jpg */; };
 		34C10F45214AC3D0005C9ACB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C10F44214AC3D0005C9ACB /* SettingsViewController.swift */; };
+		34C4D1E5227FDB94005917B9 /* iPadSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C4D1E4227FDB93005917B9 /* iPadSplitViewController.swift */; };
 		34F95E0020C73F1D00411B9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F95DFF20C73F1D00411B9D /* AppDelegate.swift */; };
 		34F95E0720C73F1F00411B9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34F95E0620C73F1F00411B9D /* Assets.xcassets */; };
 		34F95E0A20C73F1F00411B9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34F95E0820C73F1F00411B9D /* LaunchScreen.storyboard */; };
@@ -99,6 +100,7 @@
 		3460A5F7210BC9450029B03C /* ThemeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeHandler.swift; sourceTree = "<group>"; };
 		3481ECD3216D192A0006006C /* starry_sky_galaxy_stars_125852_2780x2780.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starry_sky_galaxy_stars_125852_2780x2780.jpg; sourceTree = "<group>"; };
 		34C10F44214AC3D0005C9ACB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		34C4D1E4227FDB93005917B9 /* iPadSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadSplitViewController.swift; sourceTree = "<group>"; };
 		34F95DFC20C73F1D00411B9D /* uSurf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uSurf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F95DFF20C73F1D00411B9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34F95E0620C73F1F00411B9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				343F015D20D41F0700B9E8DD /* iPadHomeViewController.swift */,
+				34C4D1E4227FDB93005917B9 /* iPadSplitViewController.swift */,
 			);
 			path = iPad;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				34265EFA2176B0B400C775F4 /* BookmarkTableViewController.swift in Sources */,
 				340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */,
 				34C10F45214AC3D0005C9ACB /* SettingsViewController.swift in Sources */,
+				34C4D1E5227FDB94005917B9 /* iPadSplitViewController.swift in Sources */,
 				3443CD7E21FFCCDF001123E7 /* VersionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

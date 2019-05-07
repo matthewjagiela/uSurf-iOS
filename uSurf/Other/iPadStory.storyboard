@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gP0-99-xlL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gP0-99-xlL">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -187,20 +187,220 @@
             </objects>
             <point key="canvasLocation" x="-266.015625" y="-728.125"/>
         </scene>
-        <!--View Controller-->
+        <!--iPad Split View Controller-->
         <scene sceneID="z7H-Ha-Myq">
             <objects>
-                <viewController id="6g6-1A-nC7" sceneMemberID="viewController">
+                <viewController id="6g6-1A-nC7" customClass="iPadSplitViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KrP-JV-N9y">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Eo-02-X7f">
+                                <rect key="frame" x="0.0" y="20" width="512" height="50"/>
+                                <gestureRecognizers/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem id="2w7-7G-s4C">
+                                        <nil key="title"/>
+                                        <leftBarButtonItems>
+                                            <barButtonItem systemItem="rewind" id="OEN-Ud-bjI"/>
+                                            <barButtonItem systemItem="fastForward" id="RkK-ik-jLb"/>
+                                            <barButtonItem systemItem="refresh" id="vFV-6i-tX4"/>
+                                        </leftBarButtonItems>
+                                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="9pT-74-34U">
+                                            <rect key="frame" x="163" y="10" width="294.5" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lVA-EG-O2H">
+                                            <connections>
+                                                <action selector="leftAddTab:" destination="6g6-1A-nC7" id="Yes-Gd-Xr4"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="aeN-S3-oJV" appends="YES" id="alG-2r-956"/>
+                                </connections>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SW-3u-YCh">
+                                <rect key="frame" x="0.0" y="718" width="512" height="50"/>
+                                <items>
+                                    <barButtonItem tag="1" image="History Icon" id="doY-ww-g5e">
+                                        <connections>
+                                            <action selector="leftHistory:" destination="6g6-1A-nC7" id="ESB-JD-3z6"/>
+                                            <segue destination="5xP-Lb-yKY" kind="popoverPresentation" identifier="leftHistory" popoverAnchorBarButtonItem="doY-ww-g5e" id="p58-Ag-vnL">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="1" image="Bookmarks" id="JCE-qI-saA">
+                                        <connections>
+                                            <action selector="leftBookmark:" destination="6g6-1A-nC7" id="Czc-wN-RCV"/>
+                                            <segue destination="DCa-gb-OiP" kind="popoverPresentation" identifier="leftBookmarks" popoverAnchorBarButtonItem="JCE-qI-saA" id="CGq-IA-WbL">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="1" image="Tabs" id="Giy-TQ-dSx">
+                                        <connections>
+                                            <action selector="leftTab:" destination="6g6-1A-nC7" id="VZq-yX-wG2"/>
+                                            <segue destination="xMQ-8r-EJv" kind="popoverPresentation" identifier="leftTabs" popoverAnchorBarButtonItem="Giy-TQ-dSx" id="rZA-w6-dlx">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-v0-hbb">
+                                <rect key="frame" x="512" y="20" width="512" height="50"/>
+                                <gestureRecognizers/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem id="3R4-8S-fch">
+                                        <nil key="title"/>
+                                        <leftBarButtonItems>
+                                            <barButtonItem systemItem="rewind" id="YOm-pO-X2B"/>
+                                            <barButtonItem systemItem="fastForward" id="Mal-vH-Tu1"/>
+                                            <barButtonItem systemItem="refresh" id="3rM-I3-iRK"/>
+                                        </leftBarButtonItems>
+                                        <textField key="titleView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="h9G-ni-GkE">
+                                            <rect key="frame" x="163" y="10" width="234.5" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="add" id="edv-0O-vG8">
+                                                <connections>
+                                                    <action selector="rightAddTab:" destination="6g6-1A-nC7" id="WC7-sy-cAb"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Item" image="Fullscreen" id="fu5-pS-X9V">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <segue destination="gP0-99-xlL" kind="presentation" modalTransitionStyle="crossDissolve" id="UbH-U9-jod"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Y0S-9f-3rx" appends="YES" id="U4m-qM-bKC"/>
+                                </connections>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dt8-21-aMS">
+                                <rect key="frame" x="512" y="718" width="512" height="50"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="u2c-Tt-sjq"/>
+                                    <barButtonItem tag="2" image="History Icon" id="QQN-T9-mGA">
+                                        <connections>
+                                            <segue destination="5xP-Lb-yKY" kind="popoverPresentation" identifier="rightHistory" popoverAnchorBarButtonItem="QQN-T9-mGA" id="Hc4-dU-goA">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="2" image="Bookmarks" id="ibV-Qc-cYD">
+                                        <connections>
+                                            <segue destination="DCa-gb-OiP" kind="popoverPresentation" identifier="rightBookmarks" popoverAnchorBarButtonItem="ibV-Qc-cYD" id="DA0-F9-QVJ">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="2" image="Tabs" id="k6m-9q-x1V">
+                                        <connections>
+                                            <segue destination="xMQ-8r-EJv" kind="popoverPresentation" identifier="rightTabs" popoverAnchorBarButtonItem="k6m-9q-x1V" id="sX1-UN-8ge">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x64-f1-3l5">
+                                <rect key="frame" x="0.0" y="70" width="512" height="648"/>
+                                <color key="backgroundColor" red="0.30824157600000002" green="0.67654144760000001" blue="0.77258235220000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulQ-RY-phP">
+                                <rect key="frame" x="512" y="70" width="512" height="648"/>
+                                <color key="backgroundColor" red="1" green="0.059605572920000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4SW-3u-YCh" firstAttribute="bottom" secondItem="o37-7u-qiP" secondAttribute="bottom" id="0f5-ri-Mhu"/>
+                            <constraint firstItem="Dt8-21-aMS" firstAttribute="width" secondItem="4SW-3u-YCh" secondAttribute="width" id="13E-uh-qjL"/>
+                            <constraint firstItem="x64-f1-3l5" firstAttribute="width" secondItem="ulQ-RY-phP" secondAttribute="width" id="2Yu-lF-b9d"/>
+                            <constraint firstItem="9Eo-02-X7f" firstAttribute="leading" secondItem="o37-7u-qiP" secondAttribute="leading" id="AJq-hk-taw"/>
+                            <constraint firstItem="Dt8-21-aMS" firstAttribute="height" secondItem="4SW-3u-YCh" secondAttribute="height" id="AZf-0J-bZF"/>
+                            <constraint firstItem="7NQ-v0-hbb" firstAttribute="leading" secondItem="9Eo-02-X7f" secondAttribute="trailing" id="CaD-yj-jjQ"/>
+                            <constraint firstItem="9Eo-02-X7f" firstAttribute="width" secondItem="7NQ-v0-hbb" secondAttribute="width" id="D1b-pk-Zde"/>
+                            <constraint firstItem="ulQ-RY-phP" firstAttribute="top" secondItem="7NQ-v0-hbb" secondAttribute="bottom" id="GPW-WI-GnG"/>
+                            <constraint firstItem="4SW-3u-YCh" firstAttribute="leading" secondItem="o37-7u-qiP" secondAttribute="leading" id="Ihi-wn-vQ8"/>
+                            <constraint firstItem="Dt8-21-aMS" firstAttribute="top" secondItem="ulQ-RY-phP" secondAttribute="bottom" id="Jml-IC-e1n"/>
+                            <constraint firstItem="x64-f1-3l5" firstAttribute="leading" secondItem="o37-7u-qiP" secondAttribute="leading" id="LL4-Im-OCk"/>
+                            <constraint firstItem="Dt8-21-aMS" firstAttribute="trailing" secondItem="o37-7u-qiP" secondAttribute="trailing" id="Nz7-nZ-cEY"/>
+                            <constraint firstItem="7NQ-v0-hbb" firstAttribute="top" secondItem="o37-7u-qiP" secondAttribute="top" id="PI8-tU-WhM"/>
+                            <constraint firstItem="ulQ-RY-phP" firstAttribute="leading" secondItem="x64-f1-3l5" secondAttribute="trailing" id="Px8-fI-VmA"/>
+                            <constraint firstItem="7NQ-v0-hbb" firstAttribute="trailing" secondItem="o37-7u-qiP" secondAttribute="trailing" id="S7d-Qw-hwV"/>
+                            <constraint firstItem="4SW-3u-YCh" firstAttribute="top" secondItem="x64-f1-3l5" secondAttribute="bottom" id="XHc-Vw-22Y"/>
+                            <constraint firstItem="Dt8-21-aMS" firstAttribute="leading" secondItem="4SW-3u-YCh" secondAttribute="trailing" id="Zmp-QW-o0A"/>
+                            <constraint firstItem="9Eo-02-X7f" firstAttribute="top" secondItem="o37-7u-qiP" secondAttribute="top" id="asm-Er-JmW"/>
+                            <constraint firstItem="9Eo-02-X7f" firstAttribute="height" secondItem="7NQ-v0-hbb" secondAttribute="height" id="eAZ-ae-OOM"/>
+                            <constraint firstItem="Dt8-21-aMS" firstAttribute="bottom" secondItem="o37-7u-qiP" secondAttribute="bottom" id="m9L-qu-uFd"/>
+                            <constraint firstItem="7NQ-v0-hbb" firstAttribute="leading" secondItem="9Eo-02-X7f" secondAttribute="trailing" id="mQf-Jw-56j"/>
+                            <constraint firstItem="x64-f1-3l5" firstAttribute="top" secondItem="9Eo-02-X7f" secondAttribute="bottom" id="rjm-Qf-rqc"/>
+                            <constraint firstItem="ulQ-RY-phP" firstAttribute="trailing" secondItem="o37-7u-qiP" secondAttribute="trailing" id="sr9-Yb-6Is"/>
+                            <constraint firstItem="x64-f1-3l5" firstAttribute="height" secondItem="ulQ-RY-phP" secondAttribute="height" id="vfG-gH-l6V"/>
+                            <constraint firstItem="Dt8-21-aMS" firstAttribute="leading" secondItem="4SW-3u-YCh" secondAttribute="trailing" id="wg2-cD-NXl"/>
+                            <constraint firstItem="ulQ-RY-phP" firstAttribute="leading" secondItem="x64-f1-3l5" secondAttribute="trailing" id="yEv-ms-maY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="o37-7u-qiP"/>
                     </view>
+                    <connections>
+                        <outlet property="leftAddressBar" destination="9pT-74-34U" id="HiP-yu-ixb"/>
+                        <outlet property="leftBookmark" destination="JCE-qI-saA" id="3Rr-q6-dnl"/>
+                        <outlet property="leftGoBack" destination="OEN-Ud-bjI" id="ClP-tU-eHy"/>
+                        <outlet property="leftGoForward" destination="RkK-ik-jLb" id="IfT-CX-2sX"/>
+                        <outlet property="leftHistory" destination="doY-ww-g5e" id="fcE-mB-1qb"/>
+                        <outlet property="leftLongPress" destination="aeN-S3-oJV" id="m38-PF-WBs"/>
+                        <outlet property="leftNavBar" destination="9Eo-02-X7f" id="72G-Tg-KpJ"/>
+                        <outlet property="leftRefresh" destination="vFV-6i-tX4" id="VhP-fj-2r1"/>
+                        <outlet property="leftTab" destination="Giy-TQ-dSx" id="hBb-Dc-zab"/>
+                        <outlet property="leftTabBar" destination="4SW-3u-YCh" id="rqy-xs-bE2"/>
+                        <outlet property="leftWebHolder" destination="x64-f1-3l5" id="f7W-BA-UA3"/>
+                        <outlet property="rightAdd" destination="edv-0O-vG8" id="BSu-oQ-Pjb"/>
+                        <outlet property="rightAddressBar" destination="h9G-ni-GkE" id="Ifz-Jj-fre"/>
+                        <outlet property="rightBack" destination="YOm-pO-X2B" id="LdS-mT-yet"/>
+                        <outlet property="rightBookmarks" destination="ibV-Qc-cYD" id="1cb-5l-KUg"/>
+                        <outlet property="rightForward" destination="Mal-vH-Tu1" id="3Th-K7-szG"/>
+                        <outlet property="rightHistory" destination="QQN-T9-mGA" id="Mgf-5Q-0WA"/>
+                        <outlet property="rightLongPress" destination="Y0S-9f-3rx" id="IMK-mH-FAU"/>
+                        <outlet property="rightNavBar" destination="7NQ-v0-hbb" id="bTD-3D-jvt"/>
+                        <outlet property="rightRefresh" destination="3rM-I3-iRK" id="k7P-3v-hKS"/>
+                        <outlet property="rightTabBar" destination="Dt8-21-aMS" id="2ai-Av-RdB"/>
+                        <outlet property="rightTabs" destination="k6m-9q-x1V" id="jLB-gg-KEn"/>
+                        <outlet property="rightWebHolder" destination="ulQ-RY-phP" id="XJc-FF-hBx"/>
+                        <outlet property="singleView" destination="fu5-pS-X9V" id="3Eq-oS-Inr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bnL-c6-f8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="aeN-S3-oJV">
+                    <connections>
+                        <action selector="leftAddBookmark:" destination="6g6-1A-nC7" id="FSw-eC-gHC"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Y0S-9f-3rx">
+                    <connections>
+                        <action selector="rightAddBookmark:" destination="6g6-1A-nC7" id="TYV-Gs-fnI"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-953" y="216"/>
+            <point key="canvasLocation" x="-340" y="1280"/>
         </scene>
         <!--iPad Home View Controller-->
         <scene sceneID="A9D-md-X7M">
@@ -232,7 +432,11 @@
                                                     <action selector="refreshPage:" destination="gP0-99-xlL" id="eyx-wB-EmL"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Item" image="Splitscreen" id="la2-Uv-Kwj"/>
+                                            <barButtonItem image="Splitscreen" id="la2-Uv-Kwj">
+                                                <connections>
+                                                    <segue destination="6g6-1A-nC7" kind="presentation" identifier="goSplit" modalTransitionStyle="crossDissolve" id="pmM-Db-EaB"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem image="Settings" id="Urx-ED-nfJ" userLabel="Settings">
                                                 <connections>
                                                     <segue destination="p0J-yc-dg1" kind="presentation" modalTransitionStyle="flipHorizontal" id="GZg-BQ-d7U"/>
@@ -240,7 +444,7 @@
                                             </barButtonItem>
                                         </leftBarButtonItems>
                                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Website / Search" textAlignment="center" minimumFontSize="17" id="h5j-M3-UwN">
-                                            <rect key="frame" x="316.5" y="10" width="379" height="30"/>
+                                            <rect key="frame" x="322.5" y="10" width="379" height="30"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -258,21 +462,21 @@
                                                     <action selector="addButtonPressed:" destination="gP0-99-xlL" id="S8g-Ht-oA1"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Item" image="Tabs" id="Bwb-TQ-1GO">
+                                            <barButtonItem image="Tabs" id="Bwb-TQ-1GO">
                                                 <connections>
                                                     <segue destination="xMQ-8r-EJv" kind="popoverPresentation" popoverAnchorBarButtonItem="Bwb-TQ-1GO" id="ujG-CL-1So">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Bookmarks" image="Bookmarks" id="7Wb-TF-pmb">
+                                            <barButtonItem image="Bookmarks" id="7Wb-TF-pmb">
                                                 <connections>
                                                     <segue destination="DCa-gb-OiP" kind="popoverPresentation" popoverAnchorBarButtonItem="7Wb-TF-pmb" id="FQb-nw-kzs">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="History" image="History Icon" id="e0U-hW-onn">
+                                            <barButtonItem image="History Icon" id="e0U-hW-onn">
                                                 <connections>
                                                     <segue destination="5xP-Lb-yKY" kind="popoverPresentation" popoverAnchorBarButtonItem="e0U-hW-onn" id="s4o-7O-g5d">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -302,7 +506,7 @@
                                             </barButtonItem>
                                         </leftBarButtonItems>
                                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Website / Search" textAlignment="center" minimumFontSize="17" id="JV6-io-7LR">
-                                            <rect key="frame" x="157" y="10" width="737" height="30"/>
+                                            <rect key="frame" x="143.5" y="10" width="737" height="30"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -446,6 +650,7 @@
                         <outlet property="searchBar" destination="cHc-3m-SJP" id="J03-8y-Sue"/>
                         <outlet property="tableView" destination="ChA-xx-wJv" id="hbl-Ug-od5"/>
                         <segue destination="gP0-99-xlL" kind="show" identifier="goHome" animates="NO" id="RPt-8m-hlQ"/>
+                        <segue destination="6g6-1A-nC7" kind="presentation" identifier="goSplit" animates="NO" id="r5T-TO-IgC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cFq-0X-hB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -526,6 +731,7 @@
                         <outlet property="searchDisplayController" destination="dBe-sN-VKh" id="Ec4-pk-SOf"/>
                         <outlet property="tableView" destination="ZR3-Wl-bfN" id="HQY-MX-PJO"/>
                         <segue destination="gP0-99-xlL" kind="show" identifier="" id="FZM-rQ-8pv"/>
+                        <segue destination="6g6-1A-nC7" kind="presentation" identifier="goSplit" animates="NO" id="Rvi-zR-YjV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXU-F2-Qab" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -607,6 +813,7 @@
                         <outlet property="searchBar" destination="v7f-XI-RqL" id="jFf-CF-uUL"/>
                         <outlet property="tableView" destination="8LP-L8-Gxz" id="uUI-R2-yAA"/>
                         <segue destination="gP0-99-xlL" kind="show" identifier="goHome" animates="NO" id="Wwg-Gj-BNh"/>
+                        <segue destination="6g6-1A-nC7" kind="presentation" identifier="goSplit" animates="NO" id="ci0-7g-IpR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8mT-hk-I2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -615,14 +822,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Bookmarks" width="45" height="45"/>
-        <image name="History Icon" width="45" height="45"/>
-        <image name="Settings" width="45" height="45"/>
-        <image name="Splitscreen" width="45" height="45"/>
-        <image name="Tabs" width="45" height="45"/>
+        <image name="Bookmarks" width="30" height="30"/>
+        <image name="Fullscreen" width="30" height="30"/>
+        <image name="History Icon" width="30" height="30"/>
+        <image name="Settings" width="30" height="30"/>
+        <image name="Splitscreen" width="30" height="30"/>
+        <image name="Tabs" width="30" height="30"/>
         <image name="starry_sky_galaxy_stars_125852_2780x2780.jpg" width="2780" height="2780"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wwg-Gj-BNh"/>
+        <segue reference="p58-Ag-vnL"/>
+        <segue reference="CGq-IA-WbL"/>
+        <segue reference="rZA-w6-dlx"/>
+        <segue reference="UbH-U9-jod"/>
+        <segue reference="Rvi-zR-YjV"/>
     </inferredMetricsTieBreakers>
 </document>

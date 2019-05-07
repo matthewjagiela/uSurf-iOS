@@ -29,6 +29,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     let savedData = SavedDataHandler()
     let iCloud = iCloudHandler()
     let webHandler = WebHandler()
+    var browserTag = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,18 +167,22 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if(segue.identifier == "goSplit"){
+            savedData.setLeftWebPage(URL: savedData.getLastViewedPages())
+        }
     }
-    */
+ 
     
     @IBAction func backPage(_ sender: Any) {
         self.webView.goBack()
+        
     }
     @IBAction func forwardPage(_ sender: Any) {
         self.webView.goForward()
@@ -190,6 +195,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         let theme = ThemeHandler()
         return theme.getStatusBarColor()
     }
+    @objc func canRotate() -> Void {}
     
 
 }

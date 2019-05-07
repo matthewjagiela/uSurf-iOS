@@ -25,6 +25,7 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
     //Optional variables these do not take up memory until they are called by a method execution
     lazy var matchedBookmarks = [Int]() //This is going to be where the bookmarks matching with the search is
     lazy var isSearching = false
+    var browserTag = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +42,17 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
     }
 
+    @objc private func iCloudUpdate(notification: NSNotification){ //This will be called when something within iCloud has changed...
+        bookmarkArray = iCloud.getBookmarkArray()
+        bookmarkNameArray = iCloud.getBookmarkNameArray()
+        isSearching = false
+        tableView.reloadData()
+        
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { //There is some search happening so we need to start trying to find the timer
         print("BookarkTableViewController: We are searching")
         if let searchedItem = searchBar.text , searchBar.text != ""{
@@ -103,12 +113,35 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
             print(matchedBookmarks)
             let searchedIndex = matchedBookmarks[indexPath.row] //This correlates to the index of the address in our main table
             savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as! String) //Set the url to load from the main bookmark table based on the searched stored
+            switch browserTag {
+            case 1: //Left
+                savedData.setLeftWebPage(URL: bookmarkArray[searchedIndex] as! String)
+                self.performSegue(withIdentifier: "goSplit", sender: self)
+            case 2:
+                savedData.setRightWebPage(URL:  bookmarkArray[searchedIndex] as! String)
+                self.performSegue(withIdentifier: "goSplit", sender: self)
+            default:
+                savedData.setLastViewedPage(lastPage:  bookmarkArray[searchedIndex] as! String)
+                self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+            }
             
         }
         else{
             savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as! String) //There is no search... We can just load the page from the selected index
+            switch browserTag {
+            case 1: //Left
+                savedData.setLeftWebPage(URL: bookmarkArray[indexPath.row] as! String)
+                self.performSegue(withIdentifier: "goSplit", sender: self)
+            case 2:
+                savedData.setRightWebPage(URL:  bookmarkArray[indexPath.row] as! String)
+                self.performSegue(withIdentifier: "goSplit", sender: self)
+            default:
+                savedData.setLastViewedPage(lastPage:  bookmarkArray[indexPath.row] as! String)
+                self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load
+            
+            }
         }
-        self.performSegue(withIdentifier: "goHome", sender: self) //Return to the browser with the new page loaded.
+        //self.performSegue(withIdentifier: "goHome", sender: self) //Return to the browser with the new page loaded.
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var bookmarkName = ""

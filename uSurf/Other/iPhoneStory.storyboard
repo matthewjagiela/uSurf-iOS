@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RAB-NY-IJG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RAB-NY-IJG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -268,13 +268,13 @@
                                 <items>
                                     <navigationItem id="J4q-0x-27d">
                                         <nil key="title"/>
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="Settings" id="jxm-ti-mFY">
+                                        <barButtonItem key="leftBarButtonItem" image="Settings" id="jxm-ti-mFY">
                                             <connections>
                                                 <segue destination="Ruc-mX-xhf" kind="presentation" identifier="goSettings" id="p9W-Hr-qSR"/>
                                             </connections>
                                         </barButtonItem>
                                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="lyF-7F-HWq">
-                                            <rect key="frame" x="78" y="7" width="239" height="30"/>
+                                            <rect key="frame" x="68" y="7" width="239" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -290,11 +290,11 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJU-UO-7lx">
-                                <rect key="frame" x="0.0" y="64" width="375" height="558"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" red="1" green="0.059605572920000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ha-k9-ayv">
-                                <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <gestureRecognizers/>
                                 <items>
                                     <barButtonItem systemItem="rewind" id="uQs-k2-fSG">
@@ -318,12 +318,12 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="B5s-94-Aik"/>
-                                    <barButtonItem title="Item" image="Tabs" id="8y9-Sl-LHT">
+                                    <barButtonItem image="Tabs" id="8y9-Sl-LHT">
                                         <connections>
                                             <segue destination="MsJ-hv-Liw" kind="presentation" identifier="goTabs" id="vt0-cM-jVr"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Item" image="History Icon" id="HJb-7k-soe">
+                                    <barButtonItem image="History Icon" id="HJb-7k-soe">
                                         <connections>
                                             <segue destination="RbB-48-NSe" kind="presentation" identifier="goHistory" id="H8c-Vq-uhY"/>
                                         </connections>
@@ -333,7 +333,7 @@
                                             <action selector="addTab:" destination="RAB-NY-IJG" id="sX1-gU-JDq"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Item" image="Bookmarks" id="EY4-0R-E12">
+                                    <barButtonItem image="Bookmarks" id="EY4-0R-E12">
                                         <connections>
                                             <segue destination="vhc-sm-f0J" kind="presentation" identifier="goBookmarks" id="bRP-ka-azU"/>
                                         </connections>
@@ -558,14 +558,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Bookmarks" width="45" height="45"/>
-        <image name="History Icon" width="45" height="45"/>
-        <image name="Settings" width="45" height="45"/>
-        <image name="Tabs" width="45" height="45"/>
+        <image name="Bookmarks" width="30" height="30"/>
+        <image name="History Icon" width="30" height="30"/>
+        <image name="Settings" width="30" height="30"/>
+        <image name="Tabs" width="30" height="30"/>
         <image name="starry_sky_galaxy_stars_125852_2780x2780.jpg" width="2780" height="2780"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hm3-au-FxU"/>
+        <segue reference="1V5-IR-oIx"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

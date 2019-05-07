@@ -1,11 +1,18 @@
 6.0 The Big One:
--A total rewrite: The app has been completely rewritten to be better optimized!
+- A total rewrite: The app has been completely rewritten to be better optimized!
 - WebKit: With WebKit features such as swipe navigation have been implemented
+- ProgressBar: See how far the page is loaded with a new progress bar on the top of the webview.
+- iPhone X Support: uSurf now supports iPhone X Style Devices
+- iPad Pro Support: uSurf now supports iPad Pro (3rd Generation Devices)
 - iPad: No more toolbar! Everything is now in the navigation  bar!
+- iPad: Portrait Split Screen!
 - There are new icons all throughout the app!
-- Long pressing the add button will allow you to add a bookmark, just pressing it will add a tab….
+- Long pressing the add button will allow you to add a bookmark, just pressing it will add a tab…
 - Option to clear all history!
+- Searching: You can now search through your history, tabs, and bookmarks!
 - Better version information: A lot less mess ups when it comes to consistency with information
+- Legacy: uSurf still works with legacy devices (going as far back as iOS 9)
+- Ad Banners: To try and make a little bit of cash on the side I implemented a single ad banner on the bottom of the settings page. That's it.
 
 5.3.4:
 - It’s that time of year again! Snow is falling! Enjoy!

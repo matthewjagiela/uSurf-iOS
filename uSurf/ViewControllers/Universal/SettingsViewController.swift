@@ -25,13 +25,14 @@ class SettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         //AD Setup:
-        adBanner.adUnitID = ""
+        adBanner.adUnitID = "7714978111013265/7436233905"
         adBanner.rootViewController = self
         adBanner.load(GADRequest())
         //Labels:
         internetLabels()
         runningVersion.text = appInfo.getAppVersion()
         infoBox.text = appInfo.getUpdateInformation()
+        infoBox.contentOffset = .zero
         //Do some theme stuff
         theming()
     }

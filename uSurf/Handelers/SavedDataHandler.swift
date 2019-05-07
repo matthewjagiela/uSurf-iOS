@@ -12,7 +12,7 @@ class SavedDataHandler: NSObject {
     var savedData = UserDefaults()
     
     override init() { //Whenever the class is initially called we are going to set the group so we can get data
-        savedData = UserDefaults.init(suiteName: "")!
+        savedData = UserDefaults.init(suiteName: "group.com.uapps.usurf")!
     }
     func getHistoryArray() -> NSMutableArray{ //If we need the history array in a different class for whatever reason this is the method to get it
         if(savedData.array(forKey: "historyArray") == nil){
@@ -64,6 +64,18 @@ class SavedDataHandler: NSObject {
         else{
             return "https://uappsios.com"
         }
+    }
+    func setRightWebPage(URL: String){
+        savedData.set(URL, forKey: "rightPage")
+    }
+    func setLeftWebPage(URL: String){
+        savedData.set(URL, forKey: "leftPage")
+    }
+    func getRightWebPage()->String{
+        return savedData.string(forKey: "rightPage") ?? "https://uappsios.com"
+    }
+    func getLeftWebPage()-> String{
+        return savedData.string(forKey: "leftPage") ?? "https://uappsios.com"
     }
     private func printHistory(){
         print("Saved data handler: History Array \(getHistoryArray())")

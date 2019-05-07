@@ -13,7 +13,7 @@ class WebHandler: NSObject {
     func determineURL(userInput: String) ->URLRequest{
         if(userInput.contains(".com") || userInput.contains(".org") || userInput.contains(".net") || userInput.contains(".edu") || userInput.contains(".us") || userInput.contains(".co")){ //These are popular endings to URLS so we can assume that it is supposed to be a web URL and we should format it as one...
             print("WEB HANDLER: THIS IS A URL")
-            if(userInput.contains("http//") || userInput.contains("https://")){ //This has what we need for URL protocols so we can just make the passed text a URL and then load it into the selected webView
+            if(userInput.contains("http://") || userInput.contains("https://")){ //This has what we need for URL protocols so we can just make the passed text a URL and then load it into the selected webView
                 let loadURL = URL(string: userInput)
                 return URLRequest(url: loadURL!)
             }

@@ -21,6 +21,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     var searchController = UISearchController()
     lazy var matchedHistory = [Int]()
     lazy var isSearching = false
+    var browserTag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,6 +30,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
+        print("DEBUG: History View Controller TAG \(browserTag)")
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(isSearching){ //Return the matched count
@@ -41,12 +44,35 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //Depending on if filters are applied or not set the URL
         if(isSearching){ //the selection is from the searched group...
             let searchedIndex = matchedHistory[indexPath.row] //The index of where it is in the main array.
-            savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+            switch browserTag {
+            case 1: //Left
+                savedData.setLeftWebPage(URL: historyArray[searchedIndex] as! String)
+                self.performSegue(withIdentifier: "goSplit", sender: self)
+            case 2:
+                savedData.setRightWebPage(URL: historyArray[searchedIndex] as! String)
+                self.performSegue(withIdentifier: "goSplit", sender: self)
+            default:
+                savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+                self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+            }
+            //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
         }
         else{ //This is just throughout the main array
-            savedData.setLastViewedPage(lastPage: historyArray[indexPath.row] as! String)
+            switch browserTag {
+            case 1: //Left
+                savedData.setLeftWebPage(URL: historyArray[indexPath.row] as! String)
+                self.performSegue(withIdentifier: "goSplit", sender: self)
+            case 2:
+                savedData.setRightWebPage(URL: historyArray[indexPath.row] as! String)
+                self.performSegue(withIdentifier: "goSplit", sender: self)
+            default:
+                savedData.setLastViewedPage(lastPage: historyArray[indexPath.row] as! String)
+                self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+            }
+            
         }
-        self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+    
+        
         
     }
     

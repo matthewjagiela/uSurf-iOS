@@ -16,12 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        GADMobileAds.configure(withApplicationID: "")
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-7714978111013265~7068019503")
         return true
     }
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         if let rootViewController = self.topViewControllerWithRootViewController(rootViewController: window?.rootViewController) {
-            if (rootViewController.responds(to: Selector(("canRotate")))) {
+            if (rootViewController.responds(to: #selector(TabViewController.canRotate))) {
                 // Unlock landscape view orientations for this view controller
                 return .allButUpsideDown;
             }

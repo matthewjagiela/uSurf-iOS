@@ -23,6 +23,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     lazy var matchediPhoneTabs = [Int]() //This is going to be where the bookmarks matching with the search is
     lazy var matchediPadTabs = [Int]()
     lazy var isSearching = false
+    var browserTag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -124,7 +125,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 cell?.textLabel?.text = iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String
             }
             else{
-                cell?.textLabel?.text = iPadTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String
+                cell?.textLabel?.text = iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String
             }
             
             
@@ -146,18 +147,63 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
             if(indexPath.section == 0){
                 //iPhone
                 savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as! String)
+                switch browserTag {
+                case 1: //Left
+                    savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                case 2:
+                    savedData.setRightWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                default:
+                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                }
+                
             }
             else{
                 savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as! String)
+                switch browserTag {
+                case 1: //Left
+                    savedData.setLeftWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                case 2:
+                    savedData.setRightWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                default:
+                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                }
             }
             
         }
         else{
             if(indexPath.section == 0){
                 savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: indexPath.row) as! String)
+                switch browserTag {
+                case 1: //Left
+                    savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                case 2:
+                    savedData.setRightWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                default:
+                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                }
             }
             else{
                 savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: indexPath.row) as! String)
+                switch browserTag {
+                case 1: //Left
+                    savedData.setLeftWebPage(URL: iPadTabArray.object(at: indexPath.row) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                case 2:
+                    savedData.setRightWebPage(URL: iPadTabArray.object(at: indexPath.row) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                default:
+                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                }
             }
         }
         self.performSegue(withIdentifier: "goHome", sender: self)
