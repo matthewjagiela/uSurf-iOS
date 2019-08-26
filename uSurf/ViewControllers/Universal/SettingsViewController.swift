@@ -25,7 +25,7 @@ class SettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         //AD Setup:
-        adBanner.adUnitID = "7714978111013265/7436233905"
+        adBanner.adUnitID = "ca-app-pub-7714978111013265/7436233905"
         adBanner.rootViewController = self
         adBanner.load(GADRequest())
         //Labels:
