@@ -45,18 +45,17 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
     }
 
-    @objc private func iCloudUpdate(notification: NSNotification){ //This will be called when something within iCloud has changed...
+    @objc private func iCloudUpdate(notification: NSNotification) { //This will be called when something within iCloud has changed...
         bookmarkArray = iCloud.getBookmarkArray()
         bookmarkNameArray = iCloud.getBookmarkNameArray()
         isSearching = false
         tableView.reloadData()
-        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { //There is some search happening so we need to start trying to find the timer
         print("BookarkTableViewController: We are searching")
         if let searchedItem = searchBar.text , searchBar.text != ""{
-            let searchArray = bookmarkNameArray as! [String]
+            let searchArray = bookmarkNameArray as? [String] ?? ["uApps"]
             matchedBookmarks = searchArray.indices.filter{
                 searchArray[$0].localizedCaseInsensitiveContains(searchedItem)
             }
@@ -112,31 +111,31 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         if(isSearching){ //This is a selection from a search
             print(matchedBookmarks)
             let searchedIndex = matchedBookmarks[indexPath.row] //This correlates to the index of the address in our main table
-            savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as! String) //Set the url to load from the main bookmark table based on the searched stored
+            savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com") //Set the url to load from the main bookmark table based on the searched stored
             switch browserTag {
             case 1: //Left
-                savedData.setLeftWebPage(URL: bookmarkArray[searchedIndex] as! String)
+                savedData.setLeftWebPage(URL: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             case 2:
-                savedData.setRightWebPage(URL:  bookmarkArray[searchedIndex] as! String)
+                savedData.setRightWebPage(URL:  bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             default:
-                savedData.setLastViewedPage(lastPage:  bookmarkArray[searchedIndex] as! String)
+                savedData.setLastViewedPage(lastPage:  bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
             }
             
         }
         else{
-            savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as! String) //There is no search... We can just load the page from the selected index
+            savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com") //There is no search... We can just load the page from the selected index
             switch browserTag {
             case 1: //Left
-                savedData.setLeftWebPage(URL: bookmarkArray[indexPath.row] as! String)
+                savedData.setLeftWebPage(URL: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             case 2:
-                savedData.setRightWebPage(URL:  bookmarkArray[indexPath.row] as! String)
+                savedData.setRightWebPage(URL:  bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             default:
-                savedData.setLastViewedPage(lastPage:  bookmarkArray[indexPath.row] as! String)
+                savedData.setLastViewedPage(lastPage:  bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load
             
             }
@@ -148,12 +147,12 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         var bookmarkURL = ""
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell")
         if(isSearching){ //The user is currently searching for a bookmark so we need to display the filtered results
-            bookmarkName = (bookmarkNameArray.object(at: matchedBookmarks[indexPath.row]) as! String)
-            bookmarkURL = (bookmarkArray.object(at: matchedBookmarks[indexPath.row])as! String)
+            bookmarkName = (bookmarkNameArray.object(at: matchedBookmarks[indexPath.row]) as? String ?? "https://uappsios.com")
+            bookmarkURL = (bookmarkArray.object(at: matchedBookmarks[indexPath.row]) as? String ?? "uApps")
         }
         else{ //Display the entire list
-            bookmarkName = (bookmarkNameArray.object(at: indexPath.row)as! String)
-            bookmarkURL = (bookmarkArray.object(at: indexPath.row)as! String)
+            bookmarkName = (bookmarkNameArray.object(at: indexPath.row) as? String ?? "uApps")
+            bookmarkURL = (bookmarkArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
         }
         cell?.textLabel?.text = bookmarkName
         cell?.detailTextLabel?.text = bookmarkURL
