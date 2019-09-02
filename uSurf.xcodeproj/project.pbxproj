@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E482499231CAF5200F4C969 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E482498231CAF5200F4C969 /* .swiftlint.yml */; };
 		340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
 		34265EFA2176B0B400C775F4 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */; };
 		342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342CBE1D218231D3006D2D04 /* HistoryViewController.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E482498231CAF5200F4C969 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		340266C5214890A7000A19E8 /* uSurf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
 		340906D620D9C01D009F53F1 /* WebHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebHandler.swift; sourceTree = "<group>"; };
 		34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 		34F95DF320C73F1D00411B9D = {
 			isa = PBXGroup;
 			children = (
+				2E482498231CAF5200F4C969 /* .swiftlint.yml */,
 				34F95DFE20C73F1D00411B9D /* uSurf */,
 				34F95DFD20C73F1D00411B9D /* Products */,
 				D3A8C254DD33CAFE5B6AFE30 /* Pods */,
@@ -353,6 +356,7 @@
 				34F95DF920C73F1D00411B9D /* Frameworks */,
 				34F95DFA20C73F1D00411B9D /* Resources */,
 				CCAA6D8E64E32400D5E3A914 /* [CP] Embed Pods Frameworks */,
+				2E482496231CAEFB00F4C969 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -436,6 +440,7 @@
 				3460A5E3210BBE950029B03C /* icons8-bookmark-90.png in Resources */,
 				3460A5F6210BC5F20029B03C /* icons8-merge-90.png in Resources */,
 				343F016D20D4204600B9E8DD /* main_icon.png in Resources */,
+				2E482499231CAF5200F4C969 /* .swiftlint.yml in Resources */,
 				3460A5D6210BBCEE0029B03C /* icons8-folder-60.png in Resources */,
 				343F016F20D4204600B9E8DD /* icon_iPadPro.png in Resources */,
 				34F95E0720C73F1F00411B9D /* Assets.xcassets in Resources */,
@@ -449,6 +454,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2E482496231CAEFB00F4C969 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		C45FE8826A3F11637FC7ADFE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

@@ -7,5 +7,6 @@ target 'uSurf' do
 
   # Pods for uSurf
     pod 'Google-Mobile-Ads-SDK'
+    pod 'SwiftLint'
 
 end
