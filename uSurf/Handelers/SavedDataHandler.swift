@@ -10,7 +10,6 @@ import UIKit
 
 class SavedDataHandler: NSObject {
     var savedData = UserDefaults()
-    
     override init() { //Whenever the class is initially called we are going to set the group so we can get data
         savedData = UserDefaults.init(suiteName: "group.com.uapps.usurf")!
     }
@@ -82,7 +81,7 @@ class SavedDataHandler: NSObject {
         print("Get history array count: \(getHistoryArray().count)")
         let historyArray = getHistoryArray()
         print("A different approach history: \(historyArray)")
-        print("History item 0: \(historyArray.object(at: 0) as! String)")
+        print("History item 0: \(historyArray.object(at: 0) as? String ?? "https://uappsios.com")")
     }
     
 

@@ -16,10 +16,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet var adBanner: GADBannerView!
     @IBOutlet var navBar: UINavigationBar!
     @IBOutlet var infoBox: UITextView!
-    
     let savedData = SavedDataHandler()
     let appInfo = VersionHandler()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,13 +39,12 @@ class SettingsViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        if(UI_USER_INTERFACE_IDIOM() == .phone){
+        if UI_USER_INTERFACE_IDIOM() == .phone{
             print("SettingsViewController 'Phone'")
         UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
         }
     }
-    func internetLabels(){ //This is going to go to my github and parse the data on the versions
+    func internetLabels() {  //This is going to go to my github and parse the data on the versions
         if let url = URL(string: "https://matthewjagiela.github.io/uApps-HTML/") {
             do {
                 let contents = try String(contentsOf: url)
@@ -61,7 +58,6 @@ class SettingsViewController: UIViewController {
         } else {
             // the URL was bad!
         }
-        
     }
     @IBAction func ShareApp(_ sender: Any) {
         let shareURL = NSURL(string: "https://itunes.apple.com/us/app/utime-universal/id1125889944?ls=1&mt=8")

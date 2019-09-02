@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,  UISearchBarDelegate {
+class TabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var searchBar: UISearchBar!
@@ -74,11 +74,11 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { //There is some search happening so we need to start trying to find the timer
         print("BookarkTableViewController: We are searching")
         if let searchedItem = searchBar.text , searchBar.text != ""{
-            let searchArray = iPhoneTabArray as! [String]
+            let searchArray = iPhoneTabArray as? [String] ?? ["https://uappsios.com"]
             matchediPhoneTabs = searchArray.indices.filter{ //This is searching through the iPhone tab array for matches
                 searchArray[$0].localizedCaseInsensitiveContains(searchedItem)
             }
-            let iPadSearchArray = iPadTabArray as! [String]
+            let iPadSearchArray = iPadTabArray as? [String] ?? ["https://uappsios.com"]
             matchediPadTabs = iPadSearchArray.indices.filter{ //This is searching through the iPad tab arrays to find a match
                 iPadSearchArray[$0].localizedCaseInsensitiveContains(searchedItem)
             }
@@ -146,13 +146,13 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         if(isSearching){//We are searching so we have to have the selected row the searched item
             if(indexPath.section == 0){
                 //iPhone
-                savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as! String)
+                savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                 switch browserTag {
                 case 1: //Left
-                    savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as! String)
+                    savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
                 case 2:
-                    savedData.setRightWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as! String)
+                    savedData.setRightWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
                 default:
                     //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
@@ -161,13 +161,13 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 
             }
             else{
-                savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as! String)
+                savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                 switch browserTag {
                 case 1: //Left
-                    savedData.setLeftWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as! String)
+                    savedData.setLeftWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
                 case 2:
-                    savedData.setRightWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as! String)
+                    savedData.setRightWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
                 default:
                     //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
@@ -178,13 +178,13 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         else{
             if(indexPath.section == 0){
-                savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: indexPath.row) as! String)
+                savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                 switch browserTag {
                 case 1: //Left
-                    savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as! String)
+                    savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
                 case 2:
-                    savedData.setRightWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as! String)
+                    savedData.setRightWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
                 default:
                     //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
@@ -192,13 +192,13 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             }
             else{
-                savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: indexPath.row) as! String)
+                savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                 switch browserTag {
                 case 1: //Left
-                    savedData.setLeftWebPage(URL: iPadTabArray.object(at: indexPath.row) as! String)
+                    savedData.setLeftWebPage(URL: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
                 case 2:
-                    savedData.setRightWebPage(URL: iPadTabArray.object(at: indexPath.row) as! String)
+                    savedData.setRightWebPage(URL: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
                 default:
                     //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
@@ -231,9 +231,6 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
    
     @objc func canRotate() -> Void {}
-    
-    
-
     /*
     // MARK: - Navigation
 

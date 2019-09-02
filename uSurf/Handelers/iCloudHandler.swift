@@ -58,16 +58,16 @@ class iCloudHandler: NSObject {
         NSUbiquitousKeyValueStore.default.set(bookmarkArray, forKey: "bookmarkArray")
     }
     func getObjectOfiPhoneTabArray(index:Int)->String{ //Return the object at the passed index from the iPhone Tab Array
-        return getiPhoneTabArray().object(at: index) as! String
+        return getiPhoneTabArray().object(at: index) as? String ?? "https://uappsios.com"
     }
     func getObjectOfiPadTabArray(index:Int)->String{ //Return the object at the passed index from the iPad Tab Array
-        return getiPadTabArray().object(at: index) as! String
+        return getiPadTabArray().object(at: index) as? String ?? "https://uappsios.com"
     }
     func getBookmark(index:Int) ->String{ //Return the object at the passed index from the bookmark array
-        return getBookmarkArray().object(at: index) as! String
+        return getBookmarkArray().object(at: index) as? String ?? "https://uappsios.com"
     }
     func getBookmarkName(index:Int) -> String{ //Return the object at the passed index from the bookmark name array
-        return getBookmarkNameArray().object(at: index) as! String
+        return getBookmarkNameArray().object(at: index) as? String ?? "New Bookmark"
     }
     func addToiPhoneTabArray(_ item: String){ //Add an item to  the iPhone Tab Array and save the changes to iCloud
         let iPhoneTabArray = getiPhoneTabArray()

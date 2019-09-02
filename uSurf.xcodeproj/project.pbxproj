@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E482499231CAF5200F4C969 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E482498231CAF5200F4C969 /* .swiftlint.yml */; };
+		2EA04356231CC48400812246 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E482498231CAF5200F4C969 /* .swiftlint.yml */; };
 		340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
 		34265EFA2176B0B400C775F4 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */; };
 		342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342CBE1D218231D3006D2D04 /* HistoryViewController.swift */; };
@@ -440,7 +440,7 @@
 				3460A5E3210BBE950029B03C /* icons8-bookmark-90.png in Resources */,
 				3460A5F6210BC5F20029B03C /* icons8-merge-90.png in Resources */,
 				343F016D20D4204600B9E8DD /* main_icon.png in Resources */,
-				2E482499231CAF5200F4C969 /* .swiftlint.yml in Resources */,
+				2EA04356231CC48400812246 /* .swiftlint.yml in Resources */,
 				3460A5D6210BBCEE0029B03C /* icons8-folder-60.png in Resources */,
 				343F016F20D4204600B9E8DD /* icon_iPadPro.png in Resources */,
 				34F95E0720C73F1F00411B9D /* Assets.xcassets in Resources */,

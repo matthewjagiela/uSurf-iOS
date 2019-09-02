@@ -46,13 +46,13 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             let searchedIndex = matchedHistory[indexPath.row] //The index of where it is in the main array.
             switch browserTag {
             case 1: //Left
-                savedData.setLeftWebPage(URL: historyArray[searchedIndex] as! String)
+                savedData.setLeftWebPage(URL: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             case 2:
-                savedData.setRightWebPage(URL: historyArray[searchedIndex] as! String)
+                savedData.setRightWebPage(URL: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             default:
-                savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+                savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
             }
             //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
@@ -60,29 +60,25 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         else{ //This is just throughout the main array
             switch browserTag {
             case 1: //Left
-                savedData.setLeftWebPage(URL: historyArray[indexPath.row] as! String)
+                savedData.setLeftWebPage(URL: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             case 2:
-                savedData.setRightWebPage(URL: historyArray[indexPath.row] as! String)
+                savedData.setRightWebPage(URL: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             default:
-                savedData.setLastViewedPage(lastPage: historyArray[indexPath.row] as! String)
+                savedData.setLastViewedPage(lastPage: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
                 self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
             }
-            
         }
-    
-        
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCells")
         if(isSearching){ //Display only the search results
-            cell?.textLabel?.text = (historyArray.object(at: matchedHistory[indexPath.row]) as! String)
+            cell?.textLabel?.text = (historyArray.object(at: matchedHistory[indexPath.row]) as? String ?? "uApps iOS")
         }
         else{ //Display all the results
-            cell?.textLabel?.text = (historyArray.object(at: indexPath.row) as! String)
+            cell?.textLabel?.text = (historyArray.object(at: indexPath.row) as? String ?? "uApps iOS")
         }
         cell?.backgroundColor = theme.getBarTintColor()
         cell?.textLabel?.textColor = theme.getTintColor()
@@ -94,7 +90,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         print("History: We are searching")
         //Do the actual search...
         if let searchedItem = searchBar.text , searchBar.text != ""{
-            let searchArray = historyArray as! [String]
+            let searchArray = historyArray as? [String] ?? ["https://uappsios.com"]
             matchedHistory = searchArray.indices.filter{
                 searchArray[$0].localizedCaseInsensitiveContains(searchedItem)
             }
