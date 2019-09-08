@@ -271,8 +271,8 @@
                                                 <segue destination="Ruc-mX-xhf" kind="presentation" identifier="goSettings" id="p9W-Hr-qSR"/>
                                             </connections>
                                         </barButtonItem>
-                                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="lyF-7F-HWq">
-                                            <rect key="frame" x="68" y="11" width="239" height="34"/>
+                                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="lyF-7F-HWq">
+                                            <rect key="frame" x="93" y="11" width="225.5" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -303,11 +303,6 @@
                                     <barButtonItem systemItem="fastForward" id="F6N-UP-EMc">
                                         <connections>
                                             <action selector="goForward:" destination="RAB-NY-IJG" id="TtA-sf-DPo"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem systemItem="stop" id="5Vb-RX-pdn">
-                                        <connections>
-                                            <action selector="stopLoading:" destination="RAB-NY-IJG" id="7dO-L3-Jh3"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="refresh" id="Lsa-Zt-ke3">
