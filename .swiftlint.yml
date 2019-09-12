@@ -1,16 +1,17 @@
 disabled_rules:
-- type_body_length
-- line_length
-- type_name
-- identifier_name
-- cyclomatic_complexity
-- function_body_length
-- file_length
+    - type_body_length
+    - line_length
+    - type_name
+    - identifier_name
+    - cyclomatic_complexity
+    - function_body_length
+    - file_length
+    - trailing_whitespace
 opt_in_rules:
-- empty_count
-- empty_string
-- force_unwrapping
+    - empty_count
+    - empty_string
+    - force_unwrapping
 excluded:
-- Carthage
-- Pods
-- SwiftLint/Common/3rdPartyLib
+    - Carthage
+    - Pods
+    - SwiftLint/Common/3rdPartyLib

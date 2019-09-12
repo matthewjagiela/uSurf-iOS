@@ -158,7 +158,6 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
                     self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
                 }
-                
             }
             else{
                 savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
