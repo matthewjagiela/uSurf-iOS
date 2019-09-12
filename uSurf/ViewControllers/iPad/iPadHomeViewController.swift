@@ -39,13 +39,13 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         
         dynamicField.delegate = self //This allows us to use enter to search!
         theming()
-        if webView == nil{
+        if webView == nil {
             print("ViewDidLoad NIL")
             handleWebKit()
         }
         widenTextField()
     }
-    private func widenTextField(){
+    private func widenTextField() {
         var frame = self.dynamicField.frame
         frame.size.width = 10000
         self.dynamicField.frame = frame
@@ -71,7 +71,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         loadURL(textField.text!) //Go to the URL / Search term
         return true
     }
-    private func handleWebKit(){ //WebKit was broken in earlier versions of iOS so we need to add it manually or uSurf wont make sense to have still active
+    private func handleWebKit() { //WebKit was broken in earlier versions of iOS so we need to add it manually or uSurf wont make sense to have still active
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
@@ -87,7 +87,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         webView.allowsBackForwardNavigationGestures = true //Allow swiping back and forth for navigating page... Better than the old gesture recognizer
         loadURL(savedData.getLastViewedPages())
     }
-    private func loadURL(_ url: String){ //This method takes a string of an adress and makes the web view load it!
+    private func loadURL(_ url: String) { //This method takes a string of an adress and makes the web view load it!
         webView.load(webHandler.determineURL(userInput: url))
     }
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) { //There is something loading so we want to show the navigation bar
@@ -103,13 +103,13 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         dynamicField.text = webURL
         
     }
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) { //This is to update the loading bar....
-        if(keyPath == "estimatedProgress"){
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { //This is to update the loading bar....
+        if(keyPath == "estimatedProgress") {
             progressBar.progress = Float(webView.estimatedProgress)
             
         }
     }
-    func theming(){
+    func theming() {
         let theme = ThemeHandler()
         self.navigationBar.barTintColor = theme.getBarTintColor()
         self.navigationBar.tintColor = theme.getTintColor()
@@ -126,22 +126,21 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         print("LongPress")
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
         //Add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
-            if(bookmarkName.text != "" && bookmarkAddress.text != ""){
+            if(bookmarkName.text != "" && bookmarkAddress.text != "") {
                 //Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
                 self.iCloud.printBookmarkArray()
-            }
-            else{
+            } else {
                 //Do something with the error
                 print("There is something wrong so we cannot add this")
             }
         }))
         //The user does not want to add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (_) in
             print("User has cancelled")
         }))
         //Add textfields
@@ -161,12 +160,11 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     @IBAction func shareWebsite(_ sender: Any) {
         let shareURL = self.webView.url?.absoluteURL //This is going to be the URL the user wants to share
         let shareString = self.webView.title //This is going to be the title the user wants to share
-        let activityViewController = UIActivityViewController(activityItems: [shareURL as Any,shareString as Any], applicationActivities: nil) //Make the share sheet
+        let activityViewController = UIActivityViewController(activityItems: [shareURL as Any, shareString as Any], applicationActivities: nil) //Make the share sheet
         activityViewController.popoverPresentationController?.barButtonItem = shareButton //Present the popover with the source being a button
         present(activityViewController, animated: true, completion: nil)
     
     }
-    
     
     // MARK: - Navigation
 
@@ -174,11 +172,10 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if(segue.identifier == "goSplit"){
+        if(segue.identifier == "goSplit") {
             savedData.setLeftWebPage(URL: savedData.getLastViewedPages())
         }
     }
- 
     
     @IBAction func backPage(_ sender: Any) {
         self.webView.goBack()
@@ -191,11 +188,10 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         self.webView.reload()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle{
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         let theme = ThemeHandler()
         return theme.getStatusBarColor()
     }
-    @objc func canRotate() -> Void {}
-    
+    @objc func canRotate() {}
 
 }

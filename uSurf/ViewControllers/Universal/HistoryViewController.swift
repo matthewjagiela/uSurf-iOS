@@ -8,12 +8,11 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate {
+class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var navBar: UINavigationBar!
-    
     
     let savedData = SavedDataHandler()
     let theme = ThemeHandler()
@@ -34,15 +33,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(isSearching){ //Return the matched count
+        if(isSearching) { //Return the matched count
             return matchedHistory.count
-        }
-        else{
+        } else {
             return historyArray.count
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //Depending on if filters are applied or not set the URL
-        if(isSearching){ //the selection is from the searched group...
+        if(isSearching) { //the selection is from the searched group...
             let searchedIndex = matchedHistory[indexPath.row] //The index of where it is in the main array.
             switch browserTag {
             case 1: //Left
@@ -56,8 +54,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
             }
             //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
-        }
-        else{ //This is just throughout the main array
+        } else { //This is just throughout the main array
             switch browserTag {
             case 1: //Left
                 savedData.setLeftWebPage(URL: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
@@ -74,10 +71,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCells")
-        if(isSearching){ //Display only the search results
+        if(isSearching) { //Display only the search results
             cell?.textLabel?.text = (historyArray.object(at: matchedHistory[indexPath.row]) as? String ?? "uApps iOS")
-        }
-        else{ //Display all the results
+        } else { //Display all the results
             cell?.textLabel?.text = (historyArray.object(at: indexPath.row) as? String ?? "uApps iOS")
         }
         cell?.backgroundColor = theme.getBarTintColor()
@@ -89,31 +85,30 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("History: We are searching")
         //Do the actual search...
-        if let searchedItem = searchBar.text , searchBar.text != ""{
+        if let searchedItem = searchBar.text, searchBar.text != ""{
             let searchArray = historyArray as? [String] ?? ["https://uappsios.com"]
-            matchedHistory = searchArray.indices.filter{
+            matchedHistory = searchArray.indices.filter {
                 searchArray[$0].localizedCaseInsensitiveContains(searchedItem)
             }
             isSearching = true
-        }
-        else{
+        } else {
             isSearching = false
         }
         tableView.reloadData()
     }
-    private func theming(){
+    private func theming() {
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self as? UISearchResultsUpdating //search results are handled in this class
         searchController.hidesNavigationBarDuringPresentation = false //Make sure the nav bar stays
         searchController.dimsBackgroundDuringPresentation = true //Not sure
         searchController.searchBar.delegate = self // we want to use delegate methods here
-        tableView.tableFooterView = UIView(frame:.zero) //Make sure that the entire thing is in frame
+        tableView.tableFooterView = UIView(frame: .zero) //Make sure that the entire thing is in frame
         tableView.rowHeight = 71 //Row height for the text
         navBar.barTintColor = theme.getBarTintColor() //Set the real color of the bar
         navBar.tintColor = theme.getTintColor() //Set text of the bar
         self.view.backgroundColor = theme.getBarTintColor() //Set the background text
-        let textAttributes = [NSAttributedString.Key.foregroundColor:theme.getTintColor()] //Set the navigation text color
+        let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()] //Set the navigation text color
         navBar.titleTextAttributes = textAttributes //Actually update the thing
         tableView.backgroundColor = theme.getBarTintColor() //When there is no cells the view will be this color
         searchBar.barStyle = theme.getSearchStyle() //Set the theme of the search bar
@@ -121,22 +116,19 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         textFieldInsideSearchBar?.textColor = theme.getTintColor() //Change the color to white
         
-        
-        
     }
     @IBAction func goHome(_ sender: Any) {
         self.performSegue(withIdentifier: "goHome", sender: self)
     }
     @IBAction func clearHistory(_ sender: Any) {
-        historyArray.removeAllObjects();
+        historyArray.removeAllObjects()
         savedData.saveHistoryArray(historyArray: historyArray)
         self.tableView.reloadData()
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle{
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
-    @objc func canRotate() -> Void {}
-    
+    @objc func canRotate() {}
 
     /*
     // MARK: - Navigation

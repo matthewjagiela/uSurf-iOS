@@ -59,11 +59,11 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         theming()
         widenTextField()
     }
-    func handleWebKit(){
+    func handleWebKit() {
         let webConfiguration = WKWebViewConfiguration() //This can work for both of them...
         
         //Lets work on making the left web view first...
-        leftWebView = WKWebView(frame: .zero, configuration:  webConfiguration)
+        leftWebView = WKWebView(frame: .zero, configuration: webConfiguration)
         leftWebView.uiDelegate = self
         leftWebView.navigationDelegate = self
         leftWebView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +78,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         leftWebView.tag = 0
         //HOLDER TO LOAD URL
         //Right Web View
-        rightWebView = WKWebView(frame: .zero, configuration:  webConfiguration)
+        rightWebView = WKWebView(frame: .zero, configuration: webConfiguration)
         rightWebView.uiDelegate = self
         rightWebView.navigationDelegate = self
         rightWebView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,27 +93,26 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         loadLeftURL(savedData.getLeftWebPage())
         loadRightURL(savedData.getRightWebPage())
     }
-    private func loadLeftURL(_ url: String){ //Give this method a string and it is going to bring the left web view to it
+    private func loadLeftURL(_ url: String) { //Give this method a string and it is going to bring the left web view to it
         leftWebView.load(web.determineURL(userInput: url))
     }
-    private func loadRightURL(_ url: String){ //Give this method a string and it is going to bring the right web view to it.
+    private func loadRightURL(_ url: String) { //Give this method a string and it is going to bring the right web view to it.
         rightWebView.load(web.determineURL(userInput: url))
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { //The web view has finished loading so we want to hide
         let webURL = webView.url!.absoluteString
         savedData.addToHistoryArray(webURL)
-        if(webView.tag == 0){ //Left web view finished
+        if(webView.tag == 0) { //Left web view finished
             
             savedData.setLeftWebPage(URL: webURL)
             leftAddressBar.text = webURL
-        }
-        else{ //Right web view finished
+        } else { //Right web view finished
             savedData.setRightWebPage(URL: webURL)
             rightAddressBar.text = webURL
         }
         savedData.setLastViewedPage(lastPage: webURL)
     }
-    func theming(){ //Oh shit here we go again...
+    func theming() { //Oh shit here we go again...
         //Left theming:
         leftNavBar.barTintColor = theme.getBarTintColor()
         leftNavBar.tintColor = theme.getTintColor()
@@ -131,7 +130,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         view.backgroundColor = theme.getBarTintColor()
         
     }
-    private func widenTextField(){
+    private func widenTextField() {
         var frame1 = leftAddressBar.frame
         var frame2 = rightAddressBar.frame
         frame1.size.width = 10000
@@ -171,22 +170,21 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
     @IBAction func leftAddBookmark(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
         //Add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
-            if(bookmarkName.text != "" && bookmarkAddress.text != ""){
+            if(bookmarkName.text != "" && bookmarkAddress.text != "") {
                 //Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
                 self.iCloud.printBookmarkArray()
-            }
-            else{
+            } else {
                 //Do something with the error
                 print("There is something wrong so we cannot add this")
             }
         }))
         //The user does not want to add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (_) in
             print("User has cancelled")
         }))
         //Add textfields
@@ -206,22 +204,21 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
     @IBAction func rightAddBookmark(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
         //Add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
-            if(bookmarkName.text != "" && bookmarkAddress.text != ""){
+            if(bookmarkName.text != "" && bookmarkAddress.text != "") {
                 //Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
                 self.iCloud.printBookmarkArray()
-            }
-            else{
+            } else {
                 //Do something with the error
                 print("There is something wrong so we cannot add this")
             }
         }))
         //The user does not want to add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (_) in
             print("User has cancelled")
         }))
         //Add textfields
@@ -238,7 +235,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
             print("Displayed")
         }
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle{
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         let theme = ThemeHandler()
         return theme.getStatusBarColor()
     }
@@ -275,7 +272,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
             print("DEBUG: SPLIT CONTROLLER SEGUE NOT FOUND")
         }
     }
-    @objc func canRotate() -> Void {}
+    @objc func canRotate() {}
     /*
     // MARK: - Navigation
 
