@@ -17,50 +17,50 @@ class ThemeHandler: NSObject {
         
     }
     func getBarTintColor() -> UIColor { //Instead of doing this if statement for every single view controller....
-        if(theme == "Blue") {
+        if theme == "Blue" {
             return .blue
-        } else if(theme == "Light") {
+        } else if theme == "Light" {
             return .white
-        } else if(theme == "Red") {
+        } else if theme == "Red" {
             return .red
-        } else if(theme == "Purple") {
+        } else if theme == "Purple" {
             return .purple
-        } else if(theme == "Green") {
+        } else if theme == "Green" {
             return .green
         } else { //Black is the only option left and we need and else statement to make this method work for returns SOOO
             return .black
         }
     }
     func getTintColor() -> UIColor { //This is going to be the color of buttons on bars
-        if(theme == "Light") { //If the theme is light display black buttons
+        if theme == "Light" { //If the theme is light display black buttons
             return .black
         } else { //Everything else can have white buttons as it looks best
             return .white
         }
     }
     func getTextBarBackgroundColor() -> UIColor {
-        if(theme == "Dark") {
+        if theme == "Dark" {
             return .gray
         } else {
             return .white
         }
     }
     func getTextColor() -> UIColor {
-        if(theme == "Dark") {
+        if theme == "Dark" {
             return .white
         } else {
             return .black
         }
     }
     func getSearchStyle() -> UIBarStyle {
-        if(theme == "Dark") {
+        if theme == "Dark" {
             return .black
         } else {
             return .default
         }
     }
     func getStatusBarColor() -> UIStatusBarStyle {
-        if(theme == "Light") {
+        if theme == "Light" {
             return .default
         } else {
             return .lightContent
