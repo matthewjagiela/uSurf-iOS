@@ -95,20 +95,21 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { //The web view has finished loading so we want to hide
         progressBar.isHidden = true
-        let webURL = webView.url!.absoluteString
-        print(webURL)
-        savedData.addToHistoryArray(webURL)//This is going to add the website to history (when private mode is added this will not be a thing...)
-        savedData.setLastViewedPage(lastPage: webURL)
+        let webURL = webView.url?.absoluteString
+        print(webURL ?? "https://uappsios.com")
+        savedData.addToHistoryArray(webURL ?? "https://uappsios.com")//This is going to add the website to history (when private mode is added this will not be a thing...)
+        savedData.setLastViewedPage(lastPage: webURL ?? "https://uappsios.com")
         print("HISTORY: \(savedData.getHistoryArray())")
         dynamicField.text = webURL
         
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { //This is to update the loading bar....
-        if(keyPath == "estimatedProgress") {
+        if keyPath == "estimatedProgress" {
             progressBar.progress = Float(webView.estimatedProgress)
             
         }
     }
+    
     func theming() {
         let theme = ThemeHandler()
         self.navigationBar.barTintColor = theme.getBarTintColor()
@@ -118,10 +119,11 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         self.view.backgroundColor = theme.getBarTintColor()
     }
     @IBAction func addButtonPressed(_ sender: Any) { //This is going to give the option of either adding a tab or a bookmark
-        iCloud.addToiPadTabArray((self.webView.url?.absoluteString)!)
+        iCloud.addToiPadTabArray(self.webView.url?.absoluteString ?? "https://uappsios.com")
         iCloud.printTabArray()
         
     }
+    //swiftlint:disable force_unwrapping
     @IBAction func longPress(_ sender: Any) { //A long press is going to be for adding a bookmark
         print("LongPress")
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
@@ -129,7 +131,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
-            if(bookmarkName.text != "" && bookmarkAddress.text != "") {
+            if !(bookmarkName.text?.isEmpty ?? true) && bookmarkAddress.text?.isEmpty ?? true {
                 //Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
@@ -157,6 +159,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
             print("Displayed")
         }
     }
+    //swiftlint:enable force_unwrapping
     @IBAction func shareWebsite(_ sender: Any) {
         let shareURL = self.webView.url?.absoluteURL //This is going to be the URL the user wants to share
         let shareString = self.webView.title //This is going to be the title the user wants to share
@@ -172,7 +175,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if(segue.identifier == "goSplit") {
+        if segue.identifier == "goSplit" {
             savedData.setLeftWebPage(URL: savedData.getLastViewedPages())
         }
     }
