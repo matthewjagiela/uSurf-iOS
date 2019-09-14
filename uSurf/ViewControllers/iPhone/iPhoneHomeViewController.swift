@@ -77,7 +77,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        loadURL(textField.text!) //Go to the URL / Search term
+        loadURL(textField.text ?? "https://uappsios.com") //Go to the URL / Search term
         return true
     }
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) { //There is something loading so we want to show the navigation bar
@@ -85,10 +85,10 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { //The web view has finished loading so we want to hide
         progressBar.isHidden = true
-        let webURL = webView.url!.absoluteString
+        let webURL = webView.url?.absoluteString
         print(webURL)
-        savedData.addToHistoryArray(webURL)//This is going to add the website to history (when private mode is added this will not be a thing...)
-        savedData.setLastViewedPage(lastPage: webURL)
+        savedData.addToHistoryArray(webURL ?? "https://uappsios.com")//This is going to add the website to history (when private mode is added this will not be a thing...)
+        savedData.setLastViewedPage(lastPage: webURL ?? "https://uappsios.com")
         print("HISTORY: \(savedData.getHistoryArray())")
         dynamicField.text = webURL
         
