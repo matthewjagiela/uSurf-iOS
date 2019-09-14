@@ -92,7 +92,7 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Bookmark Table View: Returning \(bookmarkNameArray.count) items")
-        if(isSearching) {
+        if isSearching {
            return matchedBookmarks.count
         } else {
            return bookmarkNameArray.count
@@ -101,7 +101,7 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if(isSearching) { //This is a selection from a search
+        if isSearching { //This is a selection from a search
             print(matchedBookmarks)
             let searchedIndex = matchedBookmarks[indexPath.row] //This correlates to the index of the address in our main table
             savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com") //Set the url to load from the main bookmark table based on the searched stored
@@ -134,11 +134,12 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         }
         //self.performSegue(withIdentifier: "goHome", sender: self) //Return to the browser with the new page loaded.
     }
+    //swiftlint:disable force_unwrapping
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var bookmarkName = ""
         var bookmarkURL = ""
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell")
-        if(isSearching) { //The user is currently searching for a bookmark so we need to display the filtered results
+        if isSearching { //The user is currently searching for a bookmark so we need to display the filtered results
             bookmarkName = (bookmarkNameArray.object(at: matchedBookmarks[indexPath.row]) as? String ?? "https://uappsios.com")
             bookmarkURL = (bookmarkArray.object(at: matchedBookmarks[indexPath.row]) as? String ?? "uApps")
         } else { //Display the entire list
@@ -152,6 +153,7 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         cell?.detailTextLabel?.textColor = theme.getTintColor()
         return cell!
     }
+    //swiftlint:enable force_unwrapping
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
