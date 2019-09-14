@@ -94,7 +94,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { //This is to update the loading bar....
-        if(keyPath == "estimatedProgress") {
+        if keyPath == "estimatedProgress" {
             progressBar.progress = Float(webView.estimatedProgress)
             
         }
@@ -111,6 +111,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         
     }
 
+    //swiftlint:disable force_unwrapping
     @IBAction func addBookmark(_ sender: Any) {
         print("LongPress")
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
@@ -118,7 +119,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
-            if(bookmarkName.text != "" && bookmarkAddress.text != "") {
+            if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
                 //Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
@@ -146,6 +147,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
             print("Displayed")
         }
     }
+    //swiftlint:enable force_unwrapping
     @IBAction func goBack(_ sender: Any) {
         self.webView.goBack()
     }
@@ -165,7 +167,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         present(activityViewController, animated: true, completion: nil)
     }
     @IBAction func addTab(_ sender: Any) {
-        iCloud.addToiPhoneTabArray((self.webView.url?.absoluteString)!)
+        iCloud.addToiPhoneTabArray(self.webView.url?.absoluteString ?? "https://uappsios.com")
         iCloud.printTabArray()
     }
     /*
