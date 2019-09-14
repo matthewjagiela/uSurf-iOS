@@ -15,3 +15,5 @@ excluded:
     - Carthage
     - Pods
     - SwiftLint/Common/3rdPartyLib
+verticle_whitespace:
+    - error: 2

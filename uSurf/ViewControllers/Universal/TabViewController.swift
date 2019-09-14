@@ -71,7 +71,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { //There is some search happening so we need to start trying to find the timer
         print("BookarkTableViewController: We are searching")
-        if let searchedItem = searchBar.text, searchBar.text != ""{
+        if let searchedItem = searchBar.text, !(searchBar.text?.isEmpty ?? false) {
             let searchArray = iPhoneTabArray as? [String] ?? ["https://uappsios.com"]
             matchediPhoneTabs = searchArray.indices.filter { //This is searching through the iPhone tab array for matches
                 searchArray[$0].localizedCaseInsensitiveContains(searchedItem)
@@ -90,38 +90,39 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         return 2
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if(section == 0) {
+        if section == 0 {
             return "iPhone"
         } else {
             return "iPad"
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(isSearching) {
-            if(section == 0) {
+        if isSearching {
+            if section == 0 {
                 return matchediPhoneTabs.count
             } else {
                 return matchediPadTabs.count
             }
         } else {
-            if(section == 0) {
+            if section == 0 {
                 return iPhoneTabArray.count
             } else {
                 return iPadTabArray.count
             }
         }
     }
+    //swiftlint:disable force_unwrapping
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tabCells")
-        if(isSearching) { //We are searching so the table has to represent this
-            if(indexPath.section == 0) { //iPhone while searching
+        if isSearching { //We are searching so the table has to represent this
+            if indexPath.section == 0 { //iPhone while searching
                 cell?.textLabel?.text = iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String
             } else {
                 cell?.textLabel?.text = iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String
             }
             
         } else {
-            if(indexPath.section == 0) { //iPhone
+            if indexPath.section == 0 { //iPhone
                 cell?.textLabel?.text = iPhoneTabArray.object(at: indexPath.row) as? String
             } else {
                 cell?.textLabel?.text = iPadTabArray.object(at: indexPath.row) as? String
@@ -131,9 +132,10 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         cell?.textLabel?.textColor = theme.getTintColor()
         return cell!
     }
+    //swiftlint:enable force_unwrapping
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(isSearching) {//We are searching so we have to have the selected row the searched item
-            if(indexPath.section == 0) {
+        if isSearching {//We are searching so we have to have the selected row the searched item
+            if indexPath.section == 0 {
                 //iPhone
                 savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                 switch browserTag {
@@ -163,7 +165,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
             }
             
         } else {
-            if(indexPath.section == 0) {
+            if indexPath.section == 0 {
                 savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                 switch browserTag {
                 case 1: //Left
@@ -198,8 +200,8 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         return true
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if(editingStyle == .delete) { //We need to figure out how to delete
-            if(indexPath.section == 0) { //iPhone
+        if editingStyle == .delete { //We need to figure out how to delete
+            if indexPath.section == 0 { //iPhone
                 iPhoneTabArray.removeObject(at: indexPath.row)
                 iCloud.setiPhoneTabArray(iPhoneTabArray: iPhoneTabArray)
             } else {

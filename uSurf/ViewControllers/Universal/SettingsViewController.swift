@@ -59,13 +59,16 @@ class SettingsViewController: UIViewController {
             // the URL was bad!
         }
     }
+    //swiftlint:disable force_unwrapping
     @IBAction func ShareApp(_ sender: Any) {
-        let shareURL = NSURL(string: "https://itunes.apple.com/us/app/utime-universal/id1125889944?ls=1&mt=8")
+        let shareURL = URL(string: "https://itunes.apple.com/us/app/utime-universal/id1125889944?ls=1&mt=8")
         let shareString = "I am using uSurf as my new iOS Web Browser! Check it out!"
         let activityViewController = UIActivityViewController(activityItems: [shareString, shareURL!], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView
         present(activityViewController, animated: true, completion: nil)
     }
+    //swiftlint:enable force_unwrapping
+    
     @IBAction func SelectTheme(_ sender: Any) {
         let alert = UIAlertController(title: "Theme", message: "Choose A Theme", preferredStyle: .actionSheet) //make an action sheet for it
         alert.addAction(UIAlertAction(title: "Dark", style: .default, handler: { (_) in
