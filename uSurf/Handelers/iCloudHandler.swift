@@ -8,30 +8,32 @@
 
 import UIKit
 
+//swiftlint:disable force_unwrapping
+
 class iCloudHandler: NSObject {
     func getiPhoneTabArray() -> NSMutableArray { //This is going to return the newest value of the iPhone Tabs
-        if(NSUbiquitousKeyValueStore.default.array(forKey: "iPhoneTabArray") == nil) {
+        if NSUbiquitousKeyValueStore.default.array(forKey: "iPhoneTabArray") == nil {
             return NSMutableArray()
         } else {
             return NSMutableArray(array: NSUbiquitousKeyValueStore.default.array(forKey: "iPhoneTabArray")!)
         }
     }
     func getiPadTabArray() -> NSMutableArray { //This is going to return the newest value of all iPad Tabs
-        if(NSUbiquitousKeyValueStore.default.array(forKey: "iPadTabArray") == nil) {
+        if NSUbiquitousKeyValueStore.default.array(forKey: "iPadTabArray") == nil {
             return NSMutableArray()
         } else {
             return NSMutableArray(array: NSUbiquitousKeyValueStore.default.array(forKey: "iPadTabArray")!)
         }
     }
     func getBookmarkArray() -> NSMutableArray { //This is going to return the newest value of all stored bookmarks
-        if(NSUbiquitousKeyValueStore.default.array(forKey: "bookmarkArray") == nil) {
+        if NSUbiquitousKeyValueStore.default.array(forKey: "bookmarkArray") == nil {
             return NSMutableArray()
         } else {
              return NSMutableArray(array: NSUbiquitousKeyValueStore.default.array(forKey: "bookmarkArray")!)
         }
     }
     func getBookmarkNameArray() -> NSMutableArray { //This is going to retrun the newest value of the names of all bookmarks
-        if(NSUbiquitousKeyValueStore.default.array(forKey: "nameArray") == nil) {
+        if NSUbiquitousKeyValueStore.default.array(forKey: "nameArray") == nil {
             return NSMutableArray()
         } else {
              return NSMutableArray(array: NSUbiquitousKeyValueStore.default.array(forKey: "nameArray")!)
