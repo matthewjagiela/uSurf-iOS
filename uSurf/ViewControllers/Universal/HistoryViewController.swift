@@ -33,14 +33,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(isSearching) { //Return the matched count
+        if isSearching { //Return the matched count
             return matchedHistory.count
         } else {
             return historyArray.count
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //Depending on if filters are applied or not set the URL
-        if(isSearching) { //the selection is from the searched group...
+        if isSearching { //the selection is from the searched group...
             let searchedIndex = matchedHistory[indexPath.row] //The index of where it is in the main array.
             switch browserTag {
             case 1: //Left
@@ -68,10 +68,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
     }
-    
+    //swiftlint:disable force_unwrapping
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCells")
-        if(isSearching) { //Display only the search results
+        if isSearching { //Display only the search results
             cell?.textLabel?.text = (historyArray.object(at: matchedHistory[indexPath.row]) as? String ?? "uApps iOS")
         } else { //Display all the results
             cell?.textLabel?.text = (historyArray.object(at: indexPath.row) as? String ?? "uApps iOS")
@@ -81,11 +81,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell!
         
     }
+    //swiftlint:enable force_unwrapping
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("History: We are searching")
         //Do the actual search...
-        if let searchedItem = searchBar.text, searchBar.text != ""{
+        if let searchedItem = searchBar.text, !(searchBar.text?.isEmpty ?? true) {
             let searchArray = historyArray as? [String] ?? ["https://uappsios.com"]
             matchedHistory = searchArray.indices.filter {
                 searchArray[$0].localizedCaseInsensitiveContains(searchedItem)
