@@ -11,20 +11,23 @@ import UIKit
 class SavedDataHandler: NSObject {
     var savedData = UserDefaults()
     override init() { //Whenever the class is initially called we are going to set the group so we can get data
-        savedData = UserDefaults.init(suiteName: "group.com.uapps.usurf")!
+        savedData = UserDefaults.init(suiteName: "group.com.uapps.usurf") ?? UserDefaults.standard
     }
+    //swiftlint:disable force_unwrapping
+    //We can disable force unwrapping because we check for nil
     func getHistoryArray() -> NSMutableArray { //If we need the history array in a different class for whatever reason this is the method to get it
-        if(savedData.array(forKey: "historyArray") == nil) {
+        if savedData.array(forKey: "historyArray") == nil {
             return NSMutableArray()
         } else {
             return NSMutableArray(array: savedData.array(forKey: "historyArray")!)
         }
        
     }
+    //swiftlint:enable force_unwrapping
     func addToHistoryArray(_ item: String) { //When a new website is loaded this method will be called to add the website to history
         let historyArray = getHistoryArray()
         print("History item adding: \(item)")
-        if(!historyArray.contains(item)) { //The item has not been navigated to before SOOO let us just insert it at the top
+        if !historyArray.contains(item) { //The item has not been navigated to before SOOO let us just insert it at the top
             historyArray.insert(item, at: 0)
             
         } else {
@@ -39,13 +42,15 @@ class SavedDataHandler: NSObject {
         savedData.set(historyArray, forKey: "historyArray")
         
     }
+    //swiftlint:disable force_unwrapping
     func getTheme() -> String {
-        if(savedData.string(forKey: "iPhoneTheme") == nil) {
+        if savedData.string(forKey: "iPhoneTheme") == nil {
             return "Dark"
         } else {
             return savedData.string(forKey: "iPhoneTheme")! //This is still iPhone theme just to keep in tact with older versions
         }
     }
+    //swiftlint:enable force_unwrapping
     func setTheme(theme: String) { //Save the theme for the device. This will be for both iPhone and iPad but is called iPhone theme to correlate with already existing data
         savedData.set(theme, forKey: "iPhoneTheme")
     }
