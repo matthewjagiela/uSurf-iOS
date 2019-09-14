@@ -52,7 +52,7 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { //There is some search happening so we need to start trying to find the timer
         print("BookarkTableViewController: We are searching")
-        if let searchedItem = searchBar.text, searchBar.text != ""{
+        if let searchedItem = searchBar.text, !(searchBar.text?.isEmpty ?? true) {
             let searchArray = bookmarkNameArray as? [String] ?? ["uApps"]
             matchedBookmarks = searchArray.indices.filter {
                 searchArray[$0].localizedCaseInsensitiveContains(searchedItem)

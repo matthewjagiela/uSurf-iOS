@@ -68,7 +68,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        loadURL(textField.text!) //Go to the URL / Search term
+        loadURL(textField.text ?? "https://uappsios.com") //Go to the URL / Search term
         return true
     }
     private func handleWebKit() { //WebKit was broken in earlier versions of iOS so we need to add it manually or uSurf wont make sense to have still active
