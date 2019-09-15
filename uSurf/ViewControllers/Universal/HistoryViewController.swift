@@ -119,7 +119,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     @IBAction func goHome(_ sender: Any) {
-        self.performSegue(withIdentifier: "goHome", sender: self)
+        if #available(iOS 13, *) {
+            dismiss(animated: true, completion: nil)
+        } else {
+            self.performSegue(withIdentifier: "goHome", sender: self)
+        }
     }
     @IBAction func clearHistory(_ sender: Any) {
         historyArray.removeAllObjects()
