@@ -86,7 +86,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { //The web view has finished loading so we want to hide
         progressBar.isHidden = true
         let webURL = webView.url?.absoluteString
-        print(webURL)
+        print(webURL ?? "https://uappsios.com")
         savedData.addToHistoryArray(webURL ?? "https://uappsios.com")//This is going to add the website to history (when private mode is added this will not be a thing...)
         savedData.setLastViewedPage(lastPage: webURL ?? "https://uappsios.com")
         print("HISTORY: \(savedData.getHistoryArray())")

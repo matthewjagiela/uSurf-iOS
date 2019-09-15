@@ -30,7 +30,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     let iCloud = iCloudHandler()
     let webHandler = WebHandler()
     var browserTag = 1
-    
+    // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
 

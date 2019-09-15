@@ -202,14 +202,14 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
             print("Displayed")
         }
     }
-    //swiftlint:enable force_unwrapping
+    //swiftlint:disable force_unwrapping
     @IBAction func rightAddBookmark(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
         //Add the bookmark:
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
-            if(bookmarkName.text != "" && bookmarkAddress.text != "") {
+            if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
                 //Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
@@ -237,6 +237,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
             print("Displayed")
         }
     }
+    //swiftlint:enable force_unwrapping
     override var preferredStatusBarStyle: UIStatusBarStyle {
         let theme = ThemeHandler()
         return theme.getStatusBarColor()
