@@ -32,15 +32,14 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         super.viewDidLoad()
         dynamicField.delegate = self //This allows us to use enter to search!
         theming()
-        if webView == nil{
+        if webView == nil {
             print("ViewDidLoad NIL")
             handleWebKit()
         }
         widenTextField()
-
         
     }
-    private func widenTextField(){ //Make the text field ultra large and let iOS Scale it down
+    private func widenTextField() { //Make the text field ultra large and let iOS Scale it down
         var frame = self.dynamicField.frame
         frame.size.width = 10000
         self.dynamicField.frame = frame
@@ -54,7 +53,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         }
         self.widenTextField()
     }
-    private func handleWebKit(){ //WebKit was broken in earlier versions of iOS so we need to add it manually or uSurf wont make sense to have still active
+    private func handleWebKit() { //WebKit was broken in earlier versions of iOS so we need to add it manually or uSurf wont make sense to have still active
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
@@ -70,7 +69,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         webView.allowsBackForwardNavigationGestures = true //Allow swiping back and forth for navigating page... Better than the old gesture recognizer
         loadURL(savedData.getLastViewedPages())
     }
-    private func loadURL(_ url: String){ //This method takes a string of an adress and makes the web view load it!
+    private func loadURL(_ url: String) { //This method takes a string of an adress and makes the web view load it!
         webView.load(webHandler.determineURL(userInput: url))
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,7 +77,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        loadURL(textField.text!) //Go to the URL / Search term
+        loadURL(textField.text ?? "https://uappsios.com") //Go to the URL / Search term
         return true
     }
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) { //There is something loading so we want to show the navigation bar
@@ -86,22 +85,22 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { //The web view has finished loading so we want to hide
         progressBar.isHidden = true
-        let webURL = webView.url!.absoluteString
-        print(webURL)
-        savedData.addToHistoryArray(webURL)//This is going to add the website to history (when private mode is added this will not be a thing...)
-        savedData.setLastViewedPage(lastPage: webURL)
+        let webURL = webView.url?.absoluteString
+        print(webURL ?? "https://uappsios.com")
+        savedData.addToHistoryArray(webURL ?? "https://uappsios.com")//This is going to add the website to history (when private mode is added this will not be a thing...)
+        savedData.setLastViewedPage(lastPage: webURL ?? "https://uappsios.com")
         print("HISTORY: \(savedData.getHistoryArray())")
         dynamicField.text = webURL
         
     }
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) { //This is to update the loading bar....
-        if(keyPath == "estimatedProgress"){
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { //This is to update the loading bar....
+        if keyPath == "estimatedProgress" {
             progressBar.progress = Float(webView.estimatedProgress)
             
         }
         dynamicField.text = "Loading..."
     }
-    func theming(){
+    func theming() {
         self.navigationBar.barTintColor = theme.getBarTintColor()
         self.navigationBar.tintColor = theme.getTintColor()
         self.dynamicField.backgroundColor = theme.getTextBarBackgroundColor()
@@ -112,26 +111,26 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         
     }
 
+    //swiftlint:disable force_unwrapping
     @IBAction func addBookmark(_ sender: Any) {
         print("LongPress")
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
         //Add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
-            if(bookmarkName.text != "" && bookmarkAddress.text != ""){
+            if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
                 //Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
                 self.iCloud.printBookmarkArray()
-            }
-            else{
+            } else {
                 //Do something with the error
                 print("There is something wrong so we cannot add this")
             }
         }))
         //The user does not want to add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (_) in
             print("User has cancelled")
         }))
         //Add textfields
@@ -148,6 +147,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
             print("Displayed")
         }
     }
+    //swiftlint:enable force_unwrapping
     @IBAction func goBack(_ sender: Any) {
         self.webView.goBack()
     }
@@ -163,11 +163,11 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     @IBAction func sharePage(_ sender: Any) {
         let shareURL = self.webView.url?.absoluteURL //This is going to be the URL the user wants to share
         let shareString = self.webView.title //This is going to be the title the user wants to share
-        let activityViewController = UIActivityViewController(activityItems: [shareURL as Any,shareString as Any], applicationActivities: nil) //Make the share sheet
+        let activityViewController = UIActivityViewController(activityItems: [shareURL as Any, shareString as Any], applicationActivities: nil) //Make the share sheet
         present(activityViewController, animated: true, completion: nil)
     }
     @IBAction func addTab(_ sender: Any) {
-        iCloud.addToiPhoneTabArray((self.webView.url?.absoluteString)!)
+        iCloud.addToiPhoneTabArray(self.webView.url?.absoluteString ?? "https://uappsios.com")
         iCloud.printTabArray()
     }
     /*
@@ -179,9 +179,9 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         // Pass the selected object to the new view controller.
     }
     */
-    override var preferredStatusBarStyle: UIStatusBarStyle{
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
-    @objc func canRotate() -> Void {}
+    @objc func canRotate() {}
 
 }

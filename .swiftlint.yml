@@ -7,6 +7,7 @@ disabled_rules:
     - function_body_length
     - file_length
     - trailing_whitespace
+    - block_based_kvo
 opt_in_rules:
     - empty_count
     - empty_string
@@ -15,3 +16,5 @@ excluded:
     - Carthage
     - Pods
     - SwiftLint/Common/3rdPartyLib
+verticle_whitespace:
+    - error: 2
