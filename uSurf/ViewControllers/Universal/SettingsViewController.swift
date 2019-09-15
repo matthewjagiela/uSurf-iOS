@@ -68,7 +68,7 @@ class SettingsViewController: UIViewController {
         present(activityViewController, animated: true, completion: nil)
     }
     //swiftlint:enable force_unwrapping
-    
+    // MARK: - Theme
     @IBAction func SelectTheme(_ sender: Any) {
         let alert = UIAlertController(title: "Theme", message: "Choose A Theme", preferredStyle: .actionSheet) //make an action sheet for it
         alert.addAction(UIAlertAction(title: "Dark", style: .default, handler: { (_) in
@@ -110,13 +110,18 @@ class SettingsViewController: UIViewController {
         navBar.titleTextAttributes = textAttributes //Make the title the same color as the buttons
         self.view.backgroundColor = theme.getBarTintColor()
     }
+    // MARK: ACTIONS
     @IBAction func ViewPrivacyPolicy(_ sender: Any) {
         savedData.setLastViewedPage(lastPage: "https://uappsios.com/usurf-privacy")
         self.performSegue(withIdentifier: "goHome", sender: self)
     }
     @IBAction func supportButton(_ sender: Any) {
         savedData.setLastViewedPage(lastPage: "https://uappsios.com/usurf-support")
-        self.performSegue(withIdentifier: "goHome", sender: self)
+        if #available(iOS 13, *) {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.performSegue(withIdentifier: "goHome", sender: self)
+        }
     }
     @IBAction func goHome(_ sender: Any) {
         if #available(iOS 13, *) {
@@ -127,7 +132,7 @@ class SettingsViewController: UIViewController {
             self.performSegue(withIdentifier: "goHome", sender: self)
         }
     }
-    
+    // MARK: - Status Bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
         let theme = ThemeHandler()
         return theme.getStatusBarColor()
