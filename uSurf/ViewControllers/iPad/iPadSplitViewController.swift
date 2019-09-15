@@ -100,9 +100,9 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         rightWebView.load(web.determineURL(userInput: url))
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { //The web view has finished loading so we want to hide
-        let webURL = webView.url!.absoluteString
+        let webURL = webView.url?.absoluteString ?? "https://uappsios.com"
         savedData.addToHistoryArray(webURL)
-        if(webView.tag == 0) { //Left web view finished
+        if webView.tag == 0 { //Left web view finished
             
             savedData.setLeftWebPage(URL: webURL)
             leftAddressBar.text = webURL
@@ -162,18 +162,19 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         return true
     }
     @IBAction func leftAddTab(_ sender: Any) {
-        iCloud.addToiPadTabArray((leftWebView.url?.absoluteString)!)
+        iCloud.addToiPadTabArray(leftWebView.url?.absoluteString ?? "https://uappsios.com")
     }
     @IBAction func rightAddTab(_ sender: Any) {
-        iCloud.addToiPadTabArray((rightWebView.url?.absoluteString)!)
+        iCloud.addToiPadTabArray(rightWebView.url?.absoluteString ?? "https://uappsios.com")
     }
+    //swiftlint:disable force_unwrapping
     @IBAction func leftAddBookmark(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
         //Add the bookmark:
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
-            if(bookmarkName.text != "" && bookmarkAddress.text != "") {
+            if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
                 //Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
@@ -201,6 +202,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
             print("Displayed")
         }
     }
+    //swiftlint:enable force_unwrapping
     @IBAction func rightAddBookmark(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
         //Add the bookmark:
