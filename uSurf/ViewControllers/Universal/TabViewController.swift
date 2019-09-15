@@ -39,12 +39,14 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
         
     }
+    // MARK: iCloud Update
     @objc private func iCloudUpdate(notification: NSNotification) {
         iPhoneTabArray = iCloud.getiPhoneTabArray()
         iPadTabArray = iCloud.getiPadTabArray()
         isSearching = false
         tableView.reloadData()
     }
+    // MARK: Theme
     func theming() { //Lets handle the theme!
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self as? UISearchResultsUpdating //search results are handled in this class
@@ -68,7 +70,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
-    
+    // MARK: Search
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { //There is some search happening so we need to start trying to find the timer
         print("BookarkTableViewController: We are searching")
         if let searchedItem = searchBar.text, !(searchBar.text?.isEmpty ?? false) {
@@ -86,6 +88,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         tableView.reloadData()
     }
+    //MARK: Table View
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -214,16 +217,14 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
         }
     }
-   
-    @objc func canRotate() {}
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: Custom Actions
+    @IBAction func goHome(_ sender: Any) {
+        if #available(iOS 13, *) {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.performSegue(withIdentifier: "goHome", sender: self)
+        }
     }
-    */
-
+    
+    @objc func canRotate() {}
 }

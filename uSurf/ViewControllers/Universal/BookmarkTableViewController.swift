@@ -64,7 +64,7 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         tableView.reloadData()
     }
 
-    // MARK: - Table view data source
+    // MARK: - Theme
 
     private func theming() {
         
@@ -90,6 +90,7 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
+    // MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Bookmark Table View: Returning \(bookmarkNameArray.count) items")
         if isSearching {
@@ -154,15 +155,6 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         return cell!
     }
     //swiftlint:enable force_unwrapping
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
     
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -183,6 +175,15 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
+    // MARK: - Custom Actions
+    @IBAction func goHome(_ sender: Any) {
+        if #available(iOS 13, *) {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.performSegue(withIdentifier: "goHome", sender: self)
+        }
+    }
+    
     @objc func canRotate() {}
 
     /*
