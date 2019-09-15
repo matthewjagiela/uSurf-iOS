@@ -193,3 +193,7 @@ uSurf.xcodeproj/xcuserdata/matthewjagiela.xcuserdatad/xcschemes/xcschememanageme
 uSurf.xcworkspace/contents.xcworkspacedata
 uSurf.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 uSurf.xcworkspace/xcuserdata/matthewjagiela.xcuserdatad/UserInterfaceState.xcuserstate
+Pods/Pods.xcodeproj/xcuserdata/matthewjagiela.xcuserdatad/xcschemes/SwiftLint.xcscheme
+Pods/SwiftLint/LICENSE
+Pods/SwiftLint/swiftlint
+Pods/Target Support Files/SwiftLint/SwiftLint.xcconfig

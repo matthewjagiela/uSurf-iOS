@@ -39,7 +39,7 @@ class SettingsViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if UI_USER_INTERFACE_IDIOM() == .phone{
+        if UI_USER_INTERFACE_IDIOM() == .phone {
             print("SettingsViewController 'Phone'")
         UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
         }
@@ -59,36 +59,39 @@ class SettingsViewController: UIViewController {
             // the URL was bad!
         }
     }
+    //swiftlint:disable force_unwrapping
     @IBAction func ShareApp(_ sender: Any) {
-        let shareURL = NSURL(string: "https://itunes.apple.com/us/app/utime-universal/id1125889944?ls=1&mt=8")
+        let shareURL = URL(string: "https://itunes.apple.com/us/app/utime-universal/id1125889944?ls=1&mt=8")
         let shareString = "I am using uSurf as my new iOS Web Browser! Check it out!"
-        let activityViewController = UIActivityViewController(activityItems: [shareString,shareURL!], applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: [shareString, shareURL!], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView
         present(activityViewController, animated: true, completion: nil)
     }
+    //swiftlint:enable force_unwrapping
+    
     @IBAction func SelectTheme(_ sender: Any) {
         let alert = UIAlertController(title: "Theme", message: "Choose A Theme", preferredStyle: .actionSheet) //make an action sheet for it
-        alert.addAction(UIAlertAction(title: "Dark", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Dark", style: .default, handler: { (_) in
             self.savedData.setTheme(theme: "Dark")
             self.theming()
             self.setNeedsStatusBarAppearanceUpdate()
         }))
-        alert.addAction(UIAlertAction(title: "Light", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Light", style: .default, handler: { (_) in
             self.savedData.setTheme(theme: "Light")
             self.theming()
             self.setNeedsStatusBarAppearanceUpdate()
         }))
-        alert.addAction(UIAlertAction(title: "Red", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Red", style: .default, handler: { (_) in
             self.savedData.setTheme(theme: "Red")
             self.theming()
             self.setNeedsStatusBarAppearanceUpdate()
         }))
-        alert.addAction(UIAlertAction(title: "Purple", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Purple", style: .default, handler: { (_) in
             self.savedData.setTheme(theme: "Purple")
             self.theming()
             self.setNeedsStatusBarAppearanceUpdate()
         }))
-        alert.addAction(UIAlertAction(title: "Green", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Green", style: .default, handler: { (_) in
             self.savedData.setTheme(theme: "Green")
             self.theming()
             self.setNeedsStatusBarAppearanceUpdate()
@@ -97,13 +100,13 @@ class SettingsViewController: UIViewController {
             popoverController.sourceView = sender as? UIView
             popoverController.sourceRect = (sender as AnyObject).bounds
         }
-        self.present(alert, animated: true , completion: nil) //Present the actual alert
+        self.present(alert, animated: true, completion: nil) //Present the actual alert
     }
-    func theming(){
+    func theming() {
         let theme = ThemeHandler()
         self.navBar.barTintColor = theme.getBarTintColor()
         self.navBar.tintColor = theme.getTintColor()
-        let textAttributes = [NSAttributedString.Key.foregroundColor:theme.getTintColor()]
+        let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()]
         navBar.titleTextAttributes = textAttributes //Make the title the same color as the buttons
         self.view.backgroundColor = theme.getBarTintColor()
     }
@@ -115,8 +118,17 @@ class SettingsViewController: UIViewController {
         savedData.setLastViewedPage(lastPage: "https://uappsios.com/usurf-support")
         self.performSegue(withIdentifier: "goHome", sender: self)
     }
+    @IBAction func goHome(_ sender: Any) {
+        if #available(iOS 13, *) {
+            self.dismiss(animated: true) {
+                print("Settings Dismissed")
+            }
+        } else {
+            self.performSegue(withIdentifier: "goHome", sender: self)
+        }
+    }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle{
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         let theme = ThemeHandler()
         return theme.getStatusBarColor()
     }
