@@ -28,6 +28,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     let iCloud = iCloudHandler()
     let webHandler = WebHandler()
     let theme = ThemeHandler()
+    // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         dynamicField.delegate = self //This allows us to use enter to search!
@@ -38,6 +39,11 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         }
         widenTextField()
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        print("iPhone Home: View Will Appear")
+        AppUtility.lockOrientation(.all)
     }
     private func widenTextField() { //Make the text field ultra large and let iOS Scale it down
         var frame = self.dynamicField.frame

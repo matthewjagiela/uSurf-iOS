@@ -36,13 +36,14 @@ class SettingsViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         self.removeFromParent()
+        if UI_USER_INTERFACE_IDIOM() == .phone {
+            AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        }
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if UI_USER_INTERFACE_IDIOM() == .phone {
-            print("SettingsViewController 'Phone'")
-        UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
-        }
+        AppUtility.lockOrientation(.all)
     }
     func internetLabels() {  //This is going to go to my github and parse the data on the versions
         if let url = URL(string: "https://matthewjagiela.github.io/uApps-HTML/") {
@@ -136,6 +137,14 @@ class SettingsViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         let theme = ThemeHandler()
         return theme.getStatusBarColor()
+    }
+    
+    override var shouldAutorotate: Bool {
+        if UI_USER_INTERFACE_IDIOM() == .phone {
+            return false
+        } else {
+            return true
+        }
     }
 
     /*
