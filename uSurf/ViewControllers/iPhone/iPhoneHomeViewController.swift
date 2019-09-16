@@ -38,6 +38,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
             handleWebKit()
         }
         widenTextField()
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationLoad(_:)), name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +50,9 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         var frame = self.dynamicField.frame
         frame.size.width = 10000
         self.dynamicField.frame = frame
+    }
+    @objc func notificationLoad(_ : Notification) {
+        loadURL(savedData.getLastViewedPage())
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) { //Keep track of the orientation and reload the text bar 
         if UIDevice.current.orientation.isLandscape { //Landscape
@@ -73,7 +77,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         webView.heightAnchor.constraint(equalTo: webKitHolderView.heightAnchor).isActive = true
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) //This is going to be tracking the progress for the webkit view
         webView.allowsBackForwardNavigationGestures = true //Allow swiping back and forth for navigating page... Better than the old gesture recognizer
-        loadURL(savedData.getLastViewedPages())
+        loadURL(savedData.getLastViewedPage())
     }
     private func loadURL(_ url: String) { //This method takes a string of an adress and makes the web view load it!
         webView.load(webHandler.determineURL(userInput: url))
@@ -86,6 +90,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         loadURL(textField.text ?? "https://uappsios.com") //Go to the URL / Search term
         return true
     }
+    // MARK: - WebView Methods
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) { //There is something loading so we want to show the navigation bar
         progressBar.isHidden = false
     }
