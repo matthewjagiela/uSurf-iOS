@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A880C232F2AF100D63F99 /* AppUtility.swift */; };
 		2EA04356231CC48400812246 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E482498231CAF5200F4C969 /* .swiftlint.yml */; };
 		340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
 		34265EFA2176B0B400C775F4 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E1A880C232F2AF100D63F99 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		2E482498231CAF5200F4C969 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2E683B032329EDA6008BA3E7 /* uSurf.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
 		340906D620D9C01D009F53F1 /* WebHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebHandler.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				344C3F0A20D75D6000A13939 /* SavedDataHandler.swift */,
 				3460A5F7210BC9450029B03C /* ThemeHandler.swift */,
 				3443CD7D21FFCCDF001123E7 /* VersionHandler.swift */,
+				2E1A880C232F2AF100D63F99 /* AppUtility.swift */,
 			);
 			path = Handelers;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */,
 				3460A5F8210BC9450029B03C /* ThemeHandler.swift in Sources */,
 				344C3F0920D7501600A13939 /* iCloudHandler.swift in Sources */,
 				343F015E20D41F0700B9E8DD /* iPadHomeViewController.swift in Sources */,
