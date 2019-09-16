@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet var infoBox: UITextView!
     let savedData = SavedDataHandler()
     let appInfo = VersionHandler()
+    // MARK: - View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
