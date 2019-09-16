@@ -45,6 +45,7 @@ class SettingsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         AppUtility.lockOrientation(.all)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
     }
     func internetLabels() {  //This is going to go to my github and parse the data on the versions
         if let url = URL(string: "https://matthewjagiela.github.io/uApps-HTML/") {

@@ -188,13 +188,13 @@
         <!--iPad Split View Controller-->
         <scene sceneID="z7H-Ha-Myq">
             <objects>
-                <viewController id="6g6-1A-nC7" customClass="iPadSplitViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="6g6-1A-nC7" customClass="iPadSplitViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KrP-JV-N9y">
-                        <rect key="frame" x="0.0" y="0.0" width="712" height="728"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Eo-02-X7f">
-                                <rect key="frame" x="0.0" y="0.0" width="356" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="512" height="50"/>
                                 <gestureRecognizers/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
@@ -206,7 +206,7 @@
                                             <barButtonItem systemItem="refresh" id="vFV-6i-tX4"/>
                                         </leftBarButtonItems>
                                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="9pT-74-34U">
-                                            <rect key="frame" x="182" y="11" width="115" height="34"/>
+                                            <rect key="frame" x="198.5" y="8" width="115" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -223,7 +223,7 @@
                                 </connections>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SW-3u-YCh">
-                                <rect key="frame" x="0.0" y="678" width="356" height="50"/>
+                                <rect key="frame" x="0.0" y="718" width="512" height="50"/>
                                 <items>
                                     <barButtonItem tag="1" image="History Icon" id="doY-ww-g5e">
                                         <connections>
@@ -253,7 +253,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                             <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-v0-hbb">
-                                <rect key="frame" x="356" y="0.0" width="356" height="56"/>
+                                <rect key="frame" x="512" y="0.0" width="512" height="50"/>
                                 <gestureRecognizers/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
@@ -265,7 +265,7 @@
                                             <barButtonItem systemItem="refresh" id="3rM-I3-iRK"/>
                                         </leftBarButtonItems>
                                         <textField key="titleView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="h9G-ni-GkE">
-                                            <rect key="frame" x="182" y="11" width="55" height="34"/>
+                                            <rect key="frame" x="228.5" y="8" width="55" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -290,7 +290,7 @@
                                 </connections>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dt8-21-aMS">
-                                <rect key="frame" x="356" y="678" width="356" height="50"/>
+                                <rect key="frame" x="512" y="718" width="512" height="50"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="u2c-Tt-sjq"/>
                                     <barButtonItem tag="2" image="History Icon" id="QQN-T9-mGA">
@@ -318,11 +318,11 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x64-f1-3l5">
-                                <rect key="frame" x="0.0" y="56" width="356" height="622"/>
+                                <rect key="frame" x="0.0" y="50" width="512" height="668"/>
                                 <color key="backgroundColor" red="0.30824157600000002" green="0.67654144760000001" blue="0.77258235220000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulQ-RY-phP">
-                                <rect key="frame" x="356" y="56" width="356" height="622"/>
+                                <rect key="frame" x="512" y="50" width="512" height="668"/>
                                 <color key="backgroundColor" red="1" green="0.059605572920000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                         </subviews>
@@ -782,10 +782,10 @@
         <image name="starry_sky_galaxy_stars_125852_2780x2780.jpg" width="2780" height="2780"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s4o-7O-g5d"/>
-        <segue reference="FQb-nw-kzs"/>
-        <segue reference="ujG-CL-1So"/>
-        <segue reference="Tuz-Ba-Wi3"/>
-        <segue reference="pmM-Db-EaB"/>
+        <segue reference="p58-Ag-vnL"/>
+        <segue reference="CGq-IA-WbL"/>
+        <segue reference="rZA-w6-dlx"/>
+        <segue reference="FZM-rQ-8pv"/>
+        <segue reference="Rvi-zR-YjV"/>
     </inferredMetricsTieBreakers>
 </document>

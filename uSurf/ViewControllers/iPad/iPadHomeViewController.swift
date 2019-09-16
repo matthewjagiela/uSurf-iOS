@@ -44,11 +44,15 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
             handleWebKit()
         }
         widenTextField()
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationLoad(_:)), name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
     }
     private func widenTextField() {
         var frame = self.dynamicField.frame
         frame.size.width = 10000
         self.dynamicField.frame = frame
+    }
+    @objc func notificationLoad(_ : Notification) {
+        loadURL(savedData.getLastViewedPage())
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
@@ -85,7 +89,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         webView.heightAnchor.constraint(equalTo: webKitHolderView.heightAnchor).isActive = true
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) //This is going to be tracking the progress for the webkit view
         webView.allowsBackForwardNavigationGestures = true //Allow swiping back and forth for navigating page... Better than the old gesture recognizer
-        loadURL(savedData.getLastViewedPages())
+        loadURL(savedData.getLastViewedPage())
     }
     private func loadURL(_ url: String) { //This method takes a string of an adress and makes the web view load it!
         webView.load(webHandler.determineURL(userInput: url))
@@ -176,7 +180,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "goSplit" {
-            savedData.setLeftWebPage(URL: savedData.getLastViewedPages())
+            savedData.setLeftWebPage(URL: savedData.getLastViewedPage())
         }
     }
     

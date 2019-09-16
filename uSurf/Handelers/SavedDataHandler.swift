@@ -57,7 +57,7 @@ class SavedDataHandler: NSObject {
     func setLastViewedPage(lastPage: String) {
         savedData.set(lastPage, forKey: "lastPage")
     }
-    func getLastViewedPages() -> String {
+    func getLastViewedPage() -> String {
         if let lastPage = savedData.string(forKey: "lastPage") {
             print("Last Page = \(lastPage)")
             return lastPage
