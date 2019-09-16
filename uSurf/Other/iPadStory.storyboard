@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gP0-99-xlL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gP0-99-xlL">
     <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -137,10 +137,10 @@
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buC-hz-Vrs">
                                 <rect key="frame" x="0.0" y="0.0" width="712" height="30"/>
                                 <items>
-                                    <navigationItem title="Title" id="ndQ-AL-SyB">
+                                    <navigationItem title="Info" id="ndQ-AL-SyB">
                                         <barButtonItem key="leftBarButtonItem" title="Home" id="VQT-V2-FR8">
                                             <connections>
-                                                <segue destination="gP0-99-xlL" kind="presentation" modalTransitionStyle="flipHorizontal" id="gnx-yD-7Jn"/>
+                                                <action selector="goHome:" destination="p0J-yc-dg1" id="Nye-Fs-a3F"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Support" id="3G5-Nr-amh">
@@ -205,7 +205,7 @@
                                             <barButtonItem systemItem="fastForward" id="RkK-ik-jLb"/>
                                             <barButtonItem systemItem="refresh" id="vFV-6i-tX4"/>
                                         </leftBarButtonItems>
-                                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="9pT-74-34U">
+                                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="9pT-74-34U">
                                             <rect key="frame" x="182" y="11" width="115" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -264,7 +264,7 @@
                                             <barButtonItem systemItem="fastForward" id="Mal-vH-Tu1"/>
                                             <barButtonItem systemItem="refresh" id="3rM-I3-iRK"/>
                                         </leftBarButtonItems>
-                                        <textField key="titleView" opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="h9G-ni-GkE">
+                                        <textField key="titleView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="h9G-ni-GkE">
                                             <rect key="frame" x="182" y="11" width="55" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -785,7 +785,7 @@
         <segue reference="s4o-7O-g5d"/>
         <segue reference="FQb-nw-kzs"/>
         <segue reference="ujG-CL-1So"/>
-        <segue reference="UbH-U9-jod"/>
+        <segue reference="Tuz-Ba-Wi3"/>
         <segue reference="pmM-Db-EaB"/>
     </inferredMetricsTieBreakers>
 </document>
