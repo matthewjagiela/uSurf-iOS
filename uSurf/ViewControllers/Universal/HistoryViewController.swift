@@ -9,11 +9,11 @@
 import UIKit
 
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    
+    // MARK: - Outlets
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var navBar: UINavigationBar!
-    
+    // MARK: - Variables
     let savedData = SavedDataHandler()
     let theme = ThemeHandler()
     var historyArray = NSMutableArray()
@@ -21,6 +21,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     lazy var matchedHistory = [Int]()
     lazy var isSearching = false
     var browserTag = 0
+    // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -32,6 +33,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         print("DEBUG: History View Controller TAG \(browserTag)")
         
     }
+    // MARK: - Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching { //Return the matched count
             return matchedHistory.count
@@ -83,6 +85,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     //swiftlint:enable force_unwrapping
 
+    // MARK: - Searching
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("History: We are searching")
         //Do the actual search...
