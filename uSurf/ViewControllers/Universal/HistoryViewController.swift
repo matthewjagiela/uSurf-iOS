@@ -53,7 +53,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             default:
                 savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
-                self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                if #available(iOS 13, *) {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                } else { self.performSegue(withIdentifier: "goHome", sender: self) }
             }
             //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
         } else { //This is just throughout the main array
@@ -66,7 +69,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             default:
                 savedData.setLastViewedPage(lastPage: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
-                self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                if #available(iOS 13, *) {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                } else { self.performSegue(withIdentifier: "goHome", sender: self) }
             }
         }
     }
