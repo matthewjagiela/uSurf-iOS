@@ -135,7 +135,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
-            if !(bookmarkName.text?.isEmpty ?? true) && bookmarkAddress.text?.isEmpty ?? true {
+            if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
                 //Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
