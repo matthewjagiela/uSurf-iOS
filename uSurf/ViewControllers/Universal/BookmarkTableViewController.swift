@@ -115,7 +115,10 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             default:
                 savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
-                self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                if #available(iOS 13, *) {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                } else { self.performSegue(withIdentifier: "goHome", sender: self) }
             }
             
         } else {
@@ -129,7 +132,10 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
                 self.performSegue(withIdentifier: "goSplit", sender: self)
             default:
                 savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
-                self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load
+                if #available(iOS 13, *) {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                } else { self.performSegue(withIdentifier: "goHome", sender: self) }
             
             }
         }
