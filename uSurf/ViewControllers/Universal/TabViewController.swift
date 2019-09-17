@@ -88,7 +88,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         tableView.reloadData()
     }
-    //MARK: Table View
+    // MARK: Table View
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -137,6 +137,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     //swiftlint:enable force_unwrapping
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Debug the browser tag is:\(browserTag)")
         if isSearching {//We are searching so we have to have the selected row the searched item
             if indexPath.section == 0 {
                 //iPhone
@@ -148,9 +149,11 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 case 2:
                     savedData.setRightWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
-                default:
-                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
-                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                default: //Center / iPhone
+                    if #available(iOS 13, *) {
+                        self.dismiss(animated: true, completion: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
                 }
             } else {
                 savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
@@ -162,8 +165,10 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     savedData.setRightWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
                 default:
-                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
-                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                    if #available(iOS 13, *) {
+                        self.dismiss(animated: true, completion: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
                 }
             }
             
@@ -178,8 +183,10 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     savedData.setRightWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
                 default:
-                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
-                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                    if #available(iOS 13, *) {
+                        self.dismiss(animated: true, completion: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
                 }
             } else {
                 savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
@@ -191,8 +198,10 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     savedData.setRightWebPage(URL: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     self.performSegue(withIdentifier: "goSplit", sender: self)
                 default:
-                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
-                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                    if #available(iOS 13, *) {
+                        self.dismiss(animated: true, completion: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
                 }
             }
         }
