@@ -45,6 +45,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         }
         widenTextField()
         NotificationCenter.default.addObserver(self, selector: #selector(notificationLoad(_:)), name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(theming), name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
     }
     private func widenTextField() {
         var frame = self.dynamicField.frame
