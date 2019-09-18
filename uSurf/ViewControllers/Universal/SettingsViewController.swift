@@ -74,16 +74,24 @@ class SettingsViewController: UIViewController {
     // MARK: - Theme
     @IBAction func SelectTheme(_ sender: Any) {
         let alert = UIAlertController(title: "Theme", message: "Choose A Theme", preferredStyle: .actionSheet) //make an action sheet for it
-        alert.addAction(UIAlertAction(title: "Dark", style: .default, handler: { (_) in
-            self.savedData.setTheme(theme: "Dark")
-            self.theming()
-            self.setNeedsStatusBarAppearanceUpdate()
-        }))
-        alert.addAction(UIAlertAction(title: "Light", style: .default, handler: { (_) in
-            self.savedData.setTheme(theme: "Light")
-            self.theming()
-            self.setNeedsStatusBarAppearanceUpdate()
-        }))
+        if #available(iOS 13, *) {
+            alert.addAction(UIAlertAction(title: "System", style: .default, handler: { (_) in
+                self.savedData.setTheme(theme: "System")
+                self.theming()
+                self.setNeedsStatusBarAppearanceUpdate()
+            }))
+        } else {
+            alert.addAction(UIAlertAction(title: "Dark", style: .default, handler: { (_) in
+                self.savedData.setTheme(theme: "Dark")
+                self.theming()
+                self.setNeedsStatusBarAppearanceUpdate()
+            }))
+            alert.addAction(UIAlertAction(title: "Light", style: .default, handler: { (_) in
+                self.savedData.setTheme(theme: "Light")
+                self.theming()
+                self.setNeedsStatusBarAppearanceUpdate()
+            }))
+        }
         alert.addAction(UIAlertAction(title: "Red", style: .default, handler: { (_) in
             self.savedData.setTheme(theme: "Red")
             self.theming()
