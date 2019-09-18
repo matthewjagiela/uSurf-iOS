@@ -19,7 +19,7 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
     var bookmarkNameArray = NSMutableArray()
     let iCloud = iCloudHandler()
     let savedData = SavedDataHandler()
-    let theme = ThemeHandler()
+    var theme = ThemeHandler()
     //Optional variables these do not take up memory until they are called by a method execution
     lazy var matchedBookmarks = [Int]() //This is going to be where the bookmarks matching with the search is
     lazy var isSearching = false
@@ -90,6 +90,12 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+           super.traitCollectionDidChange(previousTraitCollection)
+           theme = ThemeHandler()
+           theming()
+           
+       }
     // MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Bookmark Table View: Returning \(bookmarkNameArray.count) items")

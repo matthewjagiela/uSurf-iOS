@@ -15,7 +15,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet var navBar: UINavigationBar!
     // MARK: - Variables
     let savedData = SavedDataHandler()
-    let theme = ThemeHandler()
+    var theme = ThemeHandler()
     var historyArray = NSMutableArray()
     var searchController = UISearchController()
     lazy var matchedHistory = [Int]()
@@ -106,6 +106,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         tableView.reloadData()
     }
+    // MARK: - Theme
     private func theming() {
         
         searchController = UISearchController(searchResultsController: nil)
@@ -127,6 +128,13 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         textFieldInsideSearchBar?.textColor = theme.getTintColor() //Change the color to white
         
     }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+           super.traitCollectionDidChange(previousTraitCollection)
+           theme = ThemeHandler()
+           theming()
+           
+       }
+    // MARK: - Actions
     @IBAction func goHome(_ sender: Any) {
         if #available(iOS 13, *) {
             dismiss(animated: true, completion: nil)

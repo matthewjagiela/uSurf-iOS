@@ -27,7 +27,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     let savedData = SavedDataHandler()
     let iCloud = iCloudHandler()
     let webHandler = WebHandler()
-    let theme = ThemeHandler()
+    var theme = ThemeHandler()
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,6 +120,12 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         self.toolbar.barTintColor = theme.getBarTintColor()
         self.toolbar.tintColor = theme.getTintColor()
         self.view.backgroundColor = theme.getBarTintColor()
+        
+    }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        theme = ThemeHandler()
+        theming()
         
     }
 

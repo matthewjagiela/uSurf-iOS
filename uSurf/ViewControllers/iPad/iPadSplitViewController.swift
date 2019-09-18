@@ -41,7 +41,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
     let web = WebHandler()
     let savedData = SavedDataHandler()
     let iCloud = iCloudHandler()
-    let theme = ThemeHandler()
+    var theme = ThemeHandler()
     //Other Variables:
     var rightWebView: WKWebView!
     var leftWebView: WKWebView!
@@ -59,6 +59,12 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         theming()
         widenTextField()
     }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+           super.traitCollectionDidChange(previousTraitCollection)
+           theme = ThemeHandler()
+           theming()
+           
+       }
     func handleWebKit() {
         let webConfiguration = WKWebViewConfiguration() //This can work for both of them...
         
