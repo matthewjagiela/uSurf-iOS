@@ -58,6 +58,8 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         handleWebKit()
         theming()
         widenTextField()
+        NotificationCenter.default.addObserver(self, selector: #selector(rightWebRefresh), name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(leftWebRefresh), name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
            super.traitCollectionDidChange(previousTraitCollection)
@@ -65,6 +67,12 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
            theming()
            
        }
+    @objc func rightWebRefresh() {
+        loadRightURL(savedData.getRightWebPage())
+    }
+    @objc func leftWebRefresh() {
+        loadLeftURL(savedData.getLeftWebPage())
+    }
     func handleWebKit() {
         let webConfiguration = WKWebViewConfiguration() //This can work for both of them...
         
