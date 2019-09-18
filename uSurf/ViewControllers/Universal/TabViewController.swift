@@ -18,7 +18,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var iPadTabArray = NSMutableArray()
     let iCloud = iCloudHandler()
     let savedData = SavedDataHandler()
-    let theme = ThemeHandler()
+    var theme = ThemeHandler()
     //Optional variables these do not take up memory until they are called by a method execution
     lazy var matchediPhoneTabs = [Int]() //This is going to be where the bookmarks matching with the search is
     lazy var matchediPadTabs = [Int]()
@@ -39,6 +39,12 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
         
     }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+           super.traitCollectionDidChange(previousTraitCollection)
+           theme = ThemeHandler()
+           theming()
+           
+       }
     // MARK: iCloud Update
     @objc private func iCloudUpdate(notification: NSNotification) {
         iPhoneTabArray = iCloud.getiPhoneTabArray()

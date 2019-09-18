@@ -74,30 +74,44 @@ class SettingsViewController: UIViewController {
     // MARK: - Theme
     @IBAction func SelectTheme(_ sender: Any) {
         let alert = UIAlertController(title: "Theme", message: "Choose A Theme", preferredStyle: .actionSheet) //make an action sheet for it
-        alert.addAction(UIAlertAction(title: "Dark", style: .default, handler: { (_) in
-            self.savedData.setTheme(theme: "Dark")
-            self.theming()
-            self.setNeedsStatusBarAppearanceUpdate()
-        }))
-        alert.addAction(UIAlertAction(title: "Light", style: .default, handler: { (_) in
-            self.savedData.setTheme(theme: "Light")
-            self.theming()
-            self.setNeedsStatusBarAppearanceUpdate()
-        }))
+        if #available(iOS 13, *) {
+            alert.addAction(UIAlertAction(title: "System", style: .default, handler: { (_) in
+                self.savedData.setTheme(theme: "System")
+                self.theming()
+                self.setNeedsStatusBarAppearanceUpdate()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
+            }))
+        } else {
+            alert.addAction(UIAlertAction(title: "Dark", style: .default, handler: { (_) in
+                self.savedData.setTheme(theme: "Dark")
+                self.theming()
+                self.setNeedsStatusBarAppearanceUpdate()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Light", style: .default, handler: { (_) in
+                self.savedData.setTheme(theme: "Light")
+                self.theming()
+                self.setNeedsStatusBarAppearanceUpdate()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
+            }))
+        }
         alert.addAction(UIAlertAction(title: "Red", style: .default, handler: { (_) in
             self.savedData.setTheme(theme: "Red")
             self.theming()
             self.setNeedsStatusBarAppearanceUpdate()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
         }))
         alert.addAction(UIAlertAction(title: "Purple", style: .default, handler: { (_) in
             self.savedData.setTheme(theme: "Purple")
             self.theming()
             self.setNeedsStatusBarAppearanceUpdate()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
         }))
         alert.addAction(UIAlertAction(title: "Green", style: .default, handler: { (_) in
             self.savedData.setTheme(theme: "Green")
             self.theming()
             self.setNeedsStatusBarAppearanceUpdate()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
         }))
         if let popoverController = alert.popoverPresentationController { //For iPad it needs to present as a popover so we need to make one!!
             popoverController.sourceView = sender as? UIView

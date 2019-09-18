@@ -14,6 +14,14 @@ class ThemeHandler: NSObject {
     override init() {
         super.init() //So we can use some initialization stuff
         theme = savedData.getTheme() //Get the theme we will be using
+        if #available(iOS 13, *) {
+            if theme == "System" {
+                print("Init with system")
+                if UITraitCollection.current.userInterfaceStyle == .dark {
+                    theme = "Dark"
+                } else { theme = "Light" }
+            }
+        }
         
     }
     func getBarTintColor() -> UIColor { //Instead of doing this if statement for every single view controller....

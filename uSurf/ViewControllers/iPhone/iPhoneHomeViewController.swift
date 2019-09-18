@@ -27,7 +27,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     let savedData = SavedDataHandler()
     let iCloud = iCloudHandler()
     let webHandler = WebHandler()
-    let theme = ThemeHandler()
+    var theme = ThemeHandler()
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +39,14 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         }
         widenTextField()
         NotificationCenter.default.addObserver(self, selector: #selector(notificationLoad(_:)), name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(theming), name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         print("iPhone Home: View Will Appear")
         AppUtility.lockOrientation(.all)
+        theming()
     }
     private func widenTextField() { //Make the text field ultra large and let iOS Scale it down
         var frame = self.dynamicField.frame
@@ -111,7 +113,8 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         }
         dynamicField.text = "Loading..."
     }
-    func theming() {
+    @objc func theming() {
+        theme = ThemeHandler()
         self.navigationBar.barTintColor = theme.getBarTintColor()
         self.navigationBar.tintColor = theme.getTintColor()
         self.dynamicField.backgroundColor = theme.getTextBarBackgroundColor()
@@ -119,6 +122,12 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         self.toolbar.barTintColor = theme.getBarTintColor()
         self.toolbar.tintColor = theme.getTintColor()
         self.view.backgroundColor = theme.getBarTintColor()
+        
+    }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        theme = ThemeHandler()
+        theming()
         
     }
 
