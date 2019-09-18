@@ -39,6 +39,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         }
         widenTextField()
         NotificationCenter.default.addObserver(self, selector: #selector(notificationLoad(_:)), name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(theming), name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -111,7 +112,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         }
         dynamicField.text = "Loading..."
     }
-    func theming() {
+    @objc func theming() {
         self.navigationBar.barTintColor = theme.getBarTintColor()
         self.navigationBar.tintColor = theme.getTintColor()
         self.dynamicField.backgroundColor = theme.getTextBarBackgroundColor()
