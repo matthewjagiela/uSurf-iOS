@@ -115,7 +115,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         }
     }
     
-    func theming() {
+    @objc func theming() {
         let theme = ThemeHandler()
         self.navigationBar.barTintColor = theme.getBarTintColor()
         self.navigationBar.tintColor = theme.getTintColor()
