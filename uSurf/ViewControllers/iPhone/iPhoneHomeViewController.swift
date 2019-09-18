@@ -46,6 +46,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         super.viewWillAppear(true)
         print("iPhone Home: View Will Appear")
         AppUtility.lockOrientation(.all)
+        theming()
     }
     private func widenTextField() { //Make the text field ultra large and let iOS Scale it down
         var frame = self.dynamicField.frame
@@ -113,6 +114,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         dynamicField.text = "Loading..."
     }
     @objc func theming() {
+        theme = ThemeHandler()
         self.navigationBar.barTintColor = theme.getBarTintColor()
         self.navigationBar.tintColor = theme.getTintColor()
         self.dynamicField.backgroundColor = theme.getTextBarBackgroundColor()

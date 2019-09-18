@@ -70,6 +70,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
        // handleWebKit()
+        theming()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
