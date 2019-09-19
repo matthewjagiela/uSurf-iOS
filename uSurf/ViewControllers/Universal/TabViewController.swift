@@ -151,10 +151,12 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 switch browserTag {
                 case 1: //Left
                     savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
-                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
                 case 2:
                     savedData.setRightWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
-                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
                 default: //Center / iPhone
                     if #available(iOS 13, *) {
                         self.dismiss(animated: true, completion: nil)
@@ -166,10 +168,12 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 switch browserTag {
                 case 1: //Left
                     savedData.setLeftWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
-                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
                 case 2:
                     savedData.setRightWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
-                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
                 default:
                     if #available(iOS 13, *) {
                         self.dismiss(animated: true, completion: nil)
@@ -184,10 +188,12 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 switch browserTag {
                 case 1: //Left
                     savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
-                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
                 case 2:
                     savedData.setRightWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
-                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
                 default:
                     if #available(iOS 13, *) {
                         self.dismiss(animated: true, completion: nil)
@@ -199,10 +205,12 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 switch browserTag {
                 case 1: //Left
                     savedData.setLeftWebPage(URL: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
-                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
                 case 2:
                     savedData.setRightWebPage(URL: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
-                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
                 default:
                     if #available(iOS 13, *) {
                         self.dismiss(animated: true, completion: nil)
