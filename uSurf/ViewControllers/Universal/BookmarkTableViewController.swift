@@ -8,20 +8,18 @@
 
 import UIKit
 
-class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,  UISearchBarDelegate {
-    
+class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
-    
     
     var searchController = UISearchController()
     var bookmarkArray = NSMutableArray()
     var bookmarkNameArray = NSMutableArray()
     let iCloud = iCloudHandler()
     let savedData = SavedDataHandler()
-    let theme = ThemeHandler()
+    var theme = ThemeHandler()
     //Optional variables these do not take up memory until they are called by a method execution
     lazy var matchedBookmarks = [Int]() //This is going to be where the bookmarks matching with the search is
     lazy var isSearching = false
@@ -45,115 +43,125 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
     }
 
-    @objc private func iCloudUpdate(notification: NSNotification){ //This will be called when something within iCloud has changed...
+    @objc private func iCloudUpdate(notification: NSNotification) { //This will be called when something within iCloud has changed...
         bookmarkArray = iCloud.getBookmarkArray()
         bookmarkNameArray = iCloud.getBookmarkNameArray()
         isSearching = false
         tableView.reloadData()
-        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { //There is some search happening so we need to start trying to find the timer
         print("BookarkTableViewController: We are searching")
-        if let searchedItem = searchBar.text , searchBar.text != ""{
-            let searchArray = bookmarkNameArray as! [String]
-            matchedBookmarks = searchArray.indices.filter{
+        if let searchedItem = searchBar.text, !(searchBar.text?.isEmpty ?? true) {
+            let searchArray = bookmarkNameArray as? [String] ?? ["uApps"]
+            matchedBookmarks = searchArray.indices.filter {
                 searchArray[$0].localizedCaseInsensitiveContains(searchedItem)
             }
             isSearching = true
-        }
-        else{
+        } else {
             isSearching = false
         }
         tableView.reloadData()
     }
 
-    // MARK: - Table view data source
+    // MARK: - Theme
 
-
-    private func theming(){
+    private func theming() {
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self as? UISearchResultsUpdating //search results are handled in this class
         searchController.hidesNavigationBarDuringPresentation = false //Make sure the nav bar stays
         searchController.dimsBackgroundDuringPresentation = true //Not sure
         searchController.searchBar.delegate = self // we want to use delegate methods here
-        tableView.tableFooterView = UIView(frame:.zero) //Make sure that the entire thing is in frame
+        tableView.tableFooterView = UIView(frame: .zero) //Make sure that the entire thing is in frame
         tableView.rowHeight = 71 //Row height for the text
         navigationBar.barTintColor = theme.getBarTintColor() //Set the real color of the bar
         navigationBar.tintColor = theme.getTintColor() //Set text of the bar
         self.view.backgroundColor = theme.getBarTintColor() //Set the background text
-        let textAttributes = [NSAttributedString.Key.foregroundColor:theme.getTintColor()] //Set the navigation text color
+        let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()] //Set the navigation text color
         navigationBar.titleTextAttributes = textAttributes //Actually update the thing
         tableView.backgroundColor = theme.getBarTintColor() //When there is no cells the view will be this color
         searchBar.barStyle = theme.getSearchStyle() //Set the theme of the search bar
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField //extract the text
         
-        textFieldInsideSearchBar?.textColor = theme.getTintColor() //Change the color to white
-
-        
+        textFieldInsideSearchBar?.textColor = theme.getTextColor() //Change the color to white
         
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle{
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+           super.traitCollectionDidChange(previousTraitCollection)
+           theme = ThemeHandler()
+           theming()
+           
+       }
+    // MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Bookmark Table View: Returning \(bookmarkNameArray.count) items")
-        if(isSearching){
+        if isSearching {
            return matchedBookmarks.count
-        }
-        else{
+        } else {
            return bookmarkNameArray.count
         }
        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if(isSearching){ //This is a selection from a search
+        if isSearching { //This is a selection from a search
             print(matchedBookmarks)
             let searchedIndex = matchedBookmarks[indexPath.row] //This correlates to the index of the address in our main table
-            savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as! String) //Set the url to load from the main bookmark table based on the searched stored
+            savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com") //Set the url to load from the main bookmark table based on the searched stored
             switch browserTag {
             case 1: //Left
-                savedData.setLeftWebPage(URL: bookmarkArray[searchedIndex] as! String)
-                self.performSegue(withIdentifier: "goSplit", sender: self)
+                savedData.setLeftWebPage(URL: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
+               NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             case 2:
-                savedData.setRightWebPage(URL:  bookmarkArray[searchedIndex] as! String)
-                self.performSegue(withIdentifier: "goSplit", sender: self)
+                savedData.setRightWebPage(URL: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             default:
-                savedData.setLastViewedPage(lastPage:  bookmarkArray[searchedIndex] as! String)
-                self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
+                if #available(iOS 13, *) {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                } else { self.performSegue(withIdentifier: "goHome", sender: self) }
             }
             
-        }
-        else{
-            savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as! String) //There is no search... We can just load the page from the selected index
+        } else {
+            savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com") //There is no search... We can just load the page from the selected index
             switch browserTag {
             case 1: //Left
-                savedData.setLeftWebPage(URL: bookmarkArray[indexPath.row] as! String)
-                self.performSegue(withIdentifier: "goSplit", sender: self)
+                savedData.setLeftWebPage(URL: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             case 2:
-                savedData.setRightWebPage(URL:  bookmarkArray[indexPath.row] as! String)
-                self.performSegue(withIdentifier: "goSplit", sender: self)
+                savedData.setRightWebPage(URL: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             default:
-                savedData.setLastViewedPage(lastPage:  bookmarkArray[indexPath.row] as! String)
-                self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load
+                savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
+                if #available(iOS 13, *) {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                } else { self.performSegue(withIdentifier: "goHome", sender: self) }
             
             }
         }
         //self.performSegue(withIdentifier: "goHome", sender: self) //Return to the browser with the new page loaded.
     }
+    //swiftlint:disable force_unwrapping
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var bookmarkName = ""
         var bookmarkURL = ""
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell")
-        if(isSearching){ //The user is currently searching for a bookmark so we need to display the filtered results
-            bookmarkName = (bookmarkNameArray.object(at: matchedBookmarks[indexPath.row]) as! String)
-            bookmarkURL = (bookmarkArray.object(at: matchedBookmarks[indexPath.row])as! String)
-        }
-        else{ //Display the entire list
-            bookmarkName = (bookmarkNameArray.object(at: indexPath.row)as! String)
-            bookmarkURL = (bookmarkArray.object(at: indexPath.row)as! String)
+        if isSearching { //The user is currently searching for a bookmark so we need to display the filtered results
+            bookmarkName = (bookmarkNameArray.object(at: matchedBookmarks[indexPath.row]) as? String ?? "https://uappsios.com")
+            bookmarkURL = (bookmarkArray.object(at: matchedBookmarks[indexPath.row]) as? String ?? "uApps")
+        } else { //Display the entire list
+            bookmarkName = (bookmarkNameArray.object(at: indexPath.row) as? String ?? "uApps")
+            bookmarkURL = (bookmarkArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
         }
         cell?.textLabel?.text = bookmarkName
         cell?.detailTextLabel?.text = bookmarkURL
@@ -162,24 +170,13 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         cell?.detailTextLabel?.textColor = theme.getTintColor()
         return cell!
     }
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
+    //swiftlint:enable force_unwrapping
     
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    
-
     
     // Override to support editing the table view.
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -194,8 +191,16 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    @objc func canRotate() -> Void {}
+    // MARK: - Custom Actions
+    @IBAction func goHome(_ sender: Any) {
+        if #available(iOS 13, *) {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.performSegue(withIdentifier: "goHome", sender: self)
+        }
+    }
     
+    @objc func canRotate() {}
 
     /*
     // Override to support rearranging the table view.
@@ -221,6 +226,5 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         // Pass the selected object to the new view controller.
     }
     */
-
 
 }

@@ -14,68 +14,69 @@ class ThemeHandler: NSObject {
     override init() {
         super.init() //So we can use some initialization stuff
         theme = savedData.getTheme() //Get the theme we will be using
+        if #available(iOS 13, *) {
+            if theme == "System" {
+                print("Init with system")
+                if UITraitCollection.current.userInterfaceStyle == .dark {
+                    theme = "Dark"
+                } else { theme = "Light" }
+            }
+        }
         
     }
-    func getBarTintColor() -> UIColor{ //Instead of doing this if statement for every single view controller....
-        if(theme == "Blue"){
+    func getBarTintColor() -> UIColor { //Instead of doing this if statement for every single view controller....
+        if theme == "Blue" {
             return .blue
-        }
-        else if(theme == "Light"){
+        } else if theme == "Light" {
             return .white
-        }
-        else if(theme == "Red"){
+        } else if theme == "Red" {
             return .red
-        }
-        else if(theme == "Purple"){
+        } else if theme == "Purple" {
             return .purple
-        }
-        else if(theme == "Green"){
+        } else if theme == "Green" {
             return .green
-        }
-        else{ //Black is the only option left and we need and else statement to make this method work for returns SOOO
+        } else { //Black is the only option left and we need and else statement to make this method work for returns SOOO
             return .black
         }
     }
-    func getTintColor() ->UIColor{ //This is going to be the color of buttons on bars
-        if(theme == "Light"){ //If the theme is light display black buttons
+    func getTintColor() -> UIColor { //This is going to be the color of buttons on bars
+        if theme == "Light" { //If the theme is light display black buttons
             return .black
-        }
-        else{ //Everything else can have white buttons as it looks best
+        } else { //Everything else can have white buttons as it looks best
             return .white
         }
     }
-    func getTextBarBackgroundColor() ->UIColor{
-        if(theme == "Dark"){
+    func getTextBarBackgroundColor() -> UIColor {
+        if theme == "Dark" {
             return .gray
-        }
-        else{
+        } else {
             return .white
         }
     }
-    func getTextColor() ->UIColor{
-        if(theme == "Dark"){
-            return .white
-        }
-        else{
-            return .black
+    func getTextColor() -> UIColor {
+        if #available(iOS 13, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark { return .white } else { return .black }
+        } else {
+            if theme == "Dark" {
+                return .white
+            } else {
+                return .black
+            }
         }
     }
-    func getSearchStyle() -> UIBarStyle{
-        if(theme == "Dark"){
+    func getSearchStyle() -> UIBarStyle {
+        if theme == "Dark" {
             return .black
-        }
-        else{
+        } else {
             return .default
         }
     }
-    func getStatusBarColor() -> UIStatusBarStyle{
-        if(theme == "Light"){
+    func getStatusBarColor() -> UIStatusBarStyle {
+        if theme == "Light" {
             return .default
-        }
-        else{
+        } else {
             return .lightContent
         }
     }
-    
 
 }

@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A880C232F2AF100D63F99 /* AppUtility.swift */; };
+		2EA04356231CC48400812246 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E482498231CAF5200F4C969 /* .swiftlint.yml */; };
 		340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
 		34265EFA2176B0B400C775F4 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */; };
 		342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342CBE1D218231D3006D2D04 /* HistoryViewController.swift */; };
@@ -57,7 +59,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		340266C5214890A7000A19E8 /* uSurf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
+		2E1A880C232F2AF100D63F99 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		2E482498231CAF5200F4C969 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		2E683B032329EDA6008BA3E7 /* uSurf.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
 		340906D620D9C01D009F53F1 /* WebHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebHandler.swift; sourceTree = "<group>"; };
 		34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewController.swift; sourceTree = "<group>"; };
 		342CBE1D218231D3006D2D04 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 				344C3F0A20D75D6000A13939 /* SavedDataHandler.swift */,
 				3460A5F7210BC9450029B03C /* ThemeHandler.swift */,
 				3443CD7D21FFCCDF001123E7 /* VersionHandler.swift */,
+				2E1A880C232F2AF100D63F99 /* AppUtility.swift */,
 			);
 			path = Handelers;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 		34F95DF320C73F1D00411B9D = {
 			isa = PBXGroup;
 			children = (
+				2E482498231CAF5200F4C969 /* .swiftlint.yml */,
 				34F95DFE20C73F1D00411B9D /* uSurf */,
 				34F95DFD20C73F1D00411B9D /* Products */,
 				D3A8C254DD33CAFE5B6AFE30 /* Pods */,
@@ -312,7 +318,7 @@
 		34F95DFE20C73F1D00411B9D /* uSurf */ = {
 			isa = PBXGroup;
 			children = (
-				340266C5214890A7000A19E8 /* uSurf.entitlements */,
+				2E683B032329EDA6008BA3E7 /* uSurf.entitlements */,
 				343F015A20D41EC900B9E8DD /* Other */,
 				343F015920D41E8C00B9E8DD /* Handelers */,
 				343F015820D41E7E00B9E8DD /* ViewControllers */,
@@ -352,6 +358,8 @@
 				34F95DF820C73F1D00411B9D /* Sources */,
 				34F95DF920C73F1D00411B9D /* Frameworks */,
 				34F95DFA20C73F1D00411B9D /* Resources */,
+				CCAA6D8E64E32400D5E3A914 /* [CP] Embed Pods Frameworks */,
+				2E482496231CAEFB00F4C969 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -374,7 +382,7 @@
 				TargetAttributes = {
 					34F95DFB20C73F1D00411B9D = {
 						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1100;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -435,6 +443,7 @@
 				3460A5E3210BBE950029B03C /* icons8-bookmark-90.png in Resources */,
 				3460A5F6210BC5F20029B03C /* icons8-merge-90.png in Resources */,
 				343F016D20D4204600B9E8DD /* main_icon.png in Resources */,
+				2EA04356231CC48400812246 /* .swiftlint.yml in Resources */,
 				3460A5D6210BBCEE0029B03C /* icons8-folder-60.png in Resources */,
 				343F016F20D4204600B9E8DD /* icon_iPadPro.png in Resources */,
 				34F95E0720C73F1F00411B9D /* Assets.xcassets in Resources */,
@@ -448,6 +457,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2E482496231CAEFB00F4C969 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		C45FE8826A3F11637FC7ADFE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,6 +492,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CCAA6D8E64E32400D5E3A914 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-uSurf/Pods-uSurf-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-uSurf/Pods-uSurf-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-uSurf/Pods-uSurf-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -473,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */,
 				3460A5F8210BC9450029B03C /* ThemeHandler.swift in Sources */,
 				344C3F0920D7501600A13939 /* iCloudHandler.swift in Sources */,
 				343F015E20D41F0700B9E8DD /* iPadHomeViewController.swift in Sources */,
@@ -633,7 +677,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.uapps.uSurf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -654,7 +698,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.uapps.uSurf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
