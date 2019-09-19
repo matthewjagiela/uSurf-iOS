@@ -70,7 +70,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         searchBar.barStyle = theme.getSearchStyle() //Set the theme of the search bar
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField //extract the text
         
-        textFieldInsideSearchBar?.textColor = theme.getTintColor() //Change the color to white
+        textFieldInsideSearchBar?.textColor = theme.getTextColor() //Change the color to white
         
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {

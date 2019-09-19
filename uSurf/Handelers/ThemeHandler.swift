@@ -54,10 +54,14 @@ class ThemeHandler: NSObject {
         }
     }
     func getTextColor() -> UIColor {
-        if theme == "Dark" {
-            return .white
+        if #available(iOS 13, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark { return .white } else { return .black }
         } else {
-            return .black
+            if theme == "Dark" {
+                return .white
+            } else {
+                return .black
+            }
         }
     }
     func getSearchStyle() -> UIBarStyle {
