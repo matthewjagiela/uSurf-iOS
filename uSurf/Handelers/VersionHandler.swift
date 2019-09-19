@@ -10,10 +10,10 @@ import UIKit
 
 class VersionHandler: NSObject {
     
-    func getAppVersion() -> String {
+    func getAppVersion() ->String{
         return "Currently Running: 6"
     }
-    func getUpdateInformation() -> String {
+    func getUpdateInformation() ->String{
         if let path = Bundle.main.path(forResource: "Changes", ofType: "txt") {
             
             if let contents = try? String(contentsOfFile: path) {

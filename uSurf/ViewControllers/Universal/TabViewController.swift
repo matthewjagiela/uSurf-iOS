@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class TabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,  UISearchBarDelegate {
 
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var searchBar: UISearchBar!
@@ -18,7 +18,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var iPadTabArray = NSMutableArray()
     let iCloud = iCloudHandler()
     let savedData = SavedDataHandler()
-    var theme = ThemeHandler()
+    let theme = ThemeHandler()
     //Optional variables these do not take up memory until they are called by a method execution
     lazy var matchediPhoneTabs = [Int]() //This is going to be where the bookmarks matching with the search is
     lazy var matchediPadTabs = [Int]()
@@ -39,101 +39,102 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
         
     }
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-           super.traitCollectionDidChange(previousTraitCollection)
-           theme = ThemeHandler()
-           theming()
-           
-       }
-    // MARK: iCloud Update
-    @objc private func iCloudUpdate(notification: NSNotification) {
+    @objc private func iCloudUpdate(notification:NSNotification){
         iPhoneTabArray = iCloud.getiPhoneTabArray()
         iPadTabArray = iCloud.getiPadTabArray()
         isSearching = false
         tableView.reloadData()
     }
-    // MARK: Theme
-    func theming() { //Lets handle the theme!
+    func theming(){ //Lets handle the theme!
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self as? UISearchResultsUpdating //search results are handled in this class
         searchController.hidesNavigationBarDuringPresentation = false //Make sure the nav bar stays
         searchController.dimsBackgroundDuringPresentation = true //Not sure
         searchController.searchBar.delegate = self // we want to use delegate methods here
-        tableView.tableFooterView = UIView(frame: .zero) //Make sure that the entire thing is in frame
+        tableView.tableFooterView = UIView(frame:.zero) //Make sure that the entire thing is in frame
         tableView.rowHeight = 71 //Row height for the text
         navigationBar.barTintColor = theme.getBarTintColor() //Set the real color of the bar
         navigationBar.tintColor = theme.getTintColor() //Set text of the bar
         self.view.backgroundColor = theme.getBarTintColor() //Set the background text
-        let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()] //Set the navigation text color
+        let textAttributes = [NSAttributedString.Key.foregroundColor:theme.getTintColor()] //Set the navigation text color
         navigationBar.titleTextAttributes = textAttributes //Actually update the thing
         tableView.backgroundColor = theme.getBarTintColor() //When there is no cells the view will be this color
         searchBar.barStyle = theme.getSearchStyle() //Set the theme of the search bar
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField //extract the text
         
-        textFieldInsideSearchBar?.textColor = theme.getTextColor() //Change the color to white
+        textFieldInsideSearchBar?.textColor = theme.getTintColor() //Change the color to white
+        
+        
         
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
+    override var preferredStatusBarStyle: UIStatusBarStyle{
         return theme.getStatusBarColor()
     }
-    // MARK: Search
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { //There is some search happening so we need to start trying to find the timer
         print("BookarkTableViewController: We are searching")
-        if let searchedItem = searchBar.text, !(searchBar.text?.isEmpty ?? false) {
-            let searchArray = iPhoneTabArray as? [String] ?? ["https://uappsios.com"]
-            matchediPhoneTabs = searchArray.indices.filter { //This is searching through the iPhone tab array for matches
+        if let searchedItem = searchBar.text , searchBar.text != ""{
+            let searchArray = iPhoneTabArray as! [String]
+            matchediPhoneTabs = searchArray.indices.filter{ //This is searching through the iPhone tab array for matches
                 searchArray[$0].localizedCaseInsensitiveContains(searchedItem)
             }
-            let iPadSearchArray = iPadTabArray as? [String] ?? ["https://uappsios.com"]
-            matchediPadTabs = iPadSearchArray.indices.filter { //This is searching through the iPad tab arrays to find a match
+            let iPadSearchArray = iPadTabArray as! [String]
+            matchediPadTabs = iPadSearchArray.indices.filter{ //This is searching through the iPad tab arrays to find a match
                 iPadSearchArray[$0].localizedCaseInsensitiveContains(searchedItem)
             }
             isSearching = true
-        } else {
+        }
+        else{
             isSearching = false
         }
         tableView.reloadData()
     }
-    // MARK: Table View
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
+        if(section == 0){
             return "iPhone"
-        } else {
+        }
+        else{
             return "iPad"
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching {
-            if section == 0 {
+        if(isSearching){
+            if(section == 0){
                 return matchediPhoneTabs.count
-            } else {
+            }
+            else{
                 return matchediPadTabs.count
             }
-        } else {
-            if section == 0 {
+        }
+        else{
+            if(section == 0){
                 return iPhoneTabArray.count
-            } else {
+            }
+            else{
                 return iPadTabArray.count
             }
         }
     }
-    //swiftlint:disable force_unwrapping
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tabCells")
-        if isSearching { //We are searching so the table has to represent this
-            if indexPath.section == 0 { //iPhone while searching
+        if(isSearching){ //We are searching so the table has to represent this
+            if(indexPath.section == 0){ //iPhone while searching
                 cell?.textLabel?.text = iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String
-            } else {
+            }
+            else{
                 cell?.textLabel?.text = iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String
             }
             
-        } else {
-            if indexPath.section == 0 { //iPhone
+            
+        }
+        else{
+            if(indexPath.section == 0){ //iPhone
                 cell?.textLabel?.text = iPhoneTabArray.object(at: indexPath.row) as? String
-            } else {
+            }
+            else{
                 cell?.textLabel?.text = iPadTabArray.object(at: indexPath.row) as? String
             }
         }
@@ -141,81 +142,67 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         cell?.textLabel?.textColor = theme.getTintColor()
         return cell!
     }
-    //swiftlint:enable force_unwrapping
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Debug the browser tag is:\(browserTag)")
-        if isSearching {//We are searching so we have to have the selected row the searched item
-            if indexPath.section == 0 {
+        if(isSearching){//We are searching so we have to have the selected row the searched item
+            if(indexPath.section == 0){
                 //iPhone
-                savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
+                savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as! String)
                 switch browserTag {
                 case 1: //Left
-                    savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
+                    savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
                 case 2:
-                    savedData.setRightWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
-                default: //Center / iPhone
-                    if #available(iOS 13, *) {
-                        self.dismiss(animated: true, completion: nil)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
-                }
-            } else {
-                savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
-                switch browserTag {
-                case 1: //Left
-                    savedData.setLeftWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
-                case 2:
-                    savedData.setRightWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
+                    savedData.setRightWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
                 default:
-                    if #available(iOS 13, *) {
-                        self.dismiss(animated: true, completion: nil)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
+                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
+                }
+                
+            }
+            else{
+                savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as! String)
+                switch browserTag {
+                case 1: //Left
+                    savedData.setLeftWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                case 2:
+                    savedData.setRightWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
+                default:
+                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
                 }
             }
             
-        } else {
-            if indexPath.section == 0 {
-                savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
+        }
+        else{
+            if(indexPath.section == 0){
+                savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: indexPath.row) as! String)
                 switch browserTag {
                 case 1: //Left
-                    savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
+                    savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
                 case 2:
-                    savedData.setRightWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
+                    savedData.setRightWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
                 default:
-                    if #available(iOS 13, *) {
-                        self.dismiss(animated: true, completion: nil)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
+                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
                 }
-            } else {
-                savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
+            }
+            else{
+                savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: indexPath.row) as! String)
                 switch browserTag {
                 case 1: //Left
-                    savedData.setLeftWebPage(URL: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
+                    savedData.setLeftWebPage(URL: iPadTabArray.object(at: indexPath.row) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
                 case 2:
-                    savedData.setRightWebPage(URL: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
+                    savedData.setRightWebPage(URL: iPadTabArray.object(at: indexPath.row) as! String)
+                    self.performSegue(withIdentifier: "goSplit", sender: self)
                 default:
-                    if #available(iOS 13, *) {
-                        self.dismiss(animated: true, completion: nil)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
+                    //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+                    self.performSegue(withIdentifier: "goHome", sender: self) //Go home and load the page
                 }
             }
         }
@@ -226,28 +213,35 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         return true
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete { //We need to figure out how to delete
-            if indexPath.section == 0 { //iPhone
+        if(editingStyle == .delete){ //We need to figure out how to delete
+            if(indexPath.section == 0){ //iPhone
                 iPhoneTabArray.removeObject(at: indexPath.row)
                 iCloud.setiPhoneTabArray(iPhoneTabArray: iPhoneTabArray)
-            } else {
+            }
+            else{
                 iPadTabArray.removeObject(at: indexPath.row)
                 iCloud.setiPadTabArray(iPadTabArray: iPadTabArray)
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-        } else {
+        }
+        else{
             
         }
     }
-    // MARK: Custom Actions
-    @IBAction func goHome(_ sender: Any) {
-        if #available(iOS 13, *) {
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            self.performSegue(withIdentifier: "goHome", sender: self)
-        }
-    }
+   
+    @objc func canRotate() -> Void {}
     
-    @objc func canRotate() {}
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }
