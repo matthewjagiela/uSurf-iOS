@@ -38,7 +38,9 @@ class SettingsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.removeFromParent()
         if UI_USER_INTERFACE_IDIOM() == .phone {
+            print("Force rotation")
             AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+            infoBox.contentOffset = .zero
         }
         
     }
@@ -157,7 +159,7 @@ class SettingsViewController: UIViewController {
     
     override var shouldAutorotate: Bool {
         if UI_USER_INTERFACE_IDIOM() == .phone {
-            return false
+            return true
         } else {
             return true
         }
