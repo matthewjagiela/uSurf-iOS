@@ -11,7 +11,7 @@ import UIKit
 class VersionHandler: NSObject {
     
     func getAppVersion() -> String {
-        return "Currently Running: 6"
+        return "Currently Running: 6.1"
     }
     func getUpdateInformation() -> String {
         if let path = Bundle.main.path(forResource: "Changes", ofType: "txt") {

@@ -1,3 +1,13 @@
+6.1:
+- Updated for iOS 13:
+    - Dark / Light Themes have been replaced by "System" for iOS 13
+    - Views on iPhone now are a slide view. You can dismiss them using home buttons or just slide down their navigation bar to go home
+    - Settings on iPad are also now a slide
+- Transitions: Now on iPad with Split View only the selected web view will refresh saving on the amount of refreshes.
+- Transitions: There are now smoother transitions when selecting history, tab, and bookmarked items.
+- Bug improvements to theming
+- Stability: A lot has been changed to make the uSurf use less bandwidth, memory, and processing power.
+
 6.0 The Big One:
 - A total rewrite: The app has been completely rewritten to be better optimized!
 - WebKit: With WebKit features such as swipe navigation have been implemented
