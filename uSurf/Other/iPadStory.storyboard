@@ -548,9 +548,7 @@
                                 <rect key="frame" x="13" y="0.0" width="375" height="50"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
-                                    <navigationItem title="Tabs" id="5fX-hE-1a5">
-                                        <barButtonItem key="leftBarButtonItem" title="Home" id="iUx-SO-bTs"/>
-                                    </navigationItem>
+                                    <navigationItem title="Tabs" id="5fX-hE-1a5"/>
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHc-3m-SJP">
@@ -621,9 +619,7 @@
                                 <rect key="frame" x="13" y="0.0" width="375" height="50"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
-                                    <navigationItem title="Bookmarks" id="3s5-WU-uLm">
-                                        <barButtonItem key="leftBarButtonItem" title="Home" id="Gbh-5u-Ezy"/>
-                                    </navigationItem>
+                                    <navigationItem title="Bookmarks" id="3s5-WU-uLm"/>
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1e-px-LiO">
@@ -703,11 +699,6 @@
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="History" id="zrB-dH-az3">
-                                        <barButtonItem key="leftBarButtonItem" title="Home" id="4I3-03-GLx">
-                                            <connections>
-                                                <action selector="goHome:" destination="5xP-Lb-yKY" id="GAm-7E-W9Y"/>
-                                            </connections>
-                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Clear All History" id="mhf-dX-zPU">
                                             <connections>
                                                 <action selector="clearHistory:" destination="5xP-Lb-yKY" id="nzE-lL-yYR"/>
@@ -785,7 +776,7 @@
         <segue reference="p58-Ag-vnL"/>
         <segue reference="CGq-IA-WbL"/>
         <segue reference="rZA-w6-dlx"/>
-        <segue reference="RPt-8m-hlQ"/>
-        <segue reference="r5T-TO-IgC"/>
+        <segue reference="Wwg-Gj-BNh"/>
+        <segue reference="ci0-7g-IpR"/>
     </inferredMetricsTieBreakers>
 </document>
