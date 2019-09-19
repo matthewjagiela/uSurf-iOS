@@ -55,7 +55,9 @@ class ThemeHandler: NSObject {
     }
     func getTextColor() -> UIColor {
         if #available(iOS 13, *) {
-            if UITraitCollection.current.userInterfaceStyle == .dark { return .white } else { return .black }
+            if UITraitCollection.current.userInterfaceStyle == .dark && theme == "Dark" {
+                return .white
+            } else { return .black }
         } else {
             if theme == "Dark" {
                 return .white

@@ -113,6 +113,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         }
         dynamicField.text = "Loading..."
     }
+    // MARK: - Theming
     @objc func theming() {
         theme = ThemeHandler()
         self.navigationBar.barTintColor = theme.getBarTintColor()
@@ -131,6 +132,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         
     }
 
+    // MARK: - Actions
     //swiftlint:disable force_unwrapping
     @IBAction func addBookmark(_ sender: Any) {
         print("LongPress")
