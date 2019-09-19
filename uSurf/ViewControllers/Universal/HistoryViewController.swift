@@ -47,10 +47,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             switch browserTag {
             case 1: //Left
                 savedData.setLeftWebPage(URL: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
-                self.performSegue(withIdentifier: "goSplit", sender: self)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             case 2:
                 savedData.setRightWebPage(URL: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
-                self.performSegue(withIdentifier: "goSplit", sender: self)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             default:
                 savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
                 if #available(iOS 13, *) {
@@ -63,10 +65,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             switch browserTag {
             case 1: //Left
                 savedData.setLeftWebPage(URL: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
-                self.performSegue(withIdentifier: "goSplit", sender: self)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             case 2:
                 savedData.setRightWebPage(URL: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
-                self.performSegue(withIdentifier: "goSplit", sender: self)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             default:
                 savedData.setLastViewedPage(lastPage: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
                 if #available(iOS 13, *) {
