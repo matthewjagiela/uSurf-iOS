@@ -15,6 +15,9 @@ class ThemeHandler: NSObject {
         super.init() //So we can use some initialization stuff
         theme = savedData.getTheme() //Get the theme we will be using
         if #available(iOS 13, *) {
+            if theme == "Dark" || theme == "Light" {
+                theme = "System"
+            }
             if theme == "System" {
                 print("Init with system")
                 if UITraitCollection.current.userInterfaceStyle == .dark {
