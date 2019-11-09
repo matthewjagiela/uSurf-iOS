@@ -34,3 +34,16 @@ class VersionHandler: NSObject {
     }
 
 }
+open class InternetInformation: NSObject, Decodable {
+    public var uTimeVersion: String?
+    public var uAppsNews: String?
+    enum CodingKeys: String, CodingKey {
+        case uTimeVersion = "uSurf_Version"
+        case uAppsNews =  "uApps_News"
+    }
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        uTimeVersion = try? container.decode(String.self, forKey: .uTimeVersion)
+        uAppsNews = try? container.decode(String.self, forKey: .uAppsNews)
+    }
+}
