@@ -1,3 +1,6 @@
+6.2:
+- Updates to the way that uSurf fetches information about the app. This will result in less network calls and more information.
+
 6.1:
 - Updated for iOS 13:
     - Dark / Light Themes have been replaced by "System" for iOS 13
