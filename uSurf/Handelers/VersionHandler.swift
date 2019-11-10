@@ -9,6 +9,24 @@
 import UIKit
 
 class VersionHandler: NSObject {
+    var internetInfo: InternetInformation?
+    override init() {
+        super.init()
+        if let jsonURL = URL(string: "https://raw.githubusercontent.com/matthewjagiela/uApps-JSON/master/uAppsInfo.json") {
+            URLSession.shared.dataTask(with: jsonURL) { data, _, error in
+                if let fetchedData = data {
+                    let decoder = JSONDecoder()
+                    do {
+                        self.internetInfo = try decoder.decode(InternetInformation.self, from: fetchedData)
+            
+                    } catch {
+                        print("An Error Has Occured \(error)")
+                    }
+                }
+            }.resume()
+        }
+        
+    }
     
     func getAppVersion() -> String {
         return "Currently Running: 6.1"
