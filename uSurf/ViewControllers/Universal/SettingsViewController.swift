@@ -49,15 +49,19 @@ class SettingsViewController: UIViewController {
         AppUtility.lockOrientation(.all)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
     }
-    // MARK: - Internet Labels
     func internetLabels() {  //This is going to go to my github and parse the data on the versions
-        if let info = appInfo.internetInfo {
-            if let news = info.uAppsNews {
-                newsLabel.text = news
+        if let url = URL(string: "https://matthewjagiela.github.io/uApps-HTML/") {
+            do {
+                let contents = try String(contentsOf: url)
+                let newLineSet = NSCharacterSet.newlines
+                let lines = contents.components(separatedBy: newLineSet)
+                newestVersion.text = lines[1] //This is the uSurf new version holder
+                newsLabel.text = lines[4]
+            } catch {
+                // contents could not be loaded
             }
-            if let version = info.uSurfVersion {
-                newestVersion.text = "Newest Version: \(version)"
-            }
+        } else {
+            // the URL was bad!
         }
     }
     //swiftlint:disable force_unwrapping
