@@ -121,11 +121,17 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.tableFooterView = UIView(frame: .zero) //Make sure that the entire thing is in frame
         tableView.rowHeight = 71 //Row height for the text
         navBar.barTintColor = theme.getBarTintColor() //Set the real color of the bar
-        searchBar.barTintColor = theme.getBarTintColor()
+        
+        //SEARCH BAR:
+        
+        searchBar.barTintColor = theme.getSearchBarColor()
         searchBar.searchTextField.backgroundColor = theme.getTintColor()
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
         textFieldInsideSearchBar?.textColor = theme.getTextColor()
-        print("THEME TXT: \(theme.getTextColor())")
+        
+        //Others:
+        
         navBar.tintColor = theme.getTintColor() //Set text of the bar
         self.view.backgroundColor = theme.getBarTintColor() //Set the background text
         let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()] //Set the navigation text color
