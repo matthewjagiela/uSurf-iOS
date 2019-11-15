@@ -1,4 +1,5 @@
 6.2:
+- Updates the search bar: Search bars now conform to the theme selected in the app instead of just being black and white!
 - Updates to the way that uSurf fetches information about the app. This will result in less network calls and more information.
 
 6.1:
