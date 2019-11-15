@@ -126,6 +126,8 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         }
         savedData.setLastViewedPage(lastPage: webURL)
     }
+    //MARK: - Theming 
+    
     func theming() { //Oh shit here we go again...
         //Left theming:
         leftNavBar.barTintColor = theme.getBarTintColor()
