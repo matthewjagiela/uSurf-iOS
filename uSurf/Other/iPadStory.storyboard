@@ -205,7 +205,7 @@
                                             <barButtonItem systemItem="fastForward" id="RkK-ik-jLb"/>
                                             <barButtonItem systemItem="refresh" id="vFV-6i-tX4"/>
                                         </leftBarButtonItems>
-                                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="9pT-74-34U">
+                                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="9pT-74-34U">
                                             <rect key="frame" x="198.5" y="8" width="115" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -252,7 +252,7 @@
                                 </items>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
-                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-v0-hbb">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-v0-hbb">
                                 <rect key="frame" x="512" y="0.0" width="512" height="50"/>
                                 <gestureRecognizers/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -264,7 +264,7 @@
                                             <barButtonItem systemItem="fastForward" id="Mal-vH-Tu1"/>
                                             <barButtonItem systemItem="refresh" id="3rM-I3-iRK"/>
                                         </leftBarButtonItems>
-                                        <textField key="titleView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="h9G-ni-GkE">
+                                        <textField key="titleView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="h9G-ni-GkE">
                                             <rect key="frame" x="228.5" y="8" width="55" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -277,7 +277,6 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Item" image="Fullscreen" id="fu5-pS-X9V">
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <segue destination="gP0-99-xlL" kind="presentation" modalTransitionStyle="crossDissolve" id="UbH-U9-jod"/>
                                                 </connections>
@@ -406,7 +405,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7g-8S-KX8">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7g-8S-KX8">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                                 <gestureRecognizers/>
                                 <items>
@@ -439,8 +438,8 @@
                                                 </connections>
                                             </barButtonItem>
                                         </leftBarButtonItems>
-                                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Website / Search" textAlignment="center" minimumFontSize="17" id="h5j-M3-UwN">
-                                            <rect key="frame" x="444" y="8" width="137" height="34"/>
+                                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Website / Search" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="h5j-M3-UwN">
+                                            <rect key="frame" x="443.5" y="8" width="137.5" height="34"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -774,10 +773,10 @@
         <image name="starry_sky_galaxy_stars_125852_2780x2780.jpg" width="2780" height="2780"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="p58-Ag-vnL"/>
-        <segue reference="CGq-IA-WbL"/>
-        <segue reference="rZA-w6-dlx"/>
-        <segue reference="RPt-8m-hlQ"/>
-        <segue reference="r5T-TO-IgC"/>
+        <segue reference="s4o-7O-g5d"/>
+        <segue reference="FQb-nw-kzs"/>
+        <segue reference="ujG-CL-1So"/>
+        <segue reference="UbH-U9-jod"/>
+        <segue reference="pmM-Db-EaB"/>
     </inferredMetricsTieBreakers>
 </document>
