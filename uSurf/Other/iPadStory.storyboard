@@ -252,7 +252,7 @@
                                 </items>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
-                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-v0-hbb">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-v0-hbb">
                                 <rect key="frame" x="512" y="0.0" width="512" height="50"/>
                                 <gestureRecognizers/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -405,7 +405,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7g-8S-KX8">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7g-8S-KX8">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
                                 <gestureRecognizers/>
                                 <items>
@@ -773,9 +773,9 @@
         <image name="starry_sky_galaxy_stars_125852_2780x2780.jpg" width="2780" height="2780"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="p58-Ag-vnL"/>
-        <segue reference="CGq-IA-WbL"/>
-        <segue reference="rZA-w6-dlx"/>
+        <segue reference="s4o-7O-g5d"/>
+        <segue reference="FQb-nw-kzs"/>
+        <segue reference="ujG-CL-1So"/>
         <segue reference="UbH-U9-jod"/>
         <segue reference="pmM-Db-EaB"/>
     </inferredMetricsTieBreakers>
