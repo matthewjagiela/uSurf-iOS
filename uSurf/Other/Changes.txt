@@ -1,3 +1,5 @@
+6.3:
+- Fixed a bug on the iPhone where hitting privacy policy would open the sharesheet to share uSurf.
 6.2:
 - Updated the URL Bar to have a border around the text area when in light mode. 
 - Updates the search bar: Search bars now conform to the theme selected in the app instead of just being black and white!
