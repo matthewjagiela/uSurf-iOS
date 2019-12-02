@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -105,7 +105,6 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <state key="normal" title="Privacy Policy"/>
                                             <connections>
-                                                <action selector="ShareApp:" destination="Ruc-mX-xhf" eventType="touchUpInside" id="nqi-fx-E8l"/>
                                                 <action selector="ViewPrivacyPolicy:" destination="Ruc-mX-xhf" eventType="touchUpInside" id="8dR-wy-vrn"/>
                                             </connections>
                                         </button>
@@ -558,7 +557,7 @@
         <image name="starry_sky_galaxy_stars_125852_2780x2780.jpg" width="2780" height="2780"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hm3-au-FxU"/>
+        <segue reference="1V5-IR-oIx"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
