@@ -8,8 +8,9 @@
 
 import UIKit
 import GoogleMobileAds
-
+import SpriteKit
 class SettingsViewController: UIViewController {
+    @IBOutlet weak var particleBackground: SKView!
     @IBOutlet var runningVersion: UILabel!
     @IBOutlet var newestVersion: UILabel!
     @IBOutlet var newsLabel: UILabel!
@@ -34,6 +35,14 @@ class SettingsViewController: UIViewController {
         infoBox.contentOffset = .zero
         //Do some theme stuff
         theming()
+        letItSnow()
+    }
+    func letItSnow() {
+        let snowScene = SnowScene(size: self.view.bounds.size)
+        particleBackground.ignoresSiblingOrder = true
+        snowScene.scaleMode = .resizeFill
+        particleBackground.backgroundColor = SKColor.clear
+        particleBackground.presentScene(snowScene)
     }
     override func viewDidAppear(_ animated: Bool) {
         self.removeFromParent()
