@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A880C232F2AF100D63F99 /* AppUtility.swift */; };
 		2EA04356231CC48400812246 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E482498231CAF5200F4C969 /* .swiftlint.yml */; };
+		2ECC641123987E2200FD504A /* Snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC640E23987E2100FD504A /* Snow.sks */; };
+		2ECC641223987E2200FD504A /* SnowScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC641023987E2200FD504A /* SnowScene.m */; };
+		2ECC641423987EBE00FD504A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC641323987EBD00FD504A /* spark.png */; };
 		340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
 		34265EFA2176B0B400C775F4 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */; };
 		342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342CBE1D218231D3006D2D04 /* HistoryViewController.swift */; };
@@ -62,6 +65,11 @@
 		2E1A880C232F2AF100D63F99 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		2E482498231CAF5200F4C969 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2E683B032329EDA6008BA3E7 /* uSurf.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
+		2EA46F012397681800A90DED /* uSurf-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uSurf-Bridging-Header.h"; sourceTree = "<group>"; };
+		2ECC640E23987E2100FD504A /* Snow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snow.sks; sourceTree = "<group>"; };
+		2ECC640F23987E2100FD504A /* SnowScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowScene.h; sourceTree = "<group>"; };
+		2ECC641023987E2200FD504A /* SnowScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowScene.m; sourceTree = "<group>"; };
+		2ECC641323987EBD00FD504A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		340906D620D9C01D009F53F1 /* WebHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebHandler.swift; sourceTree = "<group>"; };
 		34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewController.swift; sourceTree = "<group>"; };
 		342CBE1D218231D3006D2D04 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +166,7 @@
 		343F015720D41E7900B9E8DD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2ECC641323987EBD00FD504A /* spark.png */,
 				3481ECD3216D192A0006006C /* starry_sky_galaxy_stars_125852_2780x2780.jpg */,
 				3492392C2108043E003AEABA /* In App Icons */,
 				343F016320D4203200B9E8DD /* App Icons */,
@@ -191,10 +200,14 @@
 		343F015A20D41EC900B9E8DD /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				2ECC640E23987E2100FD504A /* Snow.sks */,
+				2ECC640F23987E2100FD504A /* SnowScene.h */,
+				2ECC641023987E2200FD504A /* SnowScene.m */,
 				343F015F20D41FE100B9E8DD /* iPhoneStory.storyboard */,
 				343F016120D41FED00B9E8DD /* iPadStory.storyboard */,
 				34F95DFF20C73F1D00411B9D /* AppDelegate.swift */,
 				3443CD7F21FFCDAB001123E7 /* Changes.txt */,
+				2EA46F012397681800A90DED /* uSurf-Bridging-Header.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -382,7 +395,7 @@
 				TargetAttributes = {
 					34F95DFB20C73F1D00411B9D = {
 						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1100;
+						LastSwiftMigration = 1120;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -418,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34F95E0A20C73F1F00411B9D /* LaunchScreen.storyboard in Resources */,
+				2ECC641423987EBE00FD504A /* spark.png in Resources */,
 				3460A5F4210BC5F20029B03C /* icons8-merge-30.png in Resources */,
 				3460A5D8210BBCEE0029B03C /* icons8-folder-30.png in Resources */,
 				3460A5E9210BC1ED0029B03C /* icons8-clock-30.png in Resources */,
@@ -450,6 +464,7 @@
 				343F016A20D4204600B9E8DD /* icon_iPad2x.png in Resources */,
 				3460A5EF210BC2E10029B03C /* icons8-split-30.png in Resources */,
 				343F016E20D4204600B9E8DD /* iPhone3x.png in Resources */,
+				2ECC641123987E2200FD504A /* Snow.sks in Resources */,
 				344D2FFA210A4EF200AB5F36 /* homeicon_3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +536,7 @@
 				344C3F0920D7501600A13939 /* iCloudHandler.swift in Sources */,
 				343F015E20D41F0700B9E8DD /* iPadHomeViewController.swift in Sources */,
 				342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */,
+				2ECC641223987E2200FD504A /* SnowScene.m in Sources */,
 				344C3F0B20D75D6000A13939 /* SavedDataHandler.swift in Sources */,
 				343F015C20D41EF900B9E8DD /* iPhoneHomeViewController.swift in Sources */,
 				342CBE2021824BD3006D2D04 /* TabViewController.swift in Sources */,
@@ -666,6 +682,7 @@
 			baseConfigurationReference = 98A4EBF1E6B2A249B0E75204 /* Pods-uSurf.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = uSurf/uSurf.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6.2;
@@ -679,6 +696,8 @@
 				MARKETING_VERSION = 6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uapps.uSurf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "uSurf/Other/uSurf-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -689,6 +708,7 @@
 			baseConfigurationReference = 36E2373C103CFACA6D2CCB4A /* Pods-uSurf.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = uSurf/uSurf.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6.2;
@@ -702,6 +722,7 @@
 				MARKETING_VERSION = 6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uapps.uSurf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "uSurf/Other/uSurf-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
