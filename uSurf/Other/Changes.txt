@@ -1,5 +1,6 @@
 6.3:
 - Added snow falling to the info screen! Happy Holidays!
+- Making the uSurf icon a little more festive... 
 - Fixed a bug on the iPhone where hitting privacy policy would open the sharesheet to share uSurf.
 
 6.2:
