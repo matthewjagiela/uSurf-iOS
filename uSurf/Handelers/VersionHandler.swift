@@ -29,7 +29,7 @@ class VersionHandler: NSObject {
     }
     
     func getAppVersion() -> String {
-        return "Currently Running: 6.2"
+        return "Currently Running: 6.3"
     }
     func getUpdateInformation() -> String {
         if let path = Bundle.main.path(forResource: "Changes", ofType: "txt") {
