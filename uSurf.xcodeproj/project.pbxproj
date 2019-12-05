@@ -12,12 +12,12 @@
 		2ECC641123987E2200FD504A /* Snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC640E23987E2100FD504A /* Snow.sks */; };
 		2ECC641223987E2200FD504A /* SnowScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC641023987E2200FD504A /* SnowScene.m */; };
 		2ECC641423987EBE00FD504A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC641323987EBD00FD504A /* spark.png */; };
-		2ECC641C239888A700FD504A /* hicon_iPad2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC6416239888A600FD504A /* hicon_iPad2x.png */; };
-		2ECC641D239888A700FD504A /* hicon_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC6417239888A600FD504A /* hicon_iPad.png */; };
-		2ECC641E239888A700FD504A /* hiPhone3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC6418239888A600FD504A /* hiPhone3x.png */; };
-		2ECC641F239888A700FD504A /* hiPhone2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC6419239888A700FD504A /* hiPhone2x.png */; };
-		2ECC6420239888A700FD504A /* hicon_iPadPro.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC641A239888A700FD504A /* hicon_iPadPro.png */; };
-		2ECC6421239888A700FD504A /* hmain_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC641B239888A700FD504A /* hmain_icon.png */; };
+		2ECC64282398897000FD504A /* hiPhone3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64222398896F00FD504A /* hiPhone3x.png */; };
+		2ECC64292398897000FD504A /* hicon_iPad2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64232398897000FD504A /* hicon_iPad2x.png */; };
+		2ECC642A2398897000FD504A /* hiPhone2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64242398897000FD504A /* hiPhone2x.png */; };
+		2ECC642B2398897000FD504A /* hmain_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64252398897000FD504A /* hmain_icon.png */; };
+		2ECC642C2398897000FD504A /* hicon_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64262398897000FD504A /* hicon_iPad.png */; };
+		2ECC642D2398897000FD504A /* hicon_iPadPro.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64272398897000FD504A /* hicon_iPadPro.png */; };
 		340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
 		34265EFA2176B0B400C775F4 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */; };
 		342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342CBE1D218231D3006D2D04 /* HistoryViewController.swift */; };
@@ -76,12 +76,12 @@
 		2ECC640F23987E2100FD504A /* SnowScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowScene.h; sourceTree = "<group>"; };
 		2ECC641023987E2200FD504A /* SnowScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowScene.m; sourceTree = "<group>"; };
 		2ECC641323987EBD00FD504A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
-		2ECC6416239888A600FD504A /* hicon_iPad2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hicon_iPad2x.png; sourceTree = "<group>"; };
-		2ECC6417239888A600FD504A /* hicon_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hicon_iPad.png; sourceTree = "<group>"; };
-		2ECC6418239888A600FD504A /* hiPhone3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiPhone3x.png; sourceTree = "<group>"; };
-		2ECC6419239888A700FD504A /* hiPhone2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiPhone2x.png; sourceTree = "<group>"; };
-		2ECC641A239888A700FD504A /* hicon_iPadPro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hicon_iPadPro.png; sourceTree = "<group>"; };
-		2ECC641B239888A700FD504A /* hmain_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hmain_icon.png; sourceTree = "<group>"; };
+		2ECC64222398896F00FD504A /* hiPhone3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiPhone3x.png; sourceTree = "<group>"; };
+		2ECC64232398897000FD504A /* hicon_iPad2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hicon_iPad2x.png; sourceTree = "<group>"; };
+		2ECC64242398897000FD504A /* hiPhone2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiPhone2x.png; sourceTree = "<group>"; };
+		2ECC64252398897000FD504A /* hmain_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hmain_icon.png; sourceTree = "<group>"; };
+		2ECC64262398897000FD504A /* hicon_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hicon_iPad.png; sourceTree = "<group>"; };
+		2ECC64272398897000FD504A /* hicon_iPadPro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hicon_iPadPro.png; sourceTree = "<group>"; };
 		340906D620D9C01D009F53F1 /* WebHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebHandler.swift; sourceTree = "<group>"; };
 		34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewController.swift; sourceTree = "<group>"; };
 		342CBE1D218231D3006D2D04 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -150,12 +150,12 @@
 		2ECC64152398889900FD504A /* Holiday Icons */ = {
 			isa = PBXGroup;
 			children = (
-				2ECC6417239888A600FD504A /* hicon_iPad.png */,
-				2ECC6416239888A600FD504A /* hicon_iPad2x.png */,
-				2ECC641A239888A700FD504A /* hicon_iPadPro.png */,
-				2ECC6419239888A700FD504A /* hiPhone2x.png */,
-				2ECC6418239888A600FD504A /* hiPhone3x.png */,
-				2ECC641B239888A700FD504A /* hmain_icon.png */,
+				2ECC64262398897000FD504A /* hicon_iPad.png */,
+				2ECC64232398897000FD504A /* hicon_iPad2x.png */,
+				2ECC64272398897000FD504A /* hicon_iPadPro.png */,
+				2ECC64242398897000FD504A /* hiPhone2x.png */,
+				2ECC64222398896F00FD504A /* hiPhone3x.png */,
+				2ECC64252398897000FD504A /* hmain_icon.png */,
 			);
 			path = "Holiday Icons";
 			sourceTree = "<group>";
@@ -462,14 +462,13 @@
 				3460A5D8210BBCEE0029B03C /* icons8-folder-30.png in Resources */,
 				3460A5E9210BC1ED0029B03C /* icons8-clock-30.png in Resources */,
 				3460A5E2210BBE950029B03C /* icons8-bookmark-60.png in Resources */,
-				2ECC641C239888A700FD504A /* hicon_iPad2x.png in Resources */,
-				2ECC641D239888A700FD504A /* hicon_iPad.png in Resources */,
 				344D2FFB210A4EF200AB5F36 /* homeicon_2x.png in Resources */,
 				343F016C20D4204600B9E8DD /* iPhone2x.png in Resources */,
 				3460A5EA210BC1ED0029B03C /* icons8-clock-90.png in Resources */,
+				2ECC642C2398897000FD504A /* hicon_iPad.png in Resources */,
 				343F016020D41FE100B9E8DD /* iPhoneStory.storyboard in Resources */,
 				3460A5D7210BBCEE0029B03C /* icons8-folder-90.png in Resources */,
-				2ECC641F239888A700FD504A /* hiPhone2x.png in Resources */,
+				2ECC64282398897000FD504A /* hiPhone3x.png in Resources */,
 				3460A5F0210BC2E10029B03C /* icons8-split-60.png in Resources */,
 				3460A5EE210BC2E10029B03C /* icons8-split-90.png in Resources */,
 				3460A5DE210BBD7B0029B03C /* icons8-settings-90.png in Resources */,
@@ -479,25 +478,26 @@
 				3460A5DC210BBD7B0029B03C /* icons8-settings-30.png in Resources */,
 				343F016220D41FED00B9E8DD /* iPadStory.storyboard in Resources */,
 				3481ECD4216D192C0006006C /* starry_sky_galaxy_stars_125852_2780x2780.jpg in Resources */,
+				2ECC642A2398897000FD504A /* hiPhone2x.png in Resources */,
 				3460A5F5210BC5F20029B03C /* icons8-merge-60.png in Resources */,
 				3460A5E4210BBE950029B03C /* icons8-bookmark-30.png in Resources */,
 				3443CD8021FFCDAB001123E7 /* Changes.txt in Resources */,
 				344D2FFC210A4EF200AB5F36 /* homeicon.png in Resources */,
+				2ECC642D2398897000FD504A /* hicon_iPadPro.png in Resources */,
 				3460A5E3210BBE950029B03C /* icons8-bookmark-90.png in Resources */,
 				3460A5F6210BC5F20029B03C /* icons8-merge-90.png in Resources */,
 				343F016D20D4204600B9E8DD /* main_icon.png in Resources */,
 				2EA04356231CC48400812246 /* .swiftlint.yml in Resources */,
+				2ECC642B2398897000FD504A /* hmain_icon.png in Resources */,
 				3460A5D6210BBCEE0029B03C /* icons8-folder-60.png in Resources */,
 				343F016F20D4204600B9E8DD /* icon_iPadPro.png in Resources */,
 				34F95E0720C73F1F00411B9D /* Assets.xcassets in Resources */,
-				2ECC6421239888A700FD504A /* hmain_icon.png in Resources */,
-				2ECC6420239888A700FD504A /* hicon_iPadPro.png in Resources */,
 				343F016A20D4204600B9E8DD /* icon_iPad2x.png in Resources */,
 				3460A5EF210BC2E10029B03C /* icons8-split-30.png in Resources */,
 				343F016E20D4204600B9E8DD /* iPhone3x.png in Resources */,
-				2ECC641E239888A700FD504A /* hiPhone3x.png in Resources */,
 				2ECC641123987E2200FD504A /* Snow.sks in Resources */,
 				344D2FFA210A4EF200AB5F36 /* homeicon_3x.png in Resources */,
+				2ECC64292398897000FD504A /* hicon_iPad2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
