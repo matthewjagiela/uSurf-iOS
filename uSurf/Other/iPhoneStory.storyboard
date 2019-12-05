@@ -48,7 +48,6 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xzm-yv-cAT" customClass="SKView">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2P7-8Z-KWm" customClass="GADBannerView">
                                             <rect key="frame" x="0.0" y="553" width="375" height="50"/>
