@@ -1,3 +1,7 @@
+6.3.1:
+- Removed snow.
+- Removed festive icon
+
 6.3:
 - Added snow falling to the info screen! Happy Holidays!
 - Making the uSurf icon a little more festive... 
