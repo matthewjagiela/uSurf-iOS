@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A880C232F2AF100D63F99 /* AppUtility.swift */; };
+		2E23167F2421B23F0003BB54 /* uSurfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23167E2421B23F0003BB54 /* uSurfTests.swift */; };
+		2E23168D2421B4390003BB54 /* VersionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */; };
+		2E23168F2421B4F90003BB54 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
+		2E2316902421B5270003BB54 /* VersionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443CD7D21FFCCDF001123E7 /* VersionHandler.swift */; };
 		2EA04356231CC48400812246 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E482498231CAF5200F4C969 /* .swiftlint.yml */; };
 		2ECC641123987E2200FD504A /* Snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC640E23987E2100FD504A /* Snow.sks */; };
 		2ECC641223987E2200FD504A /* SnowScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC641023987E2200FD504A /* SnowScene.m */; };
@@ -67,8 +71,22 @@
 		4AF67971A24F7076C99E3DA9 /* Pods_uSurf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C233CCD02416BD2D40AD2F9 /* Pods_uSurf.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2E2316812421B23F0003BB54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34F95DF420C73F1D00411B9D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34F95DFB20C73F1D00411B9D;
+			remoteInfo = uSurf;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2E1A880C232F2AF100D63F99 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		2E23167C2421B23F0003BB54 /* uSurfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uSurfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E23167E2421B23F0003BB54 /* uSurfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uSurfTests.swift; sourceTree = "<group>"; };
+		2E2316802421B23F0003BB54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionHandlerTests.swift; sourceTree = "<group>"; };
 		2E482498231CAF5200F4C969 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2E683B032329EDA6008BA3E7 /* uSurf.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
 		2EA46F012397681800A90DED /* uSurf-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uSurf-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -136,6 +154,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2E2316792421B23F0003BB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		34F95DF920C73F1D00411B9D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,6 +172,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E23167D2421B23F0003BB54 /* uSurfTests */ = {
+			isa = PBXGroup;
+			children = (
+				2E23167E2421B23F0003BB54 /* uSurfTests.swift */,
+				2E2316802421B23F0003BB54 /* Info.plist */,
+				2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */,
+			);
+			path = uSurfTests;
+			sourceTree = "<group>";
+		};
 		2ECC64152398889900FD504A /* Holiday Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +375,7 @@
 			children = (
 				2E482498231CAF5200F4C969 /* .swiftlint.yml */,
 				34F95DFE20C73F1D00411B9D /* uSurf */,
+				2E23167D2421B23F0003BB54 /* uSurfTests */,
 				34F95DFD20C73F1D00411B9D /* Products */,
 				D3A8C254DD33CAFE5B6AFE30 /* Pods */,
 				93123087ED66B4A60DC91076 /* Frameworks */,
@@ -350,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				34F95DFC20C73F1D00411B9D /* uSurf.app */,
+				2E23167C2421B23F0003BB54 /* uSurfTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -389,6 +426,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2E23167B2421B23F0003BB54 /* uSurfTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E2316852421B23F0003BB54 /* Build configuration list for PBXNativeTarget "uSurfTests" */;
+			buildPhases = (
+				2E2316782421B23F0003BB54 /* Sources */,
+				2E2316792421B23F0003BB54 /* Frameworks */,
+				2E23167A2421B23F0003BB54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2E2316822421B23F0003BB54 /* PBXTargetDependency */,
+			);
+			name = uSurfTests;
+			productName = uSurfTests;
+			productReference = 2E23167C2421B23F0003BB54 /* uSurfTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		34F95DFB20C73F1D00411B9D /* uSurf */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 34F95E0E20C73F1F00411B9D /* Build configuration list for PBXNativeTarget "uSurf" */;
@@ -415,10 +470,14 @@
 		34F95DF420C73F1D00411B9D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Matthew Jagiela";
 				TargetAttributes = {
+					2E23167B2421B23F0003BB54 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 34F95DFB20C73F1D00411B9D;
+					};
 					34F95DFB20C73F1D00411B9D = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1120;
@@ -447,11 +506,19 @@
 			projectRoot = "";
 			targets = (
 				34F95DFB20C73F1D00411B9D /* uSurf */,
+				2E23167B2421B23F0003BB54 /* uSurfTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2E23167A2421B23F0003BB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		34F95DFA20C73F1D00411B9D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -559,6 +626,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2E2316782421B23F0003BB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E23167F2421B23F0003BB54 /* uSurfTests.swift in Sources */,
+				2E23168D2421B4390003BB54 /* VersionHandlerTests.swift in Sources */,
+				2E23168F2421B4F90003BB54 /* WebHandler.swift in Sources */,
+				2E2316902421B5270003BB54 /* VersionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		34F95DF820C73F1D00411B9D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -583,6 +661,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2E2316822421B23F0003BB54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34F95DFB20C73F1D00411B9D /* uSurf */;
+			targetProxy = 2E2316812421B23F0003BB54 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		34F95E0820C73F1F00411B9D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -595,6 +681,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2E2316832421B23F0003BB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = uSurfTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uapps.uSurfTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/uSurf.app/uSurf";
+			};
+			name = Debug;
+		};
+		2E2316842421B23F0003BB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = uSurfTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uapps.uSurfTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/uSurf.app/uSurf";
+			};
+			name = Release;
+		};
 		34F95E0C20C73F1F00411B9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -763,6 +891,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2E2316852421B23F0003BB54 /* Build configuration list for PBXNativeTarget "uSurfTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E2316832421B23F0003BB54 /* Debug */,
+				2E2316842421B23F0003BB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		34F95DF720C73F1D00411B9D /* Build configuration list for PBXProject "uSurf" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
