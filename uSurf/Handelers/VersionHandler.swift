@@ -29,7 +29,7 @@ class VersionHandler: NSObject {
     }
     
     func getAppVersion() -> String {
-        return "Currently Running: 6.3"
+        return "Currently Running: 6.3.1"
     }
     func getUpdateInformation() -> String {
         if let path = Bundle.main.path(forResource: "Changes", ofType: "txt") {
@@ -50,6 +50,13 @@ class VersionHandler: NSObject {
         
         return ""
     }
+    
+    func labelsFilled(completion: @escaping(InternetInformation) -> Void) {
+        while internetInfo == nil {
+            
+        }
+        completion(internetInfo ?? InternetInformation())
+    }
 
 }
 open class InternetInformation: NSObject, Decodable {
@@ -58,6 +65,9 @@ open class InternetInformation: NSObject, Decodable {
     enum CodingKeys: String, CodingKey {
         case uTimeVersion = "uSurf_Version"
         case uAppsNews =  "uApps_News"
+    }
+    override init() {
+        super.init()
     }
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

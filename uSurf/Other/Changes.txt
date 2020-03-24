@@ -1,3 +1,8 @@
+6.3.1:
+- Removed snow.
+- Removed festive icon
+- Updated the background fetch for internet labels, this will result in less null labels and one less network call!
+
 6.3:
 - Added snow falling to the info screen! Happy Holidays!
 - Making the uSurf icon a little more festive... 
