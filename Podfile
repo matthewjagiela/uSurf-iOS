@@ -6,7 +6,7 @@ target 'uSurf' do
   use_frameworks!
 
   # Pods for uSurf
-    pod 'Google-Mobile-Ads-SDK'
+    pod 'Google-Mobile-Ads-SDK', '~> 7.57.0'
     pod 'SwiftLint'
 
 end
