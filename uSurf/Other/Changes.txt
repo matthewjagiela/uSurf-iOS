@@ -1,5 +1,7 @@
 6.3.2:
 - Support for iOS 14
+- Changed the image behind the blur in settings
+- Changed the blur to be dark for a better effect in settings
 - Made changes to have the info labels populate better and have no more "blank" info labels.
 - Made changes to how the currently running label works making it less prone to showing... the wrong version.
 - Small behind the scenes changes.
