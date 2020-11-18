@@ -1,3 +1,7 @@
+6.3.2:
+- Support for iOS 14
+- Made changes to have the info labels populate better and have no more "blank" info labels. 
+
 6.3.1:
 - Removed snow.
 - Removed festive icon
