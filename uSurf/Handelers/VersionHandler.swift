@@ -52,7 +52,7 @@ class VersionHandler: NSObject {
     }
     
     func labelsFilled(completion: @escaping(InternetInformation) -> Void) {
-        while internetInfo == nil {
+        while internetInfo == nil && internetInfo?.uSurfVersion?.isEmpty ?? true {
             
         }
         completion(internetInfo ?? InternetInformation())
