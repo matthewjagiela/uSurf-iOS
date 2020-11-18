@@ -80,7 +80,9 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         //SEARCH BAR:
         
         searchBar.barTintColor = theme.getSearchBarColor()
-        searchBar.searchTextField.backgroundColor = theme.getTintColor()
+        if #available(iOS 13.0, *) {
+            searchBar.searchTextField.backgroundColor = theme.getTintColor()
+        }
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
         textFieldInsideSearchBar?.textColor = theme.getTextColor()
