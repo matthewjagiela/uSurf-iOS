@@ -37,6 +37,10 @@ class VersionHandler: NSObject {
         return ""
     }
     
+    /**
+     Makes a service call to the uApps JSON and then decodes the data needed for internet labels.
+     @param: completion: this is going to return the InternetInformation when the service call is complete.
+     */
     func labelsFilled(completion: @escaping(InternetInformation) -> Void) {
         if let jsonURL = URL(string: "https://raw.githubusercontent.com/matthewjagiela/uApps-JSON/master/uAppsInfo.json") {
             URLSession.shared.dataTask(with: jsonURL) { data, _, error in
