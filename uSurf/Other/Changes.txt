@@ -2,6 +2,7 @@
 - Support for iOS 14
 - Made changes to have the info labels populate better and have no more "blank" info labels.
 - Made changes to how the currently running label works making it less prone to showing... the wrong version.
+- Small behind the scenes changes.
 
 6.3.1:
 - Removed snow.
