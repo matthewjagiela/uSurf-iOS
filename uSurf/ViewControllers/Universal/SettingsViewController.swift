@@ -35,8 +35,8 @@ class SettingsViewController: UIViewController {
         infoBox.contentOffset = .zero
         //Do some theme stuff
         theming()
-        particleBackground.removeFromSuperview()
-//        letItSnow()
+//        particleBackground.removeFromSuperview()
+        letItSnow()
     }
     func letItSnow() {
         let snowScene = SnowScene(size: self.view.bounds.size)
@@ -62,11 +62,13 @@ class SettingsViewController: UIViewController {
     // MARK: - Internet Labels
     func internetLabels() {  //This is going to go to my github and parse the data on the versions
         appInfo.labelsFilled { (info) in
-            if let news = info.uAppsNews {
-                self.newsLabel.text = news
-            }
-            if let version = info.uSurfVersion {
-                self.newestVersion.text = "Newest Version: \(version)"
+            DispatchQueue.main.async {
+                if let news = info.uAppsNews {
+                    self.newsLabel.text = news
+                }
+                if let version = info.uSurfVersion {
+                    self.newestVersion.text = "Newest Version: \(version)"
+                }
             }
         }
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A880C232F2AF100D63F99 /* AppUtility.swift */; };
+		2E1EAEFB2564C0040058431D /* galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2E1EAEFA2564C0040058431D /* galaxy.jpg */; };
 		2E23167F2421B23F0003BB54 /* uSurfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23167E2421B23F0003BB54 /* uSurfTests.swift */; };
 		2E23168D2421B4390003BB54 /* VersionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */; };
 		2E23168F2421B4F90003BB54 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
@@ -83,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		2E1A880C232F2AF100D63F99 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		2E1EAEFA2564C0040058431D /* galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = galaxy.jpg; sourceTree = "<group>"; };
 		2E23167C2421B23F0003BB54 /* uSurfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uSurfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E23167E2421B23F0003BB54 /* uSurfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uSurfTests.swift; sourceTree = "<group>"; };
 		2E2316802421B23F0003BB54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				2ECC64152398889900FD504A /* Holiday Icons */,
 				2ECC641323987EBD00FD504A /* spark.png */,
 				3481ECD3216D192A0006006C /* starry_sky_galaxy_stars_125852_2780x2780.jpg */,
+				2E1EAEFA2564C0040058431D /* galaxy.jpg */,
 				3492392C2108043E003AEABA /* In App Icons */,
 				343F016320D4203200B9E8DD /* App Icons */,
 			);
@@ -563,6 +566,7 @@
 				3460A5EF210BC2E10029B03C /* icons8-split-30.png in Resources */,
 				343F016E20D4204600B9E8DD /* iPhone3x.png in Resources */,
 				2ECC641123987E2200FD504A /* Snow.sks in Resources */,
+				2E1EAEFB2564C0040058431D /* galaxy.jpg in Resources */,
 				344D2FFA210A4EF200AB5F36 /* homeicon_3x.png in Resources */,
 				2ECC64292398897000FD504A /* hicon_iPad2x.png in Resources */,
 			);
@@ -845,7 +849,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = uSurf/uSurf.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6.3.1;
+				CURRENT_PROJECT_VERSION = 6.4;
 				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = uSurf/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -853,7 +857,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.3.1;
+				MARKETING_VERSION = 6.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uapps.uSurf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "uSurf/Other/uSurf-Bridging-Header.h";
@@ -871,7 +875,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = uSurf/uSurf.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6.3.1;
+				CURRENT_PROJECT_VERSION = 6.4;
 				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = uSurf/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -879,7 +883,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.3.1;
+				MARKETING_VERSION = 6.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uapps.uSurf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "uSurf/Other/uSurf-Bridging-Header.h";

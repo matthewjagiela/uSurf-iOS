@@ -1,3 +1,12 @@
+6.4:
+- Support for iOS 14
+- Snow is back for the cold weather seasons!
+- Changed the image behind the blur in settings
+- Changed the blur to be dark for a better effect in settings
+- Made changes to have the info labels populate better and have no more "blank" info labels.
+- Made changes to how the currently running label works making it less prone to showing... the wrong version.
+- Small behind the scenes changes.
+
 6.3.1:
 - Removed snow.
 - Removed festive icon
