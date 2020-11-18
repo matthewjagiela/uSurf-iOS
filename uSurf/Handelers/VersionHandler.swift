@@ -12,20 +12,6 @@ class VersionHandler: NSObject {
     var internetInfo: InternetInformation?
     override init() {
         super.init()
-        if let jsonURL = URL(string: "https://raw.githubusercontent.com/matthewjagiela/uApps-JSON/master/uAppsInfo.json") {
-            URLSession.shared.dataTask(with: jsonURL) { data, _, error in
-                if let fetchedData = data {
-                    let decoder = JSONDecoder()
-                    do {
-                        self.internetInfo = try decoder.decode(InternetInformation.self, from: fetchedData)
-            
-                    } catch {
-                        print("An Error Has Occured \(error)")
-                    }
-                }
-            }.resume()
-        }
-        
     }
     
     func getAppVersion() -> String {
@@ -52,13 +38,29 @@ class VersionHandler: NSObject {
     }
     
     func labelsFilled(completion: @escaping(InternetInformation) -> Void) {
-        while internetInfo == nil && internetInfo?.uSurfVersion?.isEmpty ?? true {
-            
+        if let jsonURL = URL(string: "https://raw.githubusercontent.com/matthewjagiela/uApps-JSON/master/uAppsInfo.json") {
+            URLSession.shared.dataTask(with: jsonURL) { data, _, error in
+                if let fetchedData = data {
+                    let decoder = JSONDecoder()
+                    do {
+                        self.internetInfo = try decoder.decode(InternetInformation.self, from: fetchedData)
+                        if let internetLabelsFilled = self.internetInfo {
+                            completion(internetLabelsFilled)
+                        } else {
+                            completion(InternetInformation())
+                        }
+                        
+                    } catch {
+                        print("An Error Has Occured \(error)")
+                        completion(InternetInformation())
+                    }
+                }
+            }.resume()
         }
-        completion(internetInfo ?? InternetInformation())
     }
-
+    
 }
+
 open class InternetInformation: NSObject, Decodable {
     public var uSurfVersion: String?
     public var uAppsNews: String?
