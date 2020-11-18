@@ -1,5 +1,6 @@
-6.3.2:
+6.4:
 - Support for iOS 14
+- Snow is back for the cold weather seasons!
 - Changed the image behind the blur in settings
 - Changed the blur to be dark for a better effect in settings
 - Made changes to have the info labels populate better and have no more "blank" info labels.

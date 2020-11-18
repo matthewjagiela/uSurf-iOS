@@ -35,8 +35,8 @@ class SettingsViewController: UIViewController {
         infoBox.contentOffset = .zero
         //Do some theme stuff
         theming()
-        particleBackground.removeFromSuperview()
-//        letItSnow()
+//        particleBackground.removeFromSuperview()
+        letItSnow()
     }
     func letItSnow() {
         let snowScene = SnowScene(size: self.view.bounds.size)
