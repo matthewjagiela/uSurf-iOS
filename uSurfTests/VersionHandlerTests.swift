@@ -15,11 +15,13 @@ class VersionHandlerTests: XCTestCase {
     func test_newest_version() {
         handler.labelsFilled { (info) in
             XCTAssertNotNil(info.uSurfVersion)
+            XCTAssertNotEqual(info.uSurfVersion, "")
         }
     }
     func test_uapps_news() {
         handler.labelsFilled { (info) in
             XCTAssertNotNil(info.uAppsNews)
+            XCTAssertNotEqual(info.uAppsNews, "")
         }
     }
     func test_changes_populated() {
