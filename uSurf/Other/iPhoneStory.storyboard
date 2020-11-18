@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RAB-NY-IJG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RAB-NY-IJG">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +37,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starry_sky_galaxy_stars_125852_2780x2780.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cxp-xw-q3d">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="galaxy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cxp-xw-q3d">
                                 <rect key="frame" x="0.0" y="44" width="375" height="603"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nkp-zg-WOI">
@@ -87,7 +87,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rS-6h-Y7U">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rS-6h-Y7U">
                                             <rect key="frame" x="8" y="348" width="112" height="39"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <state key="normal" title="Share uSurf"/>
@@ -95,7 +95,7 @@
                                                 <action selector="ShareApp:" destination="Ruc-mX-xhf" eventType="touchUpInside" id="fsv-dg-F7l"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWr-F9-yGD">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWr-F9-yGD">
                                             <rect key="frame" x="235" y="348" width="132" height="39"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <state key="normal" title="Select Theme"/>
@@ -103,7 +103,7 @@
                                                 <action selector="SelectTheme:" destination="Ruc-mX-xhf" eventType="touchUpInside" id="sQS-Qj-ac1"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6P-9K-KdS">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6P-9K-KdS">
                                             <rect key="frame" x="111" y="381" width="152" height="39"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <state key="normal" title="Privacy Policy"/>
@@ -146,9 +146,10 @@
                                         <constraint firstAttribute="trailing" secondItem="MQf-Zd-39K" secondAttribute="trailing" constant="8" id="xAp-To-NMM"/>
                                     </constraints>
                                 </view>
-                                <blurEffect style="light"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="qx0-bW-H3E"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nkp-zg-WOI" firstAttribute="bottom" secondItem="qx0-bW-H3E" secondAttribute="bottom" id="6ZN-uC-ZUE"/>
@@ -163,7 +164,6 @@
                             <constraint firstItem="nkp-zg-WOI" firstAttribute="leading" secondItem="qx0-bW-H3E" secondAttribute="leading" id="hJR-Iu-cyU"/>
                             <constraint firstItem="4Zd-aa-Pdr" firstAttribute="leading" secondItem="qx0-bW-H3E" secondAttribute="leading" id="x7k-dr-ULT"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="qx0-bW-H3E"/>
                     </view>
                     <connections>
                         <outlet property="adBanner" destination="2P7-8Z-KWm" id="ruo-Wj-M5x"/>
@@ -222,7 +222,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nnb-76-Aeg">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="71"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="71"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
@@ -234,6 +234,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="8Rt-ff-6OB"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kOz-Ie-JmT" firstAttribute="trailing" secondItem="Igg-fA-86H" secondAttribute="trailing" id="6qA-ZC-gcK"/>
@@ -247,7 +248,6 @@
                             <constraint firstItem="Igg-fA-86H" firstAttribute="top" secondItem="kOz-Ie-JmT" secondAttribute="bottom" id="wen-n4-FcU"/>
                             <constraint firstItem="Hqy-PR-CUn" firstAttribute="top" secondItem="Igg-fA-86H" secondAttribute="bottom" id="yqM-6r-PXR"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8Rt-ff-6OB"/>
                     </view>
                     <connections>
                         <outlet property="navBar" destination="kOz-Ie-JmT" id="UJK-wK-wMf"/>
@@ -351,7 +351,8 @@
                                 </constraints>
                             </progressView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <viewLayoutGuide key="safeArea" id="dJy-mC-jYZ"/>
+                        <color key="backgroundColor" systemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="lWs-5s-JxC" firstAttribute="leading" secondItem="3Ar-6u-ufC" secondAttribute="leading" id="5Q5-4p-KRR"/>
                             <constraint firstAttribute="trailing" secondItem="lWs-5s-JxC" secondAttribute="trailing" id="6cn-K4-TjP"/>
@@ -367,7 +368,6 @@
                             <constraint firstItem="iJU-UO-7lx" firstAttribute="trailing" secondItem="dJy-mC-jYZ" secondAttribute="trailing" id="sqQ-XW-jrD"/>
                             <constraint firstItem="4Ha-k9-ayv" firstAttribute="leading" secondItem="3Ar-6u-ufC" secondAttribute="leading" id="tLm-z9-x05"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="dJy-mC-jYZ"/>
                     </view>
                     <connections>
                         <outlet property="addBookmarkButton" destination="4Ha-k9-ayv" id="ySe-2f-3f9"/>
@@ -432,14 +432,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F48-MZ-mdg">
-                                                    <rect key="frame" x="15" y="12" width="47" height="30"/>
+                                                    <rect key="frame" x="16" y="12" width="46.5" height="30"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DKX-7p-W79">
-                                                    <rect key="frame" x="15" y="42" width="53" height="18"/>
+                                                    <rect key="frame" x="16" y="42" width="53" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -451,6 +451,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="cuh-Hb-oE5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kOW-Lq-GKO" firstAttribute="bottom" secondItem="cuh-Hb-oE5" secondAttribute="bottom" id="BVS-DI-H8K"/>
@@ -464,7 +465,6 @@
                             <constraint firstItem="kOW-Lq-GKO" firstAttribute="top" secondItem="R1T-tp-Osv" secondAttribute="bottom" id="wOJ-gD-dkL"/>
                             <constraint firstItem="R1T-tp-Osv" firstAttribute="leading" secondItem="cuh-Hb-oE5" secondAttribute="leading" id="zXN-4S-n4M"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="cuh-Hb-oE5"/>
                     </view>
                     <connections>
                         <outlet property="navigationBar" destination="DKc-fv-6Iu" id="biI-3i-Ukx"/>
@@ -516,7 +516,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5tc-0t-Hs5">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="71"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="71"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
@@ -528,6 +528,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="GAu-c3-U3Y"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1jW-XA-U85" firstAttribute="leading" secondItem="GAu-c3-U3Y" secondAttribute="leading" id="12X-ZV-0Dd"/>
@@ -541,7 +542,6 @@
                             <constraint firstItem="Rcg-95-o7a" firstAttribute="trailing" secondItem="GAu-c3-U3Y" secondAttribute="trailing" id="t5N-hn-F2T"/>
                             <constraint firstItem="Rcg-95-o7a" firstAttribute="top" secondItem="w93-5B-KBZ" secondAttribute="bottom" id="vAO-fx-h2x"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="GAu-c3-U3Y"/>
                     </view>
                     <connections>
                         <outlet property="navigationBar" destination="w93-5B-KBZ" id="ifz-1b-h6O"/>
@@ -557,15 +557,18 @@
             <point key="canvasLocation" x="674" y="145"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1V5-IR-oIx"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <resources>
         <image name="Bookmarks" width="30" height="30"/>
         <image name="History Icon" width="30" height="30"/>
         <image name="Settings" width="30" height="30"/>
         <image name="Tabs" width="30" height="30"/>
-        <image name="starry_sky_galaxy_stars_125852_2780x2780.jpg" width="2780" height="2780"/>
+        <image name="galaxy.jpg" width="3840" height="2160"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="1V5-IR-oIx"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
