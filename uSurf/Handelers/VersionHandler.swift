@@ -15,7 +15,7 @@ class VersionHandler: NSObject {
     }
     
     func getAppVersion() -> String {
-        return "Currently Running: 6.3.1"
+        return "Currently Running Version: \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "5")"
     }
     func getUpdateInformation() -> String {
         if let path = Bundle.main.path(forResource: "Changes", ofType: "txt") {
