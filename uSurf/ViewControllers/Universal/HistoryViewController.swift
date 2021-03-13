@@ -35,17 +35,17 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     // MARK: - Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching { //Return the matched count
+        if isSearching { // Return the matched count
             return matchedHistory.count
         } else {
             return historyArray.count
         }
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //Depending on if filters are applied or not set the URL
-        if isSearching { //the selection is from the searched group...
-            let searchedIndex = matchedHistory[indexPath.row] //The index of where it is in the main array.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // Depending on if filters are applied or not set the URL
+        if isSearching { // the selection is from the searched group...
+            let searchedIndex = matchedHistory[indexPath.row] // The index of where it is in the main array.
             switch browserTag {
-            case 1: //Left
+            case 1: // Left
                 savedData.setLeftWebPage(URL: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                 self.dismiss(animated: true, completion: nil)
@@ -60,10 +60,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.dismiss(animated: true, completion: nil)
                 } else { self.performSegue(withIdentifier: "goHome", sender: self) }
             }
-            //savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
-        } else { //This is just throughout the main array
+            // savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
+        } else { // This is just throughout the main array
             switch browserTag {
-            case 1: //Left
+            case 1: // Left
                 savedData.setLeftWebPage(URL: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                 self.dismiss(animated: true, completion: nil)
@@ -80,12 +80,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
     }
-    //swiftlint:disable force_unwrapping
+    // swiftlint:disable force_unwrapping
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCells")
-        if isSearching { //Display only the search results
+        if isSearching { // Display only the search results
             cell?.textLabel?.text = (historyArray.object(at: matchedHistory[indexPath.row]) as? String ?? "uApps iOS")
-        } else { //Display all the results
+        } else { // Display all the results
             cell?.textLabel?.text = (historyArray.object(at: indexPath.row) as? String ?? "uApps iOS")
         }
         cell?.backgroundColor = theme.getBarTintColor()
@@ -93,12 +93,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell!
         
     }
-    //swiftlint:enable force_unwrapping
+    // swiftlint:enable force_unwrapping
 
     // MARK: - Searching
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("History: We are searching")
-        //Do the actual search...
+        // Do the actual search...
         if let searchedItem = searchBar.text, !(searchBar.text?.isEmpty ?? true) {
             let searchArray = historyArray as? [String] ?? ["https://uappsios.com"]
             matchedHistory = searchArray.indices.filter {
@@ -114,15 +114,15 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     private func theming() {
         
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self as? UISearchResultsUpdating //search results are handled in this class
-        searchController.hidesNavigationBarDuringPresentation = false //Make sure the nav bar stays
-        searchController.dimsBackgroundDuringPresentation = true //Not sure
+        searchController.searchResultsUpdater = self as? UISearchResultsUpdating // search results are handled in this class
+        searchController.hidesNavigationBarDuringPresentation = false // Make sure the nav bar stays
+        searchController.dimsBackgroundDuringPresentation = true // Not sure
         searchController.searchBar.delegate = self // we want to use delegate methods here
-        tableView.tableFooterView = UIView(frame: .zero) //Make sure that the entire thing is in frame
-        tableView.rowHeight = 71 //Row height for the text
-        navBar.barTintColor = theme.getBarTintColor() //Set the real color of the bar
+        tableView.tableFooterView = UIView(frame: .zero) // Make sure that the entire thing is in frame
+        tableView.rowHeight = 71 // Row height for the text
+        navBar.barTintColor = theme.getBarTintColor() // Set the real color of the bar
         
-        //SEARCH BAR:
+        // SEARCH BAR:
         
         searchBar.barTintColor = theme.getSearchBarColor()
         if #available(iOS 13.0, *) {
@@ -132,14 +132,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
         textFieldInsideSearchBar?.textColor = theme.getTextColor()
         
-        //Others:
+        // Others:
         
-        navBar.tintColor = theme.getTintColor() //Set text of the bar
-        self.view.backgroundColor = theme.getBarTintColor() //Set the background text
-        let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()] //Set the navigation text color
-        navBar.titleTextAttributes = textAttributes //Actually update the thing
-        tableView.backgroundColor = theme.getBarTintColor() //When there is no cells the view will be this color
-        searchBar.barStyle = theme.getSearchStyle() //Set the theme of the search bar
+        navBar.tintColor = theme.getTintColor() // Set text of the bar
+        self.view.backgroundColor = theme.getBarTintColor() // Set the background text
+        let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()] // Set the navigation text color
+        navBar.titleTextAttributes = textAttributes // Actually update the thing
+        tableView.backgroundColor = theme.getBarTintColor() // When there is no cells the view will be this color
+        searchBar.barStyle = theme.getSearchStyle() // Set the theme of the search bar
         
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

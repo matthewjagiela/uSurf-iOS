@@ -12,8 +12,8 @@ class ThemeHandler: NSObject {
     let savedData = SavedDataHandler()
     var theme = ""
     override init() {
-        super.init() //So we can use some initialization stuff
-        theme = savedData.getTheme() //Get the theme we will be using
+        super.init() // So we can use some initialization stuff
+        theme = savedData.getTheme() // Get the theme we will be using
         if #available(iOS 13, *) {
             if theme == "Dark" || theme == "Light" {
                 theme = "System"
@@ -27,7 +27,7 @@ class ThemeHandler: NSObject {
         }
         
     }
-    func getBarTintColor() -> UIColor { //Instead of doing this if statement for every single view controller....
+    func getBarTintColor() -> UIColor { // Instead of doing this if statement for every single view controller....
         if theme == "Blue" {
             return .blue
         } else if theme == "Light" {
@@ -38,14 +38,14 @@ class ThemeHandler: NSObject {
             return .purple
         } else if theme == "Green" {
             return .green
-        } else { //Black is the only option left and we need and else statement to make this method work for returns SOOO
+        } else { // Black is the only option left and we need and else statement to make this method work for returns SOOO
             return .black
         }
     }
-    func getTintColor() -> UIColor { //This is going to be the color of buttons on bars
-        if theme == "Light" { //If the theme is light display black buttons
+    func getTintColor() -> UIColor { // This is going to be the color of buttons on bars
+        if theme == "Light" { // If the theme is light display black buttons
             return .black
-        } else { //Everything else can have white buttons as it looks best
+        } else { // Everything else can have white buttons as it looks best
             return .white
         }
     }

@@ -36,13 +36,13 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
     @IBOutlet var leftLongPress: UILongPressGestureRecognizer!
     @IBOutlet var rightLongPress: UILongPressGestureRecognizer!
     
-    //Variables
-    //Objects
+    // Variables
+    // Objects
     let web = WebHandler()
     let savedData = SavedDataHandler()
     let iCloud = iCloudHandler()
     var theme = ThemeHandler()
-    //Other Variables:
+    // Other Variables:
     var rightWebView: WKWebView!
     var leftWebView: WKWebView!
     var browserTag = 1 // 1 = Left 2 = Right
@@ -51,10 +51,10 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        //TextField setup:
+        // TextField setup:
         leftAddressBar.delegate = self
         rightAddressBar.delegate = self
-        //webKit setup...
+        // webKit setup...
         handleWebKit()
         theming()
         widenTextField()
@@ -74,15 +74,15 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         loadLeftURL(savedData.getLeftWebPage())
     }
     func handleWebKit() {
-        let webConfiguration = WKWebViewConfiguration() //This can work for both of them...
+        let webConfiguration = WKWebViewConfiguration() // This can work for both of them...
         
-        //Lets work on making the left web view first...
+        // Lets work on making the left web view first...
         leftWebView = WKWebView(frame: .zero, configuration: webConfiguration)
         leftWebView.uiDelegate = self
         leftWebView.navigationDelegate = self
         leftWebView.translatesAutoresizingMaskIntoConstraints = false
         leftWebHolder.addSubview(leftWebView)
-        //Add a touch of auto layout...
+        // Add a touch of auto layout...
         leftWebView.centerXAnchor.constraint(equalTo: leftWebHolder.centerXAnchor).isActive = true
         leftWebView.centerYAnchor.constraint(equalTo: leftWebHolder.centerYAnchor).isActive = true
         leftWebView.widthAnchor.constraint(equalTo: leftWebHolder.widthAnchor).isActive = true
@@ -90,37 +90,37 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
        // leftWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) //This is going to be tracking the progress for the webkit view
         leftWebView.allowsBackForwardNavigationGestures = true
         leftWebView.tag = 0
-        //HOLDER TO LOAD URL
-        //Right Web View
+        // HOLDER TO LOAD URL
+        // Right Web View
         rightWebView = WKWebView(frame: .zero, configuration: webConfiguration)
         rightWebView.uiDelegate = self
         rightWebView.navigationDelegate = self
         rightWebView.translatesAutoresizingMaskIntoConstraints = false
         rightWebHolder.addSubview(rightWebView)
         rightWebView.tag = 1
-        //Add a touch of autolayout
+        // Add a touch of autolayout
         rightWebView.centerXAnchor.constraint(equalTo: rightWebHolder.centerXAnchor).isActive = true
         rightWebView.centerYAnchor.constraint(equalTo: rightWebHolder.centerYAnchor).isActive = true
         rightWebView.widthAnchor.constraint(equalTo: rightWebHolder.widthAnchor).isActive = true
         rightWebView.heightAnchor.constraint(equalTo: rightWebHolder.heightAnchor).isActive = true
-        //rightWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) //This is going to be tracking the progress for the webkit view
+        // rightWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) //This is going to be tracking the progress for the webkit view
         loadLeftURL(savedData.getLeftWebPage())
         loadRightURL(savedData.getRightWebPage())
     }
-    private func loadLeftURL(_ url: String) { //Give this method a string and it is going to bring the left web view to it
+    private func loadLeftURL(_ url: String) { // Give this method a string and it is going to bring the left web view to it
         leftWebView.load(web.determineURL(userInput: url))
     }
-    private func loadRightURL(_ url: String) { //Give this method a string and it is going to bring the right web view to it.
+    private func loadRightURL(_ url: String) { // Give this method a string and it is going to bring the right web view to it.
         rightWebView.load(web.determineURL(userInput: url))
     }
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { //The web view has finished loading so we want to hide
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { // The web view has finished loading so we want to hide
         let webURL = webView.url?.absoluteString ?? "https://uappsios.com"
         savedData.addToHistoryArray(webURL)
-        if webView.tag == 0 { //Left web view finished
+        if webView.tag == 0 { // Left web view finished
             
             savedData.setLeftWebPage(URL: webURL)
             leftAddressBar.text = webURL
-        } else { //Right web view finished
+        } else { // Right web view finished
             savedData.setRightWebPage(URL: webURL)
             rightAddressBar.text = webURL
         }
@@ -128,15 +128,15 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
     }
     // MARK: - Theming 
     
-    func theming() { //Oh shit here we go again...
-        //Left theming:
+    func theming() { // Oh shit here we go again...
+        // Left theming:
         leftNavBar.barTintColor = theme.getBarTintColor()
         leftNavBar.tintColor = theme.getTintColor()
         leftAddressBar.backgroundColor = theme.getTextBarBackgroundColor()
         leftAddressBar.textColor = theme.getTextColor()
         leftTabBar.barTintColor = theme.getBarTintColor()
         leftTabBar.tintColor = theme.getTintColor()
-        //Alright now lets work on the right...
+        // Alright now lets work on the right...
         rightNavBar.barTintColor = theme.getBarTintColor()
         rightNavBar.tintColor = theme.getTintColor()
         rightAddressBar.backgroundColor = theme.getTextBarBackgroundColor()
@@ -166,11 +166,11 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //0 is left 1 is right
+        // 0 is left 1 is right
         
         textField.resignFirstResponder()
         switch textField.tag {
-        case 0: //Left
+        case 0: // Left
             loadLeftURL(textField.text ?? "https://uappsios.com")
         default:
             loadRightURL(textField.text ?? "https://uappsios.com")
@@ -183,33 +183,33 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
     @IBAction func rightAddTab(_ sender: Any) {
         iCloud.addToiPadTabArray(rightWebView.url?.absoluteString ?? "https://uappsios.com")
     }
-    //swiftlint:disable force_unwrapping
+    // swiftlint:disable force_unwrapping
     @IBAction func leftAddBookmark(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
-        //Add the bookmark:
+        // Add the bookmark:
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
             if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
-                //Save
+                // Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
                 self.iCloud.printBookmarkArray()
             } else {
-                //Do something with the error
+                // Do something with the error
                 print("There is something wrong so we cannot add this")
             }
         }))
-        //The user does not want to add the bookmark:
+        // The user does not want to add the bookmark:
         alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (_) in
             print("User has cancelled")
         }))
-        //Add textfields
-        alertController.addTextField { (textField) in //This is going to be the title
+        // Add textfields
+        alertController.addTextField { (textField) in // This is going to be the title
             textField.text = self.leftWebView.title
             textField.textAlignment = .center
         }
-        alertController.addTextField { (textField) in //This is the web address
+        alertController.addTextField { (textField) in // This is the web address
             textField.text = self.leftWebView.url?.absoluteString
             textField.textAlignment = .center
         }
@@ -218,33 +218,33 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
             print("Displayed")
         }
     }
-    //swiftlint:disable force_unwrapping
+    // swiftlint:disable force_unwrapping
     @IBAction func rightAddBookmark(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
-        //Add the bookmark:
+        // Add the bookmark:
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
             if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
-                //Save
+                // Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
                 self.iCloud.printBookmarkArray()
             } else {
-                //Do something with the error
+                // Do something with the error
                 print("There is something wrong so we cannot add this")
             }
         }))
-        //The user does not want to add the bookmark:
+        // The user does not want to add the bookmark:
         alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (_) in
             print("User has cancelled")
         }))
-        //Add textfields
-        alertController.addTextField { (textField) in //This is going to be the title
+        // Add textfields
+        alertController.addTextField { (textField) in // This is going to be the title
             textField.text = self.rightWebView.title
             textField.textAlignment = .center
         }
-        alertController.addTextField { (textField) in //This is the web address
+        alertController.addTextField { (textField) in // This is the web address
             textField.text = self.rightWebView.url?.absoluteString
             textField.textAlignment = .center
         }
@@ -253,13 +253,13 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
             print("Displayed")
         }
     }
-    //swiftlint:enable force_unwrapping
+    // swiftlint:enable force_unwrapping
     override var preferredStatusBarStyle: UIStatusBarStyle {
         let theme = ThemeHandler()
         return theme.getStatusBarColor()
     }
     @IBAction func leftHistory(_ sender: Any) {
-        //browserTag = leftHistory.ta
+        // browserTag = leftHistory.ta
     }
     @IBAction func leftBookmark(_ sender: Any) {
     }

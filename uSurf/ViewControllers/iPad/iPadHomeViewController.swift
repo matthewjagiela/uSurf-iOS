@@ -11,7 +11,7 @@ import WebKit
 
 class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
     
-    //All of the outlets on the view:
+    // All of the outlets on the view:
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var shareButton: UIBarButtonItem!
     @IBOutlet weak var progressBar: UIProgressView!
@@ -24,7 +24,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     @IBOutlet var settingsButton: UIBarButtonItem!
     @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var tabsButton: UIBarButtonItem!
-    //All the variables we are going to need:
+    // All the variables we are going to need:
     var webView: WKWebView!
     let savedData = SavedDataHandler()
     let iCloud = iCloudHandler()
@@ -37,7 +37,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         print("ViewDidLoad")
         // Do any additional setup after loading the view.
         
-        dynamicField.delegate = self //This allows us to use enter to search!
+        dynamicField.delegate = self // This allows us to use enter to search!
         theming()
         if webView == nil {
             print("ViewDidLoad NIL")
@@ -74,42 +74,42 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        loadURL(textField.text ?? "https://uappsios.com") //Go to the URL / Search term
+        loadURL(textField.text ?? "https://uappsios.com") // Go to the URL / Search term
         return true
     }
-    private func handleWebKit() { //WebKit was broken in earlier versions of iOS so we need to add it manually or uSurf wont make sense to have still active
+    private func handleWebKit() { // WebKit was broken in earlier versions of iOS so we need to add it manually or uSurf wont make sense to have still active
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.translatesAutoresizingMaskIntoConstraints = false
         webKitHolderView.addSubview(webView)
-        //Make some autolayout stuff happen
+        // Make some autolayout stuff happen
         webView.centerXAnchor.constraint(equalTo: webKitHolderView.centerXAnchor).isActive = true
         webView.centerYAnchor.constraint(equalTo: webKitHolderView.centerYAnchor).isActive = true
         webView.widthAnchor.constraint(equalTo: webKitHolderView.widthAnchor).isActive = true
         webView.heightAnchor.constraint(equalTo: webKitHolderView.heightAnchor).isActive = true
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) //This is going to be tracking the progress for the webkit view
-        webView.allowsBackForwardNavigationGestures = true //Allow swiping back and forth for navigating page... Better than the old gesture recognizer
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) // This is going to be tracking the progress for the webkit view
+        webView.allowsBackForwardNavigationGestures = true // Allow swiping back and forth for navigating page... Better than the old gesture recognizer
         loadURL(savedData.getLastViewedPage())
     }
-    private func loadURL(_ url: String) { //This method takes a string of an adress and makes the web view load it!
+    private func loadURL(_ url: String) { // This method takes a string of an adress and makes the web view load it!
         webView.load(webHandler.determineURL(userInput: url))
     }
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) { //There is something loading so we want to show the navigation bar
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) { // There is something loading so we want to show the navigation bar
         progressBar.isHidden = false
     }
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { //The web view has finished loading so we want to hide
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { // The web view has finished loading so we want to hide
         progressBar.isHidden = true
         let webURL = webView.url?.absoluteString
         print(webURL ?? "https://uappsios.com")
-        savedData.addToHistoryArray(webURL ?? "https://uappsios.com")//This is going to add the website to history (when private mode is added this will not be a thing...)
+        savedData.addToHistoryArray(webURL ?? "https://uappsios.com")// This is going to add the website to history (when private mode is added this will not be a thing...)
         savedData.setLastViewedPage(lastPage: webURL ?? "https://uappsios.com")
         print("HISTORY: \(savedData.getHistoryArray())")
         dynamicField.text = webURL
         
     }
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { //This is to update the loading bar....
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { // This is to update the loading bar....
         if keyPath == "estimatedProgress" {
             progressBar.progress = Float(webView.estimatedProgress)
             
@@ -124,39 +124,39 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         self.dynamicField.textColor = theme.getTextColor()
         self.view.backgroundColor = theme.getBarTintColor()
     }
-    @IBAction func addButtonPressed(_ sender: Any) { //This is going to give the option of either adding a tab or a bookmark
+    @IBAction func addButtonPressed(_ sender: Any) { // This is going to give the option of either adding a tab or a bookmark
         iCloud.addToiPadTabArray(self.webView.url?.absoluteString ?? "https://uappsios.com")
         iCloud.printTabArray()
         
     }
-    //swiftlint:disable force_unwrapping
-    @IBAction func longPress(_ sender: Any) { //A long press is going to be for adding a bookmark
+    // swiftlint:disable force_unwrapping
+    @IBAction func longPress(_ sender: Any) { // A long press is going to be for adding a bookmark
         print("LongPress")
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
-        //Add the bookmark:
+        // Add the bookmark:
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
             if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
-                //Save
+                // Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
                 self.iCloud.printBookmarkArray()
             } else {
-                //Do something with the error
+                // Do something with the error
                 print("There is something wrong so we cannot add this")
             }
         }))
-        //The user does not want to add the bookmark:
+        // The user does not want to add the bookmark:
         alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (_) in
             print("User has cancelled")
         }))
-        //Add textfields
-        alertController.addTextField { (textField) in //This is going to be the title
+        // Add textfields
+        alertController.addTextField { (textField) in // This is going to be the title
             textField.text = self.webView.title
             textField.textAlignment = .center
         }
-        alertController.addTextField { (textField) in //This is the web address
+        alertController.addTextField { (textField) in // This is the web address
             textField.text = self.webView.url?.absoluteString
             textField.textAlignment = .center
         }
@@ -165,12 +165,12 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
             print("Displayed")
         }
     }
-    //swiftlint:enable force_unwrapping
+    // swiftlint:enable force_unwrapping
     @IBAction func shareWebsite(_ sender: Any) {
-        let shareURL = self.webView.url?.absoluteURL //This is going to be the URL the user wants to share
-        let shareString = self.webView.title //This is going to be the title the user wants to share
-        let activityViewController = UIActivityViewController(activityItems: [shareURL as Any, shareString as Any], applicationActivities: nil) //Make the share sheet
-        activityViewController.popoverPresentationController?.barButtonItem = shareButton //Present the popover with the source being a button
+        let shareURL = self.webView.url?.absoluteURL // This is going to be the URL the user wants to share
+        let shareString = self.webView.title // This is going to be the title the user wants to share
+        let activityViewController = UIActivityViewController(activityItems: [shareURL as Any, shareString as Any], applicationActivities: nil) // Make the share sheet
+        activityViewController.popoverPresentationController?.barButtonItem = shareButton // Present the popover with the source being a button
         present(activityViewController, animated: true, completion: nil)
     
     }

@@ -1,3 +1,7 @@
+6.4.1:
+- Snowfall is dynamic! Snow will show and disappear based on months, no more updating the app for snow!
+- On newer iOS Versions (13+) internet information will use an improved system, allowing for less wait time.
+
 6.4:
 - Support for iOS 14
 - Snow is back for the cold weather seasons!
