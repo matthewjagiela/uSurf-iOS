@@ -12,10 +12,7 @@
 		2E23167F2421B23F0003BB54 /* uSurfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23167E2421B23F0003BB54 /* uSurfTests.swift */; };
 		2E23168D2421B4390003BB54 /* VersionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */; };
 		2E23168F2421B4F90003BB54 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
-		2E2316902421B5270003BB54 /* VersionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443CD7D21FFCCDF001123E7 /* VersionHandler.swift */; };
 		2EA04356231CC48400812246 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E482498231CAF5200F4C969 /* .swiftlint.yml */; };
-		2ECC641123987E2200FD504A /* Snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC640E23987E2100FD504A /* Snow.sks */; };
-		2ECC641223987E2200FD504A /* SnowScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC641023987E2200FD504A /* SnowScene.m */; };
 		2ECC641423987EBE00FD504A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC641323987EBD00FD504A /* spark.png */; };
 		2ECC64282398897000FD504A /* hiPhone3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64222398896F00FD504A /* hiPhone3x.png */; };
 		2ECC64292398897000FD504A /* hicon_iPad2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64232398897000FD504A /* hicon_iPad2x.png */; };
@@ -37,7 +34,6 @@
 		343F016D20D4204600B9E8DD /* main_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 343F016720D4204600B9E8DD /* main_icon.png */; };
 		343F016E20D4204600B9E8DD /* iPhone3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 343F016820D4204600B9E8DD /* iPhone3x.png */; };
 		343F016F20D4204600B9E8DD /* icon_iPadPro.png in Resources */ = {isa = PBXBuildFile; fileRef = 343F016920D4204600B9E8DD /* icon_iPadPro.png */; };
-		3443CD7E21FFCCDF001123E7 /* VersionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443CD7D21FFCCDF001123E7 /* VersionHandler.swift */; };
 		3443CD8021FFCDAB001123E7 /* Changes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3443CD7F21FFCDAB001123E7 /* Changes.txt */; };
 		344C3F0920D7501600A13939 /* iCloudHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C3F0820D7501600A13939 /* iCloudHandler.swift */; };
 		344C3F0B20D75D6000A13939 /* SavedDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C3F0A20D75D6000A13939 /* SavedDataHandler.swift */; };
@@ -70,6 +66,7 @@
 		34F95E0720C73F1F00411B9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34F95E0620C73F1F00411B9D /* Assets.xcassets */; };
 		34F95E0A20C73F1F00411B9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34F95E0820C73F1F00411B9D /* LaunchScreen.storyboard */; };
 		4AF67971A24F7076C99E3DA9 /* Pods_uSurf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C233CCD02416BD2D40AD2F9 /* Pods_uSurf.framework */; };
+		B11DCEEA841DDD79D06C5696 /* Pods_uSurfTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 471FE20C23EF373F2BA34382 /* Pods_uSurfTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,9 +89,6 @@
 		2E482498231CAF5200F4C969 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2E683B032329EDA6008BA3E7 /* uSurf.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
 		2EA46F012397681800A90DED /* uSurf-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uSurf-Bridging-Header.h"; sourceTree = "<group>"; };
-		2ECC640E23987E2100FD504A /* Snow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snow.sks; sourceTree = "<group>"; };
-		2ECC640F23987E2100FD504A /* SnowScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowScene.h; sourceTree = "<group>"; };
-		2ECC641023987E2200FD504A /* SnowScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowScene.m; sourceTree = "<group>"; };
 		2ECC641323987EBD00FD504A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		2ECC64222398896F00FD504A /* hiPhone3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiPhone3x.png; sourceTree = "<group>"; };
 		2ECC64232398897000FD504A /* hicon_iPad2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hicon_iPad2x.png; sourceTree = "<group>"; };
@@ -116,7 +110,6 @@
 		343F016720D4204600B9E8DD /* main_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_icon.png; sourceTree = "<group>"; };
 		343F016820D4204600B9E8DD /* iPhone3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhone3x.png; sourceTree = "<group>"; };
 		343F016920D4204600B9E8DD /* icon_iPadPro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_iPadPro.png; sourceTree = "<group>"; };
-		3443CD7D21FFCCDF001123E7 /* VersionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionHandler.swift; sourceTree = "<group>"; };
 		3443CD7F21FFCDAB001123E7 /* Changes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Changes.txt; sourceTree = "<group>"; };
 		344C3F0820D7501600A13939 /* iCloudHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudHandler.swift; sourceTree = "<group>"; };
 		344C3F0A20D75D6000A13939 /* SavedDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedDataHandler.swift; sourceTree = "<group>"; };
@@ -151,8 +144,11 @@
 		34F95E0920C73F1F00411B9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34F95E0B20C73F1F00411B9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36E2373C103CFACA6D2CCB4A /* Pods-uSurf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uSurf.release.xcconfig"; path = "Pods/Target Support Files/Pods-uSurf/Pods-uSurf.release.xcconfig"; sourceTree = "<group>"; };
+		471FE20C23EF373F2BA34382 /* Pods_uSurfTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uSurfTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C233CCD02416BD2D40AD2F9 /* Pods_uSurf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uSurf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A4EBF1E6B2A249B0E75204 /* Pods-uSurf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uSurf.debug.xcconfig"; path = "Pods/Target Support Files/Pods-uSurf/Pods-uSurf.debug.xcconfig"; sourceTree = "<group>"; };
+		D05B6E241F31A20F5E4A012D /* Pods-uSurfTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uSurfTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-uSurfTests/Pods-uSurfTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D2EB81ABF386F290AA4849F2 /* Pods-uSurfTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uSurfTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-uSurfTests/Pods-uSurfTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B11DCEEA841DDD79D06C5696 /* Pods_uSurfTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +252,6 @@
 				344C3F0820D7501600A13939 /* iCloudHandler.swift */,
 				344C3F0A20D75D6000A13939 /* SavedDataHandler.swift */,
 				3460A5F7210BC9450029B03C /* ThemeHandler.swift */,
-				3443CD7D21FFCCDF001123E7 /* VersionHandler.swift */,
 				2E1A880C232F2AF100D63F99 /* AppUtility.swift */,
 			);
 			path = Handelers;
@@ -264,9 +260,6 @@
 		343F015A20D41EC900B9E8DD /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				2ECC640E23987E2100FD504A /* Snow.sks */,
-				2ECC640F23987E2100FD504A /* SnowScene.h */,
-				2ECC641023987E2200FD504A /* SnowScene.m */,
 				343F015F20D41FE100B9E8DD /* iPhoneStory.storyboard */,
 				343F016120D41FED00B9E8DD /* iPadStory.storyboard */,
 				34F95DFF20C73F1D00411B9D /* AppDelegate.swift */,
@@ -413,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				4C233CCD02416BD2D40AD2F9 /* Pods_uSurf.framework */,
+				471FE20C23EF373F2BA34382 /* Pods_uSurfTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -422,6 +416,8 @@
 			children = (
 				98A4EBF1E6B2A249B0E75204 /* Pods-uSurf.debug.xcconfig */,
 				36E2373C103CFACA6D2CCB4A /* Pods-uSurf.release.xcconfig */,
+				D05B6E241F31A20F5E4A012D /* Pods-uSurfTests.debug.xcconfig */,
+				D2EB81ABF386F290AA4849F2 /* Pods-uSurfTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -433,6 +429,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E2316852421B23F0003BB54 /* Build configuration list for PBXNativeTarget "uSurfTests" */;
 			buildPhases = (
+				3161209627015F6CAC1C3FA9 /* [CP] Check Pods Manifest.lock */,
 				2E2316782421B23F0003BB54 /* Sources */,
 				2E2316792421B23F0003BB54 /* Frameworks */,
 				2E23167A2421B23F0003BB54 /* Resources */,
@@ -565,7 +562,6 @@
 				343F016A20D4204600B9E8DD /* icon_iPad2x.png in Resources */,
 				3460A5EF210BC2E10029B03C /* icons8-split-30.png in Resources */,
 				343F016E20D4204600B9E8DD /* iPhone3x.png in Resources */,
-				2ECC641123987E2200FD504A /* Snow.sks in Resources */,
 				2E1EAEFB2564C0040058431D /* galaxy.jpg in Resources */,
 				344D2FFA210A4EF200AB5F36 /* homeicon_3x.png in Resources */,
 				2ECC64292398897000FD504A /* hicon_iPad2x.png in Resources */,
@@ -591,6 +587,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		3161209627015F6CAC1C3FA9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-uSurfTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		C45FE8826A3F11637FC7ADFE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -637,7 +655,6 @@
 				2E23167F2421B23F0003BB54 /* uSurfTests.swift in Sources */,
 				2E23168D2421B4390003BB54 /* VersionHandlerTests.swift in Sources */,
 				2E23168F2421B4F90003BB54 /* WebHandler.swift in Sources */,
-				2E2316902421B5270003BB54 /* VersionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,7 +667,6 @@
 				344C3F0920D7501600A13939 /* iCloudHandler.swift in Sources */,
 				343F015E20D41F0700B9E8DD /* iPadHomeViewController.swift in Sources */,
 				342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */,
-				2ECC641223987E2200FD504A /* SnowScene.m in Sources */,
 				344C3F0B20D75D6000A13939 /* SavedDataHandler.swift in Sources */,
 				343F015C20D41EF900B9E8DD /* iPhoneHomeViewController.swift in Sources */,
 				342CBE2021824BD3006D2D04 /* TabViewController.swift in Sources */,
@@ -659,7 +675,6 @@
 				340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */,
 				34C10F45214AC3D0005C9ACB /* SettingsViewController.swift in Sources */,
 				34C4D1E5227FDB94005917B9 /* iPadSplitViewController.swift in Sources */,
-				3443CD7E21FFCCDF001123E7 /* VersionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +702,7 @@
 /* Begin XCBuildConfiguration section */
 		2E2316832421B23F0003BB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D05B6E241F31A20F5E4A012D /* Pods-uSurfTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -708,6 +724,7 @@
 		};
 		2E2316842421B23F0003BB54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2EB81ABF386F290AA4849F2 /* Pods-uSurfTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

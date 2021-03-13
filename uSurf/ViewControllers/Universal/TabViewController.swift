@@ -19,8 +19,8 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     let iCloud = iCloudHandler()
     let savedData = SavedDataHandler()
     var theme = ThemeHandler()
-    //Optional variables these do not take up memory until they are called by a method execution
-    lazy var matchediPhoneTabs = [Int]() //This is going to be where the bookmarks matching with the search is
+    // Optional variables these do not take up memory until they are called by a method execution
+    lazy var matchediPhoneTabs = [Int]() // This is going to be where the bookmarks matching with the search is
     lazy var matchediPadTabs = [Int]()
     lazy var isSearching = false
     var browserTag = 0
@@ -28,14 +28,14 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        //Load The Data:
+        // Load The Data:
         iPhoneTabArray = iCloud.getiPhoneTabArray()
         iPadTabArray = iCloud.getiPadTabArray()
         theming()
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        //Add an iCloud handler... This will execute whenever there is an iCloud update...
+        // Add an iCloud handler... This will execute whenever there is an iCloud update...
         NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
         
     }
@@ -53,17 +53,17 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         tableView.reloadData()
     }
     // MARK: Theme
-    func theming() { //Lets handle the theme!
+    func theming() { // Lets handle the theme!
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self as? UISearchResultsUpdating //search results are handled in this class
-        searchController.hidesNavigationBarDuringPresentation = false //Make sure the nav bar stays
-        searchController.dimsBackgroundDuringPresentation = true //Not sure
+        searchController.searchResultsUpdater = self as? UISearchResultsUpdating // search results are handled in this class
+        searchController.hidesNavigationBarDuringPresentation = false // Make sure the nav bar stays
+        searchController.dimsBackgroundDuringPresentation = true // Not sure
         searchController.searchBar.delegate = self // we want to use delegate methods here
-        tableView.tableFooterView = UIView(frame: .zero) //Make sure that the entire thing is in frame
-        tableView.rowHeight = 71 //Row height for the text
-        navigationBar.barTintColor = theme.getBarTintColor() //Set the real color of the bar
+        tableView.tableFooterView = UIView(frame: .zero) // Make sure that the entire thing is in frame
+        tableView.rowHeight = 71 // Row height for the text
+        navigationBar.barTintColor = theme.getBarTintColor() // Set the real color of the bar
         
-        //SEARCH BAR:
+        // SEARCH BAR:
         
         searchBar.barTintColor = theme.getSearchBarColor()
         if #available(iOS 13.0, *) {
@@ -73,28 +73,28 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
         textFieldInsideSearchBar?.textColor = theme.getTextColor()
         
-        //Others:
+        // Others:
         
-        navigationBar.tintColor = theme.getTintColor() //Set text of the bar
-        self.view.backgroundColor = theme.getBarTintColor() //Set the background text
-        let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()] //Set the navigation text color
-        navigationBar.titleTextAttributes = textAttributes //Actually update the thing
-        tableView.backgroundColor = theme.getBarTintColor() //When there is no cells the view will be this color
+        navigationBar.tintColor = theme.getTintColor() // Set text of the bar
+        self.view.backgroundColor = theme.getBarTintColor() // Set the background text
+        let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()] // Set the navigation text color
+        navigationBar.titleTextAttributes = textAttributes // Actually update the thing
+        tableView.backgroundColor = theme.getBarTintColor() // When there is no cells the view will be this color
         
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
     // MARK: Search
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { //There is some search happening so we need to start trying to find the timer
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { // There is some search happening so we need to start trying to find the timer
         print("BookarkTableViewController: We are searching")
         if let searchedItem = searchBar.text, !(searchBar.text?.isEmpty ?? false) {
             let searchArray = iPhoneTabArray as? [String] ?? ["https://uappsios.com"]
-            matchediPhoneTabs = searchArray.indices.filter { //This is searching through the iPhone tab array for matches
+            matchediPhoneTabs = searchArray.indices.filter { // This is searching through the iPhone tab array for matches
                 searchArray[$0].localizedCaseInsensitiveContains(searchedItem)
             }
             let iPadSearchArray = iPadTabArray as? [String] ?? ["https://uappsios.com"]
-            matchediPadTabs = iPadSearchArray.indices.filter { //This is searching through the iPad tab arrays to find a match
+            matchediPadTabs = iPadSearchArray.indices.filter { // This is searching through the iPad tab arrays to find a match
                 iPadSearchArray[$0].localizedCaseInsensitiveContains(searchedItem)
             }
             isSearching = true
@@ -129,18 +129,18 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
             }
         }
     }
-    //swiftlint:disable force_unwrapping
+    // swiftlint:disable force_unwrapping
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tabCells")
-        if isSearching { //We are searching so the table has to represent this
-            if indexPath.section == 0 { //iPhone while searching
+        if isSearching { // We are searching so the table has to represent this
+            if indexPath.section == 0 { // iPhone while searching
                 cell?.textLabel?.text = iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String
             } else {
                 cell?.textLabel?.text = iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String
             }
             
         } else {
-            if indexPath.section == 0 { //iPhone
+            if indexPath.section == 0 { // iPhone
                 cell?.textLabel?.text = iPhoneTabArray.object(at: indexPath.row) as? String
             } else {
                 cell?.textLabel?.text = iPadTabArray.object(at: indexPath.row) as? String
@@ -150,15 +150,15 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         cell?.textLabel?.textColor = theme.getTintColor()
         return cell!
     }
-    //swiftlint:enable force_unwrapping
+    // swiftlint:enable force_unwrapping
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Debug the browser tag is:\(browserTag)")
-        if isSearching {//We are searching so we have to have the selected row the searched item
+        if isSearching {// We are searching so we have to have the selected row the searched item
             if indexPath.section == 0 {
-                //iPhone
+                // iPhone
                 savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                 switch browserTag {
-                case 1: //Left
+                case 1: // Left
                     savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
@@ -166,7 +166,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     savedData.setRightWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
-                default: //Center / iPhone
+                default: // Center / iPhone
                     if #available(iOS 13, *) {
                         self.dismiss(animated: true, completion: nil)
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
@@ -175,7 +175,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
             } else {
                 savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                 switch browserTag {
-                case 1: //Left
+                case 1: // Left
                     savedData.setLeftWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
@@ -195,7 +195,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
             if indexPath.section == 0 {
                 savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                 switch browserTag {
-                case 1: //Left
+                case 1: // Left
                     savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
@@ -212,7 +212,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
             } else {
                 savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                 switch browserTag {
-                case 1: //Left
+                case 1: // Left
                     savedData.setLeftWebPage(URL: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
@@ -235,8 +235,8 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
         return true
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete { //We need to figure out how to delete
-            if indexPath.section == 0 { //iPhone
+        if editingStyle == .delete { // We need to figure out how to delete
+            if indexPath.section == 0 { // iPhone
                 iPhoneTabArray.removeObject(at: indexPath.row)
                 iCloud.setiPhoneTabArray(iPhoneTabArray: iPhoneTabArray)
             } else {
