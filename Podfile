@@ -8,6 +8,7 @@ target 'uSurf' do
   # Pods for uSurf
     pod 'Google-Mobile-Ads-SDK', '~> 8.12.0'
     pod 'SwiftLint'
+    pod 'SideMenuSwift', '2.0.9'
     pod 'uAppsLibrary', :git => 'https://github.com/matthewjagiela/uAppsLibrary', :tag=> '1.2'
     
     target 'uSurfTests' do
