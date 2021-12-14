@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SideMenuSwift
 class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var navigationBar: UINavigationBar!
@@ -192,6 +193,13 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         iCloud.addToiPhoneTabArray(self.webView.url?.absoluteString ?? "https://uappsios.com")
         iCloud.printTabArray()
     }
+    
+    @IBAction func showTabs(_ sender: Any) {
+        guard let menuController = sideMenuController?.menuViewController as? SideMenuHostViewController else { return }
+        menuController.type = .tabs
+        sideMenuController?.revealMenu()
+    }
+    
     /*
     // MARK: - Navigation
 
