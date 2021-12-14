@@ -186,11 +186,11 @@
             <objects>
                 <viewController id="RbB-48-NSe" customClass="HistoryViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Skm-yk-2Xn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-Ie-JmT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="History" id="RCf-f5-hiQ">
@@ -208,11 +208,11 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igg-fA-86H">
-                                <rect key="frame" x="0.0" y="56" width="375" height="51"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hqy-PR-CUn">
-                                <rect key="frame" x="0.0" y="107" width="375" height="540"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="572"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCells" textLabel="Nnb-76-Aeg" rowHeight="71" style="IBUITableViewCellStyleDefault" id="Syt-af-Grn">
@@ -326,7 +326,7 @@
                                     </barButtonItem>
                                     <barButtonItem image="History Icon" id="HJb-7k-soe">
                                         <connections>
-                                            <segue destination="RbB-48-NSe" kind="presentation" identifier="goHistory" id="H8c-Vq-uhY"/>
+                                            <action selector="showHistory:" destination="RAB-NY-IJG" id="k7V-5T-kHg"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="add" id="mvo-Iq-glI">
@@ -336,7 +336,7 @@
                                     </barButtonItem>
                                     <barButtonItem image="Bookmarks" id="EY4-0R-E12">
                                         <connections>
-                                            <segue destination="vhc-sm-f0J" kind="presentation" identifier="goBookmarks" id="bRP-ka-azU"/>
+                                            <action selector="showBookmarks:" destination="RAB-NY-IJG" id="shC-kC-PpH"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -401,11 +401,11 @@
             <objects>
                 <viewController id="vhc-sm-f0J" customClass="BookmarkTableViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pxQ-dP-T1i">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKc-fv-6Iu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="Bookmarks" id="Rvk-nI-YWH">
@@ -418,11 +418,11 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1T-tp-Osv">
-                                <rect key="frame" x="0.0" y="56" width="375" height="51"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-Lq-GKO">
-                                <rect key="frame" x="0.0" y="107" width="375" height="540"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="572"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookmarkCell" textLabel="F48-MZ-mdg" detailTextLabel="DKX-7p-W79" rowHeight="71" style="IBUITableViewCellStyleSubtitle" id="NYg-8D-MLp">
@@ -608,7 +608,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bRP-ka-azU"/>
         <segue reference="Ax6-gY-Pu2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -200,6 +200,17 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         sideMenuController?.revealMenu()
     }
     
+    @IBAction func showHistory(_ sender: Any) {
+        guard let menuController = sideMenuController?.menuViewController as? SideMenuHostViewController else { return }
+        menuController.type = .history
+        sideMenuController?.revealMenu()
+    }
+    
+    @IBAction func showBookmarks(_ sender: Any) {
+        guard let menuController = sideMenuController?.menuViewController as? SideMenuHostViewController else { return }
+        menuController.type = .bookmark
+        sideMenuController?.revealMenu()
+    }
     /*
     // MARK: - Navigation
 
