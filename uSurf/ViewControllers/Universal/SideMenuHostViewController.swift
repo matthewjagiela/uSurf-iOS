@@ -8,12 +8,18 @@
 
 import UIKit
 
+enum ClassType {
+    case bookmark
+    case history
+    case tabs
+}
+
 class SideMenuHostViewController: UIViewController {
 
+    @IBOutlet weak var HostingView: UIView!
+    var type: ClassType = .bookmark
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
 }

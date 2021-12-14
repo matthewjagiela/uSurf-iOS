@@ -478,7 +478,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLt-Uj-Mc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="JgO-kW-kk1"/>
             </objects>
-            <point key="canvasLocation" x="260" y="1069"/>
+            <point key="canvasLocation" x="-271" y="1754"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="aJf-mY-REm">
@@ -598,6 +598,9 @@
                             <constraint firstItem="cyV-o9-pYq" firstAttribute="bottom" secondItem="UbB-UD-GOi" secondAttribute="bottom" id="yFr-3O-9fG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="HostingView" destination="cyV-o9-pYq" id="Kds-d3-HFx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7V-r0-hDl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -605,7 +608,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aF8-y8-pvl"/>
+        <segue reference="Ax6-gY-Pu2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <resources>
