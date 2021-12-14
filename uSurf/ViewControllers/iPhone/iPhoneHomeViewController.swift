@@ -196,7 +196,7 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     
     @IBAction func showTabs(_ sender: Any) {
         guard let menuController = sideMenuController?.menuViewController as? SideMenuHostViewController else { return }
-        menuController.type = .tabs
+        menuController.type = .bookmark
         sideMenuController?.revealMenu()
     }
     

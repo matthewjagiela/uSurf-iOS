@@ -184,7 +184,7 @@
         <!--History View Controller-->
         <scene sceneID="PgI-eE-s5E">
             <objects>
-                <viewController id="RbB-48-NSe" customClass="HistoryViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HistoryView" id="RbB-48-NSe" customClass="HistoryViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Skm-yk-2Xn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -399,7 +399,7 @@
         <!--Bookmark Table View Controller-->
         <scene sceneID="JaN-xx-lAc">
             <objects>
-                <viewController id="vhc-sm-f0J" customClass="BookmarkTableViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookmarkView" id="vhc-sm-f0J" customClass="BookmarkTableViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pxQ-dP-T1i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -608,7 +608,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ax6-gY-Pu2"/>
+        <segue reference="hm3-au-FxU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <resources>
