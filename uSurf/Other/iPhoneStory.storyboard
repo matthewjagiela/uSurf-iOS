@@ -576,20 +576,32 @@
             </objects>
             <point key="canvasLocation" x="-1466" y="911"/>
         </scene>
-        <!--View Controller-->
+        <!--Side Menu Host View Controller-->
         <scene sceneID="3SY-Ai-fUO">
             <objects>
-                <viewController id="hfn-s1-RrT" sceneMemberID="viewController">
+                <viewController id="hfn-s1-RrT" customClass="SideMenuHostViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mlH-qc-OOI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyV-o9-pYq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="UbB-UD-GOi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cyV-o9-pYq" firstAttribute="top" secondItem="UbB-UD-GOi" secondAttribute="top" id="2VU-Y0-KIg"/>
+                            <constraint firstItem="cyV-o9-pYq" firstAttribute="leading" secondItem="UbB-UD-GOi" secondAttribute="leading" id="Y2N-kF-nNk"/>
+                            <constraint firstItem="cyV-o9-pYq" firstAttribute="trailing" secondItem="UbB-UD-GOi" secondAttribute="trailing" id="ilv-zO-r6I"/>
+                            <constraint firstItem="cyV-o9-pYq" firstAttribute="bottom" secondItem="UbB-UD-GOi" secondAttribute="bottom" id="yFr-3O-9fG"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7V-r0-hDl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-759" y="1269"/>
+            <point key="canvasLocation" x="-1466.4000000000001" y="1753.6731634182911"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
