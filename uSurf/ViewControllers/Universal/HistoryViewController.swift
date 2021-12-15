@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum BrowserSide: Int {
+    case single = 0
+    case right = 1
+    case left = 2
+}
+
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     // MARK: - Outlets
     @IBOutlet var tableView: UITableView!
@@ -20,7 +26,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     var searchController = UISearchController()
     lazy var matchedHistory = [Int]()
     lazy var isSearching = false
-    var browserTag = 0
+    var browserTag: BrowserSide = .single
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +51,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         if isSearching { // the selection is from the searched group...
             let searchedIndex = matchedHistory[indexPath.row] // The index of where it is in the main array.
             switch browserTag {
-            case 1: // Left
+            case .left: // Left
                 savedData.setLeftWebPage(URL: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                 self.dismiss(animated: true, completion: nil)
-            case 2:
+            case .right:
                 savedData.setRightWebPage(URL: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
                 self.dismiss(animated: true, completion: nil)
@@ -63,11 +69,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             // savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
         } else { // This is just throughout the main array
             switch browserTag {
-            case 1: // Left
+            case .left: // Left
                 savedData.setLeftWebPage(URL: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                 self.dismiss(animated: true, completion: nil)
-            case 2:
+            case .right:
                 savedData.setRightWebPage(URL: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
                 self.dismiss(animated: true, completion: nil)
