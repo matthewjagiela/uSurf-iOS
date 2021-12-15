@@ -19,6 +19,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     let iCloud = iCloudHandler()
     let savedData = SavedDataHandler()
     var theme = ThemeHandler()
+    var browserTag: BrowserSide = .single
     // Optional variables these do not take up memory until they are called by a method execution
     lazy var matchediPhoneTabs = [Int]() // This is going to be where the bookmarks matching with the search is
     lazy var matchediPadTabs = [Int]()

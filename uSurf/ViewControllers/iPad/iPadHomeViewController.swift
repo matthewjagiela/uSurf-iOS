@@ -44,7 +44,6 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
             handleWebKit()
         }
         widenTextField()
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationLoad(_:)), name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(theming), name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
     }
     private func widenTextField() {
@@ -203,4 +202,10 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     }
     @objc func canRotate() {}
 
+}
+
+extension iPadHomeViewController: HomeViewDelegate {
+    func refreshWeb(url: String) {
+        self.loadURL(url)
+    }
 }
