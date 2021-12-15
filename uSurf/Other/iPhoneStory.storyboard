@@ -190,7 +190,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-Ie-JmT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="75" y="0.0" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="TWc-BN-MX4"/>
+                                </constraints>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="History" id="RCf-f5-hiQ">
@@ -208,22 +211,28 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igg-fA-86H">
-                                <rect key="frame" x="0.0" y="44" width="375" height="51"/>
+                                <rect key="frame" x="75" y="44" width="300" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="0rO-fo-n8P"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hqy-PR-CUn">
-                                <rect key="frame" x="0.0" y="95" width="375" height="572"/>
+                                <rect key="frame" x="75" y="95" width="300" height="572"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="1h4-NA-QG9"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCells" textLabel="Nnb-76-Aeg" rowHeight="71" style="IBUITableViewCellStyleDefault" id="Syt-af-Grn">
-                                        <rect key="frame" x="0.0" y="44.5" width="375" height="71"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="300" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Syt-af-Grn" id="w7f-5D-ZzM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nnb-76-Aeg">
-                                                    <rect key="frame" x="16" y="0.0" width="343" height="71"/>
+                                                    <rect key="frame" x="16" y="0.0" width="268" height="71"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
@@ -236,18 +245,16 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Rt-ff-6OB"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kOz-Ie-JmT" firstAttribute="trailing" secondItem="Igg-fA-86H" secondAttribute="trailing" id="6qA-ZC-gcK"/>
-                            <constraint firstItem="kOz-Ie-JmT" firstAttribute="top" secondItem="8Rt-ff-6OB" secondAttribute="top" id="7vX-eA-kF5"/>
-                            <constraint firstItem="Hqy-PR-CUn" firstAttribute="bottom" secondItem="8Rt-ff-6OB" secondAttribute="bottom" id="M59-rH-AXw"/>
-                            <constraint firstItem="Igg-fA-86H" firstAttribute="leading" secondItem="Hqy-PR-CUn" secondAttribute="leading" id="SyN-bT-BOd"/>
-                            <constraint firstItem="kOz-Ie-JmT" firstAttribute="leading" secondItem="Skm-yk-2Xn" secondAttribute="leading" id="T7C-z6-LzW"/>
-                            <constraint firstItem="kOz-Ie-JmT" firstAttribute="leading" secondItem="Igg-fA-86H" secondAttribute="leading" id="YLZ-eb-rGA"/>
-                            <constraint firstItem="Igg-fA-86H" firstAttribute="trailing" secondItem="Hqy-PR-CUn" secondAttribute="trailing" id="aZO-Rm-A0Y"/>
-                            <constraint firstAttribute="trailing" secondItem="kOz-Ie-JmT" secondAttribute="trailing" id="rH9-qC-9x3"/>
-                            <constraint firstItem="Igg-fA-86H" firstAttribute="top" secondItem="kOz-Ie-JmT" secondAttribute="bottom" id="wen-n4-FcU"/>
-                            <constraint firstItem="Hqy-PR-CUn" firstAttribute="top" secondItem="Igg-fA-86H" secondAttribute="bottom" id="yqM-6r-PXR"/>
+                            <constraint firstItem="Hqy-PR-CUn" firstAttribute="bottom" secondItem="8Rt-ff-6OB" secondAttribute="bottom" id="DZh-9G-mek"/>
+                            <constraint firstItem="Hqy-PR-CUn" firstAttribute="top" secondItem="Igg-fA-86H" secondAttribute="bottom" id="ble-KN-vh5"/>
+                            <constraint firstItem="kOz-Ie-JmT" firstAttribute="trailing" secondItem="8Rt-ff-6OB" secondAttribute="trailing" id="dSb-Ox-TJ5"/>
+                            <constraint firstItem="Igg-fA-86H" firstAttribute="trailing" secondItem="8Rt-ff-6OB" secondAttribute="trailing" id="gcq-uM-Fxq"/>
+                            <constraint firstItem="Hqy-PR-CUn" firstAttribute="trailing" secondItem="8Rt-ff-6OB" secondAttribute="trailing" id="hmJ-Fk-B2D"/>
+                            <constraint firstItem="Hqy-PR-CUn" firstAttribute="top" secondItem="Igg-fA-86H" secondAttribute="bottom" id="odT-Ml-vHI"/>
+                            <constraint firstItem="Igg-fA-86H" firstAttribute="top" secondItem="kOz-Ie-JmT" secondAttribute="bottom" id="p9f-EF-r8b"/>
+                            <constraint firstItem="Igg-fA-86H" firstAttribute="top" secondItem="kOz-Ie-JmT" secondAttribute="bottom" id="xy7-PE-BrO"/>
+                            <constraint firstItem="kOz-Ie-JmT" firstAttribute="top" secondItem="8Rt-ff-6OB" secondAttribute="top" id="zCD-lz-yBE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -259,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PL8-gk-OZs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1383" y="144"/>
+            <point key="canvasLocation" x="-1383.2" y="143.47826086956522"/>
         </scene>
         <!--iPhone Home View Controller-->
         <scene sceneID="xNP-IX-aUD">
@@ -469,7 +476,7 @@
                             <constraint firstItem="kOW-Lq-GKO" firstAttribute="trailing" secondItem="cuh-Hb-oE5" secondAttribute="trailing" id="WWE-Ne-VsC"/>
                             <constraint firstItem="DKc-fv-6Iu" firstAttribute="trailing" secondItem="cuh-Hb-oE5" secondAttribute="trailing" id="n72-Cx-MlG"/>
                             <constraint firstItem="R1T-tp-Osv" firstAttribute="top" secondItem="DKc-fv-6Iu" secondAttribute="bottom" id="nt9-ql-MlX"/>
-                            <constraint firstItem="DKc-fv-6Iu" firstAttribute="top" secondItem="pxQ-dP-T1i" secondAttribute="top" id="qgf-yV-qGk"/>
+                            <constraint firstItem="DKc-fv-6Iu" firstAttribute="top" secondItem="cuh-Hb-oE5" secondAttribute="top" id="qgf-yV-qGk"/>
                             <constraint firstItem="kOW-Lq-GKO" firstAttribute="top" secondItem="R1T-tp-Osv" secondAttribute="bottom" id="wOJ-gD-dkL"/>
                         </constraints>
                     </view>
@@ -572,7 +579,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="38G-1Y-2k4"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <segue destination="RAB-NY-IJG" kind="custom" identifier="SideMenu.Content" customClass="SideMenuSegue" customModule="SideMenuSwift" id="aF8-y8-pvl"/>
@@ -599,7 +606,7 @@
                         <viewLayoutGuide key="safeArea" id="UbB-UD-GOi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cyV-o9-pYq" firstAttribute="top" secondItem="UbB-UD-GOi" secondAttribute="top" id="2VU-Y0-KIg"/>
+                            <constraint firstItem="cyV-o9-pYq" firstAttribute="top" secondItem="mlH-qc-OOI" secondAttribute="top" id="2VU-Y0-KIg"/>
                             <constraint firstItem="cyV-o9-pYq" firstAttribute="leading" secondItem="UbB-UD-GOi" secondAttribute="leading" id="Y2N-kF-nNk"/>
                             <constraint firstItem="cyV-o9-pYq" firstAttribute="trailing" secondItem="UbB-UD-GOi" secondAttribute="trailing" id="ilv-zO-r6I"/>
                             <constraint firstItem="cyV-o9-pYq" firstAttribute="bottom" secondItem="UbB-UD-GOi" secondAttribute="bottom" id="yFr-3O-9fG"/>
@@ -615,7 +622,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ax6-gY-Pu2"/>
+        <segue reference="hm3-au-FxU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <resources>
