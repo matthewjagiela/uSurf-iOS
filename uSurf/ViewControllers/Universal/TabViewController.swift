@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+ //TODO: Change the entire tab structure. This will not matter anymore. 
 class TabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet var navigationBar: UINavigationBar!
@@ -23,7 +23,6 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     lazy var matchediPhoneTabs = [Int]() // This is going to be where the bookmarks matching with the search is
     lazy var matchediPadTabs = [Int]()
     lazy var isSearching = false
-    var browserTag: BrowserSide = .single
     override func viewDidLoad() {
         super.viewDidLoad()
 
