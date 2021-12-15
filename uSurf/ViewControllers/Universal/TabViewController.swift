@@ -24,6 +24,7 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     lazy var matchediPhoneTabs = [Int]() // This is going to be where the bookmarks matching with the search is
     lazy var matchediPadTabs = [Int]()
     lazy var isSearching = false
+    weak var homeDelegate: HomeViewDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -167,10 +168,12 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
                 default: // Center / iPhone
-                    if #available(iOS 13, *) {
+                    homeDelegate?.refreshWeb(url: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
+                    if UIDevice().userInterfaceIdiom == .pad {
                         self.dismiss(animated: true, completion: nil)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
+                    } else {
+                        self.sideMenuController?.hideMenu()
+                    }
                 }
             } else {
                 savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
@@ -184,10 +187,12 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
                 default:
-                    if #available(iOS 13, *) {
+                    homeDelegate?.refreshWeb(url: iPhoneTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
+                    if UIDevice().userInterfaceIdiom == .pad {
                         self.dismiss(animated: true, completion: nil)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
+                    } else {
+                        self.sideMenuController?.hideMenu()
+                    }
                 }
             }
             

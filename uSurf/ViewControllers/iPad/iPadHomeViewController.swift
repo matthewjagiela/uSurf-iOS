@@ -182,6 +182,12 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         // Pass the selected object to the new view controller.
         if segue.identifier == "goSplit" {
             savedData.setLeftWebPage(URL: savedData.getLastViewedPage())
+        } else if segue.identifier == "goHistory" {
+            guard let controller = segue.destination as? HistoryViewController else { print("Wrong Controller"); return }
+            controller.homeDelegate = self
+        } else if segue.identifier == "goBookmark" {
+            guard let controller = segue.destination as? BookmarkTableViewController else { print("Wrong Controller"); return }
+            controller.homeDelegate = self
         }
     }
     

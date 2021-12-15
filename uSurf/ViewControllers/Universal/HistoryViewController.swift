@@ -63,7 +63,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             default:
                 savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
                 homeDelegate?.refreshWeb(url: historyArray[searchedIndex] as? String ?? "https://uappsios.com")
-                self.sideMenuController?.hideMenu()
+                if UIDevice().userInterfaceIdiom == .pad {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.sideMenuController?.hideMenu()
+                }
             }
             // savedData.setLastViewedPage(lastPage: historyArray[searchedIndex] as! String)
         } else { // This is just throughout the main array
@@ -79,7 +83,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             default:
                 savedData.setLastViewedPage(lastPage: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
                 homeDelegate?.refreshWeb(url: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
-                self.sideMenuController?.hideMenu()
+                if UIDevice().userInterfaceIdiom == .pad {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.sideMenuController?.hideMenu()
+                }
             }
         }
     }

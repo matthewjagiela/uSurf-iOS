@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gP0-99-xlL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gP0-99-xlL">
     <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -448,7 +448,7 @@
                                             </barButtonItem>
                                         </leftBarButtonItems>
                                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Website / Search" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="h5j-M3-UwN">
-                                            <rect key="frame" x="443.5" y="8" width="137" height="34"/>
+                                            <rect key="frame" x="444" y="8" width="137" height="34"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -468,21 +468,21 @@
                                             </barButtonItem>
                                             <barButtonItem image="Tabs" id="Bwb-TQ-1GO">
                                                 <connections>
-                                                    <segue destination="xMQ-8r-EJv" kind="popoverPresentation" popoverAnchorBarButtonItem="Bwb-TQ-1GO" id="ujG-CL-1So">
+                                                    <segue destination="xMQ-8r-EJv" kind="popoverPresentation" identifier="goTab" popoverAnchorBarButtonItem="Bwb-TQ-1GO" id="ujG-CL-1So">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem image="Bookmarks" id="7Wb-TF-pmb">
                                                 <connections>
-                                                    <segue destination="DCa-gb-OiP" kind="popoverPresentation" popoverAnchorBarButtonItem="7Wb-TF-pmb" id="FQb-nw-kzs">
+                                                    <segue destination="DCa-gb-OiP" kind="popoverPresentation" identifier="goBookmark" popoverAnchorBarButtonItem="7Wb-TF-pmb" id="FQb-nw-kzs">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem image="History Icon" id="e0U-hW-onn">
                                                 <connections>
-                                                    <segue destination="5xP-Lb-yKY" kind="popoverPresentation" popoverAnchorBarButtonItem="e0U-hW-onn" id="s4o-7O-g5d">
+                                                    <segue destination="5xP-Lb-yKY" kind="popoverPresentation" identifier="goHistory" popoverAnchorBarButtonItem="e0U-hW-onn" id="s4o-7O-g5d">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
                                                 </connections>
@@ -560,16 +560,16 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHc-3m-SJP">
-                                <rect key="frame" x="0.0" y="63" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="63" width="375" height="51"/>
                                 <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ChA-xx-wJv">
-                                <rect key="frame" x="0.0" y="119" width="375" height="561"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="566"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tabCells" textLabel="E8i-ef-hQf" rowHeight="71" style="IBUITableViewCellStyleDefault" id="UQF-RR-Pjk">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="71"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UQF-RR-Pjk" id="mmb-Sg-TvN">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
@@ -632,15 +632,15 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1e-px-LiO">
-                                <rect key="frame" x="0.0" y="63" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="63" width="375" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZR3-Wl-bfN">
-                                <rect key="frame" x="0.0" y="119" width="375" height="561"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="566"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookmarkCell" textLabel="IWF-fN-quG" detailTextLabel="raY-hb-8lj" rowHeight="71" style="IBUITableViewCellStyleSubtitle" id="rSB-nG-9kn">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="71"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rSB-nG-9kn" id="9C5-cb-Cdc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
@@ -717,15 +717,15 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7f-XI-RqL">
-                                <rect key="frame" x="0.0" y="63" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="63" width="375" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8LP-L8-Gxz">
-                                <rect key="frame" x="0.0" y="119" width="375" height="561"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="566"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCells" textLabel="byc-BY-O4w" rowHeight="71" style="IBUITableViewCellStyleDefault" id="rVe-fv-6y1">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="71"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rVe-fv-6y1" id="vVY-Uf-CWL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
@@ -776,7 +776,7 @@
         <segue reference="s4o-7O-g5d"/>
         <segue reference="FQb-nw-kzs"/>
         <segue reference="ujG-CL-1So"/>
-        <segue reference="Tuz-Ba-Wi3"/>
+        <segue reference="UbH-U9-jod"/>
         <segue reference="pmM-Db-EaB"/>
     </inferredMetricsTieBreakers>
     <resources>

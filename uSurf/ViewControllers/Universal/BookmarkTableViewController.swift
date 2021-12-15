@@ -136,7 +136,11 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
             default:
                 savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
                 homeDelegate?.refreshWeb(url: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
-                sideMenuController?.hideMenu()
+                if UIDevice().userInterfaceIdiom == .pad {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.sideMenuController?.hideMenu()
+                }
             }
             
         } else {
@@ -153,7 +157,11 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
             default:
                 savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
                 homeDelegate?.refreshWeb(url: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
-                sideMenuController?.hideMenu()
+                if UIDevice().userInterfaceIdiom == .pad {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.sideMenuController?.hideMenu()
+                }
             
             }
         }
