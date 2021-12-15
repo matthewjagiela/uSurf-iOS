@@ -9,6 +9,11 @@
 import UIKit
 import WebKit
 import SideMenuSwift
+
+protocol HomeViewDelegate: AnyObject {
+    func refreshWeb(url: String)
+}
+
 class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var navigationBar: UINavigationBar!
@@ -211,18 +216,27 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
         menuController.type = .bookmark
         sideMenuController?.revealMenu()
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "goSettings" {
+            let controller = segue.destination as? SettingsViewController
+            controller?.homeDelegate = self
+        }
     }
-    */
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
     @objc func canRotate() {}
 
+}
+// MARK: - Extensions
+extension iPhoneHomeViewController: HomeViewDelegate {
+    func refreshWeb(url: String) {
+        self.loadURL(url)
+    }
 }

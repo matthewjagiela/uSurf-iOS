@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet var navBar: UINavigationBar!
     @IBOutlet var infoBox: UITextView!
     let savedData = SavedDataHandler()
+    weak var homeDelegate: HomeViewDelegate?
     @available(iOS 13.0, *)
     lazy var subscriptions: Set<AnyCancellable> = []
     // MARK: - View Methods
@@ -63,7 +64,7 @@ class SettingsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         AppUtility.lockOrientation(.all)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
+        //TODO: Determine if notification was due to older versions
     }
     // MARK: - Internet Labels
     func internetLabels() {
@@ -160,6 +161,7 @@ class SettingsViewController: UIViewController {
     }
     @IBAction func supportButton(_ sender: Any) {
         savedData.setLastViewedPage(lastPage: "https://uappsios.com/usurf-support")
+        homeDelegate?.refreshWeb(url: "https://uappsios.com/usurf-support")
         if #available(iOS 13, *) {
             self.dismiss(animated: true, completion: nil)
         } else {
