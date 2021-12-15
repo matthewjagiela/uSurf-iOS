@@ -20,8 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // GADMobileAds.configure(withApplicationID: "ca-app-pub-7714978111013265~7068019503") depricated
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         SideMenuController.preferences.basic.enablePanGesture = false
+        SideMenuController.preferences.basic.menuWidth = 300
+        SideMenuController.preferences.basic.position = .sideBySide
         return true
     }
+    
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return orientationLock
     }

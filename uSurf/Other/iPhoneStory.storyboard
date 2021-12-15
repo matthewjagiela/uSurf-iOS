@@ -405,7 +405,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKc-fv-6Iu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="75" y="0.0" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="3yV-in-vcf"/>
+                                </constraints>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="Bookmarks" id="Rvk-nI-YWH">
@@ -418,18 +421,24 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1T-tp-Osv">
-                                <rect key="frame" x="0.0" y="44" width="375" height="51"/>
+                                <rect key="frame" x="75" y="44" width="300" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="UYk-px-NKe"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-Lq-GKO">
-                                <rect key="frame" x="0.0" y="95" width="375" height="572"/>
+                                <rect key="frame" x="75" y="95" width="300" height="572"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="5da-VU-Hud"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookmarkCell" textLabel="F48-MZ-mdg" detailTextLabel="DKX-7p-W79" rowHeight="71" style="IBUITableViewCellStyleSubtitle" id="NYg-8D-MLp">
-                                        <rect key="frame" x="0.0" y="44.5" width="375" height="71"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="300" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NYg-8D-MLp" id="R0f-VM-c2L">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F48-MZ-mdg">
@@ -457,16 +466,14 @@
                         <constraints>
                             <constraint firstItem="kOW-Lq-GKO" firstAttribute="bottom" secondItem="cuh-Hb-oE5" secondAttribute="bottom" id="BVS-DI-H8K"/>
                             <constraint firstItem="R1T-tp-Osv" firstAttribute="trailing" secondItem="cuh-Hb-oE5" secondAttribute="trailing" id="Bk5-Kw-e4A"/>
-                            <constraint firstItem="kOW-Lq-GKO" firstAttribute="leading" secondItem="cuh-Hb-oE5" secondAttribute="leading" id="N2e-0Y-Qie"/>
                             <constraint firstItem="kOW-Lq-GKO" firstAttribute="trailing" secondItem="cuh-Hb-oE5" secondAttribute="trailing" id="WWE-Ne-VsC"/>
                             <constraint firstItem="DKc-fv-6Iu" firstAttribute="trailing" secondItem="cuh-Hb-oE5" secondAttribute="trailing" id="n72-Cx-MlG"/>
                             <constraint firstItem="R1T-tp-Osv" firstAttribute="top" secondItem="DKc-fv-6Iu" secondAttribute="bottom" id="nt9-ql-MlX"/>
-                            <constraint firstItem="DKc-fv-6Iu" firstAttribute="top" secondItem="cuh-Hb-oE5" secondAttribute="top" id="qgf-yV-qGk"/>
-                            <constraint firstItem="DKc-fv-6Iu" firstAttribute="leading" secondItem="cuh-Hb-oE5" secondAttribute="leading" id="rQS-rI-bgn"/>
+                            <constraint firstItem="DKc-fv-6Iu" firstAttribute="top" secondItem="pxQ-dP-T1i" secondAttribute="top" id="qgf-yV-qGk"/>
                             <constraint firstItem="kOW-Lq-GKO" firstAttribute="top" secondItem="R1T-tp-Osv" secondAttribute="bottom" id="wOJ-gD-dkL"/>
-                            <constraint firstItem="R1T-tp-Osv" firstAttribute="leading" secondItem="cuh-Hb-oE5" secondAttribute="leading" id="zXN-4S-n4M"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="navigationBar" destination="DKc-fv-6Iu" id="biI-3i-Ukx"/>
                         <outlet property="searchBar" destination="R1T-tp-Osv" id="2Qb-fi-gzp"/>
@@ -478,7 +485,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLt-Uj-Mc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="JgO-kW-kk1"/>
             </objects>
-            <point key="canvasLocation" x="-271" y="1754"/>
+            <point key="canvasLocation" x="-271.19999999999999" y="1753.6731634182911"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="aJf-mY-REm">
@@ -608,7 +615,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hm3-au-FxU"/>
+        <segue reference="Ax6-gY-Pu2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <resources>
