@@ -24,6 +24,8 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
     lazy var matchedBookmarks = [Int]() // This is going to be where the bookmarks matching with the search is
     lazy var isSearching = false
     var browserTag: BrowserSide = .single
+    
+    weak var homeDelegate: HomeViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,10 +135,8 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
                 self.dismiss(animated: true, completion: nil)
             default:
                 savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
-                if #available(iOS 13, *) {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    self.sideMenuController?.hideMenu(animated: true)
-                } else { sideMenuController?.hideMenu() }
+                homeDelegate?.refreshWeb(url: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
+                sideMenuController?.hideMenu()
             }
             
         } else {
@@ -152,10 +152,8 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
                 self.dismiss(animated: true, completion: nil)
             default:
                 savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
-                if #available(iOS 13, *) {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    sideMenuController?.hideMenu()
-                } else { sideMenuController?.hideMenu() }
+                homeDelegate?.refreshWeb(url: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
+                sideMenuController?.hideMenu()
             
             }
         }

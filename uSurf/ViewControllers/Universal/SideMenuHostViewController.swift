@@ -18,6 +18,8 @@ class SideMenuHostViewController: UIViewController {
 
     @IBOutlet weak var HostingView: UIView!
     var type: ClassType?
+    weak var homeDelegate: HomeViewDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -42,6 +44,7 @@ class SideMenuHostViewController: UIViewController {
     func generateBookmarkView() {
         let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
         guard let embededController = storyboard.instantiateViewController(withIdentifier: "BookmarkView") as? BookmarkTableViewController else { return }
+        embededController.homeDelegate = homeDelegate
         embededController.view.frame = HostingView.frame
         addChild(embededController)
         HostingView.addSubview(embededController.view)
