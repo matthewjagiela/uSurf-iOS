@@ -54,6 +54,7 @@ class SideMenuHostViewController: UIViewController {
     func generateHistoryView() {
         let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
         guard let embededController = storyboard.instantiateViewController(withIdentifier: "HistoryView") as? HistoryViewController else { return }
+        embededController.homeDelegate = homeDelegate
         embededController.view.frame = HostingView.frame
         addChild(embededController)
         HostingView.addSubview(embededController.view)
