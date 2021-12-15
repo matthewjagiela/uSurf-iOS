@@ -75,8 +75,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 savedData.setLastViewedPage(lastPage: historyArray[indexPath.row] as? String ?? "https://uappsios.com")
                 if #available(iOS 13, *) {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
-                } else { self.performSegue(withIdentifier: "goHome", sender: self) }
+                    self.sideMenuController?.hideMenu()
+                } else { sideMenuController?.hideMenu() }
             }
         }
     }

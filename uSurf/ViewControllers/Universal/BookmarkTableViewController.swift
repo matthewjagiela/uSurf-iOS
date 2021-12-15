@@ -135,8 +135,8 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
                 savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
                 if #available(iOS 13, *) {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
-                } else { self.performSegue(withIdentifier: "goHome", sender: self) }
+                    self.sideMenuController?.hideMenu(animated: true)
+                } else { sideMenuController?.hideMenu() }
             }
             
         } else {
@@ -154,8 +154,8 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
                 savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
                 if #available(iOS 13, *) {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
-                } else { self.performSegue(withIdentifier: "goHome", sender: self) }
+                    sideMenuController?.hideMenu()
+                } else { sideMenuController?.hideMenu() }
             
             }
         }
