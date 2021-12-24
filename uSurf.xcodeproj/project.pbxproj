@@ -90,7 +90,6 @@
 		2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHostViewController.swift; sourceTree = "<group>"; };
 		2E482498231CAF5200F4C969 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2E683B032329EDA6008BA3E7 /* uSurf.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
-		2EA46F012397681800A90DED /* uSurf-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uSurf-Bridging-Header.h"; sourceTree = "<group>"; };
 		2ECC641323987EBD00FD504A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		2ECC64222398896F00FD504A /* hiPhone3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiPhone3x.png; sourceTree = "<group>"; };
 		2ECC64232398897000FD504A /* hicon_iPad2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hicon_iPad2x.png; sourceTree = "<group>"; };
@@ -267,7 +266,6 @@
 				343F016120D41FED00B9E8DD /* iPadStory.storyboard */,
 				34F95DFF20C73F1D00411B9D /* AppDelegate.swift */,
 				3443CD7F21FFCDAB001123E7 /* Changes.txt */,
-				2EA46F012397681800A90DED /* uSurf-Bridging-Header.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -881,7 +879,8 @@
 				MARKETING_VERSION = 6.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uapps.uSurf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "uSurf/Other/uSurf-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -907,7 +906,8 @@
 				MARKETING_VERSION = 6.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uapps.uSurf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "uSurf/Other/uSurf-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

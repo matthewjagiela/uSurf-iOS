@@ -12,7 +12,7 @@ import uAppsLibrary
 import Combine
 
 class SettingsViewController: UIViewController {
-    @IBOutlet weak var particleBackground: SKView!
+    @IBOutlet weak var particleBackground: UIView!
     @IBOutlet var runningVersion: UILabel!
     @IBOutlet var newestVersion: UILabel!
     @IBOutlet var newsLabel: UILabel!
@@ -45,7 +45,8 @@ class SettingsViewController: UIViewController {
     func snowFall() {
         let snow = SnowHandler()
         if snow.shouldShowSnow() {
-            snow.setupSnowScene(view: particleBackground, size: view.bounds.size)
+//            snow.setupSnowScene(view: particleBackground, size: view.bounds.size)
+            snow.generateSnowScene(snowView: particleBackground, size: view.bounds.size)
         } else {
             particleBackground.removeFromSuperview()
         }
