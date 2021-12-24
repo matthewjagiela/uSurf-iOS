@@ -1,5 +1,6 @@
 7: The Return
 - iPhone users will now see their bookmarks in a slide over view!
+- Snow is now more performant! 
 
 6.4.1:
 - Snowfall is dynamic! Snow will show and disappear based on months, no more updating the app for snow!
