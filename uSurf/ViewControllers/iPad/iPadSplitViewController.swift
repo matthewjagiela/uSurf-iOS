@@ -9,8 +9,9 @@
 import UIKit
 import WebKit
 
-class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigationDelegate, WKUIDelegate {
+class iPadSplitViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var leftProgressBar: UIProgressView!
     @IBOutlet var leftAddressBar: UITextField!
     @IBOutlet var leftNavBar: UINavigationBar!
     @IBOutlet var leftGoBack: UIBarButtonItem!
@@ -87,7 +88,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         leftWebView.centerYAnchor.constraint(equalTo: leftWebHolder.centerYAnchor).isActive = true
         leftWebView.widthAnchor.constraint(equalTo: leftWebHolder.widthAnchor).isActive = true
         leftWebView.heightAnchor.constraint(equalTo: leftWebHolder.heightAnchor).isActive = true
-       // leftWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) //This is going to be tracking the progress for the webkit view
+        leftWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         leftWebView.allowsBackForwardNavigationGestures = true
         leftWebView.tag = 0
         // HOLDER TO LOAD URL
@@ -113,19 +114,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
     private func loadRightURL(_ url: String) { // Give this method a string and it is going to bring the right web view to it.
         rightWebView.load(web.determineURL(userInput: url))
     }
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { // The web view has finished loading so we want to hide
-        let webURL = webView.url?.absoluteString ?? "https://uappsios.com"
-        savedData.addToHistoryArray(webURL)
-        if webView.tag == 0 { // Left web view finished
-            
-            savedData.setLeftWebPage(URL: webURL)
-            leftAddressBar.text = webURL
-        } else { // Right web view finished
-            savedData.setRightWebPage(URL: webURL)
-            rightAddressBar.text = webURL
-        }
-        savedData.setLastViewedPage(lastPage: webURL)
-    }
+    
     // MARK: - Theming 
     
     func theming() { // Oh shit here we go again...
@@ -253,6 +242,16 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
             print("Displayed")
         }
     }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { // This is to update the loading bar....
+        if keyPath == "estimatedProgress" && object as? NSObject == leftWebView {
+           leftProgressBar.progress = Float(leftWebView.estimatedProgress)
+            
+        } else {
+            print("WO")
+        }
+    }
+    
     // swiftlint:enable force_unwrapping
     override var preferredStatusBarStyle: UIStatusBarStyle {
         let theme = ThemeHandler()
@@ -302,4 +301,34 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
     }
     */
 
+}
+
+// MARK: - WKNavigationDelegate
+extension iPadSplitViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { // The web view has finished loading so we want to hide
+        let webURL = webView.url?.absoluteString ?? "https://uappsios.com"
+        savedData.addToHistoryArray(webURL)
+        if webView.tag == 0 { // Left web view finished
+            leftProgressBar.isHidden = true
+            savedData.setLeftWebPage(URL: webURL)
+            leftAddressBar.text = webURL
+        } else { // Right web view finished
+            savedData.setRightWebPage(URL: webURL)
+            rightAddressBar.text = webURL
+        }
+        savedData.setLastViewedPage(lastPage: webURL)
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        if webView.tag == 0 { // left
+            leftProgressBar.isHidden = false
+        } else { // right
+            
+        }
+    }
+}
+
+// MARK: - WKUIDelegate
+extension iPadSplitViewController: WKUIDelegate {
+    
 }

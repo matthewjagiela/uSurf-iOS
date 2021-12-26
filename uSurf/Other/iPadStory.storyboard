@@ -325,14 +325,20 @@
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x64-f1-3l5">
-                                <rect key="frame" x="0.0" y="50" width="512" height="668"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x64-f1-3l5">
+                                <rect key="frame" x="-8" y="50" width="512" height="668"/>
                                 <color key="backgroundColor" red="0.30824157600000002" green="0.67654144760000001" blue="0.77258235220000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulQ-RY-phP">
                                 <rect key="frame" x="512" y="50" width="512" height="668"/>
                                 <color key="backgroundColor" red="1" green="0.059605572920000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="drm-HZ-S4u">
+                                <rect key="frame" x="0.0" y="50" width="504" height="4"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="BZm-Mg-sFb"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="o37-7u-qiP"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -349,15 +355,18 @@
                             <constraint firstItem="Dt8-21-aMS" firstAttribute="top" secondItem="ulQ-RY-phP" secondAttribute="bottom" id="Jml-IC-e1n"/>
                             <constraint firstItem="x64-f1-3l5" firstAttribute="leading" secondItem="o37-7u-qiP" secondAttribute="leading" id="LL4-Im-OCk"/>
                             <constraint firstItem="Dt8-21-aMS" firstAttribute="trailing" secondItem="o37-7u-qiP" secondAttribute="trailing" id="Nz7-nZ-cEY"/>
+                            <constraint firstItem="drm-HZ-S4u" firstAttribute="leading" secondItem="KrP-JV-N9y" secondAttribute="leading" id="O6S-07-gtD"/>
                             <constraint firstItem="7NQ-v0-hbb" firstAttribute="top" secondItem="o37-7u-qiP" secondAttribute="top" id="PI8-tU-WhM"/>
                             <constraint firstItem="ulQ-RY-phP" firstAttribute="leading" secondItem="x64-f1-3l5" secondAttribute="trailing" id="Px8-fI-VmA"/>
                             <constraint firstItem="7NQ-v0-hbb" firstAttribute="trailing" secondItem="o37-7u-qiP" secondAttribute="trailing" id="S7d-Qw-hwV"/>
                             <constraint firstItem="4SW-3u-YCh" firstAttribute="top" secondItem="x64-f1-3l5" secondAttribute="bottom" id="XHc-Vw-22Y"/>
                             <constraint firstItem="Dt8-21-aMS" firstAttribute="leading" secondItem="4SW-3u-YCh" secondAttribute="trailing" id="Zmp-QW-o0A"/>
                             <constraint firstItem="9Eo-02-X7f" firstAttribute="top" secondItem="o37-7u-qiP" secondAttribute="top" id="asm-Er-JmW"/>
+                            <constraint firstItem="drm-HZ-S4u" firstAttribute="width" secondItem="x64-f1-3l5" secondAttribute="width" multiplier="0.984375" id="beH-qc-95R"/>
                             <constraint firstItem="9Eo-02-X7f" firstAttribute="height" secondItem="7NQ-v0-hbb" secondAttribute="height" id="eAZ-ae-OOM"/>
                             <constraint firstItem="Dt8-21-aMS" firstAttribute="bottom" secondItem="o37-7u-qiP" secondAttribute="bottom" id="m9L-qu-uFd"/>
                             <constraint firstItem="7NQ-v0-hbb" firstAttribute="leading" secondItem="9Eo-02-X7f" secondAttribute="trailing" id="mQf-Jw-56j"/>
+                            <constraint firstItem="drm-HZ-S4u" firstAttribute="top" secondItem="9Eo-02-X7f" secondAttribute="bottom" id="qMv-VR-vXt"/>
                             <constraint firstItem="x64-f1-3l5" firstAttribute="top" secondItem="9Eo-02-X7f" secondAttribute="bottom" id="rjm-Qf-rqc"/>
                             <constraint firstItem="ulQ-RY-phP" firstAttribute="trailing" secondItem="o37-7u-qiP" secondAttribute="trailing" id="sr9-Yb-6Is"/>
                             <constraint firstItem="x64-f1-3l5" firstAttribute="height" secondItem="ulQ-RY-phP" secondAttribute="height" id="vfG-gH-l6V"/>
@@ -373,6 +382,7 @@
                         <outlet property="leftHistory" destination="doY-ww-g5e" id="fcE-mB-1qb"/>
                         <outlet property="leftLongPress" destination="aeN-S3-oJV" id="m38-PF-WBs"/>
                         <outlet property="leftNavBar" destination="9Eo-02-X7f" id="72G-Tg-KpJ"/>
+                        <outlet property="leftProgressBar" destination="drm-HZ-S4u" id="bCZ-mY-P2o"/>
                         <outlet property="leftRefresh" destination="vFV-6i-tX4" id="VhP-fj-2r1"/>
                         <outlet property="leftTab" destination="Giy-TQ-dSx" id="hBb-Dc-zab"/>
                         <outlet property="leftTabBar" destination="4SW-3u-YCh" id="rqy-xs-bE2"/>
@@ -404,7 +414,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-340" y="1280"/>
+            <point key="canvasLocation" x="-340.4296875" y="1279.6875"/>
         </scene>
         <!--iPad Home View Controller-->
         <scene sceneID="A9D-md-X7M">
@@ -448,7 +458,7 @@
                                             </barButtonItem>
                                         </leftBarButtonItems>
                                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Website / Search" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="h5j-M3-UwN">
-                                            <rect key="frame" x="444" y="8" width="137" height="34"/>
+                                            <rect key="frame" x="443.5" y="8" width="137" height="34"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -773,9 +783,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="s4o-7O-g5d"/>
-        <segue reference="FQb-nw-kzs"/>
-        <segue reference="ujG-CL-1So"/>
+        <segue reference="p58-Ag-vnL"/>
+        <segue reference="DA0-F9-QVJ"/>
+        <segue reference="rZA-w6-dlx"/>
         <segue reference="UbH-U9-jod"/>
         <segue reference="pmM-Db-EaB"/>
     </inferredMetricsTieBreakers>
