@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+ //TODO: Change the entire tab structure. This will not matter anymore. 
 class TabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet var navigationBar: UINavigationBar!
@@ -19,11 +19,12 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
     let iCloud = iCloudHandler()
     let savedData = SavedDataHandler()
     var theme = ThemeHandler()
+    var browserTag: BrowserSide = .single
     // Optional variables these do not take up memory until they are called by a method execution
     lazy var matchediPhoneTabs = [Int]() // This is going to be where the bookmarks matching with the search is
     lazy var matchediPadTabs = [Int]()
     lazy var isSearching = false
-    var browserTag = 0
+    weak var homeDelegate: HomeViewDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -158,36 +159,40 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 // iPhone
                 savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                 switch browserTag {
-                case 1: // Left
+                case .left: // Left
                     savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
-                case 2:
+                case .right:
                     savedData.setRightWebPage(URL: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
                 default: // Center / iPhone
-                    if #available(iOS 13, *) {
+                    homeDelegate?.refreshWeb(url: iPhoneTabArray.object(at: matchediPhoneTabs[indexPath.row]) as? String ?? "https://uappsios.com")
+                    if UIDevice().userInterfaceIdiom == .pad {
                         self.dismiss(animated: true, completion: nil)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
+                    } else {
+                        self.sideMenuController?.hideMenu()
+                    }
                 }
             } else {
                 savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                 switch browserTag {
-                case 1: // Left
+                case .left: // Left
                     savedData.setLeftWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
-                case 2:
+                case .right:
                     savedData.setRightWebPage(URL: iPadTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
                 default:
-                    if #available(iOS 13, *) {
+                    homeDelegate?.refreshWeb(url: iPhoneTabArray.object(at: matchediPadTabs[indexPath.row]) as? String ?? "https://uappsios.com")
+                    if UIDevice().userInterfaceIdiom == .pad {
                         self.dismiss(animated: true, completion: nil)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    } else { self.performSegue(withIdentifier: "goHome", sender: self) }
+                    } else {
+                        self.sideMenuController?.hideMenu()
+                    }
                 }
             }
             
@@ -195,11 +200,11 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
             if indexPath.section == 0 {
                 savedData.setLastViewedPage(lastPage: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                 switch browserTag {
-                case 1: // Left
+                case .left: // Left
                     savedData.setLeftWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
-                case 2:
+                case .right:
                     savedData.setRightWebPage(URL: iPhoneTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
@@ -212,11 +217,11 @@ class TabViewController: UIViewController, UITableViewDataSource, UITableViewDel
             } else {
                 savedData.setLastViewedPage(lastPage: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                 switch browserTag {
-                case 1: // Left
+                case .left: // Left
                     savedData.setLeftWebPage(URL: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)
-                case 2:
+                case .right:
                     savedData.setRightWebPage(URL: iPadTabArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
                     self.dismiss(animated: true, completion: nil)

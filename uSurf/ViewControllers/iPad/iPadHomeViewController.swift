@@ -44,7 +44,6 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
             handleWebKit()
         }
         widenTextField()
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationLoad(_:)), name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(theming), name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
     }
     private func widenTextField() {
@@ -183,6 +182,12 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         // Pass the selected object to the new view controller.
         if segue.identifier == "goSplit" {
             savedData.setLeftWebPage(URL: savedData.getLastViewedPage())
+        } else if segue.identifier == "goHistory" {
+            guard let controller = segue.destination as? HistoryViewController else { print("Wrong Controller"); return }
+            controller.homeDelegate = self
+        } else if segue.identifier == "goBookmark" {
+            guard let controller = segue.destination as? BookmarkTableViewController else { print("Wrong Controller"); return }
+            controller.homeDelegate = self
         }
     }
     
@@ -203,4 +208,10 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     }
     @objc func canRotate() {}
 
+}
+
+extension iPadHomeViewController: HomeViewDelegate {
+    func refreshWeb(url: String) {
+        self.loadURL(url)
+    }
 }

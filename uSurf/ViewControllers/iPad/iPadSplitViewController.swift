@@ -271,22 +271,22 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate, WKNavigati
         switch segue.identifier {
         case "leftHistory":
             let vc = segue.destination as? HistoryViewController
-            vc?.browserTag = 1
+            vc?.browserTag = .left
         case "leftTabs":
             let vc = segue.destination as? TabViewController
-            vc?.browserTag = 1
+            vc?.browserTag = .left
         case "leftBookmarks":
             let vc = segue.destination as? BookmarkTableViewController
-            vc?.browserTag = 1
+            vc?.browserTag = .left
         case "rightHistory":
             let vc = segue.destination as? HistoryViewController
-            vc?.browserTag = 2
+            vc?.browserTag = .right
         case "rightTabs":
             let vc = segue.destination as? TabViewController
-            vc?.browserTag = 2
+            vc?.browserTag = .right
         case "rightBookmarks":
             let vc = segue.destination as? BookmarkTableViewController
-            vc?.browserTag = 2
+            vc?.browserTag = .right
         default:
             print("DEBUG: SPLIT CONTROLLER SEGUE NOT FOUND")
         }

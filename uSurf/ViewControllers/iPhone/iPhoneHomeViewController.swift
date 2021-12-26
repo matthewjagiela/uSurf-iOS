@@ -9,6 +9,11 @@
 import UIKit
 import WebKit
 import SideMenuSwift
+
+protocol HomeViewDelegate: AnyObject {
+    func refreshWeb(url: String)
+}
+
 class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var navigationBar: UINavigationBar!
@@ -39,7 +44,6 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
             handleWebKit()
         }
         widenTextField()
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationLoad(_:)), name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(theming), name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
         
     }
@@ -203,26 +207,37 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     @IBAction func showHistory(_ sender: Any) {
         guard let menuController = sideMenuController?.menuViewController as? SideMenuHostViewController else { return }
         menuController.type = .history
+        menuController.homeDelegate = self
         sideMenuController?.revealMenu()
     }
     
     @IBAction func showBookmarks(_ sender: Any) {
         guard let menuController = sideMenuController?.menuViewController as? SideMenuHostViewController else { return }
         menuController.type = .bookmark
+        menuController.homeDelegate = self
         sideMenuController?.revealMenu()
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "goSettings" {
+            let controller = segue.destination as? SettingsViewController
+            controller?.homeDelegate = self
+        }
     }
-    */
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
     @objc func canRotate() {}
 
+}
+// MARK: - Extensions
+extension iPhoneHomeViewController: HomeViewDelegate {
+    func refreshWeb(url: String) {
+        self.loadURL(url)
+    }
 }

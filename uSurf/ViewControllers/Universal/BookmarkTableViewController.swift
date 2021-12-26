@@ -23,7 +23,9 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
     // Optional variables these do not take up memory until they are called by a method execution
     lazy var matchedBookmarks = [Int]() // This is going to be where the bookmarks matching with the search is
     lazy var isSearching = false
-    var browserTag = 0
+    var browserTag: BrowserSide = .single
+    
+    weak var homeDelegate: HomeViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,39 +125,43 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
             let searchedIndex = matchedBookmarks[indexPath.row] // This correlates to the index of the address in our main table
             savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com") // Set the url to load from the main bookmark table based on the searched stored
             switch browserTag {
-            case 1: // Left
+            case .left: // Left
                 savedData.setLeftWebPage(URL: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                 self.dismiss(animated: true, completion: nil)
-            case 2:
+            case .right:
                 savedData.setRightWebPage(URL: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
                 self.dismiss(animated: true, completion: nil)
             default:
                 savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
-                if #available(iOS 13, *) {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    self.sideMenuController?.hideMenu(animated: true)
-                } else { sideMenuController?.hideMenu() }
+                homeDelegate?.refreshWeb(url: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
+                if UIDevice().userInterfaceIdiom == .pad {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.sideMenuController?.hideMenu()
+                }
             }
             
         } else {
             savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com") // There is no search... We can just load the page from the selected index
             switch browserTag {
-            case 1: // Left
+            case .left: // Left
                 savedData.setLeftWebPage(URL: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
                 self.dismiss(animated: true, completion: nil)
-            case 2:
+            case .right:
                 savedData.setRightWebPage(URL: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
                 self.dismiss(animated: true, completion: nil)
             default:
                 savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
-                if #available(iOS 13, *) {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
-                    sideMenuController?.hideMenu()
-                } else { sideMenuController?.hideMenu() }
+                homeDelegate?.refreshWeb(url: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
+                if UIDevice().userInterfaceIdiom == .pad {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.sideMenuController?.hideMenu()
+                }
             
             }
         }
