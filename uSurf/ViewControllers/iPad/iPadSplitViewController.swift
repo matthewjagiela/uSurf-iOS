@@ -34,6 +34,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var rightTabs: UIBarButtonItem!
     @IBOutlet var rightWebHolder: UIView!
     @IBOutlet var singleView: UIBarButtonItem!
+    @IBOutlet weak var rightProgressBar: UIProgressView!
     @IBOutlet var leftLongPress: UILongPressGestureRecognizer!
     @IBOutlet var rightLongPress: UILongPressGestureRecognizer!
     
@@ -104,7 +105,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         rightWebView.centerYAnchor.constraint(equalTo: rightWebHolder.centerYAnchor).isActive = true
         rightWebView.widthAnchor.constraint(equalTo: rightWebHolder.widthAnchor).isActive = true
         rightWebView.heightAnchor.constraint(equalTo: rightWebHolder.heightAnchor).isActive = true
-        // rightWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) //This is going to be tracking the progress for the webkit view
+         rightWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         loadLeftURL(savedData.getLeftWebPage())
         loadRightURL(savedData.getRightWebPage())
     }
@@ -248,7 +249,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
            leftProgressBar.progress = Float(leftWebView.estimatedProgress)
             
         } else {
-            print("WO")
+            rightProgressBar.progress = Float(rightWebView.estimatedProgress)
         }
     }
     
@@ -313,6 +314,7 @@ extension iPadSplitViewController: WKNavigationDelegate {
             savedData.setLeftWebPage(URL: webURL)
             leftAddressBar.text = webURL
         } else { // Right web view finished
+            rightProgressBar.isHidden = true
             savedData.setRightWebPage(URL: webURL)
             rightAddressBar.text = webURL
         }
@@ -323,7 +325,7 @@ extension iPadSplitViewController: WKNavigationDelegate {
         if webView.tag == 0 { // left
             leftProgressBar.isHidden = false
         } else { // right
-            
+            rightProgressBar.isHidden = false
         }
     }
 }
