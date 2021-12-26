@@ -1,5 +1,6 @@
 7: The Return
 - iPhone users will now see their bookmarks in a slide over view!
+- In split view there will be progress bars for each side!
 - Snow is now more performant! 
 
 6.4.1:

@@ -325,14 +325,27 @@
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x64-f1-3l5">
-                                <rect key="frame" x="0.0" y="50" width="512" height="668"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x64-f1-3l5">
+                                <rect key="frame" x="-8" y="50" width="512" height="668"/>
                                 <color key="backgroundColor" red="0.30824157600000002" green="0.67654144760000001" blue="0.77258235220000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulQ-RY-phP">
                                 <rect key="frame" x="512" y="50" width="512" height="668"/>
                                 <color key="backgroundColor" red="1" green="0.059605572920000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="drm-HZ-S4u">
+                                <rect key="frame" x="0.0" y="50" width="504" height="4"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="BZm-Mg-sFb"/>
+                                </constraints>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="I0i-28-RyF">
+                                <rect key="frame" x="512" y="50" width="512" height="4"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="Q70-KJ-ogy"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="3" id="hkA-QY-acT"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="o37-7u-qiP"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -349,15 +362,21 @@
                             <constraint firstItem="Dt8-21-aMS" firstAttribute="top" secondItem="ulQ-RY-phP" secondAttribute="bottom" id="Jml-IC-e1n"/>
                             <constraint firstItem="x64-f1-3l5" firstAttribute="leading" secondItem="o37-7u-qiP" secondAttribute="leading" id="LL4-Im-OCk"/>
                             <constraint firstItem="Dt8-21-aMS" firstAttribute="trailing" secondItem="o37-7u-qiP" secondAttribute="trailing" id="Nz7-nZ-cEY"/>
+                            <constraint firstItem="drm-HZ-S4u" firstAttribute="leading" secondItem="KrP-JV-N9y" secondAttribute="leading" id="O6S-07-gtD"/>
                             <constraint firstItem="7NQ-v0-hbb" firstAttribute="top" secondItem="o37-7u-qiP" secondAttribute="top" id="PI8-tU-WhM"/>
                             <constraint firstItem="ulQ-RY-phP" firstAttribute="leading" secondItem="x64-f1-3l5" secondAttribute="trailing" id="Px8-fI-VmA"/>
                             <constraint firstItem="7NQ-v0-hbb" firstAttribute="trailing" secondItem="o37-7u-qiP" secondAttribute="trailing" id="S7d-Qw-hwV"/>
                             <constraint firstItem="4SW-3u-YCh" firstAttribute="top" secondItem="x64-f1-3l5" secondAttribute="bottom" id="XHc-Vw-22Y"/>
                             <constraint firstItem="Dt8-21-aMS" firstAttribute="leading" secondItem="4SW-3u-YCh" secondAttribute="trailing" id="Zmp-QW-o0A"/>
                             <constraint firstItem="9Eo-02-X7f" firstAttribute="top" secondItem="o37-7u-qiP" secondAttribute="top" id="asm-Er-JmW"/>
+                            <constraint firstItem="drm-HZ-S4u" firstAttribute="width" secondItem="x64-f1-3l5" secondAttribute="width" multiplier="0.984375" id="beH-qc-95R"/>
                             <constraint firstItem="9Eo-02-X7f" firstAttribute="height" secondItem="7NQ-v0-hbb" secondAttribute="height" id="eAZ-ae-OOM"/>
+                            <constraint firstAttribute="trailing" secondItem="I0i-28-RyF" secondAttribute="trailing" id="gXG-h9-Xq3"/>
                             <constraint firstItem="Dt8-21-aMS" firstAttribute="bottom" secondItem="o37-7u-qiP" secondAttribute="bottom" id="m9L-qu-uFd"/>
                             <constraint firstItem="7NQ-v0-hbb" firstAttribute="leading" secondItem="9Eo-02-X7f" secondAttribute="trailing" id="mQf-Jw-56j"/>
+                            <constraint firstItem="I0i-28-RyF" firstAttribute="top" secondItem="7NQ-v0-hbb" secondAttribute="bottom" id="oBH-bd-sU9"/>
+                            <constraint firstItem="I0i-28-RyF" firstAttribute="width" secondItem="ulQ-RY-phP" secondAttribute="width" multiplier="0.984375" constant="8" id="piI-ov-2rT"/>
+                            <constraint firstItem="drm-HZ-S4u" firstAttribute="top" secondItem="9Eo-02-X7f" secondAttribute="bottom" id="qMv-VR-vXt"/>
                             <constraint firstItem="x64-f1-3l5" firstAttribute="top" secondItem="9Eo-02-X7f" secondAttribute="bottom" id="rjm-Qf-rqc"/>
                             <constraint firstItem="ulQ-RY-phP" firstAttribute="trailing" secondItem="o37-7u-qiP" secondAttribute="trailing" id="sr9-Yb-6Is"/>
                             <constraint firstItem="x64-f1-3l5" firstAttribute="height" secondItem="ulQ-RY-phP" secondAttribute="height" id="vfG-gH-l6V"/>
@@ -373,6 +392,7 @@
                         <outlet property="leftHistory" destination="doY-ww-g5e" id="fcE-mB-1qb"/>
                         <outlet property="leftLongPress" destination="aeN-S3-oJV" id="m38-PF-WBs"/>
                         <outlet property="leftNavBar" destination="9Eo-02-X7f" id="72G-Tg-KpJ"/>
+                        <outlet property="leftProgressBar" destination="drm-HZ-S4u" id="bCZ-mY-P2o"/>
                         <outlet property="leftRefresh" destination="vFV-6i-tX4" id="VhP-fj-2r1"/>
                         <outlet property="leftTab" destination="Giy-TQ-dSx" id="hBb-Dc-zab"/>
                         <outlet property="leftTabBar" destination="4SW-3u-YCh" id="rqy-xs-bE2"/>
@@ -385,6 +405,7 @@
                         <outlet property="rightHistory" destination="QQN-T9-mGA" id="Mgf-5Q-0WA"/>
                         <outlet property="rightLongPress" destination="Y0S-9f-3rx" id="IMK-mH-FAU"/>
                         <outlet property="rightNavBar" destination="7NQ-v0-hbb" id="bTD-3D-jvt"/>
+                        <outlet property="rightProgressBar" destination="I0i-28-RyF" id="Drg-t7-Xon"/>
                         <outlet property="rightRefresh" destination="3rM-I3-iRK" id="k7P-3v-hKS"/>
                         <outlet property="rightTabBar" destination="Dt8-21-aMS" id="2ai-Av-RdB"/>
                         <outlet property="rightTabs" destination="k6m-9q-x1V" id="jLB-gg-KEn"/>
@@ -404,7 +425,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-340" y="1280"/>
+            <point key="canvasLocation" x="-340.4296875" y="1279.6875"/>
         </scene>
         <!--iPad Home View Controller-->
         <scene sceneID="A9D-md-X7M">
@@ -773,9 +794,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="s4o-7O-g5d"/>
-        <segue reference="FQb-nw-kzs"/>
-        <segue reference="ujG-CL-1So"/>
+        <segue reference="p58-Ag-vnL"/>
+        <segue reference="DA0-F9-QVJ"/>
+        <segue reference="rZA-w6-dlx"/>
         <segue reference="UbH-U9-jod"/>
         <segue reference="pmM-Db-EaB"/>
     </inferredMetricsTieBreakers>
