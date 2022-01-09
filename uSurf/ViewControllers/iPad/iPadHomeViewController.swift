@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import uAppsLibrary
 
 class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
     
@@ -33,14 +34,12 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("ViewDidLoad")
         // Do any additional setup after loading the view.
-        
+        let messageHandler = DeveloperMessage()
+        messageHandler.handleInternetMessages(viewController: self, app: .uSurf)
         dynamicField.delegate = self // This allows us to use enter to search!
         theming()
         if webView == nil {
-            print("ViewDidLoad NIL")
             handleWebKit()
         }
         widenTextField()
