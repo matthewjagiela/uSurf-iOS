@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import SideMenuSwift
+import uAppsLibrary
 
 protocol HomeViewDelegate: AnyObject {
     func refreshWeb(url: String)
@@ -37,6 +38,8 @@ class iPhoneHomeViewController: UIViewController, WKNavigationDelegate, WKUIDele
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
+        let messageHandler = DeveloperMessage()
+        messageHandler.handleInternetMessages(viewController: self, app: .uSurf)
         dynamicField.delegate = self // This allows us to use enter to search!
         theming()
         if webView == nil {
