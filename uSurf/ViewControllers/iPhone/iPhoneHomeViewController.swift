@@ -8,7 +8,7 @@
 
 import UIKit
 import WebKit
-import SideMenuSwift
+import SideMenu
 import uAppsLibrary
 
 protocol HomeViewDelegate: AnyObject {
