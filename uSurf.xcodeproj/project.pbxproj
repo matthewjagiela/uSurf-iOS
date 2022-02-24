@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		2E23168F2421B4F90003BB54 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
 		2E27462D27683DAE005E00B9 /* SideMenuHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */; };
 		2E76967727C709B8007A835C /* TLDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76967627C709B8007A835C /* TLDHandler.swift */; };
+		2E76967A27C74E78007A835C /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967927C74E78007A835C /* uAppsLibrary */; };
+		2E76967D27C74E91007A835C /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967C27C74E91007A835C /* SideMenu */; };
 		2EA04356231CC48400812246 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E482498231CAF5200F4C969 /* .swiftlint.yml */; };
 		2ECC641423987EBE00FD504A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC641323987EBD00FD504A /* spark.png */; };
 		2ECC64282398897000FD504A /* hiPhone3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64222398896F00FD504A /* hiPhone3x.png */; };
@@ -167,6 +169,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E76967A27C74E78007A835C /* uAppsLibrary in Frameworks */,
+				2E76967D27C74E91007A835C /* SideMenu in Frameworks */,
 				4AF67971A24F7076C99E3DA9 /* Pods_uSurf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +468,10 @@
 			dependencies = (
 			);
 			name = uSurf;
+			packageProductDependencies = (
+				2E76967927C74E78007A835C /* uAppsLibrary */,
+				2E76967C27C74E91007A835C /* SideMenu */,
+			);
 			productName = uSurf;
 			productReference = 34F95DFC20C73F1D00411B9D /* uSurf.app */;
 			productType = "com.apple.product-type.application";
@@ -505,6 +513,10 @@
 				Base,
 			);
 			mainGroup = 34F95DF320C73F1D00411B9D;
+			packageReferences = (
+				2E76967827C74E78007A835C /* XCRemoteSwiftPackageReference "uAppsLibrary" */,
+				2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */,
+			);
 			productRefGroup = 34F95DFD20C73F1D00411B9D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -948,6 +960,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2E76967827C74E78007A835C /* XCRemoteSwiftPackageReference "uAppsLibrary" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:matthewjagiela/uAppsLibrary.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kukushi/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2E76967927C74E78007A835C /* uAppsLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E76967827C74E78007A835C /* XCRemoteSwiftPackageReference "uAppsLibrary" */;
+			productName = uAppsLibrary;
+		};
+		2E76967C27C74E91007A835C /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 34F95DF420C73F1D00411B9D /* Project object */;
 }
