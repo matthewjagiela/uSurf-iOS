@@ -10,8 +10,11 @@ import UIKit
 // swiftlint:disable force_unwrapping
 class WebHandler: NSObject {
     func determineURL(userInput: String) -> URLRequest {
-        if userInput.contains(".com") || userInput.contains(".org") || userInput.contains(".net") || userInput.contains(".edu") || userInput.contains(".us") || userInput.contains(".co") { // These are popular endings to URLS so we can assume that it is supposed to be a web URL and we should format it as one...
-            print("WEB HANDLER: THIS IS A URL")
+        var validDomain = false
+        for domainEnding in TLDHandler.validDomains {
+            if userInput.contains(domainEnding) { validDomain = true}
+        }
+        if validDomain {
             if userInput.contains("http://") || userInput.contains("https://") {  // This has what we need for URL protocols so we can just make the passed text a URL and then load it into the selected webView
                 let loadURL = URL(string: userInput)
                 return URLRequest(url: loadURL!)
@@ -26,6 +29,7 @@ class WebHandler: NSObject {
             return googleRequest
         }
     }
+    
     func googleSearch(_ userInput: String) -> URLRequest { // We need to google something so return the google request instead of loading the webpage
         print("WEB HANDLER: THE USER INPUT IS \(userInput)")
         let query = userInput.replacingOccurrences(of: " ", with: "+")
@@ -34,5 +38,5 @@ class WebHandler: NSObject {
         print("WEB HANDLER: THE GOOGLE SEARCH URL IS : \(googleSearchURL)")
         return URLRequest(url: URL(string: googleSearchURL)!)
     }
-
+    
 }
