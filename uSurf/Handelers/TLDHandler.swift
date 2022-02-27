@@ -11,7 +11,7 @@ import Foundation
 class TLDHandler {
     static var validDomains: [String] = [".com", ".org", ".net", ".edu", ".us", ".co"]
     
-    static func fetchTLD() {
+    static func fetchTLD(completion: @escaping (_ success: Bool) -> Void) {
         guard let tldURL = URL(string: "https://datahub.io/core/top-level-domain-names/r/0.json") else { return }
         URLSession.shared.dataTask(with: tldURL) { data, _, error in
             if let error = error {
@@ -25,8 +25,10 @@ class TLDHandler {
                     for domain in domainCodable {
                         validDomains.append(domain.domain)
                     }
+                    completion(true)
 
                 } catch {
+                    completion(false)
                     return
                 }
             }

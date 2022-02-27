@@ -11,8 +11,8 @@
 		2E1EAEFB2564C0040058431D /* galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2E1EAEFA2564C0040058431D /* galaxy.jpg */; };
 		2E23167F2421B23F0003BB54 /* uSurfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23167E2421B23F0003BB54 /* uSurfTests.swift */; };
 		2E23168D2421B4390003BB54 /* VersionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */; };
-		2E23168F2421B4F90003BB54 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
 		2E27462D27683DAE005E00B9 /* SideMenuHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */; };
+		2E2BBB6127CC1C1400EE9423 /* TLDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2BBB6027CC1C1400EE9423 /* TLDTests.swift */; };
 		2E76967727C709B8007A835C /* TLDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76967627C709B8007A835C /* TLDHandler.swift */; };
 		2E76967A27C74E78007A835C /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967927C74E78007A835C /* uAppsLibrary */; };
 		2E76967D27C74E91007A835C /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967C27C74E91007A835C /* SideMenu */; };
@@ -91,6 +91,7 @@
 		2E2316802421B23F0003BB54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionHandlerTests.swift; sourceTree = "<group>"; };
 		2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHostViewController.swift; sourceTree = "<group>"; };
+		2E2BBB6027CC1C1400EE9423 /* TLDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLDTests.swift; sourceTree = "<group>"; };
 		2E482498231CAF5200F4C969 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2E683B032329EDA6008BA3E7 /* uSurf.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
 		2E76967627C709B8007A835C /* TLDHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLDHandler.swift; sourceTree = "<group>"; };
@@ -184,6 +185,7 @@
 				2E23167E2421B23F0003BB54 /* uSurfTests.swift */,
 				2E2316802421B23F0003BB54 /* Info.plist */,
 				2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */,
+				2E2BBB6027CC1C1400EE9423 /* TLDTests.swift */,
 			);
 			path = uSurfTests;
 			sourceTree = "<group>";
@@ -668,9 +670,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E2BBB6127CC1C1400EE9423 /* TLDTests.swift in Sources */,
 				2E23167F2421B23F0003BB54 /* uSurfTests.swift in Sources */,
 				2E23168D2421B4390003BB54 /* VersionHandlerTests.swift in Sources */,
-				2E23168F2421B4F90003BB54 /* WebHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,6 +726,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = uSurfTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -746,6 +749,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = uSurfTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        TLDHandler.fetchTLD()
+        TLDHandler.fetchTLD { _ in
+            print("Fetch TLD Success")
+        }
         // Override point for customization after application launch.
        // GADMobileAds.configure(withApplicationID: "ca-app-pub-7714978111013265~7068019503") depricated
         GADMobileAds.sharedInstance().start(completionHandler: nil)
