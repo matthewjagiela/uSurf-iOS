@@ -1,6 +1,7 @@
 6.4.1:
 - Snowfall is dynamic! Snow will show and disappear based on months, no more updating the app for snow!
 - On newer iOS Versions (13+) internet information will use an improved system, allowing for less wait time.
+- Native iOS 15 Support
 
 6.4:
 - Support for iOS 14
@@ -73,8 +74,6 @@
 -Fixed Issue Where Adding A Tab in Split Screen didn’t add it to iCloud…
 -Fixed issue where adding a bookmark in split screen did nothing…
 
-
-Older Versions:
 Version 5.0.1:
 -Fixed issue when choosing a history item on iPhone would bring up the iPad UI….
 Version 5:
@@ -92,6 +91,7 @@ Version 5:
 -Fixed issue where hitting “Close” on history view would bring you to split screen somehow (iPhone).
 -Fixed issue when changing orientation will cause the homepage view to be off centered (iPad).
 -Fixed Issue where going to change the homepage will result in a blank browser window on return (iPhone)
+
 4.2.1:
 -Added a new icon for split screen (half square)
 -Added a new icon for single screen (full square).
@@ -175,6 +175,7 @@ The 2016 Update (3.3)!
 3.0.1
 -UI Fixes
 -I know of the iPhone textField Issue. Working on a fix now.
+
 Version 3.0:
 -Support for iOS 9
 -uSurf Allows For Split Screen Multitasking on iPad Air and iPad Air 2! This will allow you to surf the web while doing other activities (one web view).
