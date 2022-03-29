@@ -8,7 +8,9 @@
 
 import UIKit
 import GoogleMobileAds
-import SpriteKit
+import uAppsLibrary
+import Combine
+
 class SettingsViewController: UIViewController {
     @IBOutlet weak var particleBackground: SKView!
     @IBOutlet var runningVersion: UILabel!
@@ -18,33 +20,37 @@ class SettingsViewController: UIViewController {
     @IBOutlet var navBar: UINavigationBar!
     @IBOutlet var infoBox: UITextView!
     let savedData = SavedDataHandler()
-    let appInfo = VersionHandler()
+    @available(iOS 13.0, *)
+    lazy var subscriptions: Set<AnyCancellable> = []
     // MARK: - View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        //AD Setup:
+        // AD Setup:
         adBanner.adUnitID = "ca-app-pub-7714978111013265/7436233905"
         adBanner.rootViewController = self
         adBanner.load(GADRequest())
-        //Labels:
+        // Labels:
         internetLabels()
-        runningVersion.text = appInfo.getAppVersion()
-        infoBox.text = appInfo.getUpdateInformation()
+        let info = AppInformation()
+        runningVersion.text = info.getAppVersion()
+        infoBox.text = info.getChanges()
         infoBox.contentOffset = .zero
-        //Do some theme stuff
+        // Do some theme stuff
         theming()
-//        particleBackground.removeFromSuperview()
-        letItSnow()
+        snowFall()
     }
-    func letItSnow() {
-        let snowScene = SnowScene(size: self.view.bounds.size)
-        particleBackground.ignoresSiblingOrder = true
-        snowScene.scaleMode = .resizeFill
-        particleBackground.backgroundColor = SKColor.clear
-        particleBackground.presentScene(snowScene)
+    
+    func snowFall() {
+        let snow = SnowHandler()
+        if snow.shouldShowSnow() {
+            snow.setupSnowScene(view: particleBackground, size: view.bounds.size)
+        } else {
+            particleBackground.removeFromSuperview()
+        }
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.removeFromParent()
         if UI_USER_INTERFACE_IDIOM() == .phone {
@@ -60,19 +66,29 @@ class SettingsViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshWeb"), object: nil)
     }
     // MARK: - Internet Labels
-    func internetLabels() {  //This is going to go to my github and parse the data on the versions
-        appInfo.labelsFilled { (info) in
-            DispatchQueue.main.async {
-                if let news = info.uAppsNews {
-                    self.newsLabel.text = news
+    func internetLabels() {
+        let labels = InternetLabelsManager()
+        if #available(iOS 13.0, *) {
+            labels.fetchLabels().receive(on: RunLoop.main).sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.newestVersion.text = "Could Not Fetch"
+                    self.newsLabel.text = "Could Not Fetch"
+                    print("ERROR FETCHING \(error) + \(error.localizedDescription)")
+                case .finished: print("Labels Finished Fetching")
                 }
-                if let version = info.uSurfVersion {
-                    self.newestVersion.text = "Newest Version: \(version)"
-                }
+            } receiveValue: { [weak self] info in
+                self?.newestVersion.text = "Newest Version: \(info.uSurfVersion ?? "")"
+                self?.newsLabel.text = info.uAppsNews
+            }.store(in: &subscriptions)
+        } else {
+            labels.legacyFetchLabels { (InternetInformation) in
+                self.newestVersion.text = "Newest Version: \(InternetInformation.uSurfVersion ?? "")"
+                self.newsLabel.text = InternetInformation.uAppsNews
             }
         }
     }
-    //swiftlint:disable force_unwrapping
+    // swiftlint:disable force_unwrapping
     @IBAction func ShareApp(_ sender: Any) {
         let shareURL = URL(string: "https://itunes.apple.com/us/app/utime-universal/id1125889944?ls=1&mt=8")
         let shareString = "I am using uSurf as my new iOS Web Browser! Check it out!"
@@ -80,10 +96,10 @@ class SettingsViewController: UIViewController {
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView
         present(activityViewController, animated: true, completion: nil)
     }
-    //swiftlint:enable force_unwrapping
+    // swiftlint:enable force_unwrapping
     // MARK: - Theme
     @IBAction func SelectTheme(_ sender: Any) {
-        let alert = UIAlertController(title: "Theme", message: "Choose A Theme", preferredStyle: .actionSheet) //make an action sheet for it
+        let alert = UIAlertController(title: "Theme", message: "Choose A Theme", preferredStyle: .actionSheet) // make an action sheet for it
         if #available(iOS 13, *) {
             alert.addAction(UIAlertAction(title: "System", style: .default, handler: { (_) in
                 self.savedData.setTheme(theme: "System")
@@ -123,18 +139,18 @@ class SettingsViewController: UIViewController {
             self.setNeedsStatusBarAppearanceUpdate()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
         }))
-        if let popoverController = alert.popoverPresentationController { //For iPad it needs to present as a popover so we need to make one!!
+        if let popoverController = alert.popoverPresentationController { // For iPad it needs to present as a popover so we need to make one!!
             popoverController.sourceView = sender as? UIView
             popoverController.sourceRect = (sender as AnyObject).bounds
         }
-        self.present(alert, animated: true, completion: nil) //Present the actual alert
+        self.present(alert, animated: true, completion: nil) // Present the actual alert
     }
     func theming() {
         let theme = ThemeHandler()
         self.navBar.barTintColor = theme.getBarTintColor()
         self.navBar.tintColor = theme.getTintColor()
         let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()]
-        navBar.titleTextAttributes = textAttributes //Make the title the same color as the buttons
+        navBar.titleTextAttributes = textAttributes // Make the title the same color as the buttons
         self.view.backgroundColor = theme.getBarTintColor()
     }
     // MARK: ACTIONS

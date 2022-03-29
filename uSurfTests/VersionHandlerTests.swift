@@ -8,24 +8,43 @@
 
 import UIKit
 import XCTest
+import Combine
+import uAppsLibrary
 
 class VersionHandlerTests: XCTestCase {
     
-    let handler = VersionHandler()
-    func test_newest_version() {
-        handler.labelsFilled { (info) in
-            XCTAssertNotNil(info.uSurfVersion)
-            XCTAssertNotEqual(info.uSurfVersion, "")
-        }
-    }
-    func test_uapps_news() {
-        handler.labelsFilled { (info) in
-            XCTAssertNotNil(info.uAppsNews)
-            XCTAssertNotEqual(info.uAppsNews, "")
-        }
-    }
+    var subscriptions: Set<AnyCancellable> = []
+    
+    let handler = InternetLabelsManager()
     func test_changes_populated() {
-        XCTAssert(!handler.getUpdateInformation().isEmpty)
+        let appInfo = AppInformation()
+        XCTAssert(!appInfo.getChanges().isEmpty)
     }
-
+    
+    func test_newest_version_combine() {
+        let internetExpectation = expectation(description: "InternetLabels")
+        handler.fetchLabels().receive(on: RunLoop.main).sink(receiveCompletion: { completion in
+            switch completion {
+            case .failure(let error): XCTFail("Failure with error: \(error)")
+            case .finished: print("finished")
+            }
+            
+        }, receiveValue: { info in
+            XCTAssertNotNil(info.uAppsNews)
+            XCTAssertNotNil(info.uSurfVersion)
+            internetExpectation.fulfill()
+            
+        }).store(in: &subscriptions)
+        waitForExpectations(timeout: 5)
+    }
+    
+    func test_newest_version_legacy() {
+        let internetExpectation = expectation(description: "InternetLabels")
+        handler.legacyFetchLabels { (info) in
+            XCTAssertNotNil(info.uAppsNews)
+            XCTAssertNotNil(info.uSurfVersion)
+            internetExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+    }
 }
