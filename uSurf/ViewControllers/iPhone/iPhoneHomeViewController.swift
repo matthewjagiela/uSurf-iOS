@@ -32,10 +32,10 @@ class iPhoneHomeViewController: UIViewController {
     @IBOutlet var webKitHolderView: UIView!
     @IBOutlet var progressBar: UIProgressView!
     var webView: WKWebView!
-    let savedData = SavedDataHandler()
-    let iCloud = iCloudHandler()
+    let vm = HomeViewModel()
     let webHandler = WebHandler()
     var theme = ThemeHandler()
+    
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +86,7 @@ class iPhoneHomeViewController: UIViewController {
         webView.heightAnchor.constraint(equalTo: webKitHolderView.heightAnchor).isActive = true
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) // This is going to be tracking the progress for the webkit view
         webView.allowsBackForwardNavigationGestures = true // Allow swiping back and forth for navigating page... Better than the old gesture recognizer
-        loadURL(savedData.getLastViewedPage())
+        loadURL(self.vm.savedData.getLastViewedPage())
     }
     
     private func loadURL(_ url: String) { // This method takes a string of an adress and makes the web view load it!
@@ -121,15 +121,14 @@ class iPhoneHomeViewController: UIViewController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        theme = ThemeHandler()
-        theming()
+//        theme = ThemeHandler()
+//        theming()
         
     }
 
     // MARK: - Actions
     // swiftlint:disable force_unwrapping
     @IBAction func addBookmark(_ sender: Any) {
-        print("LongPress")
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
         // Add the bookmark:
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
@@ -137,9 +136,7 @@ class iPhoneHomeViewController: UIViewController {
             let bookmarkAddress = alertController.textFields![1] as UITextField
             if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
                 // Save
-                print("Saving")
-                self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
-                self.iCloud.printBookmarkArray()
+                self.vm.addBookmark(name: bookmarkName.text, address: bookmarkAddress.text)
             } else {
                 // Do something with the error
                 print("There is something wrong so we cannot add this")
@@ -163,28 +160,32 @@ class iPhoneHomeViewController: UIViewController {
             print("Displayed")
         }
     }
-    // swiftlint:enable force_unwrapping
+
     @IBAction func goBack(_ sender: Any) {
         self.webView.goBack()
     }
+    
     @IBAction func goForward(_ sender: Any) {
         self.webView.goForward()
     }
+    
     @IBAction func stopLoading(_ sender: Any) {
         self.webView.stopLoading()
     }
+    
     @IBAction func refreshPage(_ sender: Any) {
         self.webView.reload()
     }
+    
     @IBAction func sharePage(_ sender: Any) {
         let shareURL = self.webView.url?.absoluteURL // This is going to be the URL the user wants to share
         let shareString = self.webView.title // This is going to be the title the user wants to share
         let activityViewController = UIActivityViewController(activityItems: [shareURL as Any, shareString as Any], applicationActivities: nil) // Make the share sheet
         present(activityViewController, animated: true, completion: nil)
     }
+    
     @IBAction func addTab(_ sender: Any) {
-        iCloud.addToiPhoneTabArray(self.webView.url?.absoluteString ?? "https://uappsios.com")
-        iCloud.printTabArray()
+        self.vm.addToiPhoneTabs(url: self.webView.url)
     }
     
     @IBAction func showTabs(_ sender: Any) {
@@ -211,11 +212,6 @@ class iPhoneHomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        
-        if segue.identifier == "goSettings" {
-            let controller = segue.destination as? SettingsViewController
-            controller?.homeDelegate = self
-        }
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -244,14 +240,8 @@ extension iPhoneHomeViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { // The web view has finished loading so we want to hide
         progressBar.isHidden = true
-        let webURL = webView.url?.absoluteString
-        print(webURL ?? "https://uappsios.com")
-        savedData.addToHistoryArray(webURL ?? "https://uappsios.com")// This is going to add the website to history (when private mode is added this will not be a thing...)
-        savedData.setLastViewedPage(lastPage: webURL ?? "https://uappsios.com")
-        print("HISTORY: \(savedData.getHistoryArray())")
-        dynamicField.text = webURL
-        
-        
+        self.vm.addToHistory(url: webView.url)
+        dynamicField.text = webView.url?.absoluteString
     }
 }
 
