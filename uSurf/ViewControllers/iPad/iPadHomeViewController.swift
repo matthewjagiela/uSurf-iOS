@@ -210,6 +210,10 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
 }
 
 extension iPadHomeViewController: HomeViewDelegate {
+    func refreshTheme() {
+        self.theming()
+    }
+    
     func refreshWeb(url: String) {
         self.loadURL(url)
     }
