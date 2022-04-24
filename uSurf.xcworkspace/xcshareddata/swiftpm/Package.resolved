@@ -1,34 +1,32 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "IQKeyboardManagerSwift",
-        "repositoryURL": "https://github.com/hackiftekhar/IQKeyboardManager.git",
-        "state": {
-          "branch": null,
-          "revision": "474f849accae40fe61b5302d9b057dd48ee073ba",
-          "version": "6.5.9"
-        }
-      },
-      {
-        "package": "SideMenu",
-        "repositoryURL": "https://github.com/kukushi/SideMenu.git",
-        "state": {
-          "branch": null,
-          "revision": "c168c143a1acb690ebb992406d9a03ce8791f47c",
-          "version": "2.0.9"
-        }
-      },
-      {
-        "package": "uAppsLibrary",
-        "repositoryURL": "git@github.com:matthewjagiela/uAppsLibrary.git",
-        "state": {
-          "branch": null,
-          "revision": "9d62e69b3441a99e6d636f464c195299c0bed20d",
-          "version": "2.0.0"
-        }
+  "pins" : [
+    {
+      "identity" : "iqkeyboardmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardManager.git",
+      "state" : {
+        "revision" : "474f849accae40fe61b5302d9b057dd48ee073ba",
+        "version" : "6.5.9"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "sidemenu",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kukushi/SideMenu.git",
+      "state" : {
+        "revision" : "c168c143a1acb690ebb992406d9a03ce8791f47c",
+        "version" : "2.0.9"
+      }
+    },
+    {
+      "identity" : "uappslibrary",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:matthewjagiela/uAppsLibrary.git",
+      "state" : {
+        "revision" : "9d62e69b3441a99e6d636f464c195299c0bed20d",
+        "version" : "2.0.0"
+      }
+    }
+  ],
+  "version" : 2
 }
