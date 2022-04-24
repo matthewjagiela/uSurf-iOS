@@ -27,10 +27,9 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     @IBOutlet var tabsButton: UIBarButtonItem!
     // All the variables we are going to need:
     var webView: WKWebView!
-    let savedData = SavedDataHandler()
-    let iCloud = iCloudHandler()
     let webHandler = WebHandler()
-    var browserTag = 1
+    let vm = HomeViewModel()
+
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +49,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         frame.size.width = 10000
         self.dynamicField.frame = frame
     }
-    @objc func notificationLoad(_ : Notification) {
-        loadURL(savedData.getLastViewedPage())
-    }
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
             
@@ -89,24 +86,12 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         webView.heightAnchor.constraint(equalTo: webKitHolderView.heightAnchor).isActive = true
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) // This is going to be tracking the progress for the webkit view
         webView.allowsBackForwardNavigationGestures = true // Allow swiping back and forth for navigating page... Better than the old gesture recognizer
-        loadURL(savedData.getLastViewedPage())
+        loadURL(self.vm.savedData.getLastViewedPage())
     }
     private func loadURL(_ url: String) { // This method takes a string of an adress and makes the web view load it!
         webView.load(webHandler.determineURL(userInput: url))
     }
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) { // There is something loading so we want to show the navigation bar
-        progressBar.isHidden = false
-    }
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { // The web view has finished loading so we want to hide
-        progressBar.isHidden = true
-        let webURL = webView.url?.absoluteString
-        print(webURL ?? "https://uappsios.com")
-        savedData.addToHistoryArray(webURL ?? "https://uappsios.com")// This is going to add the website to history (when private mode is added this will not be a thing...)
-        savedData.setLastViewedPage(lastPage: webURL ?? "https://uappsios.com")
-        print("HISTORY: \(savedData.getHistoryArray())")
-        dynamicField.text = webURL
-        
-    }
+
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { // This is to update the loading bar....
         if keyPath == "estimatedProgress" {
             progressBar.progress = Float(webView.estimatedProgress)
@@ -123,8 +108,8 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         self.view.backgroundColor = theme.getBarTintColor()
     }
     @IBAction func addButtonPressed(_ sender: Any) { // This is going to give the option of either adding a tab or a bookmark
-        iCloud.addToiPadTabArray(self.webView.url?.absoluteString ?? "https://uappsios.com")
-        iCloud.printTabArray()
+        self.vm.addToTabs(url: self.webView.url)
+        
         
     }
     // swiftlint:disable force_unwrapping
@@ -132,18 +117,11 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         print("LongPress")
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
         // Add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
-            if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
-                // Save
-                print("Saving")
-                self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
-                self.iCloud.printBookmarkArray()
-            } else {
-                // Do something with the error
-                print("There is something wrong so we cannot add this")
-            }
+            self?.vm.addBookmark(name: bookmarkName.text, address: bookmarkAddress.text)
+            
         }))
         // The user does not want to add the bookmark:
         alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (_) in
@@ -179,15 +157,6 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "goSplit" {
-            savedData.setLeftWebPage(URL: savedData.getLastViewedPage())
-        } else if segue.identifier == "goHistory" {
-            guard let controller = segue.destination as? HistoryViewController else { print("Wrong Controller"); return }
-            controller.homeDelegate = self
-        } else if segue.identifier == "goBookmark" {
-            guard let controller = segue.destination as? BookmarkTableViewController else { print("Wrong Controller"); return }
-            controller.homeDelegate = self
-        }
     }
     
     @IBAction func backPage(_ sender: Any) {
@@ -205,6 +174,7 @@ class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelega
         let theme = ThemeHandler()
         return theme.getStatusBarColor()
     }
+    
     @objc func canRotate() {}
 
 }

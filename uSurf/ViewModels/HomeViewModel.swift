@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class HomeViewModel {
     let iCloud = iCloudHandler()
@@ -18,9 +19,13 @@ class HomeViewModel {
         self.iCloud.addToBookmarkArray(name: name, address: address)
     }
     
-    func addToiPhoneTabs(url: URL?) {
+    func addToTabs(url: URL?) {
         guard let url = url else { return } //TODO: Throw error
-        iCloud.addToiPhoneTabArray(url.absoluteString)
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
+            iCloud.addToiPadTabArray(url.absoluteString)
+        } else {
+            iCloud.addToiPhoneTabArray(url.absoluteString)
+        }
     }
     
     func addToHistory(url: URL?) {

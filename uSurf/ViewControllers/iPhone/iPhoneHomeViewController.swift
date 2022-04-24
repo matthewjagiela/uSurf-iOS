@@ -185,7 +185,7 @@ class iPhoneHomeViewController: UIViewController {
     }
     
     @IBAction func addTab(_ sender: Any) {
-        self.vm.addToiPhoneTabs(url: self.webView.url)
+        self.vm.addToTabs(url: self.webView.url)
     }
     
     @IBAction func showTabs(_ sender: Any) {
@@ -233,6 +233,7 @@ extension iPhoneHomeViewController: HomeViewDelegate {
     }
 }
 
+// MARK: - WKNavigation Extension
 extension iPhoneHomeViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) { // There is something loading so we want to show the navigation bar
         progressBar.isHidden = false
@@ -245,8 +246,10 @@ extension iPhoneHomeViewController: WKNavigationDelegate {
     }
 }
 
+// MARK: - WKUI Extension
 extension iPhoneHomeViewController: WKUIDelegate { }
 
+// MARK: - TextField Extension
 extension iPhoneHomeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
