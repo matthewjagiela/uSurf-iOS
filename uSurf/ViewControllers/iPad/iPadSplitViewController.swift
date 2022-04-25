@@ -265,31 +265,31 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func leftTab(_ sender: Any) {
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { //TODO: Reimplement with new architecture type
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        switch segue.identifier {
-        case "leftHistory":
-            let vc = segue.destination as? HistoryViewController
-            vc?.browserTag = .left
-        case "leftTabs":
-            let vc = segue.destination as? TabViewController
-            vc?.browserTag = .left
-        case "leftBookmarks":
-            let vc = segue.destination as? BookmarkTableViewController
-            vc?.browserTag = .left
-        case "rightHistory":
-            let vc = segue.destination as? HistoryViewController
-            vc?.browserTag = .right
-        case "rightTabs":
-            let vc = segue.destination as? TabViewController
-            vc?.browserTag = .right
-        case "rightBookmarks":
-            let vc = segue.destination as? BookmarkTableViewController
-            vc?.browserTag = .right
-        default:
-            print("DEBUG: SPLIT CONTROLLER SEGUE NOT FOUND")
-        }
+//        switch segue.identifier {
+//        case "leftHistory":
+//            let vc = segue.destination as? HistoryViewController
+//            vc?.browserTag = .left
+//        case "leftTabs":
+//            let vc = segue.destination as? TabViewController
+//            vc?.browserTag = .left
+//        case "leftBookmarks":
+//            let vc = segue.destination as? BookmarkTableViewController
+//            vc?.browserTag = .left
+//        case "rightHistory":
+//            let vc = segue.destination as? HistoryViewController
+//            vc?.browserTag = .right
+//        case "rightTabs":
+//            let vc = segue.destination as? TabViewController
+//            vc?.browserTag = .right
+//        case "rightBookmarks":
+//            let vc = segue.destination as? BookmarkTableViewController
+//            vc?.browserTag = .right
+//        default:
+//            print("DEBUG: SPLIT CONTROLLER SEGUE NOT FOUND")
+//        }
     }
     @objc func canRotate() {}
     /*

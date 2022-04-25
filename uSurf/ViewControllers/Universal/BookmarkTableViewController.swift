@@ -8,7 +8,11 @@
 
 import UIKit
 
-class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+protocol iCloudDelegate: AnyObject { //TODO: Move this
+    func updateUXFromiCloud()
+}
+
+class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var searchBar: UISearchBar!
@@ -23,18 +27,12 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
     // Optional variables these do not take up memory until they are called by a method execution
     lazy var matchedBookmarks = [Int]() // This is going to be where the bookmarks matching with the search is
     lazy var isSearching = false
-    var browserTag: BrowserSide = .single
     
     weak var homeDelegate: HomeViewDelegate?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //TODO: Change this to fetching from vm OR just have whatever is calling it go to the VM for the data source...
         bookmarkArray = iCloud.getBookmarkArray()
         bookmarkNameArray = iCloud.getBookmarkNameArray()
         theming()
@@ -42,16 +40,9 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
-    }
-
-    @objc private func iCloudUpdate(notification: NSNotification) { // This will be called when something within iCloud has changed...
-        bookmarkArray = iCloud.getBookmarkArray()
-        bookmarkNameArray = iCloud.getBookmarkNameArray()
-        isSearching = false
-        tableView.reloadData()
     }
     
+    //TODO: Change to safer approach
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { // There is some search happening so we need to start trying to find the timer
         print("BookarkTableViewController: We are searching")
         if let searchedItem = searchBar.text, !(searchBar.text?.isEmpty ?? true) {
@@ -65,9 +56,9 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         }
         tableView.reloadData()
     }
-
+    
     // MARK: - Theme
-
+    
     private func theming() {
         
         searchController = UISearchController(searchResultsController: nil)
@@ -78,7 +69,7 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
         tableView.tableFooterView = UIView(frame: .zero) // Make sure that the entire thing is in frame
         tableView.rowHeight = 71 // Row height for the text
         navigationBar.barTintColor = theme.getBarTintColor() // Set the real color of the bar
-       
+        
         // SEARCH BAR:
         
         searchBar.barTintColor = theme.getSearchBarColor()
@@ -102,72 +93,31 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-           super.traitCollectionDidChange(previousTraitCollection)
-           theme = ThemeHandler()
-           theming()
-           
-       }
-    // MARK: - TableView Methods
+        super.traitCollectionDidChange(previousTraitCollection)
+        theme = ThemeHandler()
+        theming()
+        
+    }
+    // MARK: - Custom Actions
+    @IBAction func goHome(_ sender: Any) {
+    }
+    
+    @objc func canRotate() {}
+}
+
+extension BookmarkTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Bookmark Table View: Returning \(bookmarkNameArray.count) items")
         if isSearching {
-           return matchedBookmarks.count
+            return matchedBookmarks.count
         } else {
-           return bookmarkNameArray.count
+            return bookmarkNameArray.count
         }
-       
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if isSearching { // This is a selection from a search
-            print(matchedBookmarks)
-            let searchedIndex = matchedBookmarks[indexPath.row] // This correlates to the index of the address in our main table
-            savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com") // Set the url to load from the main bookmark table based on the searched stored
-            switch browserTag {
-            case .left: // Left
-                savedData.setLeftWebPage(URL: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
-               NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
-                self.dismiss(animated: true, completion: nil)
-            case .right:
-                savedData.setRightWebPage(URL: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
-                self.dismiss(animated: true, completion: nil)
-            default:
-                savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
-                homeDelegate?.refreshWeb(url: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
-                if UIDevice().userInterfaceIdiom == .pad {
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    self.sideMenuController?.hideMenu()
-                }
-            }
-            
-        } else {
-            savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com") // There is no search... We can just load the page from the selected index
-            switch browserTag {
-            case .left: // Left
-                savedData.setLeftWebPage(URL: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
-                self.dismiss(animated: true, completion: nil)
-            case .right:
-                savedData.setRightWebPage(URL: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
-                self.dismiss(animated: true, completion: nil)
-            default:
-                savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
-                homeDelegate?.refreshWeb(url: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
-                if UIDevice().userInterfaceIdiom == .pad {
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    self.sideMenuController?.hideMenu()
-                }
-            
-            }
-        }
-        // self.performSegue(withIdentifier: "goHome", sender: self) //Return to the browser with the new page loaded.
     }
-    // swiftlint:disable force_unwrapping
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var bookmarkName = ""
         var bookmarkURL = ""
@@ -179,18 +129,19 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
             bookmarkName = (bookmarkNameArray.object(at: indexPath.row) as? String ?? "uApps")
             bookmarkURL = (bookmarkArray.object(at: indexPath.row) as? String ?? "https://uappsios.com")
         }
-        cell?.textLabel?.text = bookmarkName
-        cell?.detailTextLabel?.text = bookmarkURL
-        cell?.backgroundColor = theme.getBarTintColor()
-        cell?.textLabel?.textColor = theme.getTintColor()
-        cell?.detailTextLabel?.textColor = theme.getTintColor()
-        return cell!
+        guard let cell = cell else {
+            return UITableViewCell()
+        }
+        
+        cell.textLabel?.text = bookmarkName
+        cell.detailTextLabel?.text = bookmarkURL
+        cell.backgroundColor = theme.getBarTintColor()
+        cell.textLabel?.textColor = theme.getTintColor()
+        cell.detailTextLabel?.textColor = theme.getTintColor()
+        return cell
     }
-    // swiftlint:enable force_unwrapping
     
-    // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
     
@@ -205,42 +156,68 @@ class BookmarkTableViewController: UIViewController, UITableViewDataSource, UITa
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    // MARK: - Custom Actions
-    @IBAction func goHome(_ sender: Any) {
-        if #available(iOS 13, *) {
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            self.performSegue(withIdentifier: "goHome", sender: self)
         }
     }
     
-    @objc func canRotate() {}
+}
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+extension BookmarkTableViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //TODO: This will change with VM implementation
+        
+        if isSearching { // This is a selection from a search
+//            print(matchedBookmarks)
+//            let searchedIndex = matchedBookmarks[indexPath.row] // This correlates to the index of the address in our main table
+//            savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com") // Set the url to load from the main bookmark table based on the searched stored
+//            switch browserTag {
+//            case .left: // Left
+//                savedData.setLeftWebPage(URL: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
+//                self.dismiss(animated: true, completion: nil)
+//            case .right:
+//                savedData.setRightWebPage(URL: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
+//                self.dismiss(animated: true, completion: nil)
+//            default:
+//                savedData.setLastViewedPage(lastPage: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
+//                homeDelegate?.refreshWeb(url: bookmarkArray[searchedIndex] as? String ?? "https://uappsios.com")
+//                if UIDevice().userInterfaceIdiom == .pad {
+//                    self.dismiss(animated: true, completion: nil)
+//                } else {
+//                    self.sideMenuController?.hideMenu()
+//                }
+//            }
+            
+        } else {
+//            savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com") // There is no search... We can just load the page from the selected index
+//            switch browserTag {
+//            case .left: // Left
+//                savedData.setLeftWebPage(URL: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
+//                self.dismiss(animated: true, completion: nil)
+//            case .right:
+//                savedData.setRightWebPage(URL: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "rightWeb"), object: nil)
+//                self.dismiss(animated: true, completion: nil)
+//            default:
+//                savedData.setLastViewedPage(lastPage: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
+//                homeDelegate?.refreshWeb(url: bookmarkArray[indexPath.row] as? String ?? "https://uappsios.com")
+//                if UIDevice().userInterfaceIdiom == .pad {
+//                    self.dismiss(animated: true, completion: nil)
+//                } else {
+//                    self.sideMenuController?.hideMenu()
+//                }
+//                
+//            }
+        }
     }
-    */
+}
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+extension BookmarkTableViewController: iCloudDelegate {
+    func updateUXFromiCloud() {
+        bookmarkArray = iCloud.getBookmarkArray()
+        bookmarkNameArray = iCloud.getBookmarkNameArray()
+        isSearching = false
+        tableView.reloadData()
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
