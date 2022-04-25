@@ -133,6 +133,7 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - ACTIONS
+    //TODO: Implement actions (and change naming)
     @IBAction func ViewPrivacyPolicy(_ sender: Any) {
 
     }
