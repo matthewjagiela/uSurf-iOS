@@ -21,8 +21,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet var infoBox: UITextView!
     let savedData = SavedDataHandler()
     weak var homeDelegate: HomeViewDelegate?
-    @available(iOS 13.0, *)
-    lazy var subscriptions: Set<AnyCancellable> = []
     // MARK: - View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +44,6 @@ class SettingsViewController: UIViewController {
     func snowFall() {
         let snow = SnowHandler()
         if snow.shouldShowSnow() {
-//            snow.setupSnowScene(view: particleBackground, size: view.bounds.size)
             snow.generateSnowScene(snowView: particleBackground, size: view.bounds.size)
         } else {
             particleBackground.removeFromSuperview()
@@ -56,7 +53,6 @@ class SettingsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.removeFromParent()
         if UI_USER_INTERFACE_IDIOM() == .phone {
-            print("Force rotation")
             AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
             infoBox.contentOffset = .zero
         }
@@ -65,30 +61,10 @@ class SettingsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         AppUtility.lockOrientation(.all)
-        //TODO: Determine if notification was due to older versions
     }
     // MARK: - Internet Labels
     func internetLabels() {
-        let labels = InternetLabelsManager()
-        if #available(iOS 13.0, *) {
-            labels.fetchLabels().receive(on: RunLoop.main).sink { completion in
-                switch completion {
-                case .failure(let error):
-                    self.newestVersion.text = "Could Not Fetch"
-                    self.newsLabel.text = "Could Not Fetch"
-                    print("ERROR FETCHING \(error) + \(error.localizedDescription)")
-                case .finished: print("Labels Finished Fetching")
-                }
-            } receiveValue: { [weak self] info in
-                self?.newestVersion.text = "Newest Version: \(info.uSurfVersion ?? "")"
-                self?.newsLabel.text = info.uAppsNews
-            }.store(in: &subscriptions)
-        } else {
-            labels.legacyFetchLabels { (InternetInformation) in
-                self.newestVersion.text = "Newest Version: \(InternetInformation.uSurfVersion ?? "")"
-                self.newsLabel.text = InternetInformation.uAppsNews
-            }
-        }
+        //TODO: Implement internet labels using new manager
     }
     // swiftlint:disable force_unwrapping
     @IBAction func ShareApp(_ sender: Any) {
@@ -155,29 +131,19 @@ class SettingsViewController: UIViewController {
         navBar.titleTextAttributes = textAttributes // Make the title the same color as the buttons
         self.view.backgroundColor = theme.getBarTintColor()
     }
-    // MARK: ACTIONS
+    
+    // MARK: - ACTIONS
     @IBAction func ViewPrivacyPolicy(_ sender: Any) {
-        savedData.setLastViewedPage(lastPage: "https://uappsios.com/usurf-privacy")
-        self.performSegue(withIdentifier: "goHome", sender: self)
+
     }
     @IBAction func supportButton(_ sender: Any) {
-        savedData.setLastViewedPage(lastPage: "https://uappsios.com/usurf-support")
-        homeDelegate?.refreshWeb(url: "https://uappsios.com/usurf-support")
-        if #available(iOS 13, *) {
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            self.performSegue(withIdentifier: "goHome", sender: self)
-        }
+       
     }
+    
     @IBAction func goHome(_ sender: Any) {
-        if #available(iOS 13, *) {
-            self.dismiss(animated: true) {
-                print("Settings Dismissed")
-            }
-        } else {
-            self.performSegue(withIdentifier: "goHome", sender: self)
-        }
+       
     }
+    
     // MARK: - Status Bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
         let theme = ThemeHandler()
