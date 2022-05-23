@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import uAppsLibrary
 
-class iPadHomeViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate {
+class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegate {
     
     // All of the outlets on the view:
     @IBOutlet var navigationBar: UINavigationBar!
@@ -186,5 +186,18 @@ extension iPadHomeViewController: HomeViewDelegate {
     
     func refreshWeb(url: String) {
         self.loadURL(url)
+    }
+}
+
+// MARK: - WKNavigation Extension
+extension iPadHomeViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) { // There is something loading so we want to show the navigation bar
+        progressBar.isHidden = false
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { // The web view has finished loading so we want to hide
+        progressBar.isHidden = true
+        self.vm.addToHistory(url: webView.url)
+        dynamicField.text = webView.url?.absoluteString
     }
 }
