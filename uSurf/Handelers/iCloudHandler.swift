@@ -39,6 +39,16 @@ class iCloudHandler: NSObject {
              return NSMutableArray(array: NSUbiquitousKeyValueStore.default.array(forKey: "nameArray")!)
         }
     }
+    
+    func getBookmarkTupleArray() -> [(name: String, url: String)] {
+        guard let bookmarkArray = NSUbiquitousKeyValueStore.default.array(forKey: "bookmarkArray"), let bookmarkNameArray = NSUbiquitousKeyValueStore.default.array(forKey: "nameArray") else { return [] }
+        
+        let bookmarkURLs: [String] = bookmarkArray.compactMap { $0 as? String }
+        let bookmarkNames: [String] = bookmarkNameArray.compactMap { $0 as? String }
+        return zip(bookmarkNames, bookmarkURLs).map { (name: $0, url: $1)}
+        
+    }
+
     func setiPhoneTabArray(iPhoneTabArray: NSMutableArray) { // Upload the iPhone Tab Array To iCloud
         NSUbiquitousKeyValueStore.default.set(iPhoneTabArray, forKey: "iPhoneTabArray")
     }
@@ -61,12 +71,7 @@ class iCloudHandler: NSObject {
     func getObjectOfiPadTabArray(index: Int) -> String { // Return the object at the passed index from the iPad Tab Array
         return getiPadTabArray().object(at: index) as? String ?? "https://uappsios.com"
     }
-    func getBookmark(index: Int) -> String { // Return the object at the passed index from the bookmark array
-        return getBookmarkArray().object(at: index) as? String ?? "https://uappsios.com"
-    }
-    func getBookmarkName(index: Int) -> String { // Return the object at the passed index from the bookmark name array
-        return getBookmarkNameArray().object(at: index) as? String ?? "New Bookmark"
-    }
+
     func addToiPhoneTabArray(_ item: String) { // Add an item to  the iPhone Tab Array and save the changes to iCloud
         let iPhoneTabArray = getiPhoneTabArray()
         iPhoneTabArray.add(item)
@@ -77,6 +82,8 @@ class iCloudHandler: NSObject {
         iPadTabArray.add(item)
         setiPadTabArray(iPadTabArray: iPadTabArray)
     }
+    
+    //TODO: Redo Bookmark With New Array Structure
     func addToBookmarkArray(_ item: String) { // Add an item to the bookmark Array and save the changes to iCloud
         let bookmarkArray = getBookmarkArray()
         bookmarkArray.add(item)
@@ -93,17 +100,11 @@ class iCloudHandler: NSObject {
         bookmarkNameArray.add(name)
         bookmarkArray.add(address)
         setBookmarkArrays(bookmarkNameArray: bookmarkNameArray, bookmarkArray: bookmarkArray)
-        
-    }
-    func printTabArray() {
-        let tabArray = self.getiPhoneTabArray()
-        print(tabArray)
-    }
-    func printBookmarkArray() {
-        let bookmarkArray = getBookmarkArray()
-        let bookmarkNameArray = getBookmarkNameArray()
-        print("BOOKMARKS: \(bookmarkArray)")
-        print("BOOKMARKS NAME: \(bookmarkNameArray)")
+
     }
 
+}
+
+protocol iCloudDelegate: AnyObject {
+    func updateUXFromiCloud()
 }

@@ -110,7 +110,6 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     @IBAction func addButtonPressed(_ sender: Any) { // This is going to give the option of either adding a tab or a bookmark
         self.vm.addToTabs(url: self.webView.url)
         
-        
     }
     // swiftlint:disable force_unwrapping
     @IBAction func longPress(_ sender: Any) { // A long press is going to be for adding a bookmark

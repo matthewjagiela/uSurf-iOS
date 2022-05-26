@@ -184,7 +184,6 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
                 // Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
-                self.iCloud.printBookmarkArray()
             } else {
                 // Do something with the error
                 print("There is something wrong so we cannot add this")
@@ -219,7 +218,6 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
                 // Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
-                self.iCloud.printBookmarkArray()
             } else {
                 // Do something with the error
                 print("There is something wrong so we cannot add this")
