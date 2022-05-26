@@ -100,9 +100,7 @@ extension BookmarkTableViewController: UITableViewDataSource {
         var bookmarkName = ""
         var bookmarkURL = ""
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell")
-        
-        //TODO: Implement Searching
-        
+
         bookmarkName = vm.name(at: indexPath.row)
         bookmarkURL = vm.url(at: indexPath.row)
         guard let cell = cell else {
@@ -135,13 +133,10 @@ extension BookmarkTableViewController: UITableViewDataSource {
 
 extension BookmarkTableViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //TODO: This will change with VM implementation
-        
-        if isSearching { // This is a selection from a search
-            
-        } else {
-            
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let homeDelegate = homeDelegate else { return }
+        homeDelegate.refreshWeb(url: vm.url(at: indexPath.row))
+        self.dismiss(animated: true)
     }
 }
 

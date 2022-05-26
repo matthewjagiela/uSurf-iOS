@@ -156,6 +156,11 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+
+        if segue.identifier == "goBookmark" {
+            guard let vc = segue.destination as? BookmarkTableViewController else { return }
+            vc.homeDelegate = self
+        }
     }
     
     @IBAction func backPage(_ sender: Any) {
