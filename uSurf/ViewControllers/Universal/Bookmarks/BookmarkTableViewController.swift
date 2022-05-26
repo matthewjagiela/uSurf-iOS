@@ -35,7 +35,6 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
         searchBar.delegate = self
     }
     
-    //TODO: Change to safer approach
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         vm.searchTerm = searchText
     }
@@ -85,6 +84,11 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
     }
     // MARK: - Custom Actions
     @IBAction func goHome(_ sender: Any) {
+        if let iPhoneControl = sideMenuController {
+            iPhoneControl.hideMenu()
+        } else {
+            self.dismiss(animated: true)
+        }
     }
     
     @objc func canRotate() {}
@@ -136,7 +140,11 @@ extension BookmarkTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let homeDelegate = homeDelegate else { return }
         homeDelegate.refreshWeb(url: vm.url(at: indexPath.row))
-        self.dismiss(animated: true)
+        if let iPhoneController = sideMenuController {
+            iPhoneController.hideMenu()
+        } else {
+            self.dismiss(animated: true)
+        }
     }
 }
 
