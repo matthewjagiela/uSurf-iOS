@@ -135,14 +135,16 @@ class SettingsViewController: UIViewController {
     // MARK: - ACTIONS
     //TODO: Implement actions (and change naming)
     @IBAction func ViewPrivacyPolicy(_ sender: Any) {
-
+        homeDelegate?.refreshWeb(url: "https://uappsios.com/usurf-support/")
+        self.dismiss(animated: true)
     }
     @IBAction func supportButton(_ sender: Any) {
-       
+        homeDelegate?.refreshWeb(url: "https://uappsios.com/usurf-support/")
+        self.dismiss(animated: true)
     }
     
     @IBAction func goHome(_ sender: Any) {
-       
+        self.dismiss(animated: true)
     }
     
     // MARK: - Status Bar

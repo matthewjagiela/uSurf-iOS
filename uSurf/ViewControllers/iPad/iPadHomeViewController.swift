@@ -161,6 +161,11 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
             guard let vc = segue.destination as? BookmarkTableViewController else { return }
             vc.homeDelegate = self
         }
+        
+        if segue.identifier == "goSettings" {
+            guard let vc = segue.destination as? SettingsViewController else { return }
+            vc.homeDelegate = self
+        }
     }
     
     @IBAction func backPage(_ sender: Any) {

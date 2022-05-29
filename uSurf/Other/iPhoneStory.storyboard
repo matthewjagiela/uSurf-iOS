@@ -401,7 +401,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-271" y="116"/>
+            <point key="canvasLocation" x="-281" y="129"/>
         </scene>
         <!--Bookmark Table View Controller-->
         <scene sceneID="JaN-xx-lAc">
@@ -622,7 +622,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aF8-y8-pvl"/>
+        <segue reference="1V5-IR-oIx"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <resources>

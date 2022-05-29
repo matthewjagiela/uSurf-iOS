@@ -464,7 +464,7 @@
                                             </barButtonItem>
                                             <barButtonItem image="Settings" id="Urx-ED-nfJ" userLabel="Settings">
                                                 <connections>
-                                                    <segue destination="p0J-yc-dg1" kind="presentation" modalTransitionStyle="flipHorizontal" id="GZg-BQ-d7U"/>
+                                                    <segue destination="p0J-yc-dg1" kind="presentation" identifier="goSettings" modalTransitionStyle="flipHorizontal" id="GZg-BQ-d7U"/>
                                                 </connections>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -797,7 +797,7 @@
         <segue reference="p58-Ag-vnL"/>
         <segue reference="FQb-nw-kzs"/>
         <segue reference="rZA-w6-dlx"/>
-        <segue reference="FZM-rQ-8pv"/>
+        <segue reference="Tuz-Ba-Wi3"/>
         <segue reference="Rvi-zR-YjV"/>
     </inferredMetricsTieBreakers>
     <resources>
