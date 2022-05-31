@@ -12,6 +12,7 @@ class BookmarkViewModel {
     weak var iCloudDelegate: iCloudDelegate?
     var iCloud = iCloudHandler()
     var localStorage = SavedDataHandler()
+    var browserSide: BrowserSide?
     var bookmarks: [(name: String, url: String)] = [] {
         didSet {
             if let iCloudDelegate = iCloudDelegate {
@@ -42,9 +43,10 @@ class BookmarkViewModel {
         }
     }
     
-    init(iCloudDelegate: iCloudDelegate?) {
+    init(iCloudDelegate: iCloudDelegate?, browserSide: BrowserSide? = nil) {
         self.iCloudDelegate = iCloudDelegate
         self.fetchBookmarks()
+        self.browserSide = browserSide
         //iCloud Notification Update
     }
     

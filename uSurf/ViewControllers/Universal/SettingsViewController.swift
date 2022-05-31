@@ -133,7 +133,7 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - ACTIONS
-    //TODO: Implement actions (and change naming)
+    //TODO: Implement Privacy Policy URL
     @IBAction func ViewPrivacyPolicy(_ sender: Any) {
         homeDelegate?.refreshWeb(url: "https://uappsios.com/usurf-support/")
         self.dismiss(animated: true)

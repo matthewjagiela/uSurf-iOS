@@ -22,6 +22,7 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
     lazy var isSearching = false
     
     weak var homeDelegate: HomeViewDelegate?
+    weak var splitDelegate: SplitViewDelegate?
     
     var vm: BookmarkViewModel = BookmarkViewModel(iCloudDelegate: nil)
     
@@ -138,11 +139,15 @@ extension BookmarkTableViewController: UITableViewDataSource {
 extension BookmarkTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let homeDelegate = homeDelegate else { return }
-        homeDelegate.refreshWeb(url: vm.url(at: indexPath.row))
-        if let iPhoneController = sideMenuController {
-            iPhoneController.hideMenu()
-        } else {
+        if let homeDelegate = homeDelegate {
+            homeDelegate.refreshWeb(url: vm.url(at: indexPath.row))
+            if let iPhoneController = sideMenuController {
+                iPhoneController.hideMenu()
+            } else {
+                self.dismiss(animated: true)
+            }
+        } else if let splitDelegate = splitDelegate, let side = vm.browserSide {
+            splitDelegate.refresh(url: vm.url(at: indexPath.row), side: side)
             self.dismiss(animated: true)
         }
     }
