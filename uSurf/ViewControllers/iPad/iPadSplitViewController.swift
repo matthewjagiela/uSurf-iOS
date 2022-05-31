@@ -159,7 +159,6 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // 0 is left 1 is right
         
         textField.resignFirstResponder()
         switch textField.tag {

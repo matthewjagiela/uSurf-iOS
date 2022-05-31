@@ -47,7 +47,11 @@ class BookmarkViewModel {
         self.iCloudDelegate = iCloudDelegate
         self.fetchBookmarks()
         self.browserSide = browserSide
-        //iCloud Notification Update
+        NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
+    }
+    
+    @objc private func iCloudUpdate(notification: NSNotification) {
+        self.fetchBookmarks()
     }
     
     func fetchBookmarks() {
@@ -62,8 +66,16 @@ class BookmarkViewModel {
         return filteredBookmarks[index].url
     }
     
-    func deleteBookmark(at index: Int) {
-        
+    func deleteBookmark(url: String) {
+        let nameArray = iCloud.getBookmarkNameArray()
+        let urlArray = iCloud.getBookmarkArray()
+        let index = urlArray.indexOfObjectIdentical(to: url)
+        nameArray.removeObject(at: index)
+        urlArray.removeObject(at: index)
+        iCloud.setBookmarkArray(bookmarkArray: urlArray)
+        iCloud.setBookmarkNameArray(bookmarkNameArray: nameArray)
+        bookmarks.remove(at: index)
+        filteredBookmarks.remove(at: index)
     }
     
     func updateFilteredBookmarks() {
