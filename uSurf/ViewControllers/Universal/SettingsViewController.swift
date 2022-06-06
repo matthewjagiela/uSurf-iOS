@@ -10,6 +10,7 @@ import UIKit
 import GoogleMobileAds
 import uAppsLibrary
 import Combine
+import AppTrackingTransparency
 
 class SettingsViewController: UIViewController {
     @IBOutlet weak var particleBackground: SKView!
@@ -30,7 +31,13 @@ class SettingsViewController: UIViewController {
         // AD Setup:
         adBanner.adUnitID = "ca-app-pub-7714978111013265/7436233905"
         adBanner.rootViewController = self
-        adBanner.load(GADRequest())
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { [weak self] _ in
+                self?.adBanner.load(GADRequest())
+            }
+        } else {
+            self.adBanner.load(GADRequest())
+        }
         // Labels:
         internetLabels()
         let info = AppInformation()
