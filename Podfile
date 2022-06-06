@@ -6,7 +6,7 @@ target 'uSurf' do
   use_frameworks!
 
   # Pods for uSurf
-    pod 'Google-Mobile-Ads-SDK', '~> 8.1.0'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'SwiftLint'
     pod 'uAppsLibrary', :git => 'https://github.com/matthewjagiela/uAppsLibrary', :tag=> '1.0'
     
