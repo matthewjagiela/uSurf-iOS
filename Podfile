@@ -8,7 +8,7 @@ target 'uSurf' do
   # Pods for uSurf
     pod 'Google-Mobile-Ads-SDK'
     pod 'SwiftLint'
-    pod 'uAppsLibrary', :git => 'https://github.com/matthewjagiela/uAppsLibrary', :tag=> '1.0'
+    pod 'uAppsLibrary', :git => 'https://github.com/matthewjagiela/uAppsLibrary', :tag=> '1.1'
     
     target 'uSurfTests' do
       inherit! :search_paths

@@ -33,7 +33,9 @@ class SettingsViewController: UIViewController {
         adBanner.rootViewController = self
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization { [weak self] _ in
-                self?.adBanner.load(GADRequest())
+                DispatchQueue.main.async {
+                    self?.adBanner.load(GADRequest())
+                }
             }
         } else {
             self.adBanner.load(GADRequest())
@@ -75,23 +77,10 @@ class SettingsViewController: UIViewController {
     // MARK: - Internet Labels
     func internetLabels() {
         let labels = InternetLabelsManager()
-        if #available(iOS 13.0, *) {
-            labels.fetchLabels().receive(on: RunLoop.main).sink { completion in
-                switch completion {
-                case .failure(let error):
-                    self.newestVersion.text = "Could Not Fetch"
-                    self.newsLabel.text = "Could Not Fetch"
-                    print("ERROR FETCHING \(error) + \(error.localizedDescription)")
-                case .finished: print("Labels Finished Fetching")
-                }
-            } receiveValue: { [weak self] info in
-                self?.newestVersion.text = "Newest Version: \(info.uSurfVersion ?? "")"
-                self?.newsLabel.text = info.uAppsNews
-            }.store(in: &subscriptions)
-        } else {
-            labels.legacyFetchLabels { (InternetInformation) in
-                self.newestVersion.text = "Newest Version: \(InternetInformation.uSurfVersion ?? "")"
-                self.newsLabel.text = InternetInformation.uAppsNews
+        labels.legacyFetchLabels { [weak self] InternetInformation in
+            DispatchQueue.main.async {
+                self?.newestVersion.text = "Newest Version: \(InternetInformation.uSurfVersion ?? "")"
+                self?.newsLabel.text = InternetInformation.uAppsNews
             }
         }
     }
