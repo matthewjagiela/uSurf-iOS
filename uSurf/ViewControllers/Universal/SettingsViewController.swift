@@ -10,6 +10,7 @@ import UIKit
 import GoogleMobileAds
 import uAppsLibrary
 import Combine
+import AppTrackingTransparency
 
 class SettingsViewController: UIViewController {
     @IBOutlet weak var particleBackground: UIView!
@@ -29,7 +30,15 @@ class SettingsViewController: UIViewController {
         // AD Setup:
         adBanner.adUnitID = "ca-app-pub-7714978111013265/7436233905"
         adBanner.rootViewController = self
-        adBanner.load(GADRequest())
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { [weak self] _ in
+                DispatchQueue.main.async {
+                    self?.adBanner.load(GADRequest())
+                }
+            }
+        } else {
+            self.adBanner.load(GADRequest())
+        }
         // Labels:
         internetLabels()
         let info = AppInformation()
@@ -64,7 +73,13 @@ class SettingsViewController: UIViewController {
     }
     // MARK: - Internet Labels
     func internetLabels() {
-        //TODO: Implement internet labels using new manager
+        let labels = InternetLabelsManager()
+        labels.legacyFetchLabels { [weak self] InternetInformation in
+            DispatchQueue.main.async {
+                self?.newestVersion.text = "Newest Version: \(InternetInformation.uSurfVersion ?? "")"
+                self?.newsLabel.text = InternetInformation.uAppsNews
+            }
+        }
     }
     // swiftlint:disable force_unwrapping
     @IBAction func ShareApp(_ sender: Any) {
