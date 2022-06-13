@@ -15,6 +15,7 @@
 		2E2BBB6127CC1C1400EE9423 /* TLDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2BBB6027CC1C1400EE9423 /* TLDTests.swift */; };
 		2E30ED19281511490055107B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E30ED18281511490055107B /* HomeViewModel.swift */; };
 		2E44DBE9283B4F6900DE4E8A /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */; };
+		2E34B4202856D2A600F0976D /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 2E34B41F2856D2A600F0976D /* GoogleMobileAds */; };
 		2E76967727C709B8007A835C /* TLDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76967627C709B8007A835C /* TLDHandler.swift */; };
 		2E76967A27C74E78007A835C /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967927C74E78007A835C /* uAppsLibrary */; };
 		2E76967D27C74E91007A835C /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967C27C74E91007A835C /* SideMenu */; };
@@ -71,8 +72,6 @@
 		34F95E0020C73F1D00411B9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F95DFF20C73F1D00411B9D /* AppDelegate.swift */; };
 		34F95E0720C73F1F00411B9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34F95E0620C73F1F00411B9D /* Assets.xcassets */; };
 		34F95E0A20C73F1F00411B9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34F95E0820C73F1F00411B9D /* LaunchScreen.storyboard */; };
-		4AF67971A24F7076C99E3DA9 /* Pods_uSurf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C233CCD02416BD2D40AD2F9 /* Pods_uSurf.framework */; };
-		B11DCEEA841DDD79D06C5696 /* Pods_uSurfTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 471FE20C23EF373F2BA34382 /* Pods_uSurfTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,12 +152,6 @@
 		34F95E0620C73F1F00411B9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34F95E0920C73F1F00411B9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34F95E0B20C73F1F00411B9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		36E2373C103CFACA6D2CCB4A /* Pods-uSurf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uSurf.release.xcconfig"; path = "Pods/Target Support Files/Pods-uSurf/Pods-uSurf.release.xcconfig"; sourceTree = "<group>"; };
-		471FE20C23EF373F2BA34382 /* Pods_uSurfTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uSurfTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C233CCD02416BD2D40AD2F9 /* Pods_uSurf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uSurf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		98A4EBF1E6B2A249B0E75204 /* Pods-uSurf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uSurf.debug.xcconfig"; path = "Pods/Target Support Files/Pods-uSurf/Pods-uSurf.debug.xcconfig"; sourceTree = "<group>"; };
-		D05B6E241F31A20F5E4A012D /* Pods-uSurfTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uSurfTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-uSurfTests/Pods-uSurfTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D2EB81ABF386F290AA4849F2 /* Pods-uSurfTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uSurfTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-uSurfTests/Pods-uSurfTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +159,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B11DCEEA841DDD79D06C5696 /* Pods_uSurfTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,9 +166,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E34B4202856D2A600F0976D /* GoogleMobileAds in Frameworks */,
 				2E76967A27C74E78007A835C /* uAppsLibrary in Frameworks */,
 				2E76967D27C74E91007A835C /* SideMenu in Frameworks */,
-				4AF67971A24F7076C99E3DA9 /* Pods_uSurf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,8 +396,6 @@
 				34F95DFE20C73F1D00411B9D /* uSurf */,
 				2E23167D2421B23F0003BB54 /* uSurfTests */,
 				34F95DFD20C73F1D00411B9D /* Products */,
-				D3A8C254DD33CAFE5B6AFE30 /* Pods */,
-				93123087ED66B4A60DC91076 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -434,26 +424,6 @@
 			path = uSurf;
 			sourceTree = "<group>";
 		};
-		93123087ED66B4A60DC91076 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4C233CCD02416BD2D40AD2F9 /* Pods_uSurf.framework */,
-				471FE20C23EF373F2BA34382 /* Pods_uSurfTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D3A8C254DD33CAFE5B6AFE30 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				98A4EBF1E6B2A249B0E75204 /* Pods-uSurf.debug.xcconfig */,
-				36E2373C103CFACA6D2CCB4A /* Pods-uSurf.release.xcconfig */,
-				D05B6E241F31A20F5E4A012D /* Pods-uSurfTests.debug.xcconfig */,
-				D2EB81ABF386F290AA4849F2 /* Pods-uSurfTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -461,7 +431,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E2316852421B23F0003BB54 /* Build configuration list for PBXNativeTarget "uSurfTests" */;
 			buildPhases = (
-				3161209627015F6CAC1C3FA9 /* [CP] Check Pods Manifest.lock */,
 				2E2316782421B23F0003BB54 /* Sources */,
 				2E2316792421B23F0003BB54 /* Frameworks */,
 				2E23167A2421B23F0003BB54 /* Resources */,
@@ -480,11 +449,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 34F95E0E20C73F1F00411B9D /* Build configuration list for PBXNativeTarget "uSurf" */;
 			buildPhases = (
-				C45FE8826A3F11637FC7ADFE /* [CP] Check Pods Manifest.lock */,
 				34F95DF820C73F1D00411B9D /* Sources */,
 				34F95DF920C73F1D00411B9D /* Frameworks */,
 				34F95DFA20C73F1D00411B9D /* Resources */,
-				CCAA6D8E64E32400D5E3A914 /* [CP] Embed Pods Frameworks */,
 				2E482496231CAEFB00F4C969 /* ShellScript */,
 			);
 			buildRules = (
@@ -495,6 +462,7 @@
 			packageProductDependencies = (
 				2E76967927C74E78007A835C /* uAppsLibrary */,
 				2E76967C27C74E91007A835C /* SideMenu */,
+				2E34B41F2856D2A600F0976D /* GoogleMobileAds */,
 			);
 			productName = uSurf;
 			productReference = 34F95DFC20C73F1D00411B9D /* uSurf.app */;
@@ -540,6 +508,7 @@
 			packageReferences = (
 				2E76967827C74E78007A835C /* XCRemoteSwiftPackageReference "uAppsLibrary" */,
 				2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */,
+				2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 34F95DFD20C73F1D00411B9D /* Products */;
 			projectDirPath = "";
@@ -626,64 +595,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
-		};
-		3161209627015F6CAC1C3FA9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-uSurfTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C45FE8826A3F11637FC7ADFE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-uSurf-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CCAA6D8E64E32400D5E3A914 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-uSurf/Pods-uSurf-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-uSurf/Pods-uSurf-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-uSurf/Pods-uSurf-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -746,7 +658,6 @@
 /* Begin XCBuildConfiguration section */
 		2E2316832421B23F0003BB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D05B6E241F31A20F5E4A012D /* Pods-uSurfTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -769,7 +680,6 @@
 		};
 		2E2316842421B23F0003BB54 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2EB81ABF386F290AA4849F2 /* Pods-uSurfTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -906,7 +816,6 @@
 		};
 		34F95E0F20C73F1F00411B9D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98A4EBF1E6B2A249B0E75204 /* Pods-uSurf.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -933,7 +842,6 @@
 		};
 		34F95E1020C73F1F00411B9D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36E2373C103CFACA6D2CCB4A /* Pods-uSurf.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -990,6 +898,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		2E76967827C74E78007A835C /* XCRemoteSwiftPackageReference "uAppsLibrary" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:matthewjagiela/uAppsLibrary.git";
@@ -1009,6 +925,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2E34B41F2856D2A600F0976D /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
 		2E76967927C74E78007A835C /* uAppsLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2E76967827C74E78007A835C /* XCRemoteSwiftPackageReference "uAppsLibrary" */;
