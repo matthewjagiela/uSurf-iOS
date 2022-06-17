@@ -22,13 +22,7 @@ class BookmarkViewModel {
         }
     }
     
-    var filteredBookmarks: [(name: String, url: String)] = [] {
-        didSet {
-            if let iCloudDelegate = iCloudDelegate {
-                iCloudDelegate.updateUXFromiCloud()
-            }
-        }
-    }
+    var filteredBookmarks: [(name: String, url: String)] = []
     
     var searchTerm: String = "" {
         didSet {
@@ -66,16 +60,17 @@ class BookmarkViewModel {
         return filteredBookmarks[index].url
     }
     
-    func deleteBookmark(url: String) {
+    func deleteBookmark(filteredIndex: Int) {
+        let data = filteredBookmarks[filteredIndex]
         let nameArray = iCloud.getBookmarkNameArray()
         let urlArray = iCloud.getBookmarkArray()
-        let index = urlArray.indexOfObjectIdentical(to: url)
-        nameArray.removeObject(at: index)
-        urlArray.removeObject(at: index)
-        iCloud.setBookmarkArray(bookmarkArray: urlArray)
+        let nameIndex = nameArray.indexOfObjectIdentical(to: data.name)
+        let urlIndex = urlArray.indexOfObjectIdentical(to: data.url)
+        nameArray.removeObject(at: nameIndex)
+        urlArray.removeObject(at: urlIndex)
         iCloud.setBookmarkNameArray(bookmarkNameArray: nameArray)
-        bookmarks.remove(at: index)
-        filteredBookmarks.remove(at: index)
+        iCloud.setBookmarkNameArray(bookmarkArray: urlArray)
+        fetchBookmarks()
     }
     
     func updateFilteredBookmarks() {

@@ -55,7 +55,7 @@ class iCloudHandler: NSObject {
     func setiPadTabArray(iPadTabArray: NSMutableArray) { // Upload the iPad Tab Array to iCloud
         NSUbiquitousKeyValueStore.default.set(iPadTabArray, forKey: "iPadTabArray")
     }
-    func setBookmarkArray(bookmarkArray: NSMutableArray) { // Upload The Array Of Bookmarks to iCloud
+    func setBookmarkNameArray(bookmarkArray: NSMutableArray) { // Upload The Array Of Bookmarks to iCloud
         NSUbiquitousKeyValueStore.default.set(bookmarkArray, forKey: "bookMarkArray")
     }
     func setBookmarkNameArray(bookmarkNameArray: NSMutableArray) { // Upload the Array Of Bookmark Names to iCloud
@@ -87,12 +87,12 @@ class iCloudHandler: NSObject {
     func addToBookmarkArray(_ item: String) { // Add an item to the bookmark Array and save the changes to iCloud
         let bookmarkArray = getBookmarkArray()
         bookmarkArray.add(item)
-        setBookmarkArray(bookmarkArray: bookmarkArray)
+        setBookmarkNameArray(bookmarkArray: bookmarkArray)
     }
     func addToBookmarkNameArray(_ item: String) { // Add an item to the bookmark Name Array and save the changes to iCloud
         let bookmarkNameArray = getBookmarkNameArray()
         bookmarkNameArray.add(item)
-        setBookmarkArray(bookmarkArray: bookmarkNameArray)
+        setBookmarkNameArray(bookmarkArray: bookmarkNameArray)
     }
     func addToBookmarkArray(name: String, address: String) { // This is going to handle adding both the name and bookmark to the array...
         let bookmarkNameArray = getBookmarkNameArray()
