@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol uAppsTableDelegate: AnyObject {
+    func updateTable()
+}
+
 class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet var navigationBar: UINavigationBar!
@@ -18,8 +22,6 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
 
     var theme = ThemeHandler()
     // Optional variables these do not take up memory until they are called by a method execution
-    lazy var matchedBookmarks = [Int]() // This is going to be where the bookmarks matching with the search is
-    lazy var isSearching = false
     
     weak var homeDelegate: HomeViewDelegate?
     weak var splitDelegate: SplitViewDelegate?
@@ -29,6 +31,7 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.iCloudDelegate = self
+        vm.tableDelegate = self
         theming()
         // Lets handle some data type stuff:
         tableView.dataSource = self
@@ -155,7 +158,12 @@ extension BookmarkTableViewController: UITableViewDelegate {
 
 extension BookmarkTableViewController: iCloudDelegate {
     func updateUXFromiCloud() {
-        isSearching = false
         tableView.reloadData()
+    }
+}
+
+extension BookmarkTableViewController: uAppsTableDelegate {
+    func updateTable() {
+        self.tableView.reloadData()
     }
 }

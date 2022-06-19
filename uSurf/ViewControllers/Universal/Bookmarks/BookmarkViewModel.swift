@@ -10,6 +10,7 @@ import Foundation
 
 class BookmarkViewModel {
     weak var iCloudDelegate: iCloudDelegate?
+    weak var tableDelegate: uAppsTableDelegate?
     var iCloud = iCloudHandler()
     var localStorage = SavedDataHandler()
     var browserSide: BrowserSide?
@@ -33,6 +34,10 @@ class BookmarkViewModel {
                     $0.name.lowercased().contains(searchTerm.lowercased()) || $0.url.lowercased().contains(searchTerm.lowercased())
                 }
             }
+            guard let tableDelegate = tableDelegate else {
+                return
+            }
+            tableDelegate.updateTable()
             print(filteredBookmarks)
         }
     }
