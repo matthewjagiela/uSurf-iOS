@@ -14,8 +14,9 @@
 		2E27462D27683DAE005E00B9 /* SideMenuHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */; };
 		2E2BBB6127CC1C1400EE9423 /* TLDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2BBB6027CC1C1400EE9423 /* TLDTests.swift */; };
 		2E30ED19281511490055107B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E30ED18281511490055107B /* HomeViewModel.swift */; };
-		2E44DBE9283B4F6900DE4E8A /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */; };
 		2E34B4202856D2A600F0976D /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 2E34B41F2856D2A600F0976D /* GoogleMobileAds */; };
+		2E44DBE9283B4F6900DE4E8A /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */; };
+		2E720CE3285FEEBB00688694 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */; };
 		2E76967727C709B8007A835C /* TLDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76967627C709B8007A835C /* TLDHandler.swift */; };
 		2E76967A27C74E78007A835C /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967927C74E78007A835C /* uAppsLibrary */; };
 		2E76967D27C74E91007A835C /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967C27C74E91007A835C /* SideMenu */; };
@@ -97,6 +98,7 @@
 		2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		2E482498231CAF5200F4C969 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2E683B032329EDA6008BA3E7 /* uSurf.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
+		2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		2E76967627C709B8007A835C /* TLDHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLDHandler.swift; sourceTree = "<group>"; };
 		2ECC641323987EBD00FD504A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		2ECC64222398896F00FD504A /* hiPhone3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiPhone3x.png; sourceTree = "<group>"; };
@@ -203,6 +205,15 @@
 			path = Bookmarks;
 			sourceTree = "<group>";
 		};
+		2E720CE1285FEEA300688694 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				342CBE1D218231D3006D2D04 /* HistoryViewController.swift */,
+				2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		2ECC64152398889900FD504A /* Holiday Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,9 +247,9 @@
 		3417A40921FA862700D7C7A2 /* Universal */ = {
 			isa = PBXGroup;
 			children = (
+				2E720CE1285FEEA300688694 /* History */,
 				2E44DBE7283B4F5800DE4E8A /* Bookmarks */,
 				34C10F44214AC3D0005C9ACB /* SettingsViewController.swift */,
-				342CBE1D218231D3006D2D04 /* HistoryViewController.swift */,
 				342CBE1F21824BD3006D2D04 /* TabViewController.swift */,
 				2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */,
 			);
@@ -615,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */,
+				2E720CE3285FEEBB00688694 /* HistoryViewModel.swift in Sources */,
 				3460A5F8210BC9450029B03C /* ThemeHandler.swift in Sources */,
 				344C3F0920D7501600A13939 /* iCloudHandler.swift in Sources */,
 				2E44DBE9283B4F6900DE4E8A /* BookmarkViewModel.swift in Sources */,
