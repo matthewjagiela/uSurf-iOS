@@ -5,6 +5,7 @@
 - Added a domain checker, this means more urls (e.g .xyz) is recognized as a web address instead of being google searched.
 - Snow is now more performant
 - The biggest architectural change since uSurf went to Swift 3 years ago! Better performance, better experience, way less bugs.
+- Fixed the URL bars auto-correcting and made them a URL style
 
 6.4.1:
 - Snowfall is dynamic! Snow will show and disappear based on months, no more updating the app for snow!
