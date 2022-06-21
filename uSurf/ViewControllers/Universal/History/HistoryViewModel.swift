@@ -35,4 +35,8 @@ class HistoryViewModel {
         guard let historyArray = savedData.getHistoryArray() as? [String] else { return }
         self.history = historyArray
     }
+    
+    func url(at index: Int) -> String {
+        return filteredHistory[index]
+    }
 }

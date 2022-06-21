@@ -270,8 +270,9 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
         switch segue.identifier {
         case "leftHistory":
-            let vc = segue.destination as? HistoryViewController
-            vc?.browserTag = .left
+            guard let vc = segue.destination as? HistoryViewController else { fatalError("Load Failed") }
+            vc.splitDelegate = self
+            vc.vm = HistoryViewModel(browserSide: .left)
         case "leftTabs":
             let vc = segue.destination as? TabViewController
             vc?.browserTag = .left
@@ -280,8 +281,9 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
             vc.splitDelegate = self
             vc.vm = BookmarkViewModel(iCloudDelegate: nil, browserSide: .left)
         case "rightHistory":
-            let vc = segue.destination as? HistoryViewController
-            vc?.browserTag = .right
+            guard let vc = segue.destination as? HistoryViewController else { fatalError("Load Failed") }
+            vc.splitDelegate = self
+            vc.vm = HistoryViewModel(browserSide: .right)
         case "rightTabs":
             let vc = segue.destination as? TabViewController
             vc?.browserTag = .right

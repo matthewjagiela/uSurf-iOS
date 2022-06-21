@@ -23,14 +23,14 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
     // MARK: - Variables
     var theme = ThemeHandler()
     var searchController = UISearchController()
-    
+    var vm = HistoryViewModel()
     weak var homeDelegate: HomeViewDelegate?
     weak var splitDelegate: SplitViewDelegate?
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
+        vm.tableDelegate = self
         theming()
         tableView.dataSource = self
         tableView.delegate = self
@@ -93,4 +93,41 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
     
     @objc func canRotate() {}
 
+}
+
+//MARK: - TableView Extensions
+extension HistoryViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return vm.filteredHistory.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "historyCells") else { return UITableViewCell() }
+        cell.textLabel?.text = vm.url(at: indexPath.row)
+        cell.textLabel?.textColor = theme.getTintColor()
+        return cell
+    }
+}
+
+extension HistoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let homeDelegate = homeDelegate {
+            homeDelegate.refreshWeb(url: vm.url(at: indexPath.row))
+            if let iPhoneController = sideMenuController {
+                iPhoneController.hideMenu()
+            } else {
+                self.dismiss(animated: true)
+            }
+        } else if let splitDelegate = splitDelegate, let side = vm.browserSide {
+            splitDelegate.refresh(url: vm.url(at: indexPath.row), side: side)
+            self.dismiss(animated: true)
+        }
+    }
+    
+}
+
+extension HistoryViewController: uAppsTableDelegate {
+    func updateTable() {
+        self.tableView.reloadData()
+    }
 }
