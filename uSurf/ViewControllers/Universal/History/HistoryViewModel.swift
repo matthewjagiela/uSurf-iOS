@@ -13,12 +13,12 @@ class HistoryViewModel {
     var savedData = SavedDataHandler()
     var browserSide: BrowserSide?
     
-    var history: [String] = []
-    var filteredHistory: [String] = [] {
+    var history: [String] = [] {
         didSet {
             updateFilteredBookmarks()
         }
     }
+    var filteredHistory: [String] = []
     var searchTerm = "" {
         didSet {
             if searchTerm.isEmpty {
