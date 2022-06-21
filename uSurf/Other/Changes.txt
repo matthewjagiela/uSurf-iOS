@@ -1,9 +1,10 @@
 7: The Return
-- iPhone users will now see their bookmarks in a slide over view!
+- iPhone users will now see their bookmarks / history in a slide over view!
 - In split view there will be progress bars for each side!
 - Added a mechanism to get urgent alerts from uApps
 - Added a domain checker, this means more urls (e.g .xyz) is recognized as a web address instead of being google searched.
 - Snow is now more performant
+- The biggest architectural change since uSurf went to Swift 3 years ago! Better performance, better experience, way less bugs.
 
 6.4.1:
 - Snowfall is dynamic! Snow will show and disappear based on months, no more updating the app for snow!
