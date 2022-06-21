@@ -494,10 +494,10 @@
             </objects>
             <point key="canvasLocation" x="-271.19999999999999" y="1753.6731634182911"/>
         </scene>
-        <!--Tab View Controller-->
+        <!--Legacy Tab View Controller-->
         <scene sceneID="aJf-mY-REm">
             <objects>
-                <viewController id="MsJ-hv-Liw" customClass="TabViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MsJ-hv-Liw" customClass="LegacyTabViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="msu-i4-kcA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

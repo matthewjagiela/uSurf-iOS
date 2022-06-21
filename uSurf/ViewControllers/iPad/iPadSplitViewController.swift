@@ -274,7 +274,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
             vc.splitDelegate = self
             vc.vm = HistoryViewModel(browserSide: .left)
         case "leftTabs":
-            let vc = segue.destination as? TabViewController
+            let vc = segue.destination as? LegacyTabViewController
             vc?.browserTag = .left
         case "leftBookmarks":
             guard let vc = segue.destination as? BookmarkTableViewController else { fatalError("Load Failed") }
@@ -285,7 +285,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
             vc.splitDelegate = self
             vc.vm = HistoryViewModel(browserSide: .right)
         case "rightTabs":
-            let vc = segue.destination as? TabViewController
+            let vc = segue.destination as? LegacyTabViewController
             vc?.browserTag = .right
         case "rightBookmarks":
             guard let vc = segue.destination as? BookmarkTableViewController else { fatalError("Load Failed") }

@@ -8,7 +8,7 @@
 
 import UIKit
  //TODO: Change the entire tab structure. This will not matter anymore. 
-class TabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class LegacyTabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var searchBar: UISearchBar!
