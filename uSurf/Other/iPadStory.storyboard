@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gP0-99-xlL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gP0-99-xlL">
     <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -215,7 +215,7 @@
                                             <barButtonItem systemItem="refresh" id="vFV-6i-tX4"/>
                                         </leftBarButtonItems>
                                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="9pT-74-34U">
-                                            <rect key="frame" x="198.5" y="8" width="115" height="34"/>
+                                            <rect key="frame" x="228" y="8" width="56.5" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -274,7 +274,7 @@
                                             <barButtonItem systemItem="refresh" id="3rM-I3-iRK"/>
                                         </leftBarButtonItems>
                                         <textField key="titleView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="h9G-ni-GkE">
-                                            <rect key="frame" x="228.5" y="8" width="55" height="34"/>
+                                            <rect key="frame" x="240" y="8" width="32" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -464,7 +464,7 @@
                                             </barButtonItem>
                                             <barButtonItem image="Settings" id="Urx-ED-nfJ" userLabel="Settings">
                                                 <connections>
-                                                    <segue destination="p0J-yc-dg1" kind="presentation" modalTransitionStyle="flipHorizontal" id="GZg-BQ-d7U"/>
+                                                    <segue destination="p0J-yc-dg1" kind="presentation" identifier="goSettings" modalTransitionStyle="flipHorizontal" id="GZg-BQ-d7U"/>
                                                 </connections>
                                             </barButtonItem>
                                         </leftBarButtonItems>
@@ -565,10 +565,10 @@
             </objects>
             <point key="canvasLocation" x="-274" y="217"/>
         </scene>
-        <!--Tab View Controller-->
+        <!--Legacy Tab View Controller-->
         <scene sceneID="2lY-Q6-IkN">
             <objects>
-                <viewController id="xMQ-8r-EJv" customClass="TabViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xMQ-8r-EJv" customClass="LegacyTabViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3eJ-93-iqa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="680"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -714,7 +714,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXU-F2-Qab" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="dBe-sN-VKh"/>
             </objects>
-            <point key="canvasLocation" x="482" y="1006"/>
+            <point key="canvasLocation" x="697" y="1042"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="Wq6-eN-yWT">
@@ -796,9 +796,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="p58-Ag-vnL"/>
         <segue reference="DA0-F9-QVJ"/>
-        <segue reference="rZA-w6-dlx"/>
-        <segue reference="UbH-U9-jod"/>
-        <segue reference="pmM-Db-EaB"/>
+        <segue reference="ujG-CL-1So"/>
+        <segue reference="RPt-8m-hlQ"/>
+        <segue reference="Rvi-zR-YjV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Bookmarks" width="30" height="30"/>

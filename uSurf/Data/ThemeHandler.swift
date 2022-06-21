@@ -19,7 +19,6 @@ class ThemeHandler: NSObject {
                 theme = "System"
             }
             if theme == "System" {
-                print("Init with system")
                 if UITraitCollection.current.userInterfaceStyle == .dark {
                     theme = "Dark"
                 } else { theme = "Light" }

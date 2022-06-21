@@ -9,6 +9,10 @@
 import UIKit
 import WebKit
 
+protocol SplitViewDelegate: AnyObject {
+    func refresh(url: String, side: BrowserSide)
+}
+
 class iPadSplitViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var leftProgressBar: UIProgressView!
@@ -47,7 +51,6 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     // Other Variables:
     var rightWebView: WKWebView!
     var leftWebView: WKWebView!
-    var browserTag = 1 // 1 = Left 2 = Right
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +94,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         leftWebView.heightAnchor.constraint(equalTo: leftWebHolder.heightAnchor).isActive = true
         leftWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         leftWebView.allowsBackForwardNavigationGestures = true
-        leftWebView.tag = 0
+        leftWebView.tag = BrowserSide.left.rawValue
         // HOLDER TO LOAD URL
         // Right Web View
         rightWebView = WKWebView(frame: .zero, configuration: webConfiguration)
@@ -99,7 +102,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         rightWebView.navigationDelegate = self
         rightWebView.translatesAutoresizingMaskIntoConstraints = false
         rightWebHolder.addSubview(rightWebView)
-        rightWebView.tag = 1
+        rightWebView.tag = BrowserSide.right.rawValue
         // Add a touch of autolayout
         rightWebView.centerXAnchor.constraint(equalTo: rightWebHolder.centerXAnchor).isActive = true
         rightWebView.centerYAnchor.constraint(equalTo: rightWebHolder.centerYAnchor).isActive = true
@@ -156,7 +159,6 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // 0 is left 1 is right
         
         textField.resignFirstResponder()
         switch textField.tag {
@@ -184,7 +186,6 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
                 // Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
-                self.iCloud.printBookmarkArray()
             } else {
                 // Do something with the error
                 print("There is something wrong so we cannot add this")
@@ -219,7 +220,6 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
                 // Save
                 print("Saving")
                 self.iCloud.addToBookmarkArray(name: bookmarkName.text!, address: bookmarkAddress.text!)
-                self.iCloud.printBookmarkArray()
             } else {
                 // Do something with the error
                 print("There is something wrong so we cannot add this")
@@ -265,28 +265,32 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func leftTab(_ sender: Any) {
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { //TODO: Reimplement with new architecture type
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         switch segue.identifier {
         case "leftHistory":
-            let vc = segue.destination as? HistoryViewController
-            vc?.browserTag = .left
+            guard let vc = segue.destination as? HistoryViewController else { fatalError("Load Failed") }
+            vc.splitDelegate = self
+            vc.vm = HistoryViewModel(browserSide: .left)
         case "leftTabs":
-            let vc = segue.destination as? TabViewController
+            let vc = segue.destination as? LegacyTabViewController
             vc?.browserTag = .left
         case "leftBookmarks":
-            let vc = segue.destination as? BookmarkTableViewController
-            vc?.browserTag = .left
+            guard let vc = segue.destination as? BookmarkTableViewController else { fatalError("Load Failed") }
+            vc.splitDelegate = self
+            vc.vm = BookmarkViewModel(iCloudDelegate: nil, browserSide: .left)
         case "rightHistory":
-            let vc = segue.destination as? HistoryViewController
-            vc?.browserTag = .right
+            guard let vc = segue.destination as? HistoryViewController else { fatalError("Load Failed") }
+            vc.splitDelegate = self
+            vc.vm = HistoryViewModel(browserSide: .right)
         case "rightTabs":
-            let vc = segue.destination as? TabViewController
+            let vc = segue.destination as? LegacyTabViewController
             vc?.browserTag = .right
         case "rightBookmarks":
-            let vc = segue.destination as? BookmarkTableViewController
-            vc?.browserTag = .right
+            guard let vc = segue.destination as? BookmarkTableViewController else { fatalError("Load Failed") }
+            vc.splitDelegate = self
+            vc.vm = BookmarkViewModel(iCloudDelegate: nil, browserSide: .right)
         default:
             print("DEBUG: SPLIT CONTROLLER SEGUE NOT FOUND")
         }
@@ -309,7 +313,7 @@ extension iPadSplitViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { // The web view has finished loading so we want to hide
         let webURL = webView.url?.absoluteString ?? "https://uappsios.com"
         savedData.addToHistoryArray(webURL)
-        if webView.tag == 0 { // Left web view finished
+        if webView.tag == BrowserSide.left.rawValue { // Left web view finished
             leftProgressBar.isHidden = true
             savedData.setLeftWebPage(URL: webURL)
             leftAddressBar.text = webURL
@@ -322,7 +326,7 @@ extension iPadSplitViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        if webView.tag == 0 { // left
+        if webView.tag == BrowserSide.left.rawValue { // left
             leftProgressBar.isHidden = false
         } else { // right
             rightProgressBar.isHidden = false
@@ -333,4 +337,17 @@ extension iPadSplitViewController: WKNavigationDelegate {
 // MARK: - WKUIDelegate
 extension iPadSplitViewController: WKUIDelegate {
     
+}
+
+extension iPadSplitViewController: SplitViewDelegate {
+    func refresh(url: String, side: BrowserSide) {
+        switch side {
+        case .single:
+            print("No single side")
+        case .right:
+            loadRightURL(url)
+        case .left:
+            loadLeftURL(url)
+        }
+    }
 }

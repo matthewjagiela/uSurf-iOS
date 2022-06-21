@@ -13,7 +13,10 @@
 		2E23168D2421B4390003BB54 /* VersionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */; };
 		2E27462D27683DAE005E00B9 /* SideMenuHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */; };
 		2E2BBB6127CC1C1400EE9423 /* TLDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2BBB6027CC1C1400EE9423 /* TLDTests.swift */; };
+		2E30ED19281511490055107B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E30ED18281511490055107B /* HomeViewModel.swift */; };
 		2E34B4202856D2A600F0976D /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 2E34B41F2856D2A600F0976D /* GoogleMobileAds */; };
+		2E44DBE9283B4F6900DE4E8A /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */; };
+		2E720CE3285FEEBB00688694 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */; };
 		2E76967727C709B8007A835C /* TLDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76967627C709B8007A835C /* TLDHandler.swift */; };
 		2E76967A27C74E78007A835C /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967927C74E78007A835C /* uAppsLibrary */; };
 		2E76967D27C74E91007A835C /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967C27C74E91007A835C /* SideMenu */; };
@@ -28,7 +31,7 @@
 		340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
 		34265EFA2176B0B400C775F4 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */; };
 		342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342CBE1D218231D3006D2D04 /* HistoryViewController.swift */; };
-		342CBE2021824BD3006D2D04 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342CBE1F21824BD3006D2D04 /* TabViewController.swift */; };
+		342CBE2021824BD3006D2D04 /* LegacyTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342CBE1F21824BD3006D2D04 /* LegacyTabViewController.swift */; };
 		343F015C20D41EF900B9E8DD /* iPhoneHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343F015B20D41EF900B9E8DD /* iPhoneHomeViewController.swift */; };
 		343F015E20D41F0700B9E8DD /* iPadHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343F015D20D41F0700B9E8DD /* iPadHomeViewController.swift */; };
 		343F016020D41FE100B9E8DD /* iPhoneStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 343F015F20D41FE100B9E8DD /* iPhoneStory.storyboard */; };
@@ -91,8 +94,11 @@
 		2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionHandlerTests.swift; sourceTree = "<group>"; };
 		2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHostViewController.swift; sourceTree = "<group>"; };
 		2E2BBB6027CC1C1400EE9423 /* TLDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLDTests.swift; sourceTree = "<group>"; };
+		2E30ED18281511490055107B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		2E482498231CAF5200F4C969 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2E683B032329EDA6008BA3E7 /* uSurf.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
+		2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		2E76967627C709B8007A835C /* TLDHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLDHandler.swift; sourceTree = "<group>"; };
 		2ECC641323987EBD00FD504A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		2ECC64222398896F00FD504A /* hiPhone3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiPhone3x.png; sourceTree = "<group>"; };
@@ -104,7 +110,7 @@
 		340906D620D9C01D009F53F1 /* WebHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebHandler.swift; sourceTree = "<group>"; };
 		34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewController.swift; sourceTree = "<group>"; };
 		342CBE1D218231D3006D2D04 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		342CBE1F21824BD3006D2D04 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		342CBE1F21824BD3006D2D04 /* LegacyTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyTabViewController.swift; sourceTree = "<group>"; };
 		343F015B20D41EF900B9E8DD /* iPhoneHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPhoneHomeViewController.swift; sourceTree = "<group>"; };
 		343F015D20D41F0700B9E8DD /* iPadHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadHomeViewController.swift; sourceTree = "<group>"; };
 		343F015F20D41FE100B9E8DD /* iPhoneStory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iPhoneStory.storyboard; sourceTree = "<group>"; };
@@ -182,6 +188,32 @@
 			path = uSurfTests;
 			sourceTree = "<group>";
 		};
+		2E30ED172815113D0055107B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2E30ED18281511490055107B /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2E44DBE7283B4F5800DE4E8A /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */,
+				2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		2E720CE1285FEEA300688694 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				342CBE1D218231D3006D2D04 /* HistoryViewController.swift */,
+				2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		2ECC64152398889900FD504A /* Holiday Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,10 +247,10 @@
 		3417A40921FA862700D7C7A2 /* Universal */ = {
 			isa = PBXGroup;
 			children = (
+				2E720CE1285FEEA300688694 /* History */,
+				2E44DBE7283B4F5800DE4E8A /* Bookmarks */,
 				34C10F44214AC3D0005C9ACB /* SettingsViewController.swift */,
-				34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */,
-				342CBE1D218231D3006D2D04 /* HistoryViewController.swift */,
-				342CBE1F21824BD3006D2D04 /* TabViewController.swift */,
+				342CBE1F21824BD3006D2D04 /* LegacyTabViewController.swift */,
 				2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */,
 			);
 			path = Universal;
@@ -237,17 +269,17 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		343F015820D41E7E00B9E8DD /* ViewControllers */ = {
+		343F015820D41E7E00B9E8DD /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				3417A40921FA862700D7C7A2 /* Universal */,
 				3417A40821FA862200D7C7A2 /* iPad */,
 				3417A40721FA861A00D7C7A2 /* iPhone */,
 			);
-			path = ViewControllers;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		343F015920D41E8C00B9E8DD /* Handelers */ = {
+		343F015920D41E8C00B9E8DD /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				340906D620D9C01D009F53F1 /* WebHandler.swift */,
@@ -257,7 +289,7 @@
 				2E1A880C232F2AF100D63F99 /* AppUtility.swift */,
 				2E76967627C709B8007A835C /* TLDHandler.swift */,
 			);
-			path = Handelers;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		343F015A20D41EC900B9E8DD /* Other */ = {
@@ -390,10 +422,11 @@
 		34F95DFE20C73F1D00411B9D /* uSurf */ = {
 			isa = PBXGroup;
 			children = (
+				2E30ED172815113D0055107B /* ViewModels */,
 				2E683B032329EDA6008BA3E7 /* uSurf.entitlements */,
 				343F015A20D41EC900B9E8DD /* Other */,
-				343F015920D41E8C00B9E8DD /* Handelers */,
-				343F015820D41E7E00B9E8DD /* ViewControllers */,
+				343F015920D41E8C00B9E8DD /* Data */,
+				343F015820D41E7E00B9E8DD /* Views */,
 				343F015720D41E7900B9E8DD /* Images */,
 				34F95E0620C73F1F00411B9D /* Assets.xcassets */,
 				34F95E0820C73F1F00411B9D /* LaunchScreen.storyboard */,
@@ -593,15 +626,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */,
+				2E720CE3285FEEBB00688694 /* HistoryViewModel.swift in Sources */,
 				3460A5F8210BC9450029B03C /* ThemeHandler.swift in Sources */,
 				344C3F0920D7501600A13939 /* iCloudHandler.swift in Sources */,
+				2E44DBE9283B4F6900DE4E8A /* BookmarkViewModel.swift in Sources */,
+				2E30ED19281511490055107B /* HomeViewModel.swift in Sources */,
 				343F015E20D41F0700B9E8DD /* iPadHomeViewController.swift in Sources */,
 				342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */,
 				2E76967727C709B8007A835C /* TLDHandler.swift in Sources */,
 				344C3F0B20D75D6000A13939 /* SavedDataHandler.swift in Sources */,
 				2E27462D27683DAE005E00B9 /* SideMenuHostViewController.swift in Sources */,
 				343F015C20D41EF900B9E8DD /* iPhoneHomeViewController.swift in Sources */,
-				342CBE2021824BD3006D2D04 /* TabViewController.swift in Sources */,
+				342CBE2021824BD3006D2D04 /* LegacyTabViewController.swift in Sources */,
 				34F95E0020C73F1D00411B9D /* AppDelegate.swift in Sources */,
 				34265EFA2176B0B400C775F4 /* BookmarkTableViewController.swift in Sources */,
 				340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */,
