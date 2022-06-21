@@ -218,7 +218,7 @@
                                             <rect key="frame" x="228" y="8" width="56.5" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL"/>
                                         </textField>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lVA-EG-O2H">
                                             <connections>
@@ -277,7 +277,7 @@
                                             <rect key="frame" x="240" y="8" width="32" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL"/>
                                         </textField>
                                         <rightBarButtonItems>
                                             <barButtonItem systemItem="add" id="edv-0O-vG8">
@@ -474,7 +474,7 @@
                                             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL"/>
                                         </textField>
                                         <rightBarButtonItems>
                                             <barButtonItem systemItem="action" id="JVA-0g-e4C">
@@ -583,7 +583,7 @@
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHc-3m-SJP">
                                 <rect key="frame" x="0.0" y="63" width="375" height="51"/>
                                 <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ChA-xx-wJv">
                                 <rect key="frame" x="0.0" y="114" width="375" height="566"/>
@@ -654,7 +654,7 @@
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1e-px-LiO">
                                 <rect key="frame" x="0.0" y="63" width="375" height="51"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZR3-Wl-bfN">
                                 <rect key="frame" x="0.0" y="114" width="375" height="566"/>
@@ -739,7 +739,7 @@
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7f-XI-RqL">
                                 <rect key="frame" x="0.0" y="63" width="375" height="51"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8LP-L8-Gxz">
                                 <rect key="frame" x="0.0" y="114" width="375" height="566"/>
@@ -794,11 +794,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="p58-Ag-vnL"/>
-        <segue reference="DA0-F9-QVJ"/>
+        <segue reference="s4o-7O-g5d"/>
+        <segue reference="FQb-nw-kzs"/>
         <segue reference="ujG-CL-1So"/>
-        <segue reference="RPt-8m-hlQ"/>
-        <segue reference="Rvi-zR-YjV"/>
+        <segue reference="Wwg-Gj-BNh"/>
+        <segue reference="ci0-7g-IpR"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Bookmarks" width="30" height="30"/>
