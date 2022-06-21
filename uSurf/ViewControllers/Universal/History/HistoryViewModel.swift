@@ -14,14 +14,18 @@ class HistoryViewModel {
     var browserSide: BrowserSide?
     
     var history: [String] = []
-    var filteredHistory: [String] = []
+    var filteredHistory: [String] = [] {
+        didSet {
+            updateFilteredBookmarks()
+        }
+    }
     var searchTerm = "" {
         didSet {
             if searchTerm.isEmpty {
                 filteredHistory = history
             } else {
                 filteredHistory = history.filter {
-                    $0.lowercased().contains(searchTerm)
+                    $0.lowercased().contains(searchTerm.lowercased())
                 }
             }
         }
@@ -29,6 +33,7 @@ class HistoryViewModel {
     
     init(browserSide: BrowserSide? = nil) {
         self.browserSide = browserSide
+        fetchHistory()
     }
     
     func fetchHistory() {
@@ -39,4 +44,16 @@ class HistoryViewModel {
     func url(at index: Int) -> String {
         return filteredHistory[index]
     }
+    
+    func updateFilteredBookmarks() {
+        if searchTerm.isEmpty {
+            filteredHistory = history
+        } else {
+            filteredHistory = history.filter {
+                $0.lowercased().contains(searchTerm.lowercased())
+            }
+        }
+        self.tableDelegate?.updateTable()
+    }
+
 }
