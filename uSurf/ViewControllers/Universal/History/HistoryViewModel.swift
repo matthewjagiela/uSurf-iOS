@@ -9,12 +9,30 @@
 import Foundation
 
 class HistoryViewModel {
-    weak var iCloudDelegate: iCloudDelegate?
     weak var tableDelegate: uAppsTableDelegate?
+    var savedData = SavedDataHandler()
     var browserSide: BrowserSide?
     
-    init(iCloudDelegate: iCloudDelegate? = nil, browserSide: BrowserSide? = nil) {
-        self.iCloudDelegate = iCloudDelegate
+    var history: [String] = []
+    var filteredHistory: [String] = []
+    var searchTerm = "" {
+        didSet {
+            if searchTerm.isEmpty {
+                filteredHistory = history
+            } else {
+                filteredHistory = history.filter {
+                    $0.lowercased().contains(searchTerm)
+                }
+            }
+        }
+    }
+    
+    init(browserSide: BrowserSide? = nil) {
         self.browserSide = browserSide
+    }
+    
+    func fetchHistory() {
+        guard let historyArray = savedData.getHistoryArray() as? [String] else { return }
+        self.history = historyArray
     }
 }
