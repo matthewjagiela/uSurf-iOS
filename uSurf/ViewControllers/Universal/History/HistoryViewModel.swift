@@ -56,4 +56,9 @@ class HistoryViewModel {
         self.tableDelegate?.updateTable()
     }
 
+    func clearAllHistory() {
+        savedData.saveHistoryArray(historyArray: NSMutableArray())
+        self.fetchHistory()
+    }
+
 }

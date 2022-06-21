@@ -84,9 +84,11 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
     @IBAction func goHome(_ sender: Any) {
         self.dismiss(animated: true)
     }
+    
     @IBAction func clearHistory(_ sender: Any) {
-        
+        vm.clearAllHistory()
     }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
@@ -95,7 +97,7 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
 
 }
 
-//MARK: - TableView Extensions
+// MARK: - TableView Extensions
 extension HistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return vm.filteredHistory.count
