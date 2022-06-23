@@ -10,14 +10,13 @@ import Foundation
 import uAppsLibrary
 
 class SettingsViewModel {
-    weak var homeDelegate: HomeViewDelegate?
     weak var settingsDelegate: SettingsDelegate?
     let savedData = SavedDataHandler()
     let info = AppInformation()
+    let theme = ThemeHandler()
     var internetInformation: InternetInformation?
     
-    init(homeViewDelegate: HomeViewDelegate? = nil, settingsDelegate: SettingsDelegate?) {
-        self.homeDelegate = homeViewDelegate
+    init(settingsDelegate: SettingsDelegate?) {
         self.settingsDelegate = settingsDelegate
     }
     

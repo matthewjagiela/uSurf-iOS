@@ -131,18 +131,17 @@ class SettingsViewController: UIViewController {
         self.present(alert, animated: true, completion: nil) // Present the actual alert
     }
     func theming() {
-        let theme = ThemeHandler()
-        self.navBar.barTintColor = theme.getBarTintColor()
-        self.navBar.tintColor = theme.getTintColor()
-        let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()]
+        self.navBar.barTintColor = vm.theme.getBarTintColor()
+        self.navBar.tintColor = vm.theme.getTintColor()
+        let textAttributes = [NSAttributedString.Key.foregroundColor: vm.theme.getTintColor()]
         navBar.titleTextAttributes = textAttributes // Make the title the same color as the buttons
-        self.view.backgroundColor = theme.getBarTintColor()
+        self.view.backgroundColor = vm.theme.getBarTintColor()
     }
     
     // MARK: - ACTIONS
-    //TODO: Implement Privacy Policy URL
+    
     @IBAction func ViewPrivacyPolicy(_ sender: Any) {
-        homeDelegate?.refreshWeb(url: "https://uappsios.com/usurf-support/")
+        homeDelegate?.refreshWeb(url: "https://uappsios.com/usurf-privacy-policy/")
         self.dismiss(animated: true)
     }
     @IBAction func supportButton(_ sender: Any) {
@@ -156,8 +155,7 @@ class SettingsViewController: UIViewController {
     
     // MARK: - Status Bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        let theme = ThemeHandler()
-        return theme.getStatusBarColor()
+        return vm.theme.getStatusBarColor()
     }
     
     override var shouldAutorotate: Bool {
@@ -167,16 +165,6 @@ class SettingsViewController: UIViewController {
             return true
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
