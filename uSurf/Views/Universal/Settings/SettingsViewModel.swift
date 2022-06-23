@@ -57,6 +57,7 @@ class SettingsViewModel {
     func setTheme(theme: Themes) {
         let themeRaw = theme.rawValue
         savedData.setTheme(theme: themeRaw)
+        self.theme.setTheme(theme: theme)
         settingsDelegate?.refreshTheme()
         homeViewDelegate?.refreshTheme()
     }
