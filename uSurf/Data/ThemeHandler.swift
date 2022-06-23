@@ -10,10 +10,10 @@ import UIKit
 
 class ThemeHandler: NSObject {
     let savedData = SavedDataHandler()
-    var theme: Themes = .System
+    var theme: Theme = .System
     override init() {
         super.init() // So we can use some initialization stuff
-        theme = Themes(rawValue: savedData.getTheme()) ?? .System // Get the theme we will be using
+        theme = Theme(rawValue: savedData.getTheme()) ?? .System // Get the theme we will be using
         if #available(iOS 13, *) {
             if theme == .Dark || theme == .Light {
                 theme = .System
@@ -27,7 +27,7 @@ class ThemeHandler: NSObject {
         
     }
     
-    func setTheme(theme: Themes) {
+    func setTheme(theme: Theme) {
         self.theme = theme
         if theme == .System {
             if #available(iOS 13.0, *) {

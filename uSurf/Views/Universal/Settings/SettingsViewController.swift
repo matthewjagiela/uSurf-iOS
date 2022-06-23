@@ -88,16 +88,16 @@ class SettingsViewController: UIViewController {
         let alert = UIAlertController(title: "Theme", message: "Choose A Theme", preferredStyle: .actionSheet) // make an action sheet for it
         
         if #available(iOS 13, *) {
-            alert.addAction(UIAlertAction(title: Themes.System.rawValue, style: .default, handler: { [weak self] _ in
-                self?.vm.setTheme(theme: Themes.System)
+            alert.addAction(UIAlertAction(title: Theme.System.rawValue, style: .default, handler: { [weak self] _ in
+                self?.vm.setTheme(theme: Theme.System)
             }))
         } else {
-            alert.addAction(UIAlertAction(title: Themes.Dark.rawValue, style: .default, handler: { [weak self] _ in
-                self?.vm.setTheme(theme: Themes.Dark)
+            alert.addAction(UIAlertAction(title: Theme.Dark.rawValue, style: .default, handler: { [weak self] _ in
+                self?.vm.setTheme(theme: Theme.Dark)
             }))
             
-            alert.addAction(UIAlertAction(title: Themes.Light.rawValue, style: .default, handler: { [weak self] _ in
-                self?.vm.setTheme(theme: Themes.Light)
+            alert.addAction(UIAlertAction(title: Theme.Light.rawValue, style: .default, handler: { [weak self] _ in
+                self?.vm.setTheme(theme: Theme.Light)
             }))
         }
         
