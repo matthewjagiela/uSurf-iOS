@@ -13,6 +13,9 @@ class ThemeHandler: NSObject {
     var theme: Theme = .System
     override init() {
         super.init() // So we can use some initialization stuff
+        self.regenTheme()
+    }
+    func regenTheme() {
         theme = Theme(rawValue: savedData.getTheme()) ?? .System // Get the theme we will be using
         if #available(iOS 13, *) {
             if theme == .Dark || theme == .Light {
@@ -24,7 +27,7 @@ class ThemeHandler: NSObject {
                 } else { theme = .Light }
             }
         }
-        
+
     }
     
     func setTheme(theme: Theme) {

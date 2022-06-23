@@ -215,7 +215,7 @@ class iPhoneHomeViewController: UIViewController {
         
         if segue.identifier == "goSettings" {
             guard let vc = segue.destination as? SettingsViewController else { return }
-            vc.homeDelegate = self
+            vc.vm = SettingsViewModel(settingsDelegate: nil)
         }
     }
 
@@ -230,6 +230,7 @@ class iPhoneHomeViewController: UIViewController {
 extension iPhoneHomeViewController: HomeViewDelegate {
     
     func refreshTheme() {
+        self.theme.regenTheme()
         self.theming()
     }
     
