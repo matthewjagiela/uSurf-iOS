@@ -29,6 +29,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     var webView: WKWebView!
     let webHandler = WebHandler()
     let vm = HomeViewModel()
+    let theme = ThemeHandler()
 
     // MARK: - View Did Load
     override func viewDidLoad() {
@@ -100,7 +101,6 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     }
     
     @objc func theming() {
-        let theme = ThemeHandler()
         self.navigationBar.barTintColor = theme.getBarTintColor()
         self.navigationBar.tintColor = theme.getTintColor()
         self.dynamicField.backgroundColor = theme.getTextBarBackgroundColor()
@@ -164,7 +164,8 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         
         if segue.identifier == "goSettings" {
             guard let vc = segue.destination as? SettingsViewController else { return }
-            vc.homeDelegate = self
+            vc.vm = SettingsViewModel(settingsDelegate: nil)
+            vc.vm.homeViewDelegate = self
         }
     }
     
@@ -190,6 +191,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
 
 extension iPadHomeViewController: HomeViewDelegate {
     func refreshTheme() {
+        self.theme.regenTheme()
         self.theming()
     }
     
