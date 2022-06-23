@@ -14,6 +14,7 @@ import AppTrackingTransparency
 
 protocol SettingsDelegate: AnyObject {
     func reloadInternetLabels(information: InternetInformation)
+    func refreshTheme()
 }
 
 class SettingsViewController: UIViewController {
@@ -85,45 +86,27 @@ class SettingsViewController: UIViewController {
     // MARK: - Theme
     @IBAction func SelectTheme(_ sender: Any) {
         let alert = UIAlertController(title: "Theme", message: "Choose A Theme", preferredStyle: .actionSheet) // make an action sheet for it
+        
         if #available(iOS 13, *) {
-            alert.addAction(UIAlertAction(title: "System", style: .default, handler: { (_) in
-                self.savedData.setTheme(theme: "System")
-                self.theming()
-                self.setNeedsStatusBarAppearanceUpdate()
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
+            alert.addAction(UIAlertAction(title: Themes.System.rawValue, style: .default, handler: { [weak self] _ in
+                self?.vm.setTheme(theme: Themes.System)
             }))
         } else {
-            alert.addAction(UIAlertAction(title: "Dark", style: .default, handler: { (_) in
-                self.savedData.setTheme(theme: "Dark")
-                self.theming()
-                self.setNeedsStatusBarAppearanceUpdate()
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
+            alert.addAction(UIAlertAction(title: Themes.Dark.rawValue, style: .default, handler: { [weak self] _ in
+                self?.vm.setTheme(theme: Themes.Dark)
             }))
-            alert.addAction(UIAlertAction(title: "Light", style: .default, handler: { (_) in
-                self.savedData.setTheme(theme: "Light")
-                self.theming()
-                self.setNeedsStatusBarAppearanceUpdate()
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
+            
+            alert.addAction(UIAlertAction(title: Themes.Light.rawValue, style: .default, handler: { [weak self] _ in
+                self?.vm.setTheme(theme: Themes.Light)
             }))
         }
-        alert.addAction(UIAlertAction(title: "Red", style: .default, handler: { (_) in
-            self.savedData.setTheme(theme: "Red")
-            self.theming()
-            self.setNeedsStatusBarAppearanceUpdate()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "Purple", style: .default, handler: { (_) in
-            self.savedData.setTheme(theme: "Purple")
-            self.theming()
-            self.setNeedsStatusBarAppearanceUpdate()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "Green", style: .default, handler: { (_) in
-            self.savedData.setTheme(theme: "Green")
-            self.theming()
-            self.setNeedsStatusBarAppearanceUpdate()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "themeRefresh"), object: nil)
-        }))
+        
+        for theme in vm.selectableThemes() {
+            alert.addAction(UIAlertAction(title: theme.rawValue, style: .default, handler: { [weak self] _ in
+                self?.vm.setTheme(theme: theme)
+            }))
+        }
+        
         if let popoverController = alert.popoverPresentationController { // For iPad it needs to present as a popover so we need to make one!!
             popoverController.sourceView = sender as? UIView
             popoverController.sourceRect = (sender as AnyObject).bounds
@@ -169,6 +152,10 @@ class SettingsViewController: UIViewController {
 }
 
 extension SettingsViewController: SettingsDelegate {
+    func refreshTheme() {
+        self.theming()
+    }
+    
     func reloadInternetLabels(information: InternetInformation) {
         if let uSurfVersion = information.uSurfVersion {
             self.newestVersion.text = "\(uSurfVersion)"

@@ -9,7 +9,18 @@
 import Foundation
 import uAppsLibrary
 
+enum Themes: String, CaseIterable {
+    case System
+    case Dark
+    case Light
+    case Blue
+    case Red
+    case Purple
+    case Green
+}
+
 class SettingsViewModel {
+    weak var homeViewDelegate: HomeViewDelegate?
     weak var settingsDelegate: SettingsDelegate?
     let savedData = SavedDataHandler()
     let info = AppInformation()
@@ -41,5 +52,17 @@ class SettingsViewModel {
     
     func getShareString() -> String {
         return "I am using uSurf as my new iOS Web Browser! Check it out!"
+    }
+    
+    func setTheme(theme: Themes) {
+        let themeRaw = theme.rawValue
+        savedData.setTheme(theme: themeRaw)
+        settingsDelegate?.refreshTheme()
+        homeViewDelegate?.refreshTheme()
+    }
+    
+    func selectableThemes() -> [Themes] {
+        let possibleThemes = Themes.allCases
+        return Array(possibleThemes[3..<possibleThemes.count])
     }
 }
