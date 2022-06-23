@@ -12,6 +12,10 @@ import uAppsLibrary
 import Combine
 import AppTrackingTransparency
 
+protocol SettingsDelegate: AnyObject {
+    func reloadInternetLabels(information: InternetInformation)
+}
+
 class SettingsViewController: UIViewController {
     @IBOutlet weak var particleBackground: UIView!
     @IBOutlet var runningVersion: UILabel!
@@ -22,10 +26,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet var infoBox: UITextView!
     let savedData = SavedDataHandler()
     weak var homeDelegate: HomeViewDelegate?
+    var vm: SettingsViewModel = SettingsViewModel(settingsDelegate: nil)
     // MARK: - View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        vm.settingsDelegate = self
         // Do any additional setup after loading the view.
         // AD Setup:
         adBanner.adUnitID = "ca-app-pub-7714978111013265/7436233905"
@@ -40,10 +45,8 @@ class SettingsViewController: UIViewController {
             self.adBanner.load(GADRequest())
         }
         // Labels:
-        internetLabels()
-        let info = AppInformation()
-        runningVersion.text = info.getAppVersion()
-        infoBox.text = info.getChanges()
+        runningVersion.text = vm.getCurrentVersion()
+        infoBox.text = vm.getChanges()
         infoBox.contentOffset = .zero
         // Do some theme stuff
         theming()
@@ -71,25 +74,14 @@ class SettingsViewController: UIViewController {
         super.viewWillDisappear(animated)
         AppUtility.lockOrientation(.all)
     }
-    // MARK: - Internet Labels
-    func internetLabels() {
-        let labels = InternetLabelsManager()
-        labels.legacyFetchLabels { [weak self] InternetInformation in
-            DispatchQueue.main.async {
-                self?.newestVersion.text = "Newest Version: \(InternetInformation.uSurfVersion ?? "")"
-                self?.newsLabel.text = InternetInformation.uAppsNews
-            }
-        }
-    }
-    // swiftlint:disable force_unwrapping
+    
     @IBAction func ShareApp(_ sender: Any) {
-        let shareURL = URL(string: "https://itunes.apple.com/us/app/utime-universal/id1125889944?ls=1&mt=8")
-        let shareString = "I am using uSurf as my new iOS Web Browser! Check it out!"
-        let activityViewController = UIActivityViewController(activityItems: [shareString, shareURL!], applicationActivities: nil)
+        guard let shareURL = vm.getShareURL() else { return }
+        let activityViewController = UIActivityViewController(activityItems: [vm.getShareString(), shareURL], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView
         present(activityViewController, animated: true, completion: nil)
     }
-    // swiftlint:enable force_unwrapping
+
     // MARK: - Theme
     @IBAction func SelectTheme(_ sender: Any) {
         let alert = UIAlertController(title: "Theme", message: "Choose A Theme", preferredStyle: .actionSheet) // make an action sheet for it
@@ -186,4 +178,15 @@ class SettingsViewController: UIViewController {
     }
     */
 
+}
+
+extension SettingsViewController: SettingsDelegate {
+    func reloadInternetLabels(information: InternetInformation) {
+        if let uSurfVersion = information.uSurfVersion {
+            self.newestVersion.text = "\(uSurfVersion)"
+        } else {
+            self.newestVersion.text = "Unable to Load"
+        }
+        self.newsLabel.text = information.uAppsNews
+    }
 }
