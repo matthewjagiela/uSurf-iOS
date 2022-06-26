@@ -600,16 +600,16 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyV-o9-pYq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UbB-UD-GOi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cyV-o9-pYq" firstAttribute="top" secondItem="mlH-qc-OOI" secondAttribute="top" id="2VU-Y0-KIg"/>
-                            <constraint firstItem="cyV-o9-pYq" firstAttribute="leading" secondItem="UbB-UD-GOi" secondAttribute="leading" id="Y2N-kF-nNk"/>
-                            <constraint firstItem="cyV-o9-pYq" firstAttribute="trailing" secondItem="UbB-UD-GOi" secondAttribute="trailing" id="ilv-zO-r6I"/>
-                            <constraint firstItem="cyV-o9-pYq" firstAttribute="bottom" secondItem="UbB-UD-GOi" secondAttribute="bottom" id="yFr-3O-9fG"/>
+                            <constraint firstItem="cyV-o9-pYq" firstAttribute="top" secondItem="mlH-qc-OOI" secondAttribute="top" id="Lgt-Bv-H78"/>
+                            <constraint firstAttribute="trailing" secondItem="cyV-o9-pYq" secondAttribute="trailing" id="h8F-3i-pvT"/>
+                            <constraint firstItem="cyV-o9-pYq" firstAttribute="leading" secondItem="mlH-qc-OOI" secondAttribute="leading" id="tAo-CN-VK4"/>
+                            <constraint firstAttribute="bottom" secondItem="cyV-o9-pYq" secondAttribute="bottom" id="v3r-M1-pYx"/>
                         </constraints>
                     </view>
                     <connections>
@@ -636,6 +636,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
