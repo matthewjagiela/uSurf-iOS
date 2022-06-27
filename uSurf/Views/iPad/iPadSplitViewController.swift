@@ -317,10 +317,12 @@ extension iPadSplitViewController: WKNavigationDelegate {
             leftProgressBar.isHidden = true
             savedData.setLeftWebPage(URL: webURL)
             leftAddressBar.text = webURL
+            leftAddressBar.placeholder = "URL / Search"
         } else { // Right web view finished
             rightProgressBar.isHidden = true
             savedData.setRightWebPage(URL: webURL)
             rightAddressBar.text = webURL
+            rightAddressBar.placeholder = "URL / Search"
         }
         savedData.setLastViewedPage(lastPage: webURL)
     }
@@ -328,8 +330,12 @@ extension iPadSplitViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         if webView.tag == BrowserSide.left.rawValue { // left
             leftProgressBar.isHidden = false
+            leftAddressBar.text = ""
+            leftAddressBar.placeholder = "Loading"
         } else { // right
             rightProgressBar.isHidden = false
+            rightAddressBar.text = ""
+            rightAddressBar.placeholder = "Loading"
         }
     }
 }
