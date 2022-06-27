@@ -197,12 +197,7 @@
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="History" id="RCf-f5-hiQ">
-                                        <barButtonItem key="leftBarButtonItem" title="Home" id="Bxh-Bb-Dox">
-                                            <connections>
-                                                <action selector="goHome:" destination="RbB-48-NSe" id="YeT-8F-VQa"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Clear All History" id="nYd-xO-W0Q">
+                                        <barButtonItem key="rightBarButtonItem" title="Clear" id="nYd-xO-W0Q">
                                             <connections>
                                                 <action selector="clearHistory:" destination="RbB-48-NSe" id="dS8-RM-CxY"/>
                                             </connections>
@@ -418,13 +413,7 @@
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
-                                    <navigationItem title="Bookmarks" id="Rvk-nI-YWH">
-                                        <barButtonItem key="leftBarButtonItem" title="Home" id="b0n-dy-8iF">
-                                            <connections>
-                                                <action selector="goHome:" destination="vhc-sm-f0J" id="TYU-Ho-hWe"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Bookmarks" id="Rvk-nI-YWH"/>
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1T-tp-Osv">
@@ -506,13 +495,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
-                                    <navigationItem title="Tabs" id="9ji-EL-OV3">
-                                        <barButtonItem key="leftBarButtonItem" title="Home" id="XMh-Af-PZ6">
-                                            <connections>
-                                                <action selector="goHome:" destination="MsJ-hv-Liw" id="p5Y-kX-DKK"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Tabs" id="9ji-EL-OV3"/>
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcg-95-o7a">
