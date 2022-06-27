@@ -1,6 +1,7 @@
 7: The Return
 - iPhone users will now see their bookmarks / history in a slide over view!
 - In split view there will be progress bars for each side!
+- Changed "Clear all history" to just "Clear", much better!
 - Return of theme Blue!
 - Added a mechanism to get urgent alerts from uApps
 - Added a domain checker, this means more urls (e.g .xyz) is recognized as a web address instead of being google searched.
