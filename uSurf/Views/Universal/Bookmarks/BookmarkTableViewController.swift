@@ -86,14 +86,6 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
         theming()
         
     }
-    // MARK: - Custom Actions
-    @IBAction func goHome(_ sender: Any) {
-        if let iPhoneControl = sideMenuController {
-            iPhoneControl.hideMenu()
-        } else {
-            self.dismiss(animated: true)
-        }
-    }
     
     @objc func canRotate() {}
 }

@@ -81,9 +81,6 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
            
        }
     // MARK: - Actions
-    @IBAction func goHome(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
     
     @IBAction func clearHistory(_ sender: Any) {
         vm.clearAllHistory()
