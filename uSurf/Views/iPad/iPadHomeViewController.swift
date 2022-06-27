@@ -166,6 +166,9 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
             guard let vc = segue.destination as? SettingsViewController else { return }
             vc.vm = SettingsViewModel(settingsDelegate: nil)
             vc.vm.homeViewDelegate = self
+        } else {
+            let saved = SavedDataHandler()
+            saved.setLeftWebPage(URL: webView.url?.absoluteString ?? "https://apple.com")
         }
     }
     
