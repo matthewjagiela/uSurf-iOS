@@ -104,7 +104,6 @@ class iPhoneHomeViewController: UIViewController {
             progressBar.progress = Float(webView.estimatedProgress)
             
         }
-        dynamicField.text = "Loading..."
     }
     // MARK: - Theming
     func theming() {
@@ -243,12 +242,15 @@ extension iPhoneHomeViewController: HomeViewDelegate {
 extension iPhoneHomeViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) { // There is something loading so we want to show the navigation bar
         progressBar.isHidden = false
+        dynamicField.text = ""
+        dynamicField.placeholder = "Loading..."
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) { // The web view has finished loading so we want to hide
         progressBar.isHidden = true
         self.vm.addToHistory(url: webView.url)
         dynamicField.text = webView.url?.absoluteString
+        dynamicField.placeholder = "URL / Search"
     }
 }
 
