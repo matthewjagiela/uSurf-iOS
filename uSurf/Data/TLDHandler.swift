@@ -35,8 +35,21 @@ class TLDHandler {
         }.resume()
     }
     
-    static func fetchLocalTLD(localTLD: @escaping(_ domains: [String]) -> Void) {
-        
+    static func fetchLocalTLD(success: @escaping(_ success: Bool) -> Void) {
+        do {
+            if let bundlePath = Bundle.main.path(forResource: "TLD", ofType: "json"), let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+                let domainCodable = try JSONDecoder().decode([TLDDomain].self, from: jsonData)
+                validDomains.removeAll()
+                for domain in domainCodable {
+                    validDomains.append(domain.domain)
+                }
+                success(false)
+            } else {
+                success(false)
+            }
+        } catch {
+            success(false)
+        }
     }
     
 }
