@@ -16,6 +16,9 @@ class TLDHandler {
         URLSession.shared.dataTask(with: tldURL) { data, _, error in
             if let error = error {
                 print("ERROR \(error)")
+                fetchLocalTLD { success in
+                    completion(success)
+                }
             }
             
             if let data = data {
@@ -29,6 +32,9 @@ class TLDHandler {
 
                 } catch {
                     completion(false)
+                    fetchLocalTLD { success in
+                        completion(success)
+                    }
                     return
                 }
             }
@@ -46,6 +52,7 @@ class TLDHandler {
                 success(false)
             } else {
                 success(false)
+                return
             }
         } catch {
             success(false)
