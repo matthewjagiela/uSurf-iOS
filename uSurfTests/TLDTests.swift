@@ -12,11 +12,11 @@ import XCTest
 
 class TLDTests: XCTestCase {
     func testTLDDecoding() {
-        let safeDomains = uSurf.TLDHandler.validDomains.count
+        let testDomains: [String] = [".com", ".org", ".net", ".edu", ".us", ".co"]
         let internetExpectation = expectation(description: "TLD")
         uSurf.TLDHandler.fetchTLD { success in
             if success {
-                XCTAssertTrue(uSurf.TLDHandler.validDomains.count > safeDomains)
+                XCTAssertTrue(uSurf.TLDHandler.validDomains.count > testDomains.count)
             } else {
                 XCTFail("Decoding Error")
             }
