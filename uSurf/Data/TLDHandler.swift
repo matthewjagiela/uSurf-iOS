@@ -35,6 +35,10 @@ class TLDHandler {
         }.resume()
     }
     
+    static func fetchLocalTLD(localTLD: @escaping(_ domains: [String]) -> Void) {
+        
+    }
+    
 }
 
 
