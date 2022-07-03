@@ -16,6 +16,9 @@ class TLDHandler {
         URLSession.shared.dataTask(with: tldURL) { data, _, error in
             if let error = error {
                 print("ERROR \(error)")
+                fetchLocalTLD { success in
+                    completion(success)
+                }
             }
             
             if let data = data {
@@ -28,11 +31,31 @@ class TLDHandler {
                     completion(true)
 
                 } catch {
-                    completion(false)
+                    fetchLocalTLD { success in
+                        completion(success)
+                    }
                     return
                 }
             }
         }.resume()
+    }
+    
+    static func fetchLocalTLD(success: @escaping(_ success: Bool) -> Void) {
+        do {
+            if let bundlePath = Bundle.main.path(forResource: "TLD", ofType: "json"), let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+                let domainCodable = try JSONDecoder().decode([TLDDomain].self, from: jsonData)
+                validDomains.removeAll()
+                for domain in domainCodable {
+                    validDomains.append(domain.domain)
+                }
+                success(true)
+            } else {
+                success(false)
+                return
+            }
+        } catch {
+            success(false)
+        }
     }
     
 }

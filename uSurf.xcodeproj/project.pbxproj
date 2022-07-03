@@ -29,6 +29,7 @@
 		2ECC642B2398897000FD504A /* hmain_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64252398897000FD504A /* hmain_icon.png */; };
 		2ECC642C2398897000FD504A /* hicon_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64262398897000FD504A /* hicon_iPad.png */; };
 		2ECC642D2398897000FD504A /* hicon_iPadPro.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64272398897000FD504A /* hicon_iPadPro.png */; };
+		2EE99947287152C900887927 /* TLD.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EE99946287152C900887927 /* TLD.json */; };
 		340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
 		34265EFA2176B0B400C775F4 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */; };
 		342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342CBE1D218231D3006D2D04 /* HistoryViewController.swift */; };
@@ -109,6 +110,7 @@
 		2ECC64252398897000FD504A /* hmain_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hmain_icon.png; sourceTree = "<group>"; };
 		2ECC64262398897000FD504A /* hicon_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hicon_iPad.png; sourceTree = "<group>"; };
 		2ECC64272398897000FD504A /* hicon_iPadPro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hicon_iPadPro.png; sourceTree = "<group>"; };
+		2EE99946287152C900887927 /* TLD.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TLD.json; sourceTree = "<group>"; };
 		340906D620D9C01D009F53F1 /* WebHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebHandler.swift; sourceTree = "<group>"; };
 		34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewController.swift; sourceTree = "<group>"; };
 		342CBE1D218231D3006D2D04 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -267,9 +269,10 @@
 			path = Universal;
 			sourceTree = "<group>";
 		};
-		343F015720D41E7900B9E8DD /* Images */ = {
+		343F015720D41E7900B9E8DD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2EE99946287152C900887927 /* TLD.json */,
 				2ECC64152398889900FD504A /* Holiday Icons */,
 				2ECC641323987EBD00FD504A /* spark.png */,
 				3481ECD3216D192A0006006C /* starry_sky_galaxy_stars_125852_2780x2780.jpg */,
@@ -277,7 +280,7 @@
 				3492392C2108043E003AEABA /* In App Icons */,
 				343F016320D4203200B9E8DD /* App Icons */,
 			);
-			path = Images;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		343F015820D41E7E00B9E8DD /* Views */ = {
@@ -438,7 +441,7 @@
 				343F015A20D41EC900B9E8DD /* Other */,
 				343F015920D41E8C00B9E8DD /* Data */,
 				343F015820D41E7E00B9E8DD /* Views */,
-				343F015720D41E7900B9E8DD /* Images */,
+				343F015720D41E7900B9E8DD /* Resources */,
 				34F95E0620C73F1F00411B9D /* Assets.xcassets */,
 				34F95E0820C73F1F00411B9D /* LaunchScreen.storyboard */,
 				34F95E0B20C73F1F00411B9D /* Info.plist */,
@@ -577,6 +580,7 @@
 				343F016220D41FED00B9E8DD /* iPadStory.storyboard in Resources */,
 				3481ECD4216D192C0006006C /* starry_sky_galaxy_stars_125852_2780x2780.jpg in Resources */,
 				2ECC642A2398897000FD504A /* hiPhone2x.png in Resources */,
+				2EE99947287152C900887927 /* TLD.json in Resources */,
 				3460A5F5210BC5F20029B03C /* icons8-merge-60.png in Resources */,
 				3460A5E4210BBE950029B03C /* icons8-bookmark-30.png in Resources */,
 				3443CD8021FFCDAB001123E7 /* Changes.txt in Resources */,
