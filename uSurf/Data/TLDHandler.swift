@@ -31,7 +31,6 @@ class TLDHandler {
                     completion(true)
 
                 } catch {
-                    completion(false)
                     fetchLocalTLD { success in
                         completion(success)
                     }
@@ -49,7 +48,7 @@ class TLDHandler {
                 for domain in domainCodable {
                     validDomains.append(domain.domain)
                 }
-                success(false)
+                success(true)
             } else {
                 success(false)
                 return
