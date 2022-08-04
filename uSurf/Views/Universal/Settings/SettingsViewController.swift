@@ -26,7 +26,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet var navBar: UINavigationBar!
     @IBOutlet var infoBox: UITextView!
     let savedData = SavedDataHandler()
-    weak var homeDelegate: HomeViewDelegate?
     var vm: SettingsViewModel = SettingsViewModel(settingsDelegate: nil)
     // MARK: - View Methods
     override func viewDidLoad() {
@@ -124,11 +123,11 @@ class SettingsViewController: UIViewController {
     // MARK: - ACTIONS
     
     @IBAction func ViewPrivacyPolicy(_ sender: Any) {
-        homeDelegate?.refreshWeb(url: "https://uappsios.com/usurf-privacy-policy/")
+        vm.homeViewDelegate?.refreshWeb(url: "https://uappsios.com/usurf-privacy-policy")
         self.dismiss(animated: true)
     }
     @IBAction func supportButton(_ sender: Any) {
-        homeDelegate?.refreshWeb(url: "https://uappsios.com/usurf-support/")
+        vm.homeViewDelegate?.refreshWeb(url: "https://uappsios.com/usurf-support")
         self.dismiss(animated: true)
     }
     
