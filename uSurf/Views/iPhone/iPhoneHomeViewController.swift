@@ -61,13 +61,13 @@ class iPhoneHomeViewController: UIViewController {
         frame.size.width = 10000
         self.dynamicField.frame = frame
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) { // Keep track of the orientation and reload the text bar 
         if UIDevice.current.orientation.isLandscape { // Landscape
             self.view.backgroundColor = .black
         } else { // Portait
             self.view.backgroundColor = theme.getBarTintColor()
-           
+            
         }
         self.widenTextField()
     }
@@ -120,17 +120,27 @@ class iPhoneHomeViewController: UIViewController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-//        theme = ThemeHandler()
-//        theming()
+        //        theme = ThemeHandler()
+        //        theming()
         
     }
-
+    
     // MARK: - Actions
     // swiftlint:disable force_unwrapping
     @IBAction func addBookmark(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
+        
+        // The user does not want to add the bookmark:
+        alertController.addAction(UIAlertAction(title: "Cancel",
+                                                style: .cancel,
+                                                handler: { (_) in
+            print("User has cancelled")
+        }))
+        
         // Add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Save",
+                                                style: .default,
+                                                handler: { (_) in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
             if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
@@ -141,10 +151,7 @@ class iPhoneHomeViewController: UIViewController {
                 print("There is something wrong so we cannot add this")
             }
         }))
-        // The user does not want to add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (_) in
-            print("User has cancelled")
-        }))
+        
         // Add textfields
         alertController.addTextField { (textField) in // This is going to be the title
             textField.text = self.webView.title
@@ -159,7 +166,7 @@ class iPhoneHomeViewController: UIViewController {
             print("Displayed")
         }
     }
-
+    
     @IBAction func goBack(_ sender: Any) {
         self.webView.goBack()
     }
@@ -206,7 +213,7 @@ class iPhoneHomeViewController: UIViewController {
         menuController.homeDelegate = self
         sideMenuController?.revealMenu()
     }
-
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -217,13 +224,13 @@ class iPhoneHomeViewController: UIViewController {
             vc.vm = SettingsViewModel(settingsDelegate: nil)
         }
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
     }
     
     @objc func canRotate() {}
-
+    
 }
 // MARK: - Home Extension
 extension iPhoneHomeViewController: HomeViewDelegate {
