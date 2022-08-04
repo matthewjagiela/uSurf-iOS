@@ -26,17 +26,39 @@ class TabHandler {
     var iPhoneTabs: [Tab] = []
     var iPadTabs: [Tab] = []
     
-    init() throws {
+    init() {
         do {
             self.iPhoneTabs = try self.getiPhoneTabs()
             self.iPadTabs = try self.getiPadTabs()
+        } catch {
+            self.iPhoneTabs = []
+            self.iPadTabs = []
+        }
+    }
+    
+    
+    // MARK: - Data Manipulation
+    
+    func addiPhoneTab(tab: Tab) throws {
+        do {
+            self.iPhoneTabs = try self.getiPhoneTabs()
+            self.iPhoneTabs.append(tab)
+            try self.storeiPhoneTabs()
         } catch {
             throw error
         }
     }
     
-    
     // MARK: - Setters
+    
+    func storeiPhoneTabs() throws {
+        do {
+            let encodedData = try JSONEncoder().encode(self.iPhoneTabs)
+            NSUbiquitousKeyValueStore.default.set(encodedData, forKey: self.iPhoneTabIdentifier)
+        } catch {
+            throw TabErrors.encodingError
+        }
+    }
     
     // MARK: - Getters
     func getiPhoneTabs() throws -> [Tab] {
