@@ -30,7 +30,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     let webHandler = WebHandler()
     let vm = HomeViewModel()
     let theme = ThemeHandler()
-
+    
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         frame.size.width = 10000
         self.dynamicField.frame = frame
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
             
@@ -61,11 +61,11 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         self.widenTextField()
     }
     override func viewWillDisappear(_ animated: Bool) {
-         webView.removeObserver(self, forKeyPath: "estimatedProgress")
+        webView.removeObserver(self, forKeyPath: "estimatedProgress")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-       // handleWebKit()
+        // handleWebKit()
         theming()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -92,7 +92,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     private func loadURL(_ url: String) { // This method takes a string of an adress and makes the web view load it!
         webView.load(webHandler.determineURL(userInput: url))
     }
-
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { // This is to update the loading bar....
         if keyPath == "estimatedProgress" {
             progressBar.progress = Float(webView.estimatedProgress)
@@ -115,16 +115,18 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     @IBAction func longPress(_ sender: Any) { // A long press is going to be for adding a bookmark
         print("LongPress")
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
+        
+        // The user does not want to add the bookmark:
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            print("User has cancelled")
+        }))
+        
         // Add the bookmark:
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
             self?.vm.addBookmark(name: bookmarkName.text, address: bookmarkAddress.text)
             
-        }))
-        // The user does not want to add the bookmark:
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (_) in
-            print("User has cancelled")
         }))
         // Add textfields
         alertController.addTextField { (textField) in // This is going to be the title
@@ -147,16 +149,16 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         let activityViewController = UIActivityViewController(activityItems: [shareURL as Any, shareString as Any], applicationActivities: nil) // Make the share sheet
         activityViewController.popoverPresentationController?.barButtonItem = shareButton // Present the popover with the source being a button
         present(activityViewController, animated: true, completion: nil)
-    
+        
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-
+        
         if segue.identifier == "goBookmark" {
             guard let vc = segue.destination as? BookmarkTableViewController else { return }
             vc.homeDelegate = self
@@ -189,7 +191,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     }
     
     @objc func canRotate() {}
-
+    
 }
 
 extension iPadHomeViewController: HomeViewDelegate {
