@@ -1,0 +1,34 @@
+//
+//  TabTests.swift
+//  uSurfTests
+//
+//  Created by Matthew Jagiela on 8/4/22.
+//  Copyright © 2022 Matthew Jagiela. All rights reserved.
+//
+
+import UIKit
+@testable import uSurf
+import XCTest
+class TabTests: XCTestCase {
+    
+    let handler = TabHandler()
+    
+    func testStoringTabs() {
+        let tab = Tab(name: "Apple", url: "https://apple.com", image: Data())
+        do {
+            try self.handler.addiPhoneTab(tab: tab)
+        } catch {
+            XCTFail("Failed to save tab with error: \(error)")
+        }
+    }
+    
+    func testReadingTab() {
+        do {
+            let fetchedTab = try handler.getiPhoneTabs()
+            XCTAssertFalse(fetchedTab.isEmpty, "False")
+            XCTAssertEqual(fetchedTab.first!.name, "Apple")
+        } catch {
+            XCTFail("Failed to fetch tabs with error: \(error)")
+        }
+    }
+}
