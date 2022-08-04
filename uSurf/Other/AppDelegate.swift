@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var orientationLock = UIInterfaceOrientationMask.all
     var window: UIWindow?
+    static var feedbackPresented = true
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TLDHandler.fetchTLD { _ in
@@ -30,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return orientationLock
+    }
+    
+    @objc func showFeedback() {
+        self.window?.rootViewController?.presentFeedback()
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
