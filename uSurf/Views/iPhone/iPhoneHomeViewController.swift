@@ -222,6 +222,7 @@ class iPhoneHomeViewController: UIViewController {
         if segue.identifier == "goSettings" {
             guard let vc = segue.destination as? SettingsViewController else { return }
             vc.vm = SettingsViewModel(settingsDelegate: nil)
+            vc.vm.homeViewDelegate = self
         }
     }
     
