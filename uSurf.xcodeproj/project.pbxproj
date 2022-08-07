@@ -198,9 +198,17 @@
 			isa = PBXGroup;
 			children = (
 				34C10F44214AC3D0005C9ACB /* SettingsViewController.swift */,
-				2E0511742861712100E97AA4 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		2E06344728A04C7700A24C92 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				2E06344128A04BFE00A24C92 /* iPhoneTabViewController.swift */,
+				2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */,
+			);
+			path = Tabs;
 			sourceTree = "<group>";
 		};
 		2E23167D2421B23F0003BB54 /* uSurfTests */ = {
@@ -218,8 +226,10 @@
 		2E30ED172815113D0055107B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				2E0511742861712100E97AA4 /* SettingsViewModel.swift */,
 				2E30ED18281511490055107B /* HomeViewModel.swift */,
 				2E06344528A04C1E00A24C92 /* TabViewModel.swift */,
+				2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -237,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				342CBE1D218231D3006D2D04 /* HistoryViewController.swift */,
-				2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -283,13 +292,12 @@
 		3417A40921FA862700D7C7A2 /* Universal */ = {
 			isa = PBXGroup;
 			children = (
+				2E06344728A04C7700A24C92 /* Tabs */,
 				2E0511732861711100E97AA4 /* Settings */,
 				2E720CE1285FEEA300688694 /* History */,
 				2E44DBE7283B4F5800DE4E8A /* Bookmarks */,
 				342CBE1F21824BD3006D2D04 /* LegacyTabViewController.swift */,
 				2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */,
-				2E06344128A04BFE00A24C92 /* iPhoneTabViewController.swift */,
-				2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */,
 			);
 			path = Universal;
 			sourceTree = "<group>";
