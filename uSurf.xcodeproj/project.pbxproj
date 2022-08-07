@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2E0511752861712100E97AA4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0511742861712100E97AA4 /* SettingsViewModel.swift */; };
+		2E06344228A04BFE00A24C92 /* iPhoneTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344128A04BFE00A24C92 /* iPhoneTabViewController.swift */; };
+		2E06344428A04C0A00A24C92 /* iPadTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */; };
+		2E06344628A04C1E00A24C92 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344528A04C1E00A24C92 /* TabViewModel.swift */; };
 		2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A880C232F2AF100D63F99 /* AppUtility.swift */; };
 		2E1C535B289C867800577AB4 /* TabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1C535A289C867800577AB4 /* TabTests.swift */; };
 		2E1EAEFB2564C0040058431D /* galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2E1EAEFA2564C0040058431D /* galaxy.jpg */; };
@@ -92,6 +95,9 @@
 
 /* Begin PBXFileReference section */
 		2E0511742861712100E97AA4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		2E06344128A04BFE00A24C92 /* iPhoneTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPhoneTabViewController.swift; sourceTree = "<group>"; };
+		2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadTabViewController.swift; sourceTree = "<group>"; };
+		2E06344528A04C1E00A24C92 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
 		2E1A880C232F2AF100D63F99 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		2E1C535A289C867800577AB4 /* TabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTests.swift; sourceTree = "<group>"; };
 		2E1EAEFA2564C0040058431D /* galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = galaxy.jpg; sourceTree = "<group>"; };
@@ -213,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				2E30ED18281511490055107B /* HomeViewModel.swift */,
+				2E06344528A04C1E00A24C92 /* TabViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -281,6 +288,8 @@
 				2E44DBE7283B4F5800DE4E8A /* Bookmarks */,
 				342CBE1F21824BD3006D2D04 /* LegacyTabViewController.swift */,
 				2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */,
+				2E06344128A04BFE00A24C92 /* iPhoneTabViewController.swift */,
+				2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */,
 			);
 			path = Universal;
 			sourceTree = "<group>";
@@ -659,11 +668,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E06344228A04BFE00A24C92 /* iPhoneTabViewController.swift in Sources */,
 				2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */,
 				2E720CE3285FEEBB00688694 /* HistoryViewModel.swift in Sources */,
 				3460A5F8210BC9450029B03C /* ThemeHandler.swift in Sources */,
 				344C3F0920D7501600A13939 /* iCloudHandler.swift in Sources */,
 				2E44DBE9283B4F6900DE4E8A /* BookmarkViewModel.swift in Sources */,
+				2E06344428A04C0A00A24C92 /* iPadTabViewController.swift in Sources */,
+				2E06344628A04C1E00A24C92 /* TabViewModel.swift in Sources */,
 				2E0511752861712100E97AA4 /* SettingsViewModel.swift in Sources */,
 				2E30ED19281511490055107B /* HomeViewModel.swift in Sources */,
 				343F015E20D41F0700B9E8DD /* iPadHomeViewController.swift in Sources */,
