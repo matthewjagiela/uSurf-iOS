@@ -12,6 +12,7 @@ import UIKit
 class HomeViewModel {
     let iCloud = iCloudHandler()
     let savedData = SavedDataHandler()
+    let tabHandler = TabHandler()
     init() { }
     
     func addBookmark(name: String?, address: String?) {
@@ -25,6 +26,19 @@ class HomeViewModel {
             iCloud.addToiPadTabArray(url.absoluteString)
         } else {
             iCloud.addToiPhoneTabArray(url.absoluteString)
+        }
+    }
+    
+    func addTab(name: String, url: String, image: Data) throws {
+        let tab = Tab(name: name, url: url, image: image)
+        do {
+            if UI_USER_INTERFACE_IDIOM() == .phone {
+                try tabHandler.addiPhoneTab(tab: tab)
+            } else {
+                try tabHandler.addiPadTab(tab: tab)
+            }
+        } catch {
+            throw error
         }
     }
     
