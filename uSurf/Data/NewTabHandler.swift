@@ -48,12 +48,30 @@ class TabHandler {
         }
     }
     
+    func addiPadTab(tab: Tab) throws {
+        do {
+            self.iPadTabs = try self.getiPadTabs()
+            self.iPadTabs.append(tab)
+            try self.storeiPadTabs()
+        } catch {
+            throw error
+        }
+    }
     // MARK: - Setters
     
     func storeiPhoneTabs() throws {
         do {
             let encodedData = try JSONEncoder().encode(self.iPhoneTabs)
             NSUbiquitousKeyValueStore.default.set(encodedData, forKey: self.iPhoneTabIdentifier)
+        } catch {
+            throw TabErrors.encodingError
+        }
+    }
+    
+    func storeiPadTabs() throws {
+        do {
+            let encodedData = try JSONEncoder().encode(self.iPadTabs)
+            NSUbiquitousKeyValueStore.default.set(encodedData, forKey: self.iPadTabIdentifier)
         } catch {
             throw TabErrors.encodingError
         }
