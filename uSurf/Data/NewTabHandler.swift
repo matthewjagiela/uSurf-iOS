@@ -11,7 +11,6 @@ import Foundation
 enum TabErrors: Error {
     case encodingError
     case decodingError
-    case iCloudError
 }
 
 struct Tab: Codable, Hashable {
@@ -62,7 +61,7 @@ class TabHandler {
     
     // MARK: - Getters
     func getiPhoneTabs() throws -> [Tab] {
-        guard let tabData = NSUbiquitousKeyValueStore.default.data(forKey: iPhoneTabIdentifier) else { throw TabErrors.iCloudError }
+        guard let tabData = NSUbiquitousKeyValueStore.default.data(forKey: iPhoneTabIdentifier) else { return [] }
         do {
             let decodedTabs = try JSONDecoder().decode([Tab].self, from: tabData)
             return decodedTabs
@@ -72,7 +71,7 @@ class TabHandler {
     }
     
     func getiPadTabs() throws -> [Tab] {
-        guard let tabData = NSUbiquitousKeyValueStore.default.data(forKey: iPadTabIdentifier) else { throw TabErrors.iCloudError }
+        guard let tabData = NSUbiquitousKeyValueStore.default.data(forKey: iPadTabIdentifier) else { return [] }
         do {
             let decodedTabs = try JSONDecoder().decode([Tab].self, from: tabData)
             return decodedTabs
