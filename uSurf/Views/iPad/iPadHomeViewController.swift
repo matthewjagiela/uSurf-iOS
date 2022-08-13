@@ -60,9 +60,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         }
         self.widenTextField()
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        webView.removeObserver(self, forKeyPath: "estimatedProgress")
-    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         // handleWebKit()
