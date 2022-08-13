@@ -93,10 +93,6 @@ class iPhoneHomeViewController: UIViewController {
         webView.load(webHandler.determineURL(userInput: url))
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        webView.removeObserver(self, forKeyPath: "estimatedProgress")
-    }
-    
     // MARK: - WebView Methods
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { // This is to update the loading bar....
