@@ -214,7 +214,8 @@ class iPhoneHomeViewController: UIViewController {
     
     @IBAction func showTabs(_ sender: Any) {
         guard let menuController = sideMenuController?.menuViewController as? SideMenuHostViewController else { return }
-        menuController.type = .bookmark
+        menuController.type = .tabs
+        menuController.homeDelegate = self
         sideMenuController?.revealMenu()
     }
     

@@ -26,6 +26,8 @@ class iPhoneTabViewController: UIViewController {
     @IBOutlet weak var TestImageView: UIView!
     @IBOutlet weak var WebAddressHolderImage: UILabel!
     
+    weak var homeDelegate: HomeViewDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

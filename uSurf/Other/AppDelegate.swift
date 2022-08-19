@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMobileAds
 import SideMenu
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
