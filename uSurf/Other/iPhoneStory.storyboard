@@ -505,6 +505,13 @@
                                         <rect key="frame" x="30" y="63" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Web Address Holder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsQ-gl-Yse">
+                                        <rect key="frame" x="72" y="199" width="157" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -520,6 +527,10 @@
                             <constraint firstAttribute="trailing" secondItem="dVe-bX-0tb" secondAttribute="trailing" id="nLe-E7-KiD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="TestImageView" destination="dVe-bX-0tb" id="wfo-Re-fx0"/>
+                        <outlet property="WebAddressHolderImage" destination="lsQ-gl-Yse" id="N4n-2T-lex"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooN-wi-As3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

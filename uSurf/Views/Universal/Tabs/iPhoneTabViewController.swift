@@ -8,8 +8,19 @@
 
 import UIKit
 
-class iPhoneTabViewController: UIViewController {
 
+class TabViewModel {
+    let tabHandler = TabHandler()
+    var tabs: [Tab] = []
+    init() {
+        self.tabs = tabHandler.iPhoneTabs
+    }
+}
+
+class iPhoneTabViewController: UIViewController {
+    @IBOutlet weak var TestImageView: UIView!
+    @IBOutlet weak var WebAddressHolderImage: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

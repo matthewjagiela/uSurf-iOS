@@ -13,6 +13,7 @@ enum TabErrors: Error {
     case decodingError
 }
 
+/// A container for custom tab information
 struct Tab: Codable, Hashable {
     var name: String
     var url: String
