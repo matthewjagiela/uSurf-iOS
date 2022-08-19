@@ -23,8 +23,8 @@ struct Tab: Codable, Hashable {
 class TabHandler {
     final fileprivate var iPhoneTabIdentifier = "iPhoneNewTabs"
     final fileprivate var iPadTabIdentifier = "iPadNewTabs"
-    var iPhoneTabs: [Tab] = []
-    var iPadTabs: [Tab] = []
+    private var iPhoneTabs: [Tab] = []
+    private var iPadTabs: [Tab] = []
     
     init() {
         do {

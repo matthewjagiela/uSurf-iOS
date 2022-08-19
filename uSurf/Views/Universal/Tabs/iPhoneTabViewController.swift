@@ -13,7 +13,12 @@ class TabViewModel {
     let tabHandler = TabHandler()
     var tabs: [Tab] = []
     init() {
-        self.tabs = tabHandler.iPhoneTabs
+        do {
+            self.tabs = try tabHandler.getiPhoneTabs()
+        } catch {
+            //TODO: Change to handle errors in UX
+            fatalError("Tabs fetch failed \(error)")
+        }
     }
 }
 
