@@ -8,49 +8,79 @@
 
 import UIKit
 
+class TabViewCell: UITableViewCell {
+    @IBOutlet weak var WebPreviewImage: UIImageView!
+    @IBOutlet weak var WebNameLabel: UILabel!
+    @IBOutlet weak var WebAddressLabel: UILabel!
+    
+}
 
 class TabViewModel {
     let tabHandler = TabHandler()
     var tabs: [Tab] = []
+    weak var tableViewDelegate: uAppsTableDelegate?
     init() {
+        self.refresh()
+        NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
+    }
+    
+    func refresh() {
         do {
             self.tabs = try tabHandler.getiPhoneTabs()
+            self.tableViewDelegate?.updateTable()
         } catch {
             //TODO: Change to handle errors in UX
             fatalError("Tabs fetch failed \(error)")
         }
     }
+    
+    @objc private func iCloudUpdate(notification: NSNotification) {
+        self.refresh()
+    }
 }
 
 class iPhoneTabViewController: UIViewController {
-    @IBOutlet weak var testImageView: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var holderView: UIView!
-    @IBOutlet weak var WebAddressHolderLabel: UILabel!
     
     weak var homeDelegate: HomeViewDelegate?
     
     var vm = TabViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let firstTab = vm.tabs.first {
-            WebAddressHolderLabel.text = firstTab.name
-            self.testImageView.image = UIImage(data: firstTab.image)
-        } else {
-            WebAddressHolderLabel.text = "NIL"
-        }
-        
-        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.vm.tableViewDelegate = self
+    }
+}
+
+
+extension iPhoneTabViewController: uAppsTableDelegate {
+    func updateTable() {
+        self.vm.refresh()
+    }
+}
+
+extension iPhoneTabViewController: UITableViewDelegate {
+    
+}
+
+extension iPhoneTabViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return vm.tabs.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "iPhoneTabCell", for: indexPath) as? TabViewCell else {
+            return UITableViewCell()
+        }
+        let tab = vm.tabs[indexPath.row]
+        cell.WebAddressLabel.text = tab.url
+        cell.WebNameLabel.text = tab.name
+        cell.WebPreviewImage.image = UIImage(data: tab.image)
+        
+        return cell
     }
-    */
-
+    
+    
 }
