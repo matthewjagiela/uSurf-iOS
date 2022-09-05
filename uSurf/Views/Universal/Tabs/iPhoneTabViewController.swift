@@ -23,15 +23,23 @@ class TabViewModel {
 }
 
 class iPhoneTabViewController: UIViewController {
-    @IBOutlet weak var TestImageView: UIView!
-    @IBOutlet weak var WebAddressHolderImage: UILabel!
+    @IBOutlet weak var testImageView: UIImageView!
+    @IBOutlet weak var holderView: UIView!
+    @IBOutlet weak var WebAddressHolderLabel: UILabel!
     
     weak var homeDelegate: HomeViewDelegate?
     
+    var vm = TabViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let firstTab = vm.tabs.first {
+            WebAddressHolderLabel.text = firstTab.name
+            self.testImageView.image = UIImage(data: firstTab.image)
+        } else {
+            WebAddressHolderLabel.text = "NIL"
+        }
+        
+        
     }
     
 

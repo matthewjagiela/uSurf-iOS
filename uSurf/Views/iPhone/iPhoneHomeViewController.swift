@@ -187,6 +187,7 @@ class iPhoneHomeViewController: UIViewController {
     }
     
     @IBAction func addTab(_ sender: Any) {
+        print("Add Tab")
         guard let name = webView.title, let url = self.webView.url?.absoluteString else { return }
         if #available(iOS 11.0, *) {
             webView.takeSnapshot(with: nil) { image, error in
