@@ -10,6 +10,7 @@
 - The biggest architectural change since uSurf went to Swift 3 years ago! Better performance, better experience, way less bugs.
 - Swapped the "Cancel" and "Save" buttons when adding a bookmark to be better aligned with other iOS save alerts
 - Fixed the URL bars auto-correcting and made them a URL style
+- Tested with Xcode Cloud
 
 6.4.1:
 - Snowfall is dynamic! Snow will show and disappear based on months, no more updating the app for snow!
