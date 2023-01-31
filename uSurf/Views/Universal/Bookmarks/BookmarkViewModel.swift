@@ -38,7 +38,6 @@ class BookmarkViewModel {
                 return
             }
             tableDelegate.updateTable()
-            print(filteredBookmarks)
         }
     }
     
