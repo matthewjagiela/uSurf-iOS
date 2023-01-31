@@ -60,6 +60,11 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         }
         self.widenTextField()
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        self.theme.regenTheme()
+        self.refreshTheme()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
