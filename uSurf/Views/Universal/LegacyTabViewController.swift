@@ -18,7 +18,7 @@ class LegacyTabViewController: UIViewController, UITableViewDataSource, UITableV
     var iPadTabArray = NSMutableArray()
     let iCloud = iCloudHandler()
     let savedData = SavedDataHandler()
-    var theme = ThemeHandler()
+    var theme = ThemeHandlers.shared
     var browserTag: BrowserSide = .single
     // Optional variables these do not take up memory until they are called by a method execution
     lazy var matchediPhoneTabs = [Int]() // This is going to be where the bookmarks matching with the search is
@@ -42,7 +42,6 @@ class LegacyTabViewController: UIViewController, UITableViewDataSource, UITableV
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
            super.traitCollectionDidChange(previousTraitCollection)
-           theme = ThemeHandler()
            theming()
            
        }

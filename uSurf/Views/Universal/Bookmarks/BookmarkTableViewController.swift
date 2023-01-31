@@ -20,7 +20,7 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
     
     var searchController = UISearchController()
 
-    var theme = ThemeHandler()
+    var theme = ThemeHandlers.shared
     // Optional variables these do not take up memory until they are called by a method execution
     
     weak var homeDelegate: HomeViewDelegate?
@@ -82,7 +82,6 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        theme = ThemeHandler()
         theming()
         
     }

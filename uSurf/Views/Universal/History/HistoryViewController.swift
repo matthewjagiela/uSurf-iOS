@@ -21,7 +21,7 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet var navBar: UINavigationBar!
     
     // MARK: - Variables
-    var theme = ThemeHandler()
+    var theme = ThemeHandlers.shared
     var searchController = UISearchController()
     var vm = HistoryViewModel()
     weak var homeDelegate: HomeViewDelegate?
@@ -76,7 +76,6 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
            super.traitCollectionDidChange(previousTraitCollection)
-           theme = ThemeHandler()
            theming()
            
        }

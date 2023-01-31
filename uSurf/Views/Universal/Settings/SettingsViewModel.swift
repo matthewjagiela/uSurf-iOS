@@ -24,7 +24,7 @@ class SettingsViewModel {
     weak var settingsDelegate: SettingsDelegate?
     let savedData = SavedDataHandler()
     let info = AppInformation()
-    let theme = ThemeHandler()
+    let theme = ThemeHandlers.shared
     var internetInformation: InternetInformation?
     
     init(settingsDelegate: SettingsDelegate?) {

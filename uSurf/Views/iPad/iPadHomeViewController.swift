@@ -29,7 +29,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     var webView: WKWebView!
     let webHandler = WebHandler()
     let vm = HomeViewModel()
-    let theme = ThemeHandler()
+    let theme = ThemeHandlers.shared
     
     // MARK: - View Did Load
     override func viewDidLoad() {
@@ -184,7 +184,6 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        let theme = ThemeHandler()
         return theme.getStatusBarColor()
     }
     

@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ThemeHandler: NSObject {
+class ThemeHandlers: NSObject {
+    static let shared = ThemeHandlers()
     let savedData = SavedDataHandler()
     var theme: Theme = .System
     override init() {
