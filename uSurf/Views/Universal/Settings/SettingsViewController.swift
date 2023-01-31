@@ -111,6 +111,8 @@ class SettingsViewController: UIViewController {
             }))
         }
         
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
         if let popoverController = alert.popoverPresentationController { // For iPad it needs to present as a popover so we need to make one!!
             popoverController.sourceView = sender as? UIView
             popoverController.sourceRect = (sender as AnyObject).bounds
