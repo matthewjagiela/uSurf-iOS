@@ -28,6 +28,11 @@ class HistoryViewModel {
                     $0.lowercased().contains(searchTerm.lowercased())
                 }
             }
+            
+            guard let tableDelegate = tableDelegate else {
+                return
+            }
+            tableDelegate.updateTable()
         }
     }
     

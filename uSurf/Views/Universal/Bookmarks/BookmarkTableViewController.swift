@@ -20,7 +20,7 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
     
     var searchController = UISearchController()
 
-    var theme = ThemeHandler()
+    var theme = ThemeHandler.shared
     // Optional variables these do not take up memory until they are called by a method execution
     
     weak var homeDelegate: HomeViewDelegate?
@@ -62,10 +62,6 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
         if #available(iOS 13.0, *) {
             searchBar.searchTextField.backgroundColor = theme.getTintColor()
         }
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
-        textFieldInsideSearchBar?.textColor = theme.getTextColor()
-        
         // Others:
         
         navigationBar.tintColor = theme.getTintColor() // Set text of the bar
@@ -75,6 +71,12 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
         tableView.backgroundColor = theme.getBarTintColor() // When there is no cells the view will be this color
         searchBar.barStyle = theme.getSearchStyle() // Set the theme of the search bar
         
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
+        textFieldInsideSearchBar?.textColor = theme.getTextColor()
+        
+        self.updateTable()
+        
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.getStatusBarColor()
@@ -82,7 +84,7 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        theme = ThemeHandler()
+        self.theme.regenTheme()
         theming()
         
     }

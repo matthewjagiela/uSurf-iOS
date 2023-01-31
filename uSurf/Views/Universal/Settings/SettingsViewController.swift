@@ -53,6 +53,11 @@ class SettingsViewController: UIViewController {
         snowFall()
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        vm.theme.regenTheme()
+        self.refreshTheme()
+    }
+    
     func snowFall() {
         let snow = SnowHandler()
         if snow.shouldShowSnow() {
@@ -105,6 +110,8 @@ class SettingsViewController: UIViewController {
                 self?.vm.setTheme(theme: theme)
             }))
         }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         if let popoverController = alert.popoverPresentationController { // For iPad it needs to present as a popover so we need to make one!!
             popoverController.sourceView = sender as? UIView

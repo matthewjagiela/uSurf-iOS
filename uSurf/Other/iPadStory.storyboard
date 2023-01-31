@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gP0-99-xlL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gP0-99-xlL">
     <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -469,7 +469,7 @@
                                             </barButtonItem>
                                         </leftBarButtonItems>
                                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Website / Search" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="h5j-M3-UwN">
-                                            <rect key="frame" x="443.5" y="8" width="137" height="34"/>
+                                            <rect key="frame" x="444" y="8" width="137" height="34"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -581,16 +581,16 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHc-3m-SJP">
-                                <rect key="frame" x="0.0" y="63" width="375" height="51"/>
+                                <rect key="frame" x="0.0" y="63" width="375" height="56"/>
                                 <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ChA-xx-wJv">
-                                <rect key="frame" x="0.0" y="114" width="375" height="566"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="561"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tabCells" textLabel="E8i-ef-hQf" rowHeight="71" style="IBUITableViewCellStyleDefault" id="UQF-RR-Pjk">
-                                        <rect key="frame" x="0.0" y="44.5" width="375" height="71"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UQF-RR-Pjk" id="mmb-Sg-TvN">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
@@ -633,7 +633,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cFq-0X-hB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="7Za-iJ-Qvb"/>
             </objects>
             <point key="canvasLocation" x="613" y="139"/>
         </scene>
@@ -653,15 +652,15 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1e-px-LiO">
-                                <rect key="frame" x="0.0" y="63" width="375" height="51"/>
+                                <rect key="frame" x="0.0" y="63" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZR3-Wl-bfN">
-                                <rect key="frame" x="0.0" y="114" width="375" height="566"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="561"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookmarkCell" textLabel="IWF-fN-quG" detailTextLabel="raY-hb-8lj" rowHeight="71" style="IBUITableViewCellStyleSubtitle" id="rSB-nG-9kn">
-                                        <rect key="frame" x="0.0" y="44.5" width="375" height="71"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rSB-nG-9kn" id="9C5-cb-Cdc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
@@ -705,14 +704,12 @@
                     <connections>
                         <outlet property="navigationBar" destination="dxd-08-HYf" id="bN5-Nb-NbF"/>
                         <outlet property="searchBar" destination="x1e-px-LiO" id="Rq1-SP-q7d"/>
-                        <outlet property="searchDisplayController" destination="dBe-sN-VKh" id="Ec4-pk-SOf"/>
                         <outlet property="tableView" destination="ZR3-Wl-bfN" id="HQY-MX-PJO"/>
                         <segue destination="gP0-99-xlL" kind="show" identifier="" id="FZM-rQ-8pv"/>
                         <segue destination="6g6-1A-nC7" kind="presentation" identifier="goSplit" animates="NO" id="Rvi-zR-YjV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXU-F2-Qab" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="dBe-sN-VKh"/>
             </objects>
             <point key="canvasLocation" x="697" y="1042"/>
         </scene>
@@ -738,15 +735,15 @@
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7f-XI-RqL">
-                                <rect key="frame" x="0.0" y="63" width="375" height="51"/>
+                                <rect key="frame" x="0.0" y="63" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8LP-L8-Gxz">
-                                <rect key="frame" x="0.0" y="114" width="375" height="566"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="561"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCells" textLabel="byc-BY-O4w" rowHeight="71" style="IBUITableViewCellStyleDefault" id="rVe-fv-6y1">
-                                        <rect key="frame" x="0.0" y="44.5" width="375" height="71"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rVe-fv-6y1" id="vVY-Uf-CWL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>

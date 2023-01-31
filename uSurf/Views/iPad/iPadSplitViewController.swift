@@ -14,7 +14,7 @@ protocol SplitViewDelegate: AnyObject {
 }
 
 class iPadSplitViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var leftProgressBar: UIProgressView!
     @IBOutlet var leftAddressBar: UITextField!
     @IBOutlet var leftNavBar: UINavigationBar!
@@ -47,14 +47,14 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     let web = WebHandler()
     let savedData = SavedDataHandler()
     let iCloud = iCloudHandler()
-    var theme = ThemeHandler()
+    var theme = ThemeHandler.shared
     // Other Variables:
     var rightWebView: WKWebView!
     var leftWebView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         // TextField setup:
         leftAddressBar.delegate = self
@@ -67,11 +67,11 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(leftWebRefresh), name: NSNotification.Name(rawValue: "leftWeb"), object: nil)
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-           super.traitCollectionDidChange(previousTraitCollection)
-           theme = ThemeHandler()
-           theming()
-           
-       }
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.theme.regenTheme()
+        theming()
+        
+    }
     @objc func rightWebRefresh() {
         loadRightURL(savedData.getRightWebPage())
     }
@@ -108,7 +108,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         rightWebView.centerYAnchor.constraint(equalTo: rightWebHolder.centerYAnchor).isActive = true
         rightWebView.widthAnchor.constraint(equalTo: rightWebHolder.widthAnchor).isActive = true
         rightWebView.heightAnchor.constraint(equalTo: rightWebHolder.heightAnchor).isActive = true
-         rightWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+        rightWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         loadLeftURL(savedData.getLeftWebPage())
         loadRightURL(savedData.getRightWebPage())
     }
@@ -246,7 +246,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { // This is to update the loading bar....
         if keyPath == "estimatedProgress" && object as? NSObject == leftWebView {
-           leftProgressBar.progress = Float(leftWebView.estimatedProgress)
+            leftProgressBar.progress = Float(leftWebView.estimatedProgress)
             
         } else {
             rightProgressBar.progress = Float(rightWebView.estimatedProgress)
@@ -255,7 +255,6 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     
     // swiftlint:enable force_unwrapping
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        let theme = ThemeHandler()
         return theme.getStatusBarColor()
     }
     @IBAction func leftHistory(_ sender: Any) {

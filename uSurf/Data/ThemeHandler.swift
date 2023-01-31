@@ -9,6 +9,7 @@
 import UIKit
 
 class ThemeHandler: NSObject {
+    static let shared = ThemeHandler()
     let savedData = SavedDataHandler()
     var theme: Theme = .System
     override init() {
@@ -107,6 +108,7 @@ class ThemeHandler: NSObject {
             }
         }
     }
+    
     // MARK: - Status Bar
     func getSearchBarColor() -> UIColor {
         if theme == .Dark {

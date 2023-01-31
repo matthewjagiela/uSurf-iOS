@@ -18,7 +18,7 @@ class LegacyTabViewController: UIViewController, UITableViewDataSource, UITableV
     var iPadTabArray = NSMutableArray()
     let iCloud = iCloudHandler()
     let savedData = SavedDataHandler()
-    var theme = ThemeHandler()
+    var theme = ThemeHandler.shared
     var browserTag: BrowserSide = .single
     // Optional variables these do not take up memory until they are called by a method execution
     lazy var matchediPhoneTabs = [Int]() // This is going to be where the bookmarks matching with the search is
@@ -41,11 +41,11 @@ class LegacyTabViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-           super.traitCollectionDidChange(previousTraitCollection)
-           theme = ThemeHandler()
-           theming()
-           
-       }
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.theme.regenTheme()
+        theming()
+        
+    }
     // MARK: iCloud Update
     @objc private func iCloudUpdate(notification: NSNotification) {
         iPhoneTabArray = iCloud.getiPhoneTabArray()
@@ -70,9 +70,6 @@ class LegacyTabViewController: UIViewController, UITableViewDataSource, UITableV
         if #available(iOS 13.0, *) {
             searchBar.searchTextField.backgroundColor = theme.getTintColor()
         }
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
-        textFieldInsideSearchBar?.textColor = theme.getTextColor()
         
         // Others:
         
@@ -81,6 +78,12 @@ class LegacyTabViewController: UIViewController, UITableViewDataSource, UITableV
         let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()] // Set the navigation text color
         navigationBar.titleTextAttributes = textAttributes // Actually update the thing
         tableView.backgroundColor = theme.getBarTintColor() // When there is no cells the view will be this color
+        
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
+        textFieldInsideSearchBar?.textColor = theme.getTextColor()
+        
+        self.tableView.reloadData()
         
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {

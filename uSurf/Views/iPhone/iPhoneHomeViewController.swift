@@ -34,7 +34,7 @@ class iPhoneHomeViewController: UIViewController {
     var webView: WKWebView!
     let vm = HomeViewModel()
     let webHandler = WebHandler()
-    var theme = ThemeHandler()
+    var theme = ThemeHandler.shared
     
     // MARK: - View Did Load
     override func viewDidLoad() {
@@ -103,7 +103,6 @@ class iPhoneHomeViewController: UIViewController {
     }
     // MARK: - Theming
     func theming() {
-        theme = ThemeHandler()
         self.navigationBar.barTintColor = theme.getBarTintColor()
         self.navigationBar.tintColor = theme.getTintColor()
         self.dynamicField.backgroundColor = theme.getTextBarBackgroundColor()
@@ -116,9 +115,8 @@ class iPhoneHomeViewController: UIViewController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        //        theme = ThemeHandler()
-        //        theming()
-        
+        self.theme.regenTheme()
+        theming()
     }
     
     // MARK: - Actions

@@ -21,7 +21,7 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet var navBar: UINavigationBar!
     
     // MARK: - Variables
-    var theme = ThemeHandler()
+    var theme = ThemeHandler.shared
     var searchController = UISearchController()
     var vm = HistoryViewModel()
     weak var homeDelegate: HomeViewDelegate?
@@ -40,7 +40,7 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
 
     // MARK: - Searching
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        vm.searchTerm = searchText
     }
     // MARK: - Theme
     private func theming() {
@@ -60,9 +60,6 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
         if #available(iOS 13.0, *) {
             searchBar.searchTextField.backgroundColor = theme.getTintColor()
         }
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
-        textFieldInsideSearchBar?.textColor = theme.getTextColor()
         
         // Others:
         
@@ -73,13 +70,20 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
         tableView.backgroundColor = theme.getBarTintColor() // When there is no cells the view will be this color
         searchBar.barStyle = theme.getSearchStyle() // Set the theme of the search bar
         
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
+        textFieldInsideSearchBar?.textColor = theme.getTextColor()
+        
+        self.updateTable()
+        
     }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-           super.traitCollectionDidChange(previousTraitCollection)
-           theme = ThemeHandler()
-           theming()
-           
-       }
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.theme.regenTheme()
+        theming()
+        
+    }
     // MARK: - Actions
     
     @IBAction func clearHistory(_ sender: Any) {
