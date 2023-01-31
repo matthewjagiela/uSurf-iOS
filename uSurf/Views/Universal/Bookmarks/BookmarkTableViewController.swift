@@ -62,10 +62,6 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
         if #available(iOS 13.0, *) {
             searchBar.searchTextField.backgroundColor = theme.getTintColor()
         }
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
-        textFieldInsideSearchBar?.textColor = theme.getTextColor()
-        
         // Others:
         
         navigationBar.tintColor = theme.getTintColor() // Set text of the bar
@@ -74,6 +70,12 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
         navigationBar.titleTextAttributes = textAttributes // Actually update the thing
         tableView.backgroundColor = theme.getBarTintColor() // When there is no cells the view will be this color
         searchBar.barStyle = theme.getSearchStyle() // Set the theme of the search bar
+        
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
+        textFieldInsideSearchBar?.textColor = theme.getTextColor()
+        
+        self.updateTable()
         
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {

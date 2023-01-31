@@ -70,9 +70,6 @@ class LegacyTabViewController: UIViewController, UITableViewDataSource, UITableV
         if #available(iOS 13.0, *) {
             searchBar.searchTextField.backgroundColor = theme.getTintColor()
         }
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
-        textFieldInsideSearchBar?.textColor = theme.getTextColor()
         
         // Others:
         
@@ -81,6 +78,12 @@ class LegacyTabViewController: UIViewController, UITableViewDataSource, UITableV
         let textAttributes = [NSAttributedString.Key.foregroundColor: theme.getTintColor()] // Set the navigation text color
         navigationBar.titleTextAttributes = textAttributes // Actually update the thing
         tableView.backgroundColor = theme.getBarTintColor() // When there is no cells the view will be this color
+        
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
+        textFieldInsideSearchBar?.textColor = theme.getTextColor()
+        
+        self.tableView.reloadData()
         
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {

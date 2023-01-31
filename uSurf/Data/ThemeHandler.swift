@@ -108,6 +108,7 @@ class ThemeHandler: NSObject {
             }
         }
     }
+    
     // MARK: - Status Bar
     func getSearchBarColor() -> UIColor {
         if theme == .Dark {

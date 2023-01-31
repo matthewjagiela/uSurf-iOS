@@ -60,9 +60,6 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
         if #available(iOS 13.0, *) {
             searchBar.searchTextField.backgroundColor = theme.getTintColor()
         }
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
-        textFieldInsideSearchBar?.textColor = theme.getTextColor()
         
         // Others:
         
@@ -72,6 +69,12 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
         navBar.titleTextAttributes = textAttributes // Actually update the thing
         tableView.backgroundColor = theme.getBarTintColor() // When there is no cells the view will be this color
         searchBar.barStyle = theme.getSearchStyle() // Set the theme of the search bar
+        
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.backgroundColor = theme.getTextBarBackgroundColor()
+        textFieldInsideSearchBar?.textColor = theme.getTextColor()
+        
+        self.updateTable()
         
     }
     
