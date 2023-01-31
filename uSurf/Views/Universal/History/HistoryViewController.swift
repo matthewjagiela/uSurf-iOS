@@ -21,7 +21,7 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet var navBar: UINavigationBar!
     
     // MARK: - Variables
-    var theme = ThemeHandlers.shared
+    var theme = ThemeHandler.shared
     var searchController = UISearchController()
     var vm = HistoryViewModel()
     weak var homeDelegate: HomeViewDelegate?

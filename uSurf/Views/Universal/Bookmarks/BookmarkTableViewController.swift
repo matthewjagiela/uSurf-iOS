@@ -20,7 +20,7 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
     
     var searchController = UISearchController()
 
-    var theme = ThemeHandlers.shared
+    var theme = ThemeHandler.shared
     // Optional variables these do not take up memory until they are called by a method execution
     
     weak var homeDelegate: HomeViewDelegate?

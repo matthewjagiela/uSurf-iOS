@@ -47,7 +47,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     let web = WebHandler()
     let savedData = SavedDataHandler()
     let iCloud = iCloudHandler()
-    var theme = ThemeHandlers.shared
+    var theme = ThemeHandler.shared
     // Other Variables:
     var rightWebView: WKWebView!
     var leftWebView: WKWebView!

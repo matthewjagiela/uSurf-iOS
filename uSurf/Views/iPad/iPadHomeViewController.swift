@@ -29,7 +29,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     var webView: WKWebView!
     let webHandler = WebHandler()
     let vm = HomeViewModel()
-    let theme = ThemeHandlers.shared
+    let theme = ThemeHandler.shared
     
     // MARK: - View Did Load
     override func viewDidLoad() {

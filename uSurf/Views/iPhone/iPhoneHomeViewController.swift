@@ -34,7 +34,7 @@ class iPhoneHomeViewController: UIViewController {
     var webView: WKWebView!
     let vm = HomeViewModel()
     let webHandler = WebHandler()
-    var theme = ThemeHandlers.shared
+    var theme = ThemeHandler.shared
     
     // MARK: - View Did Load
     override func viewDidLoad() {
