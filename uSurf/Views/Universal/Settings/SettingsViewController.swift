@@ -53,6 +53,11 @@ class SettingsViewController: UIViewController {
         snowFall()
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        vm.theme.regenTheme()
+        self.refreshTheme()
+    }
+    
     func snowFall() {
         let snow = SnowHandler()
         if snow.shouldShowSnow() {
