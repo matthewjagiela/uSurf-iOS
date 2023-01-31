@@ -29,7 +29,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     var webView: WKWebView!
     let webHandler = WebHandler()
     let vm = HomeViewModel()
-    let theme = ThemeHandler()
+    let theme = ThemeHandler.shared
     
     // MARK: - View Did Load
     override func viewDidLoad() {
@@ -59,6 +59,11 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
             print("Portrait")
         }
         self.widenTextField()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        self.theme.regenTheme()
+        self.refreshTheme()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -184,7 +189,6 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        let theme = ThemeHandler()
         return theme.getStatusBarColor()
     }
     
