@@ -40,7 +40,7 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
 
     // MARK: - Searching
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        vm.searchTerm = searchText
     }
     // MARK: - Theme
     private func theming() {
