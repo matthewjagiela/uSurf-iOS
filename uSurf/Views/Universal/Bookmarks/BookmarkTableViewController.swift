@@ -82,6 +82,7 @@ class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
+        self.theme.regenTheme()
         theming()
         
     }

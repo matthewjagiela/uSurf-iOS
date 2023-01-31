@@ -74,11 +74,13 @@ class HistoryViewController: UIViewController, UISearchBarDelegate {
         searchBar.barStyle = theme.getSearchStyle() // Set the theme of the search bar
         
     }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-           super.traitCollectionDidChange(previousTraitCollection)
-           theming()
-           
-       }
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.theme.regenTheme()
+        theming()
+        
+    }
     // MARK: - Actions
     
     @IBAction func clearHistory(_ sender: Any) {

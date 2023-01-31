@@ -115,9 +115,8 @@ class iPhoneHomeViewController: UIViewController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        //        theme = ThemeHandler()
-        //        theming()
-        
+        self.theme.regenTheme()
+        theming()
     }
     
     // MARK: - Actions

@@ -68,6 +68,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
+        self.theme.regenTheme()
         theming()
         
     }

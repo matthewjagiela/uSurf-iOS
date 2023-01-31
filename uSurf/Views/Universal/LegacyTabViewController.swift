@@ -41,10 +41,11 @@ class LegacyTabViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-           super.traitCollectionDidChange(previousTraitCollection)
-           theming()
-           
-       }
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.theme.regenTheme()
+        theming()
+        
+    }
     // MARK: iCloud Update
     @objc private func iCloudUpdate(notification: NSNotification) {
         iPhoneTabArray = iCloud.getiPhoneTabArray()
