@@ -21,6 +21,8 @@
 		2E30ED19281511490055107B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E30ED18281511490055107B /* HomeViewModel.swift */; };
 		2E34B4202856D2A600F0976D /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 2E34B41F2856D2A600F0976D /* GoogleMobileAds */; };
 		2E44DBE9283B4F6900DE4E8A /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */; };
+		2E6C57CE298A2C4300EA5C0E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E6C57CC298A2C4300EA5C0E /* Model.xcdatamodeld */; };
+		2E6C57D0298A2F6800EA5C0E /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6C57CF298A2F6800EA5C0E /* CoreDataHandler.swift */; };
 		2E6D1B17289B96C20009FCE8 /* NewTabHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D1B16289B96C20009FCE8 /* NewTabHandler.swift */; };
 		2E720CE3285FEEBB00688694 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */; };
 		2E76967727C709B8007A835C /* TLDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76967627C709B8007A835C /* TLDHandler.swift */; };
@@ -111,6 +113,8 @@
 		2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		2E482498231CAF5200F4C969 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2E683B032329EDA6008BA3E7 /* uSurf.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = uSurf.entitlements; sourceTree = "<group>"; };
+		2E6C57CD298A2C4300EA5C0E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2E6C57CF298A2F6800EA5C0E /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		2E6D1B16289B96C20009FCE8 /* NewTabHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTabHandler.swift; sourceTree = "<group>"; };
 		2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		2E76967627C709B8007A835C /* TLDHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLDHandler.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 				2E1EAEFA2564C0040058431D /* galaxy.jpg */,
 				3492392C2108043E003AEABA /* In App Icons */,
 				343F016320D4203200B9E8DD /* App Icons */,
+				2E6C57CC298A2C4300EA5C0E /* Model.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 				2E1A880C232F2AF100D63F99 /* AppUtility.swift */,
 				2E76967627C709B8007A835C /* TLDHandler.swift */,
 				2E6D1B16289B96C20009FCE8 /* NewTabHandler.swift */,
+				2E6C57CF298A2F6800EA5C0E /* CoreDataHandler.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -682,11 +688,13 @@
 				3460A5F8210BC9450029B03C /* ThemeHandler.swift in Sources */,
 				344C3F0920D7501600A13939 /* iCloudHandler.swift in Sources */,
 				2E44DBE9283B4F6900DE4E8A /* BookmarkViewModel.swift in Sources */,
+				2E6C57D0298A2F6800EA5C0E /* CoreDataHandler.swift in Sources */,
 				2E06344428A04C0A00A24C92 /* iPadTabViewController.swift in Sources */,
 				2E06344628A04C1E00A24C92 /* TabViewModel.swift in Sources */,
 				2E0511752861712100E97AA4 /* SettingsViewModel.swift in Sources */,
 				2E30ED19281511490055107B /* HomeViewModel.swift in Sources */,
 				343F015E20D41F0700B9E8DD /* iPadHomeViewController.swift in Sources */,
+				2E6C57CE298A2C4300EA5C0E /* Model.xcdatamodeld in Sources */,
 				342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */,
 				2E76967727C709B8007A835C /* TLDHandler.swift in Sources */,
 				344C3F0B20D75D6000A13939 /* SavedDataHandler.swift in Sources */,
@@ -1011,6 +1019,19 @@
 			productName = SideMenu;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		2E6C57CC298A2C4300EA5C0E /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2E6C57CD298A2C4300EA5C0E /* Model.xcdatamodel */,
+			);
+			currentVersion = 2E6C57CD298A2C4300EA5C0E /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 34F95DF420C73F1D00411B9D /* Project object */;
 }

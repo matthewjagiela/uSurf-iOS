@@ -30,7 +30,7 @@ class HomeViewModel {
     }
     
     func addTab(name: String, url: String, image: Data) throws {
-        let tab = Tab(name: name, url: url, image: image)
+        let tab = TabData(name: name, url: url, image: image)
         do {
             if UI_USER_INTERFACE_IDIOM() == .phone {
                 try tabHandler.addiPhoneTab(tab: tab)

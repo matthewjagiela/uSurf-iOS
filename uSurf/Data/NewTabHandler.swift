@@ -14,7 +14,7 @@ enum TabErrors: Error {
 }
 
 /// A container for custom tab information
-struct Tab: Codable, Hashable {
+struct TabData: Codable, Hashable {
     var name: String
     var url: String
     var image: Data
@@ -23,8 +23,8 @@ struct Tab: Codable, Hashable {
 class TabHandler {
     final fileprivate var iPhoneTabIdentifier = "iPhoneNewTabs"
     final fileprivate var iPadTabIdentifier = "iPadNewTabs"
-    private var iPhoneTabs: [Tab] = []
-    private var iPadTabs: [Tab] = []
+    private var iPhoneTabs: [TabData] = []
+    private var iPadTabs: [TabData] = []
     
     init() {
         do {
@@ -39,7 +39,7 @@ class TabHandler {
     
     // MARK: - Data Manipulation
     
-    func addiPhoneTab(tab: Tab) throws {
+    func addiPhoneTab(tab: TabData) throws {
         do {
             self.iPhoneTabs = try self.getiPhoneTabs()
             self.iPhoneTabs.append(tab)
@@ -49,7 +49,7 @@ class TabHandler {
         }
     }
     
-    func addiPadTab(tab: Tab) throws {
+    func addiPadTab(tab: TabData) throws {
         do {
             self.iPadTabs = try self.getiPadTabs()
             self.iPadTabs.append(tab)
@@ -79,20 +79,20 @@ class TabHandler {
     }
     
     // MARK: - Getters
-    func getiPhoneTabs() throws -> [Tab] {
+    func getiPhoneTabs() throws -> [TabData] {
         guard let tabData = NSUbiquitousKeyValueStore.default.data(forKey: iPhoneTabIdentifier) else { return [] }
         do {
-            let decodedTabs = try JSONDecoder().decode([Tab].self, from: tabData)
+            let decodedTabs = try JSONDecoder().decode([TabData].self, from: tabData)
             return decodedTabs
         } catch {
             throw TabErrors.decodingError
         }
     }
     
-    func getiPadTabs() throws -> [Tab] {
+    func getiPadTabs() throws -> [TabData] {
         guard let tabData = NSUbiquitousKeyValueStore.default.data(forKey: iPadTabIdentifier) else { return [] }
         do {
-            let decodedTabs = try JSONDecoder().decode([Tab].self, from: tabData)
+            let decodedTabs = try JSONDecoder().decode([TabData].self, from: tabData)
             return decodedTabs
         } catch {
             throw TabErrors.decodingError

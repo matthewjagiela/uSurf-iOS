@@ -14,7 +14,7 @@ class TabTests: XCTestCase {
     let handler = TabHandler()
     
     func testStoringTabs() {
-        let tab = Tab(name: "Apple", url: "https://apple.com", image: Data())
+        let tab = TabData(name: "Apple", url: "https://apple.com", image: Data())
         do {
             try self.handler.addiPhoneTab(tab: tab)
         } catch {

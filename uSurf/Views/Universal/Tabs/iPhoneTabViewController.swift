@@ -17,7 +17,7 @@ class TabViewCell: UITableViewCell {
 
 class TabViewModel {
     let tabHandler = TabHandler()
-    var tabs: [Tab] = []
+    var tabs: [TabData] = []
     weak var tableViewDelegate: uAppsTableDelegate?
     init() {
         self.refresh()

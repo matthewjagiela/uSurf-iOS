@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMobileAds
 import SideMenu
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var orientationLock = UIInterfaceOrientationMask.all
     var window: UIWindow?
     static var feedbackPresented = true
+    
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Tabs")
+        container.loadPersistentStores { desc, error in
+            if let error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        return container
+    }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TLDHandler.fetchTLD { _ in
