@@ -25,4 +25,42 @@ public class CoreDataHandler: NSObject {
             print("App Delegate is nil")
         }
     }
+    
+    
+    fileprivate func fetch() {
+        let tabFetch = NSFetchRequest<Tab>(entityName: "Tab")
+        if let managedContext {
+            self.fetchedResultsController = NSFetchedResultsController<Tab>(fetchRequest: tabFetch, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+            self.fetchedResultsController?.delegate = self
+        }
+    }
+    
+    func getTabData() -> [TabData] {
+        do {
+            fetch()
+            try fetchedResultsController?.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        if let tabs = fetchedResultsController?.fetchedObjects {
+            return tabs.map({ tab in
+                guard let name = tab.webName, let url = tab.webURL, let image = tab.image else { return TabData(name: "uApps", url: "http://uAppsios.com", image: Data()) }
+                return TabData(name: name, url: url, image: image)
+            })
+        }
+        
+        return [TabData]()
+    }
+}
+
+
+extension CoreDataHandler: NSFetchedResultsControllerDelegate {
+    public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+    }
+    
+    public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+    }
 }
