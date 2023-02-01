@@ -45,13 +45,14 @@ public class CoreDataHandler: NSObject {
         
         if let tabs = fetchedResultsController?.fetchedObjects {
             return tabs.map({ tab in
-                guard let name = tab.webName, let url = tab.webURL, let image = tab.image else { return TabData(name: "uApps", url: "http://uAppsios.com", image: Data()) }
-                return TabData(name: name, url: url, image: image)
+                guard let name = tab.webName, let url = tab.webURL, let image = tab.image, let identifier = tab.identifier else { return TabData(name: "uApps", url: "http://uAppsios.com", image: Data()) }
+                return TabData(name: name, url: url, image: image, identifier: identifier)
             })
         }
         
         return [TabData]()
     }
+    
 }
 
 

@@ -18,6 +18,7 @@ struct TabData: Codable, Hashable {
     var name: String
     var url: String
     var image: Data
+    var identifier = UUID() 
 }
 
 class TabHandler {
