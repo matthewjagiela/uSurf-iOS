@@ -53,6 +53,20 @@ public class CoreDataHandler: NSObject {
         return [TabData]()
     }
     
+    func createTab(tabData: TabData) {
+        guard let managedContext else { return }
+        let tabInsert = NSEntityDescription.insertNewObject(forEntityName: "Tab", into: managedContext) as? Tab
+        tabInsert?.identifier = tabData.identifier
+        tabInsert?.webName = tabData.name
+        tabInsert?.webURL = tabData.url
+        tabInsert?.image = tabData.image
+        do {
+            try managedContext.save()
+        } catch {
+            print("MANAGED CONTEXT CANNOT SAVE \(error)")
+        }
+    }
+    
 }
 
 
