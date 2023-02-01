@@ -26,12 +26,10 @@ class TabViewModel {
     
     func refresh() {
         do {
-            self.tabs = try tabHandler.getiPhoneTabs()
+            self.tabs = tabHandler.getLocalTabs()
             self.tableViewDelegate?.updateTable()
-        } catch {
-            //TODO: Change to handle errors in UX
-            fatalError("Tabs fetch failed \(error)")
         }
+        
     }
     
     @objc private func iCloudUpdate(notification: NSNotification) {

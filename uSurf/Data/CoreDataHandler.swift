@@ -29,6 +29,9 @@ public class CoreDataHandler: NSObject {
     
     fileprivate func fetch() {
         let tabFetch = NSFetchRequest<Tab>(entityName: "Tab")
+        let sortDescription = NSSortDescriptor(key: "webName",
+                                               ascending: true)
+        tabFetch.sortDescriptors = [sortDescription]
         if let managedContext {
             self.fetchedResultsController = NSFetchedResultsController<Tab>(fetchRequest: tabFetch, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
             self.fetchedResultsController?.delegate = self
