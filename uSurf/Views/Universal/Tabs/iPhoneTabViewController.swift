@@ -75,7 +75,7 @@ extension iPhoneTabViewController: UITableViewDataSource {
         let tab = vm.tabs[indexPath.row]
         cell.WebAddressLabel.text = tab.url
         cell.WebNameLabel.text = tab.name
-        cell.WebPreviewImage.image = UIImage(data: tab.image)
+        cell.WebPreviewImage.image = UIImage(data: tab.image ?? Data())
         
         return cell
     }
