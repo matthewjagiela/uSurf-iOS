@@ -7,14 +7,17 @@
 //
 
 import UIKit
-@testable import uSurf
+import Foundation
 import XCTest
+
+@testable import uSurf
+
 class TabTests: XCTestCase {
     
     let handler = TabHandler()
     
     func testStoringTabs() {
-        let tab = TabData(name: "Apple", url: "https://apple.com", image: Data())
+        let tab = TabData(name: "Apple", url: "https://apple.com")
         do {
             try self.handler.addiPhoneTab(tab: tab)
         } catch {

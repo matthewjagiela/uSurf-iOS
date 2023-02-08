@@ -29,7 +29,15 @@ class TabHandler {
     private var iPhoneTabs: [TabData] = []
     private var iPadTabs: [TabData] = []
     
-    init() {}
+    init() {
+        do {
+            self.iPhoneTabs = try self.getiPhoneTabs()
+            self.iPadTabs = try self.getiPadTabs()
+        } catch {
+            self.iPhoneTabs = []
+            self.iPadTabs = []
+        }
+    }
     // MARK: - Add Data
     
     func addTabData(tab: TabData) {
@@ -48,43 +56,43 @@ class TabHandler {
     }
     
     func addiPhoneTab(tab: TabData) throws {
-            do {
-                self.iPhoneTabs = try self.getiPhoneTabs()
-                self.iPhoneTabs.append(tab)
-                try self.storeiPhoneTabs()
-            } catch {
-                throw error
-            }
+        do {
+            self.iPhoneTabs = try self.getiPhoneTabs()
+            self.iPhoneTabs.append(tab)
+            try self.storeiPhoneTabs()
+        } catch {
+            throw error
         }
-        
-        func addiPadTab(tab: TabData) throws {
-            do {
-                self.iPadTabs = try self.getiPadTabs()
-                self.iPadTabs.append(tab)
-                try self.storeiPadTabs()
-            } catch {
-                throw error
-            }
+    }
+    
+    func addiPadTab(tab: TabData) throws {
+        do {
+            self.iPadTabs = try self.getiPadTabs()
+            self.iPadTabs.append(tab)
+            try self.storeiPadTabs()
+        } catch {
+            throw error
         }
+    }
     
     // MARK: - Set Data on iCloud
     func storeiPhoneTabs() throws {
-            do {
-                let encodedData = try JSONEncoder().encode(self.iPhoneTabs)
-                NSUbiquitousKeyValueStore.default.set(encodedData, forKey: self.iPhoneTabIdentifier)
-            } catch {
-                throw TabErrors.encodingError
-            }
+        do {
+            let encodedData = try JSONEncoder().encode(self.iPhoneTabs)
+            NSUbiquitousKeyValueStore.default.set(encodedData, forKey: self.iPhoneTabIdentifier)
+        } catch {
+            throw TabErrors.encodingError
         }
-        
-        func storeiPadTabs() throws {
-            do {
-                let encodedData = try JSONEncoder().encode(self.iPadTabs)
-                NSUbiquitousKeyValueStore.default.set(encodedData, forKey: self.iPadTabIdentifier)
-            } catch {
-                throw TabErrors.encodingError
-            }
+    }
+    
+    func storeiPadTabs() throws {
+        do {
+            let encodedData = try JSONEncoder().encode(self.iPadTabs)
+            NSUbiquitousKeyValueStore.default.set(encodedData, forKey: self.iPadTabIdentifier)
+        } catch {
+            throw TabErrors.encodingError
         }
+    }
     
     // MARK: - Getters
     
