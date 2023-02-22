@@ -61,6 +61,17 @@ extension iPhoneTabViewController: uAppsTableDelegate {
 
 extension iPhoneTabViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Do the loading of the tab and such here.
+        if let homeDelegate = self.homeDelegate {
+            homeDelegate.refreshWeb(url: vm.tabs[indexPath.row].url)
+            
+            if let iPhoneController = sideMenuController {
+                iPhoneController.hideMenu()
+            }
+        }
+    }
+    
 }
 
 extension iPhoneTabViewController: UITableViewDataSource {
