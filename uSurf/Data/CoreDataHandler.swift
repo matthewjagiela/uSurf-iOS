@@ -67,6 +67,22 @@ public class CoreDataHandler: NSObject {
         return [TabData]()
     }
     
+    func getTab(from data: TabData) -> Tab? {
+        do {
+            fetch()
+            try fetchedResultsController?.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        if let tabs = fetchedResultsController?.fetchedObjects {
+            return tabs.first { tab in
+                tab.identifier == data.identifier
+            }
+        }
+        return nil
+    }
+    
     func createTab(tabData: TabData) {
         guard let managedContext else { return }
         let tabInsert = NSEntityDescription.insertNewObject(forEntityName: "Tab", into: managedContext) as? Tab
@@ -78,6 +94,18 @@ public class CoreDataHandler: NSObject {
             try managedContext.save()
         } catch {
             print("MANAGED CONTEXT CANNOT SAVE \(error)")
+        }
+    }
+    
+    func deleteTab(data: TabData) {
+        guard let tab = getTab(from: data) else { return }
+        if let context = managedContext{
+            context.delete(tab)
+            do {
+                try context.save()
+            } catch {
+                print("Error deleting Tab \(error)")
+            }
         }
     }
     
