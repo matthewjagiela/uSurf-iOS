@@ -109,6 +109,12 @@ public class CoreDataHandler: NSObject {
         }
     }
     
+    func deleteTabs(data: [TabData]) {
+        for datum in data {
+            deleteTab(data: datum)
+        }
+    }
+    
 }
 
 
