@@ -48,16 +48,28 @@ class TabViewModel {
         
     }
     
-    func tabSelected(at index: Int) {
+    func tabSelected(at index: Int) -> Bool {
+        var tabExists = false
         let tabData = tabs[index]
-        if selectedTabs.filter({ TabData in
+        let foundTab = selectedTabs.filter { TabData in
             TabData.identifier == tabData.identifier
-        }).count < 1 {
-            selectedTabs.append(tabData)
         }
         
-        tableState = .delete
+        if foundTab.isEmpty {
+            //does not exist
+            selectedTabs.append(tabData)
+        } else {
+            //does exist
+            selectedTabs.removeAll { TabData in
+                TabData.identifier == tabData.identifier
+            }
+            tabExists = true
+        }
+        
+        
+        tableState = selectedTabs.isEmpty ? .editing: .delete
         tabTableDelegate?.changeState(state: tableState)
+        return tabExists
     }
     
     @objc private func iCloudUpdate(notification: NSNotification) {
@@ -119,9 +131,9 @@ extension iPhoneTabViewController: UITableViewDelegate {
         
         if vm.tableState == .editing || vm.tableState == .delete {
             let cell = tableView.cellForRow(at: indexPath)
-            cell?.backgroundColor = .systemRed
             //Add to array if not already present
-            vm.tabSelected(at: indexPath.row)
+            let exists = vm.tabSelected(at: indexPath.row)
+            cell?.backgroundColor = exists ? UIColor.white: UIColor.systemRed
         } else {
             if let homeDelegate = self.homeDelegate, let iPhoneController = sideMenuController {
                 homeDelegate.refreshWeb(url: vm.tabs[indexPath.row].url)
