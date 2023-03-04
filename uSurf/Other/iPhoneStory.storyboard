@@ -498,7 +498,14 @@
                                             <constraint firstAttribute="width" constant="300" id="sKD-Bl-3yp"/>
                                         </constraints>
                                         <items>
-                                            <navigationItem title="Tabs" id="LC3-WS-DaJ"/>
+                                            <navigationItem title="Tabs" id="LC3-WS-DaJ">
+                                                <barButtonItem key="rightBarButtonItem" title="Edit" id="5Ey-H4-MzF">
+                                                    <color key="tintColor" systemColor="labelColor"/>
+                                                    <connections>
+                                                        <action selector="stateButtonTapped:" destination="VPc-XO-E2g" id="FWy-7M-9i9"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
                                         </items>
                                     </navigationBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MGK-M6-5Pg">
@@ -579,7 +586,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="NavBar" destination="aaS-ZF-e4z" id="HNN-DN-2eb"/>
                         <outlet property="holderView" destination="dVe-bX-0tb" id="wfo-Re-fx0"/>
+                        <outlet property="stateButton" destination="5Ey-H4-MzF" id="yNe-8t-3e9"/>
                         <outlet property="tableView" destination="MGK-M6-5Pg" id="hZq-oJ-Nhd"/>
                     </connections>
                 </viewController>
@@ -707,7 +716,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ax6-gY-Pu2"/>
+        <segue reference="aF8-y8-pvl"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <resources>
@@ -718,6 +727,9 @@
         <image name="galaxy.jpg" width="3840" height="2160"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

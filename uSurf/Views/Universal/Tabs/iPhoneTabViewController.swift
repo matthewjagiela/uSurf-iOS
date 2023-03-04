@@ -8,6 +8,16 @@
 
 import UIKit
 
+enum TabState: String {
+    case neutral = "Edit"
+    case editing = "Done"
+    case delete = "Delete"
+}
+
+protocol TabTableDelegate: AnyObject {
+    func changeState(state: TabState)
+}
+
 class TabViewCell: UITableViewCell {
     @IBOutlet weak var WebPreviewImage: UIImageView!
     @IBOutlet weak var WebNameLabel: UILabel!
@@ -18,7 +28,13 @@ class TabViewCell: UITableViewCell {
 class TabViewModel {
     let tabHandler = TabHandler()
     var tabs: [TabData] = []
+    var tableState: TabState = .neutral
+    
+    lazy var selectedTabs = [TabData]()
+    
     weak var tableViewDelegate: uAppsTableDelegate?
+    weak var tabTableDelegate: TabTableDelegate?
+    
     init() {
         self.refresh()
         NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
@@ -32,14 +48,31 @@ class TabViewModel {
         
     }
     
+    func tabSelected(at index: Int) {
+        let tabData = tabs[index]
+        if selectedTabs.filter({ TabData in
+            TabData.identifier == tabData.identifier
+        }).count < 1 {
+            selectedTabs.append(tabData)
+        }
+        
+        tableState = .delete
+        tabTableDelegate?.changeState(state: tableState)
+    }
+    
     @objc private func iCloudUpdate(notification: NSNotification) {
         self.refresh()
     }
 }
 
-class iPhoneTabViewController: UIViewController {
+class iPhoneTabViewController: UIViewController, TabTableDelegate {
+    
+    
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var holderView: UIView!
+    @IBOutlet weak var stateButton: UIBarButtonItem!
+    @IBOutlet weak var NavBar: UINavigationBar!
     
     weak var homeDelegate: HomeViewDelegate?
     
@@ -49,6 +82,26 @@ class iPhoneTabViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.vm.tableViewDelegate = self
+        self.vm.tabTableDelegate = self
+    }
+    
+    
+    @IBAction func stateButtonTapped(_ sender: Any) {
+        switch vm.tableState {
+        case .neutral:
+            vm.tableState = .editing
+        case .editing:
+            vm.tableState = .neutral
+            self.tableView.reloadData()
+        case .delete:
+            vm.tableState = .editing
+            //Do Deletion
+        }
+        stateButton.title = vm.tableState.rawValue
+    }
+    
+    func changeState(state: TabState) {
+        self.stateButton.title = state.rawValue
     }
 }
 
@@ -63,11 +116,17 @@ extension iPhoneTabViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Do the loading of the tab and such here.
-        if let homeDelegate = self.homeDelegate {
-            homeDelegate.refreshWeb(url: vm.tabs[indexPath.row].url)
-            
-            if let iPhoneController = sideMenuController {
+        
+        if vm.tableState == .editing || vm.tableState == .delete {
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.backgroundColor = .systemRed
+            //Add to array if not already present
+            vm.tabSelected(at: indexPath.row)
+        } else {
+            if let homeDelegate = self.homeDelegate, let iPhoneController = sideMenuController {
+                homeDelegate.refreshWeb(url: vm.tabs[indexPath.row].url)
                 iPhoneController.hideMenu()
+                
             }
         }
     }
@@ -87,6 +146,12 @@ extension iPhoneTabViewController: UITableViewDataSource {
         cell.WebAddressLabel.text = tab.url
         cell.WebNameLabel.text = tab.name
         cell.WebPreviewImage.image = UIImage(data: tab.image ?? Data())
+        if #available(iOS 13.0, *) {
+            cell.backgroundColor = UIColor.systemBackground
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
+        cell.selectionStyle = .none
         
         return cell
     }
