@@ -131,8 +131,10 @@ public class CoreDataHandler: NSObject {
         
         do {
             try managedContext?.execute(deleteRequest)
+            completion(nil)
         } catch let error as NSError {
             print("Error deleting all data: \(error)")
+            completion(error)
         }
     }
 }
