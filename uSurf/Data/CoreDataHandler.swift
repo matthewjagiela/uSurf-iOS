@@ -13,6 +13,7 @@ public class CoreDataHandler: NSObject {
     var managedContext: NSManagedObjectContext?
     var fetchedResultsController: NSFetchedResultsController<Tab>?
     weak var appDelegate: AppDelegate?
+    weak var TableDelegate: uAppsTableDelegate?
     
     override public init() {
         super.init()
@@ -109,12 +110,20 @@ public class CoreDataHandler: NSObject {
         }
     }
     
-    func deleteTabs(data: [TabData]) {
-        for datum in data {
-            deleteTab(data: datum)
+    func deleteTabs(tabs: [TabData], completion: @escaping (Error?) -> Void) {
+        guard let context = managedContext else { return }
+        let identifiers = tabs.map { $0.identifier }
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Tab.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiers)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(batchDeleteRequest)
+            try context.save()
+            completion(nil)
+        } catch {
+            completion(error)
         }
     }
-    
 }
 
 
@@ -124,6 +133,7 @@ extension CoreDataHandler: NSFetchedResultsControllerDelegate {
     }
     
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
+        //take the table view and refresh it (tabs)
+        TableDelegate?.updateTable()
     }
 }
