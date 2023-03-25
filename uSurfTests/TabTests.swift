@@ -16,22 +16,37 @@ class TabTests: XCTestCase {
     
     let handler = TabHandler()
     
+    func addTab() {
+        let newTab = TabData(name: "Apple", url: "https://apple.com", image: Data())
+        self.handler.addTabData(tab: newTab)
+    }
+    
     func testStoringTabs() {
-        let tab = TabData(name: "Apple", url: "https://apple.com")
-        do {
-            try self.handler.addiPhoneTab(tab: tab)
-        } catch {
-            XCTFail("Failed to save tab with error: \(error)")
-        }
+        self.addTab()
+        XCTAssertTrue(handler.getLocalTabs().count == 1)
     }
     
     func testReadingTab() {
-        do {
-            let fetchedTab = try handler.getiPhoneTabs()
-            XCTAssertFalse(fetchedTab.isEmpty, "False")
-            XCTAssertEqual(fetchedTab.first!.name, "Apple")
-        } catch {
-            XCTFail("Failed to fetch tabs with error: \(error)")
+        self.addTab()
+        let tabs = handler.getLocalTabs()
+        let tab = tabs.first
+        XCTAssertNotNil(tab)
+        XCTAssertTrue(tabs.count == 1)
+        XCTAssertTrue(tab?.name == "Apple")
+        XCTAssertTrue(tab?.url == "https://apple.com")
+    }
+    
+    override func tearDown() {
+        handler.deleteAllTabs { error in
+            if let error {
+                fatalError("error with tab teardown \(error)")
+            }
+        }
+    }
+    
+    override func setUp(completion: @escaping (Error?) -> Void) {
+        self.handler.deleteAllTabs { error in
+            completion(error)
         }
     }
 }

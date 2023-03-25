@@ -50,9 +50,9 @@ public class CoreDataHandler: NSObject {
         if let tabs = fetchedResultsController?.fetchedObjects {
             return tabs.map({ tab in
                 guard let name = tab.webName,
-                        let url = tab.webURL,
-                        let image = tab.image,
-                        let identifier = tab.identifier
+                      let url = tab.webURL,
+                      let image = tab.image,
+                      let identifier = tab.identifier
                 else { return TabData(name: "uApps",
                                       url: "http://uAppsios.com",
                                       image: Data())
@@ -121,6 +121,19 @@ public class CoreDataHandler: NSObject {
             try context.save()
             completion(nil)
         } catch {
+            completion(error)
+        }
+    }
+    
+    func deleteAllTabs(completion: @escaping (Error?) -> Void) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Tab")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedContext?.execute(deleteRequest)
+            completion(nil)
+        } catch let error as NSError {
+            print("Error deleting all data: \(error)")
             completion(error)
         }
     }

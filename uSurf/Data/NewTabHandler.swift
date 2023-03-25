@@ -94,6 +94,7 @@ class TabHandler {
         }
     }
     
+    //MARK: - Deletion
     
     func deleteLocalTabs(tabs: [TabData], completion: @escaping (Error?) -> Void) {
         database.deleteTabs(tabs: tabs) { error in
@@ -103,6 +104,18 @@ class TabHandler {
                 completion(nil)
             }
         }
+    }
+    
+    func deleteAllTabs(completion: @escaping (Error?) -> Void) {
+        database.deleteAllTabs { error in
+            if let error {
+                completion(error)
+            } else {
+                completion(nil)
+            }
+        }
+        
+        //Clear the network tabs
     }
     
     // MARK: - Getters
