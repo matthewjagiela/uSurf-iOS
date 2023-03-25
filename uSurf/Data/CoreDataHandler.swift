@@ -126,7 +126,7 @@ public class CoreDataHandler: NSObject {
     }
     
     func deleteAllTabs(completion: @escaping (Error?) -> Void) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "YourEntityName")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Tab")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
