@@ -113,15 +113,16 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     
     @IBAction func showTabs(_ sender: Any) {
         let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as! TabViewController
+        guard let tabVC = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as? TabViewController else { fatalError("shit") }
         
         let presentingHeight = self.view.bounds.height / 2
         
         
-        viewController.preferredContentSize = CGSize(width: 300, height: presentingHeight)
-        viewController.modalPresentationStyle = .popover
-        viewController.popoverPresentationController?.barButtonItem = self.tabsButton
-        self.present(viewController, animated: true) {
+        tabVC.preferredContentSize = CGSize(width: 300, height: presentingHeight)
+        tabVC.modalPresentationStyle = .popover
+        tabVC.popoverPresentationController?.barButtonItem = self.tabsButton
+        tabVC.homeDelegate = self
+        self.present(tabVC, animated: true) {
             print("Showing View")
         }
     }

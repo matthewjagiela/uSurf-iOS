@@ -88,10 +88,14 @@ extension TabViewController: UITableViewDelegate {
             let exists = vm.tabSelected(at: indexPath)
             cell?.backgroundColor = exists ? UIColor.white: UIColor.systemRed
         } else {
-            if let homeDelegate = self.homeDelegate, let iPhoneController = sideMenuController {
+            if let homeDelegate = self.homeDelegate {
                 homeDelegate.refreshWeb(url: vm.tabs[indexPath.row].url)
+            }
+            
+            if let iPhoneController = sideMenuController {
                 iPhoneController.hideMenu()
-                
+            } else {
+                self.dismiss(animated: true)
             }
         }
     }
