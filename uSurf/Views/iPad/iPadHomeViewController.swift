@@ -128,7 +128,29 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     
     
     @IBAction func addButtonPressed(_ sender: Any) { // This is going to give the option of either adding a tab or a bookmark
-        self.vm.addToTabs(url: self.webView.url)
+        guard let name = webView.title, let url = self.webView.url?.absoluteString else { return }
+        if #available(iOS 11.0, *) {
+            webView.takeSnapshot(with: nil) { image, error in
+                if error != nil {
+                    //TODO: Throw error
+                    return
+                }
+                
+                guard let image = image?.pngData() else {
+                    //TODO: Throw error
+                    return
+                }
+                do {
+                    try self.vm.addTab(name: name, url: url, image: image)
+                } catch {
+                    //TODO: Throw error
+                    return
+                }
+                
+            }
+        } else {
+            // Fallback on earlier versions
+        }
         
     }
     // swiftlint:disable force_unwrapping
