@@ -94,6 +94,17 @@ class TabHandler {
         }
     }
     
+    
+    func deleteLocalTabs(tabs: [TabData], completion: @escaping (Error?) -> Void) {
+        database.deleteTabs(tabs: tabs) { error in
+            if let error {
+                completion(error)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
     // MARK: - Getters
     
     func getLocalTabs() -> [TabData] {

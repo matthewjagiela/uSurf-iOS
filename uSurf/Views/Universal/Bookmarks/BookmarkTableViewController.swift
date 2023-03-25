@@ -10,6 +10,7 @@ import UIKit
 
 protocol uAppsTableDelegate: AnyObject {
     func updateTable()
+    func removeRows(at indexPath: [IndexPath])
 }
 
 class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
@@ -157,7 +158,15 @@ extension BookmarkTableViewController: iCloudDelegate {
 }
 
 extension BookmarkTableViewController: uAppsTableDelegate {
+    func removeRows(at indexPath: [IndexPath]) {
+        DispatchQueue.main.async {
+            self.tableView.deleteRows(at: indexPath, with: .fade)
+        }
+    }
+    
     func updateTable() {
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }

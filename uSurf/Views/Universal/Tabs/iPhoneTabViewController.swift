@@ -31,6 +31,7 @@ class TabViewModel {
     var tableState: TabState = .neutral
     
     lazy var selectedTabs = [TabData]()
+    lazy var selectedIP = [IndexPath]()
     
     weak var tableViewDelegate: uAppsTableDelegate?
     weak var tabTableDelegate: TabTableDelegate?
@@ -48,8 +49,9 @@ class TabViewModel {
         
     }
     
-    func tabSelected(at index: Int) -> Bool {
+    func tabSelected(at indexPath: IndexPath) -> Bool {
         var tabExists = false
+        var index = indexPath.row
         let tabData = tabs[index]
         let foundTab = selectedTabs.filter { TabData in
             TabData.identifier == tabData.identifier
@@ -58,10 +60,14 @@ class TabViewModel {
         if foundTab.isEmpty {
             //does not exist
             selectedTabs.append(tabData)
+            selectedIP.append(indexPath)
         } else {
             //does exist
             selectedTabs.removeAll { TabData in
                 TabData.identifier == tabData.identifier
+            }
+            selectedIP.removeAll { arrayPath in
+                arrayPath == indexPath
             }
             tabExists = true
         }
@@ -70,6 +76,19 @@ class TabViewModel {
         tableState = selectedTabs.isEmpty ? .editing: .delete
         tabTableDelegate?.changeState(state: tableState)
         return tabExists
+    }
+    
+    
+    func deleteTabs() {
+        tabHandler.deleteLocalTabs(tabs: selectedTabs) { [weak self] error in
+            guard let self = self else { fatalError("Somehow self is nil...") }
+            if let error {
+                fatalError("Error with core data deletion \(error)")
+            }
+            
+            self.tableViewDelegate?.removeRows(at: self.selectedIP)
+            self.refresh()
+        }
     }
     
     @objc private func iCloudUpdate(notification: NSNotification) {
@@ -107,7 +126,7 @@ class iPhoneTabViewController: UIViewController, TabTableDelegate {
             self.tableView.reloadData()
         case .delete:
             vm.tableState = .editing
-            //Do Deletion
+            vm.deleteTabs()
         }
         stateButton.title = vm.tableState.rawValue
     }
@@ -119,8 +138,16 @@ class iPhoneTabViewController: UIViewController, TabTableDelegate {
 
 
 extension iPhoneTabViewController: uAppsTableDelegate {
+    func removeRows(at indexPath: [IndexPath]) {
+        DispatchQueue.main.async {
+            self.tableView.deleteRows(at: indexPath, with: .fade)
+        }
+    }
+    
     func updateTable() {
-        self.vm.refresh()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -132,7 +159,7 @@ extension iPhoneTabViewController: UITableViewDelegate {
         if vm.tableState == .editing || vm.tableState == .delete {
             let cell = tableView.cellForRow(at: indexPath)
             //Add to array if not already present
-            let exists = vm.tabSelected(at: indexPath.row)
+            let exists = vm.tabSelected(at: indexPath)
             cell?.backgroundColor = exists ? UIColor.white: UIColor.systemRed
         } else {
             if let homeDelegate = self.homeDelegate, let iPhoneController = sideMenuController {
