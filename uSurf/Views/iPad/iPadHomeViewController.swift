@@ -110,6 +110,23 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         self.dynamicField.textColor = theme.getTextColor()
         self.view.backgroundColor = theme.getBarTintColor()
     }
+    
+    @IBAction func showTabs(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as! TabViewController
+        
+        let presentingHeight = self.view.bounds.height / 2
+        
+        
+        viewController.preferredContentSize = CGSize(width: 300, height: presentingHeight)
+        viewController.modalPresentationStyle = .popover
+        viewController.popoverPresentationController?.barButtonItem = self.tabsButton
+        self.present(viewController, animated: true) {
+            print("Showing View")
+        }
+    }
+    
+    
     @IBAction func addButtonPressed(_ sender: Any) { // This is going to give the option of either adding a tab or a bookmark
         self.vm.addToTabs(url: self.webView.url)
         
