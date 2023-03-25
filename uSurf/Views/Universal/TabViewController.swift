@@ -24,7 +24,7 @@ class TabViewCell: UITableViewCell {
     @IBOutlet weak var WebAddressLabel: UILabel!
     
 }
-class iPhoneTabViewController: UIViewController, TabTableDelegate {
+class TabViewController: UIViewController, TabTableDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var holderView: UIView!
@@ -63,7 +63,7 @@ class iPhoneTabViewController: UIViewController, TabTableDelegate {
 }
 
 
-extension iPhoneTabViewController: uAppsTableDelegate {
+extension TabViewController: uAppsTableDelegate {
     func removeRows(at indexPath: [IndexPath]) {
         DispatchQueue.main.async {
             self.tableView.deleteRows(at: indexPath, with: .fade)
@@ -77,7 +77,7 @@ extension iPhoneTabViewController: uAppsTableDelegate {
     }
 }
 
-extension iPhoneTabViewController: UITableViewDelegate {
+extension TabViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Do the loading of the tab and such here.
@@ -98,7 +98,7 @@ extension iPhoneTabViewController: UITableViewDelegate {
     
 }
 
-extension iPhoneTabViewController: UITableViewDataSource {
+extension TabViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return vm.tabs.count
     }
