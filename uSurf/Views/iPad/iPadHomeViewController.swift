@@ -59,6 +59,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
             print("Portrait")
         }
         self.widenTextField()
+        self.presentedViewController?.dismiss(animated: true)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
