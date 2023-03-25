@@ -66,7 +66,7 @@ class SideMenuHostViewController: UIViewController {
     
     func generateTabView() {
         let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
-        guard let embeddedController = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as? iPhoneTabViewController else { return }
+        guard let embeddedController = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as? TabViewController else { return }
         embeddedController.homeDelegate = self.homeDelegate
         embeddedController.view.frame = HostingView.frame
         addChild(embeddedController)

@@ -59,6 +59,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
             print("Portrait")
         }
         self.widenTextField()
+        self.presentedViewController?.dismiss(animated: true)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -110,8 +111,48 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         self.dynamicField.textColor = theme.getTextColor()
         self.view.backgroundColor = theme.getBarTintColor()
     }
+    
+    @IBAction func showTabs(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
+        guard let tabVC = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as? TabViewController else { fatalError("shit") }
+        
+        let presentingHeight = self.view.bounds.height * 0.75
+        
+        
+        tabVC.preferredContentSize = CGSize(width: 300, height: presentingHeight)
+        tabVC.modalPresentationStyle = .popover
+        tabVC.popoverPresentationController?.barButtonItem = self.tabsButton
+        tabVC.homeDelegate = self
+        self.present(tabVC, animated: true) {
+            print("Showing View")
+        }
+    }
+    
+    
     @IBAction func addButtonPressed(_ sender: Any) { // This is going to give the option of either adding a tab or a bookmark
-        self.vm.addToTabs(url: self.webView.url)
+        guard let name = webView.title, let url = self.webView.url?.absoluteString else { return }
+        if #available(iOS 11.0, *) {
+            webView.takeSnapshot(with: nil) { image, error in
+                if error != nil {
+                    //TODO: Throw error
+                    return
+                }
+                
+                guard let image = image?.pngData() else {
+                    //TODO: Throw error
+                    return
+                }
+                do {
+                    try self.vm.addTab(name: name, url: url, image: image)
+                } catch {
+                    //TODO: Throw error
+                    return
+                }
+                
+            }
+        } else {
+            // Fallback on earlier versions
+        }
         
     }
     // swiftlint:disable force_unwrapping

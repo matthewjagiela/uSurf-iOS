@@ -282,7 +282,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="lyF-7F-HWq">
-                                            <rect key="frame" x="75" y="5" width="225.5" height="34"/>
+                                            <rect key="frame" x="75" y="5" width="225" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -481,10 +481,10 @@
             </objects>
             <point key="canvasLocation" x="-215" y="1634"/>
         </scene>
-        <!--iPhone Tab View Controller-->
+        <!--Tab View Controller-->
         <scene sceneID="6mO-lh-efB">
             <objects>
-                <viewController storyboardIdentifier="iPhoneTab" id="VPc-XO-E2g" customClass="iPhoneTabViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="iPhoneTab" id="VPc-XO-E2g" customClass="TabViewController" customModule="uSurf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KBF-AT-VLq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -578,7 +578,6 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eD7-Q5-l2H"/>
-                        <color key="backgroundColor" systemColor="systemRedColor"/>
                         <constraints>
                             <constraint firstItem="dVe-bX-0tb" firstAttribute="top" secondItem="eD7-Q5-l2H" secondAttribute="top" id="Ffs-Cs-e0S"/>
                             <constraint firstItem="dVe-bX-0tb" firstAttribute="bottom" secondItem="eD7-Q5-l2H" secondAttribute="bottom" id="myZ-tB-7ME"/>
