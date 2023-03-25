@@ -578,7 +578,6 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eD7-Q5-l2H"/>
-                        <color key="backgroundColor" systemColor="systemRedColor"/>
                         <constraints>
                             <constraint firstItem="dVe-bX-0tb" firstAttribute="top" secondItem="eD7-Q5-l2H" secondAttribute="top" id="Ffs-Cs-e0S"/>
                             <constraint firstItem="dVe-bX-0tb" firstAttribute="bottom" secondItem="eD7-Q5-l2H" secondAttribute="bottom" id="myZ-tB-7ME"/>

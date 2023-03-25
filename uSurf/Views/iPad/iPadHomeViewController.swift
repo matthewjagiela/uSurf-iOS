@@ -116,7 +116,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
         guard let tabVC = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as? TabViewController else { fatalError("shit") }
         
-        let presentingHeight = self.view.bounds.height / 2
+        let presentingHeight = self.view.bounds.height * 0.75
         
         
         tabVC.preferredContentSize = CGSize(width: 300, height: presentingHeight)
