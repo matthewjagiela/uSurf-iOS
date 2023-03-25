@@ -130,7 +130,15 @@ extension HistoryViewController: UITableViewDelegate {
 }
 
 extension HistoryViewController: uAppsTableDelegate {
+    func removeRows(at indexPath: [IndexPath]) {
+        DispatchQueue.main.async {
+            self.tableView.deleteRows(at: indexPath, with: .fade)
+        }
+    }
+    
     func updateTable() {
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }

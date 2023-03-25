@@ -11,6 +11,7 @@ import UIKit
 enum ClassType {
     case bookmark
     case history
+    case tabs
 
 }
 
@@ -35,6 +36,8 @@ class SideMenuHostViewController: UIViewController {
             self.generateBookmarkView()
         case .history:
             self.generateHistoryView()
+        case .tabs:
+            self.generateTabView()
         case .none:
             self.generateHistoryView()
         }
@@ -59,6 +62,16 @@ class SideMenuHostViewController: UIViewController {
         addChild(embededController)
         HostingView.addSubview(embededController.view)
         embededController.didMove(toParent: self)
+    }
+    
+    func generateTabView() {
+        let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
+        guard let embeddedController = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as? iPhoneTabViewController else { return }
+        embeddedController.homeDelegate = self.homeDelegate
+        embeddedController.view.frame = HostingView.frame
+        addChild(embeddedController)
+        HostingView.addSubview(embeddedController.view)
+        embeddedController.didMove(toParent: self)
     }
 
 }
