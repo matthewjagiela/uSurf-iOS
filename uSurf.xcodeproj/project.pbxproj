@@ -206,15 +206,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		2E06344728A04C7700A24C92 /* Tabs */ = {
-			isa = PBXGroup;
-			children = (
-				2E06344128A04BFE00A24C92 /* iPhoneTabViewController.swift */,
-				2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */,
-			);
-			path = Tabs;
-			sourceTree = "<group>";
-		};
 		2E23167D2421B23F0003BB54 /* uSurfTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +270,7 @@
 		3417A40721FA861A00D7C7A2 /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				2E06344128A04BFE00A24C92 /* iPhoneTabViewController.swift */,
 				343F015B20D41EF900B9E8DD /* iPhoneHomeViewController.swift */,
 			);
 			path = iPhone;
@@ -287,6 +279,7 @@
 		3417A40821FA862200D7C7A2 /* iPad */ = {
 			isa = PBXGroup;
 			children = (
+				2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */,
 				343F015D20D41F0700B9E8DD /* iPadHomeViewController.swift */,
 				34C4D1E4227FDB93005917B9 /* iPadSplitViewController.swift */,
 			);
@@ -296,7 +289,6 @@
 		3417A40921FA862700D7C7A2 /* Universal */ = {
 			isa = PBXGroup;
 			children = (
-				2E06344728A04C7700A24C92 /* Tabs */,
 				2E0511732861711100E97AA4 /* Settings */,
 				2E720CE1285FEEA300688694 /* History */,
 				2E44DBE7283B4F5800DE4E8A /* Bookmarks */,
