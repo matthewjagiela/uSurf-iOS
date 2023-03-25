@@ -1,4 +1,5 @@
 7: The Return
+- iPhone users have access to a new tab browser, this allows them to see a preview of their tabs.
 - iPhone users will now see their bookmarks / history in a slide over view!
 - In split view there will be progress bars for each side!
 - Changed "Clear all history" to just "Clear", much better!
