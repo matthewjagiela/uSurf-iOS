@@ -45,7 +45,7 @@ class TabTests: XCTestCase {
     }
     
     override func setUp(completion: @escaping (Error?) -> Void) {
-        self.handler.deleteAllTabs { [weak self] error in
+        self.handler.deleteAllTabs { error in
             completion(error)
         }
     }
