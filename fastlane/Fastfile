@@ -12,8 +12,8 @@ platform :ios do
     match(
       type: "appstore",
       git_url: "git@github.com:matthewjagiela/certificate-help.git",
-      ssh_key: ENV["SSH_PRIVATE_KEY"]
-      app_identifier: "com.uapps.usurf",
+      ssh_key: ENV["SSH_PRIVATE_KEY"],
+      app_identifier: "com.uapps.uSurf",
       username: ENV["APP_STORE_CONNECT_USERNAME"],
       team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
       api_key: ENV["APP_STORE_CONNECT_API_KEY"]
