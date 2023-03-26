@@ -7,41 +7,41 @@ platform :ios do
   end
 
   lane :deploy do
-  # Use the certificate-help repository for Match
-  ENV["SSH_PRIVATE_KEY"] = "#{actions.lane_context[Fastlane::Actions::SharedValues::GITHUB_REPO_SLUG].fetch('SSH_PRIVATE_KEY')}"
-  match(
-    type: "appstore",
-    git_url: "git@github.com:matthewjagiela/certificate-help.git",
-    ssh_key: ENV["SSH_PRIVATE_KEY"],
-    app_identifier: "com.uapps.uSurf",
-    username: ENV["APP_STORE_CONNECT_USERNAME"],
-    team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-    api_key: ENV["APP_STORE_CONNECT_API_KEY"]
-  )
+    # Use the certificate-help repository for Match
+    ENV["SSH_PRIVATE_KEY"] = "#{actions.lane_context[Fastlane::Actions::SharedValues::GITHUB_REPO_SLUG].fetch('SSH_PRIVATE_KEY')}"
+    match(
+      type: "appstore",
+      git_url: "git@github.com:matthewjagiela/certificate-help.git",
+      ssh_key: ENV["SSH_PRIVATE_KEY"],
+      app_identifier: "com.uapps.uSurf",
+      username: ENV["APP_STORE_CONNECT_USERNAME"],
+      team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
+      api_key: ENV["APP_STORE_CONNECT_API_KEY"]
+    )
 
-  # Get version number from Info.plist
-  version_number = get_version_number(xcodeproj: "uSurf.xcodeproj")
+    # Get version number from Info.plist
+    version_number = get_version_number(xcodeproj: "uSurf.xcodeproj")
 
-  # Increment build number
-  increment_build_number(xcodeproj: "uSurf.xcodeproj")
+    # Increment build number
+    increment_build_number(xcodeproj: "uSurf.xcodeproj")
 
-  # Build the app for the App Store
-  build_app(
-    scheme: "uSurf",
-    export_method: "app-store",
-    output_directory: "output",
-    output_name: "uSurf.ipa"
-  )
+    # Build the app for the App Store
+    gym(
+      scheme: "uSurf",
+      export_method: "app-store",
+      output_directory: "output",
+      output_name: "uSurf.ipa"
+    )
 
-  # Upload to App Store Connect
-  upload_to_app_store(
-    ipa: "output/uSurf.ipa",
-    app_identifier: "com.uapps.uSurf",
-    api_key: ENV["APP_STORE_CONNECT_API_KEY"],
-    issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
-    team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-    version: version_number,
-    build_number: ENV["BUILD_NUMBER"]
-  )
-end
+    # Upload to App Store Connect
+    upload_to_app_store(
+      ipa: "output/uSurf.ipa",
+      app_identifier: "com.uapps.uSurf",
+      api_key: ENV["APP_STORE_CONNECT_API_KEY"],
+      issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
+      team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
+      version: version_number,
+      build_number: ENV["BUILD_NUMBER"]
+    )
+  end
 end
