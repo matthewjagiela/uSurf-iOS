@@ -40,7 +40,6 @@ platform :ios do
       changelog: "This is a beta release.", # Add a changelog for the build
       username: ENV["APP_STORE_CONNECT_USERNAME"],
       team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-      distribute_app: true # Distribute the app to external testers
     )
   end
 end
