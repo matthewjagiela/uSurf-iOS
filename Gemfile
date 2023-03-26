@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'fastlane'
-gem 'xcodeproj'
-gem 'xcpretty'
+gem 'fastlane' --user-install
+gem 'xcodeproj' --user-install
+gem 'xcpretty' --user-install
