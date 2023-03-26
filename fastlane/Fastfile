@@ -1,45 +1,39 @@
-default_platform(:ios)
+lane :TestFlightDeployment do
+  # Use the certificate-help repository for Match
+  match(
+    type: "adhoc",
+    git_url: "git@github.com:matthewjagiela/certificate-help.git",
+    app_identifier: "com.uapps.uSurf",
+    username: ENV["APP_STORE_CONNECT_USERNAME"],
+    team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
+    api_key: ENV["APP_STORE_CONNECT_API_KEY"]
+  )
 
-platform :ios do
-  lane :test do
-    # Run unit tests
-    run_tests(scheme: "uSurfTests")
-  end
+  # Get version number from Info.plist
+  version_number = get_version_number(xcodeproj: "uSurf.xcodeproj")
 
-  lane :TestFlightDeployment do
-    # Use the certificate-help repository for Match
-    match(
-      type: "adhoc",
-      git_url: "git@github.com:matthewjagiela/certificate-help.git",
-      app_identifier: "com.uapps.uSurf",
-      username: ENV["APP_STORE_CONNECT_USERNAME"],
-      team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-      api_key: ENV["APP_STORE_CONNECT_API_KEY"]
-    )
+  # Increment build number
+  increment_build_number(xcodeproj: "uSurf.xcodeproj")
 
-    # Get version number from Info.plist
-    version_number = get_version_number(xcodeproj: "uSurf.xcodeproj")
+  # Build the app for Ad Hoc distribution with ExportOptions.plist in parent directory
+  gym(
+    scheme: "uSurf",
+    export_method: "ad-hoc",
+    export_options: {
+      plist_path: "../ExportOptions.plist"
+    },
+    output_directory: "output",
+    output_name: "uSurf.ipa"
+  )
 
-    # Increment build number
-    increment_build_number(xcodeproj: "uSurf.xcodeproj")
-
-    # Build the app for Ad Hoc distribution
-    gym(
-      scheme: "uSurf",
-      export_method: "ad-hoc",
-      output_directory: "output",
-      output_name: "uSurf.ipa"
-    )
-
-    # Upload to TestFlight
-    pilot(
-      ipa: "output/uSurf.ipa",
-      app_identifier: "com.uapps.uSurf",
-      username: ENV["APP_STORE_CONNECT_USERNAME"],
-      team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-      distribute_external: true,
-      distribute_groups: ["Testers"],
-      changelog: "This is a beta release."
-    )
-  end
+  # Upload to TestFlight
+  pilot(
+    ipa: "output/uSurf.ipa",
+    app_identifier: "com.uapps.uSurf",
+    username: ENV["APP_STORE_CONNECT_USERNAME"],
+    team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
+    distribute_external: true,
+    distribute_groups: ["Testers"],
+    changelog: "This is a beta release."
+  )
 end
