@@ -9,29 +9,30 @@ on:
     branches:
       - Develop
       - Release
+      - fastlane-self-hosted
 
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install Bundler
-        run: gem install bundler
+        run: arch - arm64 gem install bundler
       - name: Install Dependencies
-        run: bundle install
+        run: arch -arm64 bundle install
       - name: Run Tests
-        run: bundle exec fastlane test
+        run: arch -arm64 bundle exec fastlane test
 
   deploy:
-    runs-on: macos-latest
+    runs-on: self-hosted
     if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install Bundler
-        run: gem install bundler
+        run: arch -arm64 gem install bundler
       - name: Install Dependencies
-        run: bundle install
+        run: arch -arm64 bundle install
       - name: Build and Sign
-        run: bundle exec fastlane deploy
+        run: arch -arm64 bundle exec fastlane deploy
