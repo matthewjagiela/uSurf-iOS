@@ -11,6 +11,7 @@
 		2E06344228A04BFE00A24C92 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344128A04BFE00A24C92 /* TabViewController.swift */; };
 		2E06344428A04C0A00A24C92 /* iPadTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */; };
 		2E06344628A04C1E00A24C92 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344528A04C1E00A24C92 /* TabViewModel.swift */; };
+		2E13C0BC29D0001A0049902B /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E13C0BB29D0001A0049902B /* uAppsLibrary */; };
 		2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A880C232F2AF100D63F99 /* AppUtility.swift */; };
 		2E1C535B289C867800577AB4 /* TabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1C535A289C867800577AB4 /* TabTests.swift */; };
 		2E1EAEFB2564C0040058431D /* galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2E1EAEFA2564C0040058431D /* galaxy.jpg */; };
@@ -26,7 +27,6 @@
 		2E6D1B17289B96C20009FCE8 /* NewTabHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D1B16289B96C20009FCE8 /* NewTabHandler.swift */; };
 		2E720CE3285FEEBB00688694 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */; };
 		2E76967727C709B8007A835C /* TLDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76967627C709B8007A835C /* TLDHandler.swift */; };
-		2E76967A27C74E78007A835C /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967927C74E78007A835C /* uAppsLibrary */; };
 		2E76967D27C74E91007A835C /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967C27C74E91007A835C /* SideMenu */; };
 		2EA04356231CC48400812246 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E482498231CAF5200F4C969 /* .swiftlint.yml */; };
 		2ECC641423987EBE00FD504A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC641323987EBD00FD504A /* spark.png */; };
@@ -190,7 +190,7 @@
 			files = (
 				2E34B4202856D2A600F0976D /* GoogleMobileAds in Frameworks */,
 				2ECDB593287CEAC500328D97 /* CloudKit.framework in Frameworks */,
-				2E76967A27C74E78007A835C /* uAppsLibrary in Frameworks */,
+				2E13C0BC29D0001A0049902B /* uAppsLibrary in Frameworks */,
 				2E76967D27C74E91007A835C /* SideMenu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,9 +518,9 @@
 			);
 			name = uSurf;
 			packageProductDependencies = (
-				2E76967927C74E78007A835C /* uAppsLibrary */,
 				2E76967C27C74E91007A835C /* SideMenu */,
 				2E34B41F2856D2A600F0976D /* GoogleMobileAds */,
+				2E13C0BB29D0001A0049902B /* uAppsLibrary */,
 			);
 			productName = uSurf;
 			productReference = 34F95DFC20C73F1D00411B9D /* uSurf.app */;
@@ -564,9 +564,9 @@
 			);
 			mainGroup = 34F95DF320C73F1D00411B9D;
 			packageReferences = (
-				2E76967827C74E78007A835C /* XCRemoteSwiftPackageReference "uAppsLibrary" */,
 				2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */,
 				2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				2E13C0BA29D0001A0049902B /* XCRemoteSwiftPackageReference "uAppsLibrary" */,
 			);
 			productRefGroup = 34F95DFD20C73F1D00411B9D /* Products */;
 			projectDirPath = "";
@@ -968,20 +968,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2E13C0BA29D0001A0049902B /* XCRemoteSwiftPackageReference "uAppsLibrary" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/matthewjagiela/uAppsLibrary.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 9.0.0;
-			};
-		};
-		2E76967827C74E78007A835C /* XCRemoteSwiftPackageReference "uAppsLibrary" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:matthewjagiela/uAppsLibrary.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
 			};
 		};
 		2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */ = {
@@ -995,15 +995,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2E13C0BB29D0001A0049902B /* uAppsLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E13C0BA29D0001A0049902B /* XCRemoteSwiftPackageReference "uAppsLibrary" */;
+			productName = uAppsLibrary;
+		};
 		2E34B41F2856D2A600F0976D /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
-		};
-		2E76967927C74E78007A835C /* uAppsLibrary */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2E76967827C74E78007A835C /* XCRemoteSwiftPackageReference "uAppsLibrary" */;
-			productName = uAppsLibrary;
 		};
 		2E76967C27C74E91007A835C /* SideMenu */ = {
 			isa = XCSwiftPackageProductDependency;
