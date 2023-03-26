@@ -1,7 +1,9 @@
 name: iOS binary build & upload
 
 on:
-  workflow_dispatch:
+ push:
+   branches:
+     - fastlane
 
 jobs:
   deploy:
