@@ -36,4 +36,4 @@ jobs:
       - name: Install Dependencies
         run: bundle install
       - name: Build and Sign
-        run: bundle exec fastlane deploy
+        run: bundle exec fastlane TestFlightDeployment
