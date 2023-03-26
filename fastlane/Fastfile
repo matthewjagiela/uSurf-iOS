@@ -30,7 +30,14 @@ platform :ios do
       output_directory: "output",
       output_name: "uSurf.ipa"
     )
-
+    
+    upload_to_testflight(
+    	api_key: api_key,
+    	skip_submission: true,
+    	ipa: "output/uSurf.ipa"
+    	skip_waiting_for_build_processing: true,
+    )
+    
     # Upload to TestFlight
     pilot(
       ipa: "output/uSurf.ipa",
