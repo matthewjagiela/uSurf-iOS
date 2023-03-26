@@ -25,7 +25,6 @@ jobs:
 
   deploy:
     runs-on: macos-latest
-    needs: test
     if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
