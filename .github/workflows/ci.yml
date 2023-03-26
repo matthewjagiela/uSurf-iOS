@@ -4,11 +4,9 @@ on:
   pull_request:
     branches:
       - Develop
-      - Release
   push:
     branches:
       - Develop
-      - Release
 
 jobs:
   test:
@@ -26,7 +24,7 @@ jobs:
   deploy:
     runs-on: macos-latest
     needs: test
-    if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/release'
+    if: github.ref == 'refs/heads/develop'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -36,3 +34,11 @@ jobs:
         run: bundle install
       - name: Build and Sign
         run: bundle exec fastlane deploy
+      - name: Upload to App Store
+        uses: jenkinsci/upload-to-app-store@3.0
+        with:
+          api_key: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+          issuer_id: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          id: ${{ secrets.APP_STORE_CONNECT_APP_ID }}
+          ipa_path: "./uSurf.ipa"
+          app_name: "uSurf"
