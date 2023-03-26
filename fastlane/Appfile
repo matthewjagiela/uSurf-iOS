@@ -1,8 +1,1 @@
 app_identifier("com.uapps.uSurf") # The bundle identifier of your app
-apple_id("california_matthew@yahoo.com") # Your Apple Developer Portal username
-
-itc_team_id("264813") # App Store Connect Team ID
-team_id("MCRTE5CC2K") # Developer Portal Team ID
-
-# For more information about the Appfile, see:
-#     https://docs.fastlane.tools/advanced/#appfile
