@@ -13,8 +13,6 @@ platform :ios do
     match(
       type: "appstore",
       app_identifier: "com.uapps.uSurf",
-      readonly: true,
-      force: true,
       username: ENV["APP_STORE_CONNECT_USERNAME"],
       team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
       api_key: ENV["APP_STORE_CONNECT_API_KEY"]
