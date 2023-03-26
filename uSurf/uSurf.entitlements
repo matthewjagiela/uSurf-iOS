@@ -5,9 +5,7 @@
 	<key>aps-environment</key>
 	<string>Development</string>
 	<key>com.apple.developer.icloud-container-identifiers</key>
-	<array>
-		<string>iCloud.com.uApps.Feedback</string>
-	</array>
+	<array/>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
 		<string>CloudKit</string>
@@ -22,7 +20,5 @@
 	</array>
 	<key>com.apple.security.network.client</key>
 	<true/>
-	<key>iCloud Container Environment</key>
-	<string>Development</string>
 </dict>
 </plist>
