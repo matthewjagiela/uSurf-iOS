@@ -6,7 +6,7 @@ platform :ios do
     run_tests(scheme: "uSurfTests")
   end
 
-  lane :deploy do
+  lane :TestFlightDeployment do
     # Use the certificate-help repository for Match
     match(
       type: "appstore",
