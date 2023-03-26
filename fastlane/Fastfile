@@ -1,6 +1,3 @@
-fastlane_require 'fastlane'
-fastlane_require 'fastlane/actions'
-fastlane_require 'fastlane/runner'
 
 default_platform(:ios)
 
