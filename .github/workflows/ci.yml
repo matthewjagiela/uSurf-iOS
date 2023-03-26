@@ -1,0 +1,33 @@
+# ci.yml
+
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - develop
+  push:
+    branches:
+      - develop
+      - release
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Fastlane
+        run: bundle install
+      - name: Run Tests
+        run: bundle exec fastlane test
+
+  deploy:
+    runs-on: macos-latest
+    needs: test
+    if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/release'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Fastlane
+        run: bundle install
+      - name: Build and Sign
+        run: bundle exec fastlane deploy
