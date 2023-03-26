@@ -34,19 +34,8 @@ platform :ios do
     upload_to_testflight(
     	api_key: api_key,
     	skip_submission: true,
-    	ipa: "output/uSurf.ipa"
+    	ipa: "output/uSurf.ipa",
     	skip_waiting_for_build_processing: true,
-    )
-    
-    # Upload to TestFlight
-    pilot(
-      ipa: "output/uSurf.ipa",
-      skip_submission: true, # Don't submit for review yet
-      distribute_external: true, # Allow external testers to install the build
-      groups: ["Testers"], # Add the build to the Testers group
-      changelog: "This is a beta release.", # Add a changelog for the build
-      username: "california_matthew@yahoo.com",
-      team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
     )
   end
 end
