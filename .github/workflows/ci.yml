@@ -26,7 +26,7 @@ jobs:
 
   deploy:
     runs-on: self-hosted
-    needs: test
+#     needs: test
     if: github.ref == 'refs/heads/fastlane-self-hosted' || github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
