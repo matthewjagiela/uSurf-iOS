@@ -13,26 +13,26 @@ on:
 
 jobs:
   test:
-    runs-on: self-hosted
+    runs-on: macos-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install Bundler
-        run: arch - arm64 gem install bundler
+        run: gem install bundler
       - name: Install Dependencies
-        run: arch -arm64 bundle install
+        run: bundle install
       - name: Run Tests
-        run: arch -arm64 bundle exec fastlane test
+        run: bundle exec fastlane test
 
   deploy:
-    runs-on: self-hosted
+    runs-on: macos-latest
     if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install Bundler
-        run: arch -arm64 gem install bundler
+        run: gem install bundler
       - name: Install Dependencies
-        run: arch -arm64 bundle install
+        run: bundle install
       - name: Build and Sign
-        run: arch -arm64 bundle exec fastlane deploy
+        run: bundle exec fastlane deploy
