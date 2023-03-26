@@ -12,7 +12,6 @@ platform :ios do
 
   lane :deploy do
     # Use the certificate-help repository for Match
-    ENV["SSH_PRIVATE_KEY"] = "#{Fastlane::Actions.lane_context[Fastlane::Actions::SharedValues::GITHUB_REPO_SLUG].fetch('SSH_PRIVATE_KEY')}"
     match(
       type: "appstore",
       git_url: "git@github.com:matthewjagiela/certificate-help.git",
