@@ -18,7 +18,7 @@ platform :ios do
     # Upload to App Store Connect
     upload_to_app_store(
       ipa: "uSurf.ipa",
-      app_identifier: "com.example.uSurf",
+      app_identifier: "com.uapps.uSurf",
       api_key_path: ENV["APP_STORE_CONNECT_API_KEY_PATH"],
       api_key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
       issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
