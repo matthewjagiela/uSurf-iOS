@@ -1,3 +1,7 @@
+# Fastfile
+
+default_platform(:ios)
+
 platform :ios do
   lane :test do
     # Run unit tests
@@ -10,7 +14,9 @@ platform :ios do
       type: "appstore",
       app_identifier: "com.uapps.uSurf",
       username: ENV["APP_STORE_CONNECT_USERNAME"],
-      team_id: ENV["APP_STORE_CONNECT_TEAM_ID"]
+      team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
+      api_key: ENV["APP_STORE_CONNECT_API_KEY"],
+      issuer: ENV["APP_STORE_CONNECT_ISSUER_ID"]
     )
 
     # Get version number from Info.plist
@@ -26,8 +32,7 @@ platform :ios do
     upload_to_app_store(
       ipa: "uSurf.ipa",
       app_identifier: "com.uapps.uSurf",
-      api_key_path: ENV["APP_STORE_CONNECT_API_KEY_PATH"],
-      api_key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
+      api_key: ENV["APP_STORE_CONNECT_API_KEY"],
       issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
       team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
       version: version_number,
