@@ -19,6 +19,11 @@ jobs:
         run: gem install bundler
       - name: Install Dependencies
         run: bundle install
+      - name: Import uAppsLibrary
+        uses: apple/swift-package-manager@stable
+        with:
+          subcommand: resolve
+          package-path: ${{ github.workspace }}/uAppsLibrary
       - name: Run Tests
         run: bundle exec fastlane test
 
@@ -28,9 +33,18 @@ jobs:
     if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/release'
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+          ssh-key: ${{ secrets.DRIVE_SSH_KEY }}
+          fetch-depth: 0
       - name: Install Bundler
         run: gem install bundler
       - name: Install Dependencies
         run: bundle install
+      - name: Import uAppsLibrary
+        uses: apple/swift-package-manager@stable
+        with:
+          subcommand: resolve
+          package-path: ${{ github.workspace }}/uAppsLibrary
       - name: Build and Sign
         run: bundle exec fastlane deploy
