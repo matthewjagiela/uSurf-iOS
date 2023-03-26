@@ -1,5 +1,3 @@
-# ci.yml
-
 name: CI
 
 on:
@@ -18,7 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Fastlane
-        run: bundle install
+        run: |
+          gem install bundler
+          bundle install
       - name: Run Tests
         run: bundle exec fastlane test
 
@@ -29,6 +29,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Fastlane
-        run: bundle install
+        run: |
+          gem install bundler
+          bundle install
       - name: Build and Sign
         run: bundle exec fastlane deploy
