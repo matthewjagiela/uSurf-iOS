@@ -1,31 +1,29 @@
-default_platform(:ios)
+lane :deploy do
+  # Download provisioning profiles from App Store Connect
+  match(
+    type: "appstore",
+    app_identifier: "com.uapps.uSurf",
+    username: ENV["APP_STORE_CONNECT_USERNAME"],
+    team_id: ENV["APP_STORE_CONNECT_TEAM_ID"]
+  )
 
-platform :ios do
-  lane :test do
-    # Run unit tests
-    run_tests(scheme: "uSurfTests")
-  end
+  # Get version number from Info.plist
+  version_number = get_version_number(xcodeproj: "uSurf.xcodeproj")
 
-  lane :deploy do
-    # Get version number from Info.plist
-    version_number = get_version_number(xcodeproj: "uSurf.xcodeproj")
+  # Increment build number
+  increment_build_number(xcodeproj: "uSurf.xcodeproj")
 
-    # Increment build number
-    increment_build_number(xcodeproj: "uSurf.xcodeproj")
+  # Build the app
+  build_app(scheme: "uSurf", export_method: "app-store")
 
-    # Build the app
-    build_app(scheme: "uSurf", export_method: "app-store")
-
-    # Upload to App Store Connect
-    upload_to_app_store(
-      ipa: "uSurf.ipa",
-      app_identifier: "com.uapps.uSurf",
-      api_key_path: ENV["APP_STORE_CONNECT_API_KEY_PATH"],
-      api_key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
-      issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
-      team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-      version: version_number,
-      build_number: ENV["BUILD_NUMBER"]
-    )
-  end
+  # Upload to App Store Connect
+  upload_to_app_store(
+    ipa: "uSurf.ipa",
+    app_identifier: "com.uapps.uSurf",
+    api_key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
+    issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
+    team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
+    version: version_number,
+    build_number: ENV["BUILD_NUMBER"]
+  )
 end
