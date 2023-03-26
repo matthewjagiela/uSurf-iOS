@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "9a09ece724128e8d1e14c5133b87c0e236844ac0",
-        "version" : "10.4.0"
+        "revision" : "04351180d4c757c6c16127cb57b685fff9ef260b",
+        "version" : "10.6.0"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",
       "state" : {
-        "revision" : "3e4e743631e86c8c70dbc6efdc7beaa6e90fd3bb",
-        "version" : "2.1.1"
+        "revision" : "ec957ccddbcc710ccc64c9dcbd4c7006fcf8b73a",
+        "version" : "2.2.0"
       }
     },
     {
@@ -75,7 +75,7 @@
     {
       "identity" : "uappslibrary",
       "kind" : "remoteSourceControl",
-      "location" : "git@github.com:matthewjagiela/uAppsLibrary.git",
+      "location" : "https://github.com/matthewjagiela/uAppsLibrary.git",
       "state" : {
         "revision" : "406e39e57e639817950b4221f8b006fb073a5f27",
         "version" : "2.0.2"

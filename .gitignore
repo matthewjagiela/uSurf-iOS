@@ -200,3 +200,5 @@ Pods/Target Support Files/SwiftLint/SwiftLint.xcconfig
 Pods
 uSurf.xcodeproj/xcuserdata
 uSurf.xcodeproj/project.xcworkspace/xcuserdata
+fastlane/metadata/en-US
+fastlane/screenshots
