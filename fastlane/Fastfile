@@ -29,7 +29,7 @@ platform :ios do
       app_identifier: "com.uapps.uSurf",
       username: ENV["APP_STORE_CONNECT_USERNAME"],
       team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-      api_key: ENV["APP_STORE_CONNECT_API_KEY"]
+      api_key: api_key,
     )
 
     # Get version number from Info.plist
