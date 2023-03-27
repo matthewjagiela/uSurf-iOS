@@ -5,6 +5,7 @@ on:
     branches:
       - Develop
       - Release
+  workflow_dispatch:
 
 jobs:
   Unit-Test:
