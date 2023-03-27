@@ -46,9 +46,9 @@ class TabHandler {
         do {
             let iCloudTab = TabData(name: tab.name, url: tab.url)
             if UIDevice.current.userInterfaceIdiom == .pad {
-                try self.addiPadTab(tab: tab)
+                try self.addiPadTab(tab: iCloudTab)
             } else {
-                try self.addiPhoneTab(tab: tab)
+                try self.addiPhoneTab(tab: iCloudTab)
             }
         } catch {
             print("Error setting tabs to iCloud \(error.localizedDescription)")
