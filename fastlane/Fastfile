@@ -7,6 +7,12 @@ platform :ios do
   end
 
   lane :TestFlightDeployment do
+    puts "APP_STORE_CONNECT_API_KEY_ID: #{ENV['APP_STORE_CONNECT_API_KEY_ID']}"
+    puts "APP_STORE_CONNECT_API_KEY_ISSUER_ID: #{ENV['APP_STORE_CONNECT_API_KEY_ISSUER_ID']}"
+    puts "APP_STORE_CONNECT_API_KEY: #{ENV['APP_STORE_CONNECT_API_KEY']}"
+    puts "APP_STORE_CONNECT_USERNAME: #{ENV['APP_STORE_CONNECT_USERNAME']}"
+    puts "APP_STORE_CONNECT_TEAM_ID: #{ENV['APP_STORE_CONNECT_TEAM_ID']}"
+
     # Use the certificate-help repository for Match
     
     api_key = app_store_connect_api_key(
@@ -23,7 +29,7 @@ platform :ios do
       app_identifier: "com.uapps.uSurf",
       username: ENV["APP_STORE_CONNECT_USERNAME"],
       team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-      api_key: api_key
+      api_key: ENV["APP_STORE_CONNECT_API_KEY"]
     )
 
     # Get version number from Info.plist
