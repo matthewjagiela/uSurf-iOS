@@ -12,36 +12,28 @@ on:
       - fastlane-self-hosted
 
 jobs:
-#   test:
-#     runs-on: self-hosted
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
-#       - name: Install Bundler
-#         run: gem install bundler
-#       - name: Install Dependencies
-#         run: bundle install
-#       - name: Run Tests
-#         run: bundle exec fastlane test
-
   deploy:
     runs-on: macos-latest
-#     needs: test
     if: github.ref == 'refs/heads/fastlane-self-hosted' || github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Show Variables
+        run: |
+          echo "APP_STORE_CONNECT_API_KEY_ID=$APP_STORE_CONNECT_API_KEY_ID"
+          echo "APP_STORE_CONNECT_API_KEY_ISSUER_ID=$APP_STORE_CONNECT_API_KEY_ISSUER_ID"
+          echo "APP_STORE_CONNECT_API_KEY=$APP_STORE_CONNECT_API_KEY"
+          echo "APP_STORE_CONNECT_USERNAME=$APP_STORE_CONNECT_USERNAME"
+          echo "APP_STORE_CONNECT_TEAM_ID=$APP_STORE_CONNECT_TEAM_ID"
       - name: Install Bundler
         run: gem install bundler
-      - name: Show Variable
-        run: echo $APP_STORE_CONNECT_API_KEY
       - name: Install Dependencies
         run: bundle install
+      - name: Build and Sign
+        run: bundle exec fastlane TestFlightDeployment
         env:
           APP_STORE_CONNECT_API_KEY_ID: ${{secrets.APP_STORE_CONNECT_API_KEY_ID}}
           APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID}}
           APP_STORE_CONNECT_API_KEY: ${{secrets.APP_STORE_CONNECT_API_KEY}}
           APP_STORE_CONNECT_USERNAME: ${{secrets.APP_STORE_CONNECT_USERNAME}}
           APP_STORE_CONNECT_TEAM_ID: ${{secrets.APP_STORE_CONNECT_TEAM_ID}}
-      - name: Build and Sign
-        run: bundle exec fastlane TestFlightDeployment
