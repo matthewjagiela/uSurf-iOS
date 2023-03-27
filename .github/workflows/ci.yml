@@ -34,7 +34,7 @@ jobs:
       - name: Install Bundler
         run: gem install bundler
       - name: Show Variable
-        run: echo "$APP_STORE_CONNECT_API_KEY"
+        run: echo $APP_STORE_CONNECT_API_KEY
       - name: Install Dependencies
         run: bundle install
       - name: Build and Sign
