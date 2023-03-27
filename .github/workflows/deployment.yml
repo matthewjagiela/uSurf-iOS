@@ -1,31 +1,15 @@
-name: CI
+name: CI - Deployment
 
 on:
-  pull_request:
-    branches:
-      - Develop
-      - Release
   push:
     branches:
       - Develop
       - Release
 
 jobs:
-  Unit-Test:
-    runs-on: self-hosted
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Install Bundler
-        run: gem install bundler
-      - name: Install Dependencies
-        run: bundle install
-      - name: Run Tests
-        run: bundle exec fastlane ios test
-
   Test-Flight:
     runs-on: self-hosted
-    if: github.ref == 'refs/heads/release' || github.ref == 'refs/heads/Develop'
+    if: github.ref == 'refs/heads/Release' || github.ref == 'refs/heads/Develop'
     needs: Unit-Test
     steps:
       - name: Checkout code
