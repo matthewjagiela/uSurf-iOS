@@ -1,29 +1,46 @@
-
-default_platform(:ios)
-
 platform :ios do
   lane :test do
     # Run unit tests
     run_tests(scheme: "uSurfTests")
   end
 
-  lane :deploy do
+  lane :testflight_deployment do
     # Use the certificate-help repository for Match
+    api_key = app_store_connect_api_key(
+      key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
+      issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+      key_content: ENV["APP_STORE_CONNECT_API_KEY"],
+      duration: 1200, # optional (maximum 1200)
+      in_house: false, # optional but may be required if using match/sigh
+    )
+    
     match(
       type: "appstore",
       git_url: "git@github.com:matthewjagiela/certificate-help.git",
-      ssh_key: ENV["SSH_PRIVATE_KEY"],
       app_identifier: "com.uapps.uSurf",
       username: ENV["APP_STORE_CONNECT_USERNAME"],
       team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-      api_key: ENV["APP_STORE_CONNECT_API_KEY"]
+      api_key: api_key,
     )
 
-    # Get version number from Info.plist
+    # Get version number and build number from Info.plist
     version_number = get_version_number(xcodeproj: "uSurf.xcodeproj")
+    build_number = get_build_number(xcodeproj: "uSurf.xcodeproj").to_i
 
-    # Increment build number
-    increment_build_number(xcodeproj: "uSurf.xcodeproj")
+    # Get the latest build number from App Store Connect
+    latest_build_number = latest_testflight_build_number(
+      app_identifier: "com.uapps.uSurf",
+      api_key: api_key
+    ).to_i
+
+    # Use the larger build number between the xcodeproj and TestFlight to set the new build number
+    new_build_number = [build_number, latest_build_number].max + 1
+
+    # Increment the build number in the xcodeproj file
+    increment_build_number(
+      xcodeproj: "uSurf.xcodeproj",
+      build_number: new_build_number,
+    )
 
     # Build the app for the App Store
     gym(
@@ -32,16 +49,12 @@ platform :ios do
       output_directory: "output",
       output_name: "uSurf.ipa"
     )
-
-    # Upload to App Store Connect
-    upload_to_app_store(
+    
+    upload_to_testflight(
+      api_key: api_key,
+      skip_submission: true,
       ipa: "output/uSurf.ipa",
-      app_identifier: "com.uapps.uSurf",
-      api_key: ENV["APP_STORE_CONNECT_API_KEY"],
-      issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"],
-      team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-      version: version_number,
-      build_number: ENV["BUILD_NUMBER"]
+      skip_waiting_for_build_processing: true,
     )
   end
 end

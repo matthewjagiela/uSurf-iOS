@@ -12,6 +12,7 @@
 		2E06344428A04C0A00A24C92 /* iPadTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */; };
 		2E06344628A04C1E00A24C92 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344528A04C1E00A24C92 /* TabViewModel.swift */; };
 		2E13C0BC29D0001A0049902B /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E13C0BB29D0001A0049902B /* uAppsLibrary */; };
+		2E13C0BE29D0D7AD0049902B /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E13C0BD29D0D7AD0049902B /* ExportOptions.plist */; };
 		2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A880C232F2AF100D63F99 /* AppUtility.swift */; };
 		2E1C535B289C867800577AB4 /* TabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1C535A289C867800577AB4 /* TabTests.swift */; };
 		2E1EAEFB2564C0040058431D /* galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2E1EAEFA2564C0040058431D /* galaxy.jpg */; };
@@ -100,6 +101,7 @@
 		2E06344128A04BFE00A24C92 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadTabViewController.swift; sourceTree = "<group>"; };
 		2E06344528A04C1E00A24C92 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
+		2E13C0BD29D0D7AD0049902B /* ExportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExportOptions.plist; sourceTree = "<group>"; };
 		2E1A880C232F2AF100D63F99 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		2E1C535A289C867800577AB4 /* TabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTests.swift; sourceTree = "<group>"; };
 		2E1EAEFA2564C0040058431D /* galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = galaxy.jpg; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				34F95E0620C73F1F00411B9D /* Assets.xcassets */,
 				34F95E0820C73F1F00411B9D /* LaunchScreen.storyboard */,
 				34F95E0B20C73F1F00411B9D /* Info.plist */,
+				2E13C0BD29D0D7AD0049902B /* ExportOptions.plist */,
 			);
 			path = uSurf;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				2ECC64282398897000FD504A /* hiPhone3x.png in Resources */,
 				3460A5F0210BC2E10029B03C /* icons8-split-60.png in Resources */,
 				3460A5EE210BC2E10029B03C /* icons8-split-90.png in Resources */,
+				2E13C0BE29D0D7AD0049902B /* ExportOptions.plist in Resources */,
 				3460A5DE210BBD7B0029B03C /* icons8-settings-90.png in Resources */,
 				343F016B20D4204600B9E8DD /* icon_iPad.png in Resources */,
 				3460A5DD210BBD7B0029B03C /* icons8-settings-60.png in Resources */,
@@ -891,7 +895,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = uSurf/uSurf.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = uSurf/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -917,7 +921,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = uSurf/uSurf.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = uSurf/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
