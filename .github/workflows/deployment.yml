@@ -1,10 +1,6 @@
 name: CI - Deployment
 
 on:
-  pull_request:
-    branches:
-      - Develop
-      - Release
   push:
     branches:
       - Develop
