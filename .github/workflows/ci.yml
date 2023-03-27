@@ -10,6 +10,7 @@ on:
       - Develop
       - Release
       - fastlane-self-hosted
+      - fastlane-self-hosted-API-BN
 
 jobs:
   deploy:
