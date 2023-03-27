@@ -14,7 +14,6 @@ platform :ios do
     puts "APP_STORE_CONNECT_TEAM_ID: #{ENV['APP_STORE_CONNECT_TEAM_ID']}"
 
     # Use the certificate-help repository for Match
-    
     api_key = app_store_connect_api_key(
       key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
       issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
@@ -32,11 +31,22 @@ platform :ios do
       api_key: api_key,
     )
 
-    # Get version number from Info.plist
+    # Get version number and build number from Info.plist
     version_number = get_version_number(xcodeproj: "uSurf.xcodeproj")
+    build_number = get_build_number(xcodeproj: "uSurf.xcodeproj")
 
-    # Increment build number
-    increment_build_number(xcodeproj: "uSurf.xcodeproj")
+    # Get the latest build number from App Store Connect
+    latest_build_number = latest_testflight_build_number(
+      app_identifier: "com.uapps.uSurf",
+      api_key: api_key
+    )
+
+    # Increment build number if the latest build number from App Store Connect is greater than the current build number
+    build_number = latest_build_number.to_i + 1 if latest_build_number.to_i > build_number.to_i
+
+    # Update version number and build number in Info.plist
+    increment_version_number(xcodeproj: "uSurf.xcodeproj")
+    increment_build_number(xcodeproj: "uSurf.xcodeproj", build_number: build_number)
 
     # Build the app for the App Store
     gym(
