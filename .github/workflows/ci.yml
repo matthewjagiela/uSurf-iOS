@@ -9,23 +9,27 @@ on:
     branches:
       - Develop
       - Release
-      - fastlane-self-hosted
-      - fastlane-self-hosted-API-BN
 
 jobs:
-  deploy:
+  test:
     runs-on: self-hosted
-    if: github.ref == 'refs/heads/fastlane-self-hosted-API-BN' || github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Show Variables
-        run: |
-          echo "APP_STORE_CONNECT_API_KEY_ID=$APP_STORE_CONNECT_API_KEY_ID"
-          echo "APP_STORE_CONNECT_API_KEY_ISSUER_ID=$APP_STORE_CONNECT_API_KEY_ISSUER_ID"
-          echo "APP_STORE_CONNECT_API_KEY=$APP_STORE_CONNECT_API_KEY"
-          echo "APP_STORE_CONNECT_USERNAME=$APP_STORE_CONNECT_USERNAME"
-          echo "APP_STORE_CONNECT_TEAM_ID=$APP_STORE_CONNECT_TEAM_ID"
+      - name: Install Bundler
+        run: gem install bundler
+      - name: Install Dependencies
+        run: bundle install
+      - name: Run Tests
+        run: bundle exec fastlane ios run_tests
+
+  deploy:
+    runs-on: self-hosted
+    if: github.ref == 'refs/heads/release' || github.ref == 'refs/heads/Develop' || github.ref == 'refs/heads/fastlane-self-hosted-API-BN'
+    needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Install Bundler
         run: gem install bundler
       - name: Install Dependencies
