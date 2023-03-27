@@ -1,52 +1,45 @@
-# Define the iOS platform
 platform :ios do
-
-  # Define a lane to run unit tests
   lane :test do
-    # Run unit tests using the "uSurfTests" scheme
+    # Run unit tests
     run_tests(scheme: "uSurfTests")
   end
 
-  # Define a lane to deploy to TestFlight
   lane :testflight_deployment do
-
-    # Print the environment variables for debugging
     puts "APP_STORE_CONNECT_API_KEY_ID: #{ENV['APP_STORE_CONNECT_API_KEY_ID']}"
     puts "APP_STORE_CONNECT_API_KEY_ISSUER_ID: #{ENV['APP_STORE_CONNECT_API_KEY_ISSUER_ID']}"
     puts "APP_STORE_CONNECT_API_KEY: #{ENV['APP_STORE_CONNECT_API_KEY']}"
     puts "APP_STORE_CONNECT_USERNAME: #{ENV['APP_STORE_CONNECT_USERNAME']}"
     puts "APP_STORE_CONNECT_TEAM_ID: #{ENV['APP_STORE_CONNECT_TEAM_ID']}"
 
-    # Use the app store connect API key to authenticate
+    # Use the certificate-help repository for Match
     api_key = app_store_connect_api_key(
       key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
       issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
       key_content: ENV["APP_STORE_CONNECT_API_KEY"],
-      duration: 1200,
-      in_house: false
+      duration: 1200, # optional (maximum 1200)
+      in_house: false, # optional but may be required if using match/sigh
     )
-
-    # Match the certificates and profiles using the app store connect API key
+    
     match(
       type: "appstore",
       git_url: "git@github.com:matthewjagiela/certificate-help.git",
       app_identifier: "com.uapps.uSurf",
       username: ENV["APP_STORE_CONNECT_USERNAME"],
       team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-      api_key: api_key
+      api_key: api_key,
     )
 
-    # Get the version number and build number from the xcodeproj file
+    # Get version number and build number from Info.plist
     version_number = get_version_number(xcodeproj: "uSurf.xcodeproj")
-    build_number = get_build_number(xcodeproj: "uSurf.xcodeproj")
+    build_number = get_build_number(xcodeproj: "uSurf.xcodeproj").to_i
 
-    # Get the latest build number from TestFlight using the app store connect API key
+    # Get the latest build number from App Store Connect
     latest_build_number = latest_testflight_build_number(
       app_identifier: "com.uapps.uSurf",
       api_key: api_key
-    )
+    ).to_i
 
-    # Print the version number and build number obtained from the app store connect API
+    # Print version number and build number obtained from API
     puts "Version number from API: #{version_number}"
     puts "Build number from API: #{build_number}"
 
@@ -56,7 +49,7 @@ platform :ios do
     # Increment the build number in the xcodeproj file
     increment_build_number(
       xcodeproj: "uSurf.xcodeproj",
-      build_number: new_build_number
+      build_number: new_build_number,
     )
 
     # Build the app for the App Store
@@ -67,12 +60,11 @@ platform :ios do
       output_name: "uSurf.ipa"
     )
     
-    # Upload the IPA to TestFlight using the app store connect API key
     upload_to_testflight(
       api_key: api_key,
       skip_submission: true,
       ipa: "output/uSurf.ipa",
-      skip_waiting_for_build_processing: true
+      skip_waiting_for_build_processing: true,
     )
   end
 end
