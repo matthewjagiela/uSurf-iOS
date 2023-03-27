@@ -37,5 +37,11 @@ jobs:
         run: echo $APP_STORE_CONNECT_API_KEY
       - name: Install Dependencies
         run: bundle install
+        env:
+          APP_STORE_CONNECT_API_KEY_ID: ${{secrets.APP_STORE_CONNECT_API_KEY_ID}}
+          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID}}
+          APP_STORE_CONNECT_API_KEY: ${{secrets.APP_STORE_CONNECT_API_KEY}}
+          APP_STORE_CONNECT_USERNAME: ${{secrets.APP_STORE_CONNECT_USERNAME}}
+          APP_STORE_CONNECT_TEAM_ID: ${{secrets.APP_STORE_CONNECT_TEAM_ID}}
       - name: Build and Sign
         run: bundle exec fastlane TestFlightDeployment
