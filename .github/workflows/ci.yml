@@ -31,7 +31,7 @@ jobs:
       - name: Install Dependencies
         run: bundle install
       - name: Build and Sign
-        run: bundle exec fastlane TestFlightDeployment
+        run: bundle exec fastlane ios testflight_deployment
         env:
           APP_STORE_CONNECT_API_KEY_ID: ${{secrets.APP_STORE_CONNECT_API_KEY_ID}}
           APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID}}

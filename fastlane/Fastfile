@@ -4,7 +4,7 @@ platform :ios do
     run_tests(scheme: "uSurfTests")
   end
 
-  lane :TestFlightDeployment do
+  lane :testflight_deployment do
     puts "APP_STORE_CONNECT_API_KEY_ID: #{ENV['APP_STORE_CONNECT_API_KEY_ID']}"
     puts "APP_STORE_CONNECT_API_KEY_ISSUER_ID: #{ENV['APP_STORE_CONNECT_API_KEY_ISSUER_ID']}"
     puts "APP_STORE_CONNECT_API_KEY: #{ENV['APP_STORE_CONNECT_API_KEY']}"
