@@ -39,16 +39,18 @@ platform :ios do
       api_key: api_key
     )
 
-    # Increment build number if the latest build number from App Store Connect is greater than the current build number
-    build_number = latest_build_number.to_i + 1 if latest_build_number.to_i > build_number.to_i
-
-    # Update version number and build number in Info.plist
-    increment_version_number(xcodeproj: "uSurf.xcodeproj")
-    increment_build_number(xcodeproj: "uSurf.xcodeproj", build_number: build_number)
-
     # Print version number and build number obtained from API
     puts "Version number from API: #{version_number}"
     puts "Build number from API: #{build_number}"
+
+    current_build_number = latest_build_number + 1
+
+    increment_build_number(
+      xcodeproj: "uSurf.xcodeproj",
+      build_number: current_build_number,
+      )
+
+
 
     # Build the app for the App Store
     gym(
