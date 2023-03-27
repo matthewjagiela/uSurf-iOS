@@ -15,7 +15,7 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
-    if: github.ref == 'refs/heads/fastlane-self-hosted' || github.ref == 'refs/heads/release'
+    if: github.ref == 'refs/heads/fastlane-self-hosted-API-BN' || github.ref == 'refs/heads/release'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
