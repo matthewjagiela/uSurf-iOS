@@ -16,7 +16,7 @@ platform :ios do
     
     match(
       type: "appstore",
-      git_url: "git@github.com:matthewjagiela/certificate-help.git",
+      git_url: "git@github.com:matthewjagiela/uSurf-Provs.git",
       app_identifier: "com.uapps.uSurf",
       username: ENV["APP_STORE_CONNECT_USERNAME"],
       team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
