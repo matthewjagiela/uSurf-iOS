@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 import uAppsLibrary
-
+import Toast
 class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegate {
     
     // All of the outlets on the view:
@@ -131,29 +131,28 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
     
     @IBAction func addButtonPressed(_ sender: Any) { // This is going to give the option of either adding a tab or a bookmark
         guard let name = webView.title, let url = self.webView.url?.absoluteString else { return }
-        if #available(iOS 11.0, *) {
-            webView.takeSnapshot(with: nil) { image, error in
-                if error != nil {
-                    //TODO: Throw error
-                    return
-                }
-                
-                guard let image = image?.pngData() else {
-                    //TODO: Throw error
-                    return
-                }
-                do {
-                    try self.vm.addTab(name: name, url: url, image: image)
-                } catch {
-                    //TODO: Throw error
-                    return
-                }
-                
-            }
-        } else {
-            // Fallback on earlier versions
-        }
         
+        webView.takeSnapshot(with: nil) { image, error in
+            if error != nil {
+                //TODO: Throw error
+                return
+            }
+            
+            guard let image = image?.pngData() else {
+                //TODO: Throw error
+                return
+            }
+            do {
+                try self.vm.addTab(name: name, url: url, image: image)
+            } catch {
+                //TODO: Throw error
+                return
+            }
+            
+        }
+        let toast = Toast.default(image: UIImage(systemName: "plus")!,
+                                  title: "New Tab Added")
+        toast.show(haptic: .success)
     }
     // swiftlint:disable force_unwrapping
     @IBAction func longPress(_ sender: Any) { // A long press is going to be for adding a bookmark
