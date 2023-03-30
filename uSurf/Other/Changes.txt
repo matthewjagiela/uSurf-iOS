@@ -1,6 +1,7 @@
 7: The Return
 - There is a new tab browser for both iPhone and iPad! Tabs will now show an image of the saved tab.
 - iPhone users will now see their bookmarks / history in a slide over view!
+- Added a message when adding a tab to signify that it has been added
 - In split view there will be progress bars for each side!
 - Changed "Clear all history" to just "Clear", much better!
 - Return of theme Blue!
