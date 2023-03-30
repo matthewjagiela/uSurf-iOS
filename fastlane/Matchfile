@@ -1,4 +1,4 @@
-git_url("git@github.com:matthewjagiela/certificate-help.git")
+git_url("git@github.com:matthewjagiela/uSurf-Provs.git")
 
 storage_mode("git")
 
