@@ -1,11 +1,13 @@
-git_url("git@github.com:matthewjagiela/certificate-help.git")
-
+git_url("git@github.com:matthewjagiela/SigningCerts.git")
 storage_mode("git")
 
-type("development") # The default type, can be: appstore, adhoc, enterprise or development
+readonly(true) # Set to false to generate new certificate and profiles
+force(false) # Set to false to only generate new profiles if they don't exist
 
-# app_identifier(["tools.fastlane.app", "tools.fastlane.app2"])
-# username("user@fastlane.tools") # Your Apple Developer Portal username
+type("development")
+app_identifier(["com.uapps.uSurf"])
+
+
 
 # For all available options run `fastlane match --help`
 # Remove the # in the beginning of the line to enable the other options

@@ -1,7 +1,13 @@
 platform :ios do
   lane :test do
-    # Run unit tests
-    run_tests(scheme: "uSurfTests")
+    scan(
+    scheme: "uSurfTests",
+    project: "uSurf.xcodeproj",
+    devices: ["iPhone 14 Pro"],
+    clean: true,
+    skip_build: true,
+    fail_build: true
+  )
   end
 
   lane :testflight_deployment do
@@ -15,12 +21,13 @@ platform :ios do
     )
     
     match(
-      type: "appstore",
-      git_url: "git@github.com:matthewjagiela/certificate-help.git",
-      app_identifier: "com.uapps.uSurf",
-      username: ENV["APP_STORE_CONNECT_USERNAME"],
-      team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
-      api_key: api_key,
+    readonly: true,
+    type: "appstore",
+    git_url: "git@github.com:matthewjagiela/SigningCerts.git",
+    app_identifier: "com.uapps.uSurf",
+    username: ENV["APP_STORE_CONNECT_USERNAME"],
+    team_id: ENV["APP_STORE_CONNECT_TEAM_ID"],
+    api_key: api_key,
     )
 
     # Get version number and build number from Info.plist
