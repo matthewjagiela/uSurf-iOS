@@ -25,6 +25,7 @@
 		2E44DBE9283B4F6900DE4E8A /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */; };
 		2E6C57CE298A2C4300EA5C0E /* Tab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E6C57CC298A2C4300EA5C0E /* Tab.xcdatamodeld */; };
 		2E6C57D0298A2F6800EA5C0E /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6C57CF298A2F6800EA5C0E /* CoreDataHandler.swift */; };
+		2E6CA4AD29D622F400AD2E42 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6CA4AC29D622F400AD2E42 /* Toast */; };
 		2E6D1B17289B96C20009FCE8 /* NewTabHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D1B16289B96C20009FCE8 /* NewTabHandler.swift */; };
 		2E720CE3285FEEBB00688694 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */; };
 		2E76967727C709B8007A835C /* TLDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76967627C709B8007A835C /* TLDHandler.swift */; };
@@ -193,6 +194,7 @@
 				2E34B4202856D2A600F0976D /* GoogleMobileAds in Frameworks */,
 				2ECDB593287CEAC500328D97 /* CloudKit.framework in Frameworks */,
 				2E13C0BC29D0001A0049902B /* uAppsLibrary in Frameworks */,
+				2E6CA4AD29D622F400AD2E42 /* Toast in Frameworks */,
 				2E76967D27C74E91007A835C /* SideMenu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,6 +526,7 @@
 				2E76967C27C74E91007A835C /* SideMenu */,
 				2E34B41F2856D2A600F0976D /* GoogleMobileAds */,
 				2E13C0BB29D0001A0049902B /* uAppsLibrary */,
+				2E6CA4AC29D622F400AD2E42 /* Toast */,
 			);
 			productName = uSurf;
 			productReference = 34F95DFC20C73F1D00411B9D /* uSurf.app */;
@@ -570,6 +573,7 @@
 				2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */,
 				2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				2E13C0BA29D0001A0049902B /* XCRemoteSwiftPackageReference "uAppsLibrary" */,
+				2E6CA4AB29D622F400AD2E42 /* XCRemoteSwiftPackageReference "toast-swift" */,
 			);
 			productRefGroup = 34F95DFD20C73F1D00411B9D /* Products */;
 			projectDirPath = "";
@@ -735,7 +739,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = uSurfTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -757,7 +761,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = uSurfTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -898,7 +902,7 @@
 				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = uSurf/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -924,7 +928,7 @@
 				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = uSurf/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -988,6 +992,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		2E6CA4AB29D622F400AD2E42 /* XCRemoteSwiftPackageReference "toast-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BastiaanJansen/toast-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kukushi/SideMenu.git";
@@ -1008,6 +1020,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
+		};
+		2E6CA4AC29D622F400AD2E42 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E6CA4AB29D622F400AD2E42 /* XCRemoteSwiftPackageReference "toast-swift" */;
+			productName = Toast;
 		};
 		2E76967C27C74E91007A835C /* SideMenu */ = {
 			isa = XCSwiftPackageProductDependency;

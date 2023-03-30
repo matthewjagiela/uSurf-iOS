@@ -8,7 +8,7 @@
 
 import UIKit
 import WebKit
-
+import Toast
 protocol SplitViewDelegate: AnyObject {
     func refresh(url: String, side: BrowserSide)
 }
@@ -171,9 +171,15 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func leftAddTab(_ sender: Any) {
         iCloud.addToiPadTabArray(leftWebView.url?.absoluteString ?? "https://uappsios.com")
+        let toast = Toast.default(image: UIImage(systemName: "plus")!,
+                                  title: "New Tab Added")
+        toast.show(haptic: .success)
     }
     @IBAction func rightAddTab(_ sender: Any) {
         iCloud.addToiPadTabArray(rightWebView.url?.absoluteString ?? "https://uappsios.com")
+        let toast = Toast.default(image: UIImage(systemName: "plus")!,
+                                  title: "New Tab Added")
+        toast.show(haptic: .success)
     }
     // swiftlint:disable force_unwrapping
     @IBAction func leftAddBookmark(_ sender: Any) {
