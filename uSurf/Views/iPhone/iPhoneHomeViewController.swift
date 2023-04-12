@@ -18,6 +18,7 @@ protocol HomeViewDelegate: AnyObject {
 }
 
 class iPhoneHomeViewController: UIViewController {
+    @IBOutlet weak var notchView: UIView!
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var dynamicField: UITextField!
@@ -110,7 +111,8 @@ class iPhoneHomeViewController: UIViewController {
         self.dynamicField.textColor = theme.getTextColor()
         self.toolbar.barTintColor = theme.getBarTintColor()
         self.toolbar.tintColor = theme.getTintColor()
-        self.view.backgroundColor = theme.getBarTintColor()
+        self.notchView.backgroundColor = theme.getBarTintColor()
+        self.view.backgroundColor = UIColor.systemBackground
         
     }
     
