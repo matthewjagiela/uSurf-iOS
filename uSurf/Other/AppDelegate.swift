@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Tab")
+        let container = NSPersistentContainer(name: "Data")
         container.loadPersistentStores { desc, error in
             if let error {
                 print(error.localizedDescription)
