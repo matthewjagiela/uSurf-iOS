@@ -6,6 +6,7 @@
 - Changed "Clear all history" to just "Clear", much better!
 - Return of theme Blue!
 - The URL Bar will change to "Loading" when a page is being loaded, and will show a placeholder URL/Search when no text is entered
+- Made it so the background color of the webview on iPhone is black or white instead of the theme color to avoid a jarring contrast.
 - Added a mechanism to get urgent alerts from uApps
 - Added a domain checker, this means more urls (e.g .xyz) is recognized as a web address instead of being google searched.
 - Swapped the "Cancel" and "Save" buttons when adding a bookmark to be better aligned with other iOS save alerts
