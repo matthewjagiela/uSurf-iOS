@@ -15,6 +15,7 @@ protocol SplitViewDelegate: AnyObject {
 
 class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: - Left Elements
     @IBOutlet weak var leftProgressBar: UIProgressView!
     @IBOutlet var leftAddressBar: UITextField!
     @IBOutlet var leftNavBar: UINavigationBar!
@@ -26,6 +27,8 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var leftTab: UIBarButtonItem!
     @IBOutlet var leftTabBar: UIToolbar!
     @IBOutlet var leftWebHolder: UIView!
+    
+    // MARK: - Right Elements
     @IBOutlet var rightNavBar: UINavigationBar!
     @IBOutlet var rightAddressBar: UITextField!
     @IBOutlet var rightBack: UIBarButtonItem!
@@ -37,8 +40,10 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var rightBookmarks: UIBarButtonItem!
     @IBOutlet var rightTabs: UIBarButtonItem!
     @IBOutlet var rightWebHolder: UIView!
-    @IBOutlet var singleView: UIBarButtonItem!
     @IBOutlet weak var rightProgressBar: UIProgressView!
+    
+    // MARK: - Helper Elements
+    @IBOutlet var singleView: UIBarButtonItem!
     @IBOutlet var leftLongPress: UILongPressGestureRecognizer!
     @IBOutlet var rightLongPress: UILongPressGestureRecognizer!
     
@@ -279,7 +284,23 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     @IBAction func leftBookmark(_ sender: Any) {
     }
     @IBAction func leftTab(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
+        guard let tabVC = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as? TabViewController else { fatalError("shit") }
+        
+        let presentingHeight = self.view.bounds.height * 0.75
+        
+        tabVC.preferredContentSize = CGSize(width: 300, height: presentingHeight)
+        tabVC.modalPresentationStyle = .popover
+        tabVC.popoverPresentationController?.barButtonItem = self.leftTab
+        tabVC.splitDelegate = self
+        tabVC.vm = TabViewModel(browserSide: .left)
+        self.present(tabVC, animated: true) {
+            print("Showing View")
+        }
     }
+    
+    // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // TODO: Reimplement with new architecture type
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -311,15 +332,6 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         }
     }
     @objc func canRotate() {}
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

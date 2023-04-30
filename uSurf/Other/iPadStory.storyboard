@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gP0-99-xlL">
     <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -253,9 +252,6 @@
                                     <barButtonItem tag="1" image="Tabs" id="Giy-TQ-dSx">
                                         <connections>
                                             <action selector="leftTab:" destination="6g6-1A-nC7" id="VZq-yX-wG2"/>
-                                            <segue destination="xMQ-8r-EJv" kind="popoverPresentation" identifier="leftTabs" popoverAnchorBarButtonItem="Giy-TQ-dSx" id="rZA-w6-dlx">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -632,7 +628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cFq-0X-hB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="613" y="139"/>
+            <point key="canvasLocation" x="709" y="126"/>
         </scene>
         <!--Bookmark Table View Controller-->
         <scene sceneID="DqX-xh-qlo">
@@ -789,11 +785,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="s4o-7O-g5d"/>
-        <segue reference="FQb-nw-kzs"/>
-        <segue reference="sX1-UN-8ge"/>
-        <segue reference="Tuz-Ba-Wi3"/>
-        <segue reference="pmM-Db-EaB"/>
+        <segue reference="Hc4-dU-goA"/>
+        <segue reference="DA0-F9-QVJ"/>
+        <segue reference="UbH-U9-jod"/>
+        <segue reference="Rvi-zR-YjV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Bookmarks" width="30" height="30"/>
