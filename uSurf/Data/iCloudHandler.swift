@@ -83,7 +83,7 @@ class iCloudHandler: NSObject {
         setiPadTabArray(iPadTabArray: iPadTabArray)
     }
     
-    //TODO: Redo Bookmark With New Array Structure
+    // TODO: Redo Bookmark With New Array Structure
     func addToBookmarkArray(_ item: String) { // Add an item to the bookmark Array and save the changes to iCloud
         let bookmarkArray = getBookmarkArray()
         bookmarkArray.add(item)

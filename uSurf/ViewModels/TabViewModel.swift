@@ -40,11 +40,11 @@ class TabViewModel {
         }
         
         if foundTab.isEmpty {
-            //does not exist
+            // does not exist
             selectedTabs.append(tabData)
             selectedIP.append(indexPath)
         } else {
-            //does exist
+            // does exist
             selectedTabs.removeAll { TabData in
                 TabData.identifier == tabData.identifier
             }
@@ -54,12 +54,10 @@ class TabViewModel {
             tabExists = true
         }
         
-        
         tableState = selectedTabs.isEmpty ? .editing: .delete
         tabTableDelegate?.changeState(state: tableState)
         return tabExists
     }
-    
     
     func deleteTabs() {
         tabHandler.deleteLocalTabs(tabs: selectedTabs) { [weak self] error in

@@ -92,7 +92,12 @@ class iPhoneHomeViewController: UIViewController {
     }
     
     private func loadURL(_ url: String) { // This method takes a string of an adress and makes the web view load it!
-        webView.load(webHandler.determineURL(userInput: url))
+        guard let url = webHandler.determineURL(userInput: url) else {
+            let toast = Toast.default(image: UIImage(), title: "Error Determining WebPage")
+            toast.show(haptic: .error)
+            return
+        }
+        webView.load(url)
     }
     
     // MARK: - WebView Methods
@@ -193,18 +198,18 @@ class iPhoneHomeViewController: UIViewController {
         
         webView.takeSnapshot(with: nil) { image, error in
             if error != nil {
-                //TODO: Throw error
+                // TODO: Throw error
                 return
             }
             
             guard let image = image?.pngData() else {
-                //TODO: Throw error
+                // TODO: Throw error
                 return
             }
             do {
                 try self.vm.addTab(name: name, url: url, image: image)
             } catch {
-                //TODO: Throw error
+                // TODO: Throw error
                 return
             }
             

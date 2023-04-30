@@ -60,7 +60,6 @@ class TLDHandler {
     
 }
 
-
 struct TLDDomain: Codable {
     let domain: String
 

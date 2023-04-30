@@ -16,12 +16,12 @@ class HomeViewModel {
     init() { }
     
     func addBookmark(name: String?, address: String?) {
-        guard let name = name, let address = address else { return } //TODO: Throw error
+        guard let name = name, let address = address else { return } // TODO: Throw error
         self.iCloud.addToBookmarkArray(name: name, address: address)
     }
     
     func addToTabs(url: URL?) {
-        guard let url = url else { return } //TODO: Throw error
+        guard let url = url else { return } // TODO: Throw error
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
             iCloud.addToiPadTabArray(url.absoluteString)
         } else {

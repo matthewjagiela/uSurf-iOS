@@ -18,10 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     static var feedbackPresented = true
     
-    
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
         let container = NSPersistentCloudKitContainer(name: "Data")
-        container.loadPersistentStores { desc, error in
+        container.loadPersistentStores { _, error in
             if let error {
                 print(error.localizedDescription)
             }
@@ -71,7 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        
         
         let tabHandler = TabHandler()
         tabHandler.deleteAllTabs { _ in
