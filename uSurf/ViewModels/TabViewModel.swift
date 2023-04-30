@@ -11,6 +11,7 @@ class TabViewModel {
     let tabHandler = TabHandler()
     var tabs: [TabData] = []
     var tableState: TabState = .neutral
+    var browserSide: BrowserSide
     
     lazy var selectedTabs = [TabData]()
     lazy var selectedIP = [IndexPath]()
@@ -18,7 +19,8 @@ class TabViewModel {
     weak var tableViewDelegate: uAppsTableDelegate?
     weak var tabTableDelegate: TabTableDelegate?
     
-    init() {
+    init(browserSide: BrowserSide = .single) {
+        self.browserSide = browserSide
         self.refresh()
         NotificationCenter.default.addObserver(self, selector: #selector(iCloudUpdate(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
     }

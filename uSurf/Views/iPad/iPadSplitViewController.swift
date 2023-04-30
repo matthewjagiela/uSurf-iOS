@@ -15,6 +15,7 @@ protocol SplitViewDelegate: AnyObject {
 
 class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: - Left Elements
     @IBOutlet weak var leftProgressBar: UIProgressView!
     @IBOutlet var leftAddressBar: UITextField!
     @IBOutlet var leftNavBar: UINavigationBar!
@@ -26,6 +27,8 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var leftTab: UIBarButtonItem!
     @IBOutlet var leftTabBar: UIToolbar!
     @IBOutlet var leftWebHolder: UIView!
+    
+    // MARK: - Right Elements
     @IBOutlet var rightNavBar: UINavigationBar!
     @IBOutlet var rightAddressBar: UITextField!
     @IBOutlet var rightBack: UIBarButtonItem!
@@ -37,8 +40,10 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var rightBookmarks: UIBarButtonItem!
     @IBOutlet var rightTabs: UIBarButtonItem!
     @IBOutlet var rightWebHolder: UIView!
-    @IBOutlet var singleView: UIBarButtonItem!
     @IBOutlet weak var rightProgressBar: UIProgressView!
+    
+    // MARK: - Helper Elements
+    @IBOutlet var singleView: UIBarButtonItem!
     @IBOutlet var leftLongPress: UILongPressGestureRecognizer!
     @IBOutlet var rightLongPress: UILongPressGestureRecognizer!
     
@@ -48,6 +53,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     let savedData = SavedDataHandler()
     let iCloud = iCloudHandler()
     var theme = ThemeHandler.shared
+    var tabHandler = TabHandler()
     // Other Variables:
     var rightWebView: WKWebView!
     var leftWebView: WKWebView!
@@ -180,17 +186,49 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     @IBAction func leftAddTab(_ sender: Any) {
-        iCloud.addToiPadTabArray(leftWebView.url?.absoluteString ?? "https://uappsios.com")
+        guard let name = leftWebView.title, let url = self.leftWebView.url?.absoluteString else {
+            return
+        }
+        
+        leftWebView.takeSnapshot(with: nil) { image, error in
+            let toast = Toast.default(image: UIImage(), title: "An Error Occured Adding A New Tab")
+            if error != nil {
+                toast.show(haptic: .error)
+            }
+            
+            guard let image = image?.pngData() else {
+                toast.show(haptic: .error)
+                return
+            }
+            self.tabHandler.addTabData(tab: TabData(name: name, url: url, image: image))
+        }
         let toast = Toast.default(image: UIImage(systemName: "plus") ?? UIImage(),
                                   title: "New Tab Added")
         toast.show(haptic: .success)
     }
+    
     @IBAction func rightAddTab(_ sender: Any) {
-        iCloud.addToiPadTabArray(rightWebView.url?.absoluteString ?? "https://uappsios.com")
+        guard let name = rightWebView.title, let url = self.rightWebView.url?.absoluteString else {
+            return
+        }
+        
+        rightWebView.takeSnapshot(with: nil) { image, error in
+            let toast = Toast.default(image: UIImage(), title: "An Error Occured Adding A New Tab")
+            if error != nil {
+                toast.show(haptic: .error)
+            }
+            
+            guard let image = image?.pngData() else {
+                toast.show(haptic: .error)
+                return
+            }
+            self.tabHandler.addTabData(tab: TabData(name: name, url: url, image: image))
+        }
         let toast = Toast.default(image: UIImage(systemName: "plus") ?? UIImage(),
                                   title: "New Tab Added")
         toast.show(haptic: .success)
     }
+    
     // swiftlint:disable force_unwrapping
     @IBAction func leftAddBookmark(_ sender: Any) {
         let alertController = UIAlertController(title: "Add Bookmark", message: "", preferredStyle: .alert)
@@ -278,8 +316,41 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func leftBookmark(_ sender: Any) {
     }
+    
     @IBAction func leftTab(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
+        guard let tabVC = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as? TabViewController else { fatalError("shit") }
+        
+        let presentingHeight = self.view.bounds.height * 0.75
+        
+        tabVC.preferredContentSize = CGSize(width: 300, height: presentingHeight)
+        tabVC.modalPresentationStyle = .popover
+        tabVC.popoverPresentationController?.barButtonItem = self.leftTab
+        tabVC.splitDelegate = self
+        tabVC.vm = TabViewModel(browserSide: .left)
+        self.present(tabVC, animated: true) {
+            print("Showing View")
+        }
     }
+    
+    @IBAction func rightTab(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
+        guard let tabVC = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as? TabViewController else { fatalError("shit") }
+        
+        let presentingHeight = self.view.bounds.height * 0.75
+        
+        tabVC.preferredContentSize = CGSize(width: 300, height: presentingHeight)
+        tabVC.modalPresentationStyle = .popover
+        tabVC.popoverPresentationController?.barButtonItem = self.rightTabs
+        tabVC.splitDelegate = self
+        tabVC.vm = TabViewModel(browserSide: .right)
+        self.present(tabVC, animated: true) {
+            print("Showing View")
+        }
+    }
+    
+    // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // TODO: Reimplement with new architecture type
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -311,15 +382,6 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         }
     }
     @objc func canRotate() {}
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

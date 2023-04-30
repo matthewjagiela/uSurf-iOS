@@ -30,8 +30,9 @@ class TabViewController: UIViewController, TabTableDelegate {
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var stateButton: UIBarButtonItem!
     @IBOutlet weak var NavBar: UINavigationBar!
-    
+     
     weak var homeDelegate: HomeViewDelegate?
+    weak var splitDelegate: SplitViewDelegate?
     
     var vm = TabViewModel()
     override func viewDidLoad() {
@@ -89,6 +90,10 @@ extension TabViewController: UITableViewDelegate {
         } else {
             if let homeDelegate = self.homeDelegate {
                 homeDelegate.refreshWeb(url: vm.tabs[indexPath.row].url)
+            }
+            
+            if let splitDelegate = splitDelegate {
+                splitDelegate.refresh(url: vm.tabs[indexPath.row].url, side: vm.browserSide)
             }
             
             if let iPhoneController = sideMenuController {
