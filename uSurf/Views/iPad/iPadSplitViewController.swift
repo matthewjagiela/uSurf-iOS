@@ -270,7 +270,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func leftTab(_ sender: Any) {
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { //TODO: Reimplement with new architecture type
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // TODO: Reimplement with new architecture type
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         switch segue.identifier {

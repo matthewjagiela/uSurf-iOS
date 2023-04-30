@@ -94,7 +94,7 @@ class TabHandler {
         }
     }
     
-    //MARK: - Deletion
+    // MARK: - Deletion
     
     func deleteLocalTabs(tabs: [TabData], completion: @escaping (Error?) -> Void) {
         database.deleteTabs(tabs: tabs) { error in
@@ -115,7 +115,7 @@ class TabHandler {
             }
         }
         
-        //Clear the network tabs
+        // Clear the network tabs
     }
     
     // MARK: - Getters

@@ -7,7 +7,7 @@
 //
 
 import UIKit
- //TODO: Change the entire tab structure. This will not matter anymore. 
+ // TODO: Change the entire tab structure. This will not matter anymore. 
 class LegacyTabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet var navigationBar: UINavigationBar!

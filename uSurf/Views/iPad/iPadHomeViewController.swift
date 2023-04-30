@@ -118,7 +118,6 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         
         let presentingHeight = self.view.bounds.height * 0.75
         
-        
         tabVC.preferredContentSize = CGSize(width: 300, height: presentingHeight)
         tabVC.modalPresentationStyle = .popover
         tabVC.popoverPresentationController?.barButtonItem = self.tabsButton
@@ -128,24 +127,23 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         }
     }
     
-    
     @IBAction func addButtonPressed(_ sender: Any) { // This is going to give the option of either adding a tab or a bookmark
         guard let name = webView.title, let url = self.webView.url?.absoluteString else { return }
         
         webView.takeSnapshot(with: nil) { image, error in
             if error != nil {
-                //TODO: Throw error
+                // TODO: Throw error
                 return
             }
             
             guard let image = image?.pngData() else {
-                //TODO: Throw error
+                // TODO: Throw error
                 return
             }
             do {
                 try self.vm.addTab(name: name, url: url, image: image)
             } catch {
-                //TODO: Throw error
+                // TODO: Throw error
                 return
             }
             

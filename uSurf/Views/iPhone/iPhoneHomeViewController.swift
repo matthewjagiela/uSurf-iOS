@@ -193,18 +193,18 @@ class iPhoneHomeViewController: UIViewController {
         
         webView.takeSnapshot(with: nil) { image, error in
             if error != nil {
-                //TODO: Throw error
+                // TODO: Throw error
                 return
             }
             
             guard let image = image?.pngData() else {
-                //TODO: Throw error
+                // TODO: Throw error
                 return
             }
             do {
                 try self.vm.addTab(name: name, url: url, image: image)
             } catch {
-                //TODO: Throw error
+                // TODO: Throw error
                 return
             }
             

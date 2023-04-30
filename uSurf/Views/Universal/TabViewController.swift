@@ -42,7 +42,6 @@ class TabViewController: UIViewController, TabTableDelegate {
         self.vm.tabTableDelegate = self
     }
     
-    
     @IBAction func stateButtonTapped(_ sender: Any) {
         switch vm.tableState {
         case .neutral:
@@ -62,7 +61,6 @@ class TabViewController: UIViewController, TabTableDelegate {
     }
 }
 
-
 extension TabViewController: uAppsTableDelegate {
     func removeRows(at indexPath: [IndexPath]) {
         DispatchQueue.main.async {
@@ -80,11 +78,11 @@ extension TabViewController: uAppsTableDelegate {
 extension TabViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Do the loading of the tab and such here.
+        // Do the loading of the tab and such here.
         
         if vm.tableState == .editing || vm.tableState == .delete {
             let cell = tableView.cellForRow(at: indexPath)
-            //Add to array if not already present
+            // Add to array if not already present
             let exists = vm.tabSelected(at: indexPath)
             cell?.backgroundColor = exists ? UIColor.white: UIColor.systemRed
         } else {
@@ -124,6 +122,5 @@ extension TabViewController: UITableViewDataSource {
         
         return cell
     }
-    
     
 }

@@ -26,13 +26,11 @@ public class CoreDataHandler: NSObject {
         }
     }
     
-    
     fileprivate func fetch<T>(entityName: String, sortDescriptor: NSSortDescriptor? = nil) -> NSFetchedResultsController<T>? where T: NSManagedObject {
         let fetchRequest = NSFetchRequest<T>(entityName: entityName)
         if let sortDescriptor = sortDescriptor {
             fetchRequest.sortDescriptors = [sortDescriptor]
-        }
-        else {
+        } else {
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "identifier", ascending: true)]
         }
         let fetchedResultsController = NSFetchedResultsController<T>(fetchRequest: fetchRequest, managedObjectContext: managedContext!, sectionNameKeyPath: nil, cacheName: nil)
@@ -45,8 +43,6 @@ public class CoreDataHandler: NSObject {
             return nil
         }
     }
-
-
     
     func getTabData() -> [TabData] {
         let sortDescriptor = NSSortDescriptor(key: "webName", ascending: true)
@@ -73,10 +69,6 @@ public class CoreDataHandler: NSObject {
             return []
         }
     }
-
-
-
-
     
     func getTab(withId identifier: UUID) -> Tab? {
         let fetchRequest: NSFetchRequest<Tab> = Tab.fetchRequest()
@@ -89,7 +81,6 @@ public class CoreDataHandler: NSObject {
             return nil
         }
     }
-
     
     func createTab(tabData: TabData) {
         guard let managedContext else { return }
@@ -107,7 +98,7 @@ public class CoreDataHandler: NSObject {
     
     func deleteTab(data: TabData) {
         guard let tab = getTab(withId: data.identifier) else { return }
-        if let context = managedContext{
+        if let context = managedContext {
             context.delete(tab)
             do {
                 try context.save()
@@ -146,14 +137,13 @@ public class CoreDataHandler: NSObject {
     }
 }
 
-
 extension CoreDataHandler: NSFetchedResultsControllerDelegate {
     public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
     }
     
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        //take the table view and refresh it (tabs)
+        // take the table view and refresh it (tabs)
         TableDelegate?.updateTable()
     }
 }
