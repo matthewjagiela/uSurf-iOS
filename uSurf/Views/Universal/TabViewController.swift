@@ -40,6 +40,7 @@ class TabViewController: UIViewController, TabTableDelegate {
         self.tableView.dataSource = self
         self.vm.tableViewDelegate = self
         self.vm.tabTableDelegate = self
+        self.tableView.backgroundColor = UIColor.systemGray4
     }
     
     @IBAction func stateButtonTapped(_ sender: Any) {
