@@ -210,6 +210,11 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
             vc.homeDelegate = self
         }
         
+        if segue.identifier == "goHistory" {
+            guard let vc = segue.destination as? HistoryViewController else { return }
+            vc.homeDelegate = self
+        }
+        
         if segue.identifier == "goSettings" {
             guard let vc = segue.destination as? SettingsViewController else { return }
             vc.vm = SettingsViewModel(settingsDelegate: nil)
