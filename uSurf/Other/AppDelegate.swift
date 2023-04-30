@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var feedbackPresented = true
     
     
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Data")
+    lazy var persistentContainer: NSPersistentCloudKitContainer = {
+        let container = NSPersistentCloudKitContainer(name: "Data")
         container.loadPersistentStores { desc, error in
             if let error {
                 print(error.localizedDescription)
