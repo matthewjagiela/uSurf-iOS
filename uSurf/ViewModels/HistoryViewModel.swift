@@ -15,7 +15,7 @@ class HistoryViewModel {
     
     var history: [String] = [] {
         didSet {
-            updateFilteredBookmarks()
+            updateFilteredHistory()
         }
     }
     var filteredHistory: [String] = []
@@ -50,7 +50,7 @@ class HistoryViewModel {
         return filteredHistory[index]
     }
     
-    func updateFilteredBookmarks() {
+    func updateFilteredHistory() {
         if searchTerm.isEmpty {
             filteredHistory = history
         } else {
