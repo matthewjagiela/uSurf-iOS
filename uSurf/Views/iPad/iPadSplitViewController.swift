@@ -299,6 +299,22 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func rightTab(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "iPhoneStory", bundle: nil)
+        guard let tabVC = storyboard.instantiateViewController(withIdentifier: "iPhoneTab") as? TabViewController else { fatalError("shit") }
+        
+        let presentingHeight = self.view.bounds.height * 0.75
+        
+        tabVC.preferredContentSize = CGSize(width: 300, height: presentingHeight)
+        tabVC.modalPresentationStyle = .popover
+        tabVC.popoverPresentationController?.barButtonItem = self.rightTabs
+        tabVC.splitDelegate = self
+        tabVC.vm = TabViewModel(browserSide: .right)
+        self.present(tabVC, animated: true) {
+            print("Showing View")
+        }
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // TODO: Reimplement with new architecture type
