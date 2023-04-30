@@ -44,7 +44,7 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     
     // Variables
     // Objects
-    let web = WebHandler()
+    let webHandler = WebHandler()
     let savedData = SavedDataHandler()
     let iCloud = iCloudHandler()
     var theme = ThemeHandler.shared
@@ -113,10 +113,20 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         loadRightURL(savedData.getRightWebPage())
     }
     private func loadLeftURL(_ url: String) { // Give this method a string and it is going to bring the left web view to it
-        leftWebView.load(web.determineURL(userInput: url))
+        guard let url = webHandler.determineURL(userInput: url) else {
+            let toast = Toast.default(image: UIImage(), title: "Error Determining WebPage")
+            toast.show(haptic: .error)
+            return
+        }
+        leftWebView.load(url)
     }
     private func loadRightURL(_ url: String) { // Give this method a string and it is going to bring the right web view to it.
-        rightWebView.load(web.determineURL(userInput: url))
+        guard let url = webHandler.determineURL(userInput: url) else {
+            let toast = Toast.default(image: UIImage(), title: "Error Determining WebPage")
+            toast.show(haptic: .error)
+            return
+        }
+        rightWebView.load(url)
     }
     
     // MARK: - Theming 
@@ -171,13 +181,13 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func leftAddTab(_ sender: Any) {
         iCloud.addToiPadTabArray(leftWebView.url?.absoluteString ?? "https://uappsios.com")
-        let toast = Toast.default(image: UIImage(systemName: "plus")!,
+        let toast = Toast.default(image: UIImage(systemName: "plus") ?? UIImage(),
                                   title: "New Tab Added")
         toast.show(haptic: .success)
     }
     @IBAction func rightAddTab(_ sender: Any) {
         iCloud.addToiPadTabArray(rightWebView.url?.absoluteString ?? "https://uappsios.com")
-        let toast = Toast.default(image: UIImage(systemName: "plus")!,
+        let toast = Toast.default(image: UIImage(systemName: "plus") ?? UIImage(),
                                   title: "New Tab Added")
         toast.show(haptic: .success)
     }

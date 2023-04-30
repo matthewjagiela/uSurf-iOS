@@ -94,7 +94,12 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         loadURL(self.vm.savedData.getLastViewedPage())
     }
     private func loadURL(_ url: String) { // This method takes a string of an adress and makes the web view load it!
-        webView.load(webHandler.determineURL(userInput: url))
+        guard let url = webHandler.determineURL(userInput: url) else {
+            let toast = Toast.default(image: UIImage(), title: "Error Determining WebPage")
+            toast.show(haptic: .error)
+            return
+        }
+        webView.load(url)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) { // This is to update the loading bar....
@@ -148,7 +153,7 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
             }
             
         }
-        let toast = Toast.default(image: UIImage(systemName: "plus")!,
+        let toast = Toast.default(image: UIImage(systemName: "plus") ?? UIImage(),
                                   title: "New Tab Added")
         toast.show(haptic: .success)
     }
