@@ -500,7 +500,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVe-bX-0tb">
                                 <rect key="frame" x="114" y="48" width="300" height="814"/>
                                 <subviews>
-                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaS-ZF-e4z">
+                                    <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaS-ZF-e4z">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="sKD-Bl-3yp"/>
@@ -584,12 +584,20 @@
                                     <constraint firstItem="aaS-ZF-e4z" firstAttribute="top" secondItem="dVe-bX-0tb" secondAttribute="top" id="yce-lW-q2Y"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mni-Wg-I2g">
+                                <rect key="frame" x="114" y="861" width="300" height="84"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eD7-Q5-l2H"/>
                         <constraints>
+                            <constraint firstItem="Mni-Wg-I2g" firstAttribute="top" secondItem="eD7-Q5-l2H" secondAttribute="top" constant="813" id="0Xx-tT-6xu"/>
                             <constraint firstItem="dVe-bX-0tb" firstAttribute="top" secondItem="eD7-Q5-l2H" secondAttribute="top" id="Ffs-Cs-e0S"/>
+                            <constraint firstItem="Mni-Wg-I2g" firstAttribute="trailing" secondItem="dVe-bX-0tb" secondAttribute="trailing" id="KEf-ja-dEI"/>
+                            <constraint firstItem="Mni-Wg-I2g" firstAttribute="leading" secondItem="dVe-bX-0tb" secondAttribute="leading" id="PRe-VN-lW3"/>
                             <constraint firstItem="dVe-bX-0tb" firstAttribute="bottom" secondItem="eD7-Q5-l2H" secondAttribute="bottom" id="myZ-tB-7ME"/>
                             <constraint firstAttribute="trailing" secondItem="dVe-bX-0tb" secondAttribute="trailing" id="nLe-E7-KiD"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Mni-Wg-I2g" secondAttribute="bottom" constant="-83" id="tEQ-uS-6ub"/>
                         </constraints>
                     </view>
                     <connections>
@@ -601,7 +609,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooN-wi-As3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="735.20000000000005" y="1619.6401799100452"/>
+            <point key="canvasLocation" x="734.78260869565224" y="1619.1964285714284"/>
         </scene>
         <!--Legacy Tab View Controller-->
         <scene sceneID="aJf-mY-REm">
@@ -701,7 +709,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyV-o9-pYq">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UbB-UD-GOi"/>
@@ -741,8 +749,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
