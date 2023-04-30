@@ -23,7 +23,7 @@
 		2E30ED19281511490055107B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E30ED18281511490055107B /* HomeViewModel.swift */; };
 		2E34B4202856D2A600F0976D /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 2E34B41F2856D2A600F0976D /* GoogleMobileAds */; };
 		2E44DBE9283B4F6900DE4E8A /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */; };
-		2E6C57CE298A2C4300EA5C0E /* Tab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E6C57CC298A2C4300EA5C0E /* Tab.xcdatamodeld */; };
+		2E6C57CE298A2C4300EA5C0E /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E6C57CC298A2C4300EA5C0E /* Data.xcdatamodeld */; };
 		2E6C57D0298A2F6800EA5C0E /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6C57CF298A2F6800EA5C0E /* CoreDataHandler.swift */; };
 		2E6CA4AD29D622F400AD2E42 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6CA4AC29D622F400AD2E42 /* Toast */; };
 		2E6D1B17289B96C20009FCE8 /* NewTabHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D1B16289B96C20009FCE8 /* NewTabHandler.swift */; };
@@ -312,7 +312,7 @@
 				2E1EAEFA2564C0040058431D /* galaxy.jpg */,
 				3492392C2108043E003AEABA /* In App Icons */,
 				343F016320D4203200B9E8DD /* App Icons */,
-				2E6C57CC298A2C4300EA5C0E /* Tab.xcdatamodeld */,
+				2E6C57CC298A2C4300EA5C0E /* Data.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -694,7 +694,7 @@
 				2E0511752861712100E97AA4 /* SettingsViewModel.swift in Sources */,
 				2E30ED19281511490055107B /* HomeViewModel.swift in Sources */,
 				343F015E20D41F0700B9E8DD /* iPadHomeViewController.swift in Sources */,
-				2E6C57CE298A2C4300EA5C0E /* Tab.xcdatamodeld in Sources */,
+				2E6C57CE298A2C4300EA5C0E /* Data.xcdatamodeld in Sources */,
 				342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */,
 				2E76967727C709B8007A835C /* TLDHandler.swift in Sources */,
 				344C3F0B20D75D6000A13939 /* SavedDataHandler.swift in Sources */,
@@ -1041,13 +1041,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		2E6C57CC298A2C4300EA5C0E /* Tab.xcdatamodeld */ = {
+		2E6C57CC298A2C4300EA5C0E /* Data.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				2E6C57CD298A2C4300EA5C0E /* Model.xcdatamodel */,
 			);
 			currentVersion = 2E6C57CD298A2C4300EA5C0E /* Model.xcdatamodel */;
-			path = Tab.xcdatamodeld;
+			path = Data.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
