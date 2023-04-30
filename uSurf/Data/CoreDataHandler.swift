@@ -11,7 +11,6 @@ import CoreData
 
 public class CoreDataHandler: NSObject {
     var managedContext: NSManagedObjectContext?
-    var fetchedResultsController: NSFetchedResultsController<Tab>?
     weak var appDelegate: AppDelegate?
     weak var TableDelegate: uAppsTableDelegate?
     
@@ -28,61 +27,60 @@ public class CoreDataHandler: NSObject {
     }
     
     
-    fileprivate func fetch() {
-        let tabFetch = NSFetchRequest<Tab>(entityName: "Tab")
-        let sortDescription = NSSortDescriptor(key: "webName",
-                                               ascending: true)
-        tabFetch.sortDescriptors = [sortDescription]
-        if let managedContext {
-            self.fetchedResultsController = NSFetchedResultsController<Tab>(fetchRequest: tabFetch, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
-            self.fetchedResultsController?.delegate = self
+    fileprivate func fetch<T>(entityName: String, sortDescriptor: NSSortDescriptor? = nil) -> NSFetchedResultsController<T>? where T: NSManagedObject {
+        let fetchRequest = NSFetchRequest<T>(entityName: entityName)
+        if let sortDescriptor = sortDescriptor {
+            fetchRequest.sortDescriptors = [sortDescriptor]
+        }
+        let fetchedResultsController = NSFetchedResultsController<T>(fetchRequest: fetchRequest, managedObjectContext: managedContext!, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+            return fetchedResultsController
+        } catch {
+            print(error.localizedDescription)
+            return nil
         }
     }
     
     func getTabData() -> [TabData] {
-        do {
-            fetch()
-            try fetchedResultsController?.performFetch()
-        } catch {
-            print(error.localizedDescription)
-        }
+        let controller: NSFetchedResultsController<Tab> = fetch(entityName: "Tab")!
         
-        if let tabs = fetchedResultsController?.fetchedObjects {
-            return tabs.map({ tab in
+        do {
+            try controller.performFetch()
+            return controller.fetchedObjects?.compactMap({ tab in
                 guard let name = tab.webName,
                       let url = tab.webURL,
                       let image = tab.image,
                       let identifier = tab.identifier
-                else { return TabData(name: "uApps",
-                                      url: "http://uAppsios.com",
-                                      image: Data())
-                    
+                else {
+                    return nil
                 }
-                return TabData(name: name,
-                               url: url,
-                               image: image,
-                               identifier: identifier)
-            })
-        }
-        
-        return [TabData]()
-    }
-    
-    func getTab(from data: TabData) -> Tab? {
-        do {
-            fetch()
-            try fetchedResultsController?.performFetch()
+                
+                return TabData(name: name, url: url, image: image, identifier: identifier)
+            }) ?? []
         } catch {
             print(error.localizedDescription)
+            return []
         }
-        
-        if let tabs = fetchedResultsController?.fetchedObjects {
-            return tabs.first { tab in
-                tab.identifier == data.identifier
-            }
-        }
-        return nil
     }
+
+
+
+
+    
+    func getTab(withId identifier: UUID) -> Tab? {
+        let fetchRequest: NSFetchRequest<Tab> = Tab.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier.uuidString)
+        do {
+            let result = try managedContext?.fetch(fetchRequest)
+            return result?.first
+        } catch {
+            print("Error fetching tab: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
     
     func createTab(tabData: TabData) {
         guard let managedContext else { return }
@@ -99,7 +97,7 @@ public class CoreDataHandler: NSObject {
     }
     
     func deleteTab(data: TabData) {
-        guard let tab = getTab(from: data) else { return }
+        guard let tab = getTab(withId: data.identifier) else { return }
         if let context = managedContext{
             context.delete(tab)
             do {
