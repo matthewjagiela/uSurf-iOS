@@ -32,6 +32,9 @@ public class CoreDataHandler: NSObject {
         if let sortDescriptor = sortDescriptor {
             fetchRequest.sortDescriptors = [sortDescriptor]
         }
+        else {
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "identifier", ascending: true)]
+        }
         let fetchedResultsController = NSFetchedResultsController<T>(fetchRequest: fetchRequest, managedObjectContext: managedContext!, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {
@@ -42,9 +45,15 @@ public class CoreDataHandler: NSObject {
             return nil
         }
     }
+
+
     
     func getTabData() -> [TabData] {
-        let controller: NSFetchedResultsController<Tab> = fetch(entityName: "Tab")!
+        let sortDescriptor = NSSortDescriptor(key: "webName", ascending: true)
+        guard let controller: NSFetchedResultsController<Tab> = fetch(entityName: "Tab")
+        else {
+            return []
+        }
         
         do {
             try controller.performFetch()
