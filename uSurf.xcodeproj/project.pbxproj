@@ -32,7 +32,6 @@
 		2E76967727C709B8007A835C /* TLDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76967627C709B8007A835C /* TLDHandler.swift */; };
 		2E76967D27C74E91007A835C /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 2E76967C27C74E91007A835C /* SideMenu */; };
 		2EA04356231CC48400812246 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2E482498231CAF5200F4C969 /* .swiftlint.yml */; };
-		2EBDA5AB29FF84740067AAB5 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 2EBDA5AA29FF84740067AAB5 /* SwiftSoup */; };
 		2EBDA5AF29FF90170067AAB5 /* FavIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDA5AE29FF90170067AAB5 /* FavIconTests.swift */; };
 		2ECC641423987EBE00FD504A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC641323987EBD00FD504A /* spark.png */; };
 		2ECC64282398897000FD504A /* hiPhone3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64222398896F00FD504A /* hiPhone3x.png */; };
@@ -201,7 +200,6 @@
 				2E13C0BC29D0001A0049902B /* uAppsLibrary in Frameworks */,
 				2E6CA4AD29D622F400AD2E42 /* Toast in Frameworks */,
 				2E76967D27C74E91007A835C /* SideMenu in Frameworks */,
-				2EBDA5AB29FF84740067AAB5 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,7 +549,6 @@
 				2E34B41F2856D2A600F0976D /* GoogleMobileAds */,
 				2E13C0BB29D0001A0049902B /* uAppsLibrary */,
 				2E6CA4AC29D622F400AD2E42 /* Toast */,
-				2EBDA5AA29FF84740067AAB5 /* SwiftSoup */,
 			);
 			productName = uSurf;
 			productReference = 34F95DFC20C73F1D00411B9D /* uSurf.app */;
@@ -599,7 +596,6 @@
 				2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				2E13C0BA29D0001A0049902B /* XCRemoteSwiftPackageReference "uAppsLibrary" */,
 				2E6CA4AB29D622F400AD2E42 /* XCRemoteSwiftPackageReference "toast-swift" */,
-				2EBDA5A929FF84740067AAB5 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 34F95DFD20C73F1D00411B9D /* Products */;
 			projectDirPath = "";
@@ -1043,14 +1039,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		2EBDA5A929FF84740067AAB5 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1073,11 +1061,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
-		};
-		2EBDA5AA29FF84740067AAB5 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2EBDA5A929FF84740067AAB5 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
 		};
 /* End XCSwiftPackageProductDependency section */
 
