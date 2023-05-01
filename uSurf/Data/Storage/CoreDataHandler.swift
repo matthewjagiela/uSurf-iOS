@@ -9,6 +9,10 @@ import UIKit
 import Foundation
 import CoreData
 
+enum CoreDataErrors: Error {
+    case nilError
+}
+
 public class CoreDataHandler: NSObject {
     var managedContext: NSManagedObjectContext?
     weak var appDelegate: AppDelegate?
@@ -88,6 +92,7 @@ public class CoreDataHandler: NSObject {
     
     // MARK: Create Tab Data
     func createTab(tabData: TabData) {
+        // TODO: Change to throw error
         guard let managedContext else { return }
         let tabInsert = NSEntityDescription.insertNewObject(forEntityName: "Tab", into: managedContext) as? Tab
         tabInsert?.identifier = tabData.identifier
@@ -140,6 +145,66 @@ public class CoreDataHandler: NSObject {
             print("Error deleting all data: \(error)")
             completion(error)
         }
+    }
+    
+    // MARK: - Bookmark Operations
+    // MARK: Creation
+    func createBookmark(from bookmarkData: BookmarkData) throws {
+        guard let managedContext else { throw CoreDataErrors.nilError }
+        let bookmarkInsert = NSEntityDescription.insertNewObject(forEntityName: "Bookmark", into: managedContext) as? Bookmark
+        bookmarkInsert?.identifier = bookmarkData.identifier
+        bookmarkInsert?.webURL = bookmarkData.url
+        bookmarkInsert?.nickname = bookmarkData.name
+        try managedContext.save()
+        
+    }
+    // MARK: Getting
+    /// Get all bookmark data from CoreData + CloudKit
+    func getBookmarkData() throws -> [BookmarkData] {
+        let sortDescriptor = NSSortDescriptor(key: "nickname", ascending: true)
+        guard let controller: NSFetchedResultsController<Bookmark> = fetch(entityName: "Bookmark", sortDescriptor: sortDescriptor) else { return []}
+        try controller.performFetch()
+        return controller.fetchedObjects?.compactMap({ bookmark in
+            guard let name = bookmark.nickname,
+                    let url = bookmark.webURL,
+                    let identifier = bookmark.identifier
+            else { return nil }
+            return BookmarkData(name: name, url: url, identifier: identifier)
+        }) ?? []
+    }
+    
+    func getBookmark(withID identifier: UUID) throws -> Bookmark? {
+        let fetchRequest: NSFetchRequest<Bookmark> = Bookmark.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier.uuidString)
+        let result = try managedContext?.fetch(fetchRequest)
+        return result?.first
+    }
+    
+    
+    // MARK: Deletion
+    func deleteBookmark(from data: BookmarkData) throws {
+        guard let bookmark = try getBookmark(withID: data.identifier),
+        let managedContext = managedContext
+        else { throw CoreDataErrors.nilError }
+        managedContext.delete(bookmark)
+        try managedContext.save()
+        
+    }
+    
+    func deleteBookmarks(bookmarks: [BookmarkData]) throws {
+        guard let managedContext = managedContext else { throw CoreDataErrors.nilError }
+        let identifiers = bookmarks.map { $0.identifier }
+        let fetchReqeust: NSFetchRequest<NSFetchRequestResult> = Bookmark.fetchRequest()
+        fetchReqeust.predicate = NSPredicate(format: "identifier IN %@", identifiers)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchReqeust)
+        try managedContext.execute(batchDeleteRequest)
+        try managedContext.save()
+    }
+    
+    func deleteAllBookmarks(completion: @escaping() -> Void) throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try managedContext?.execute(deleteRequest)
     }
 }
 
