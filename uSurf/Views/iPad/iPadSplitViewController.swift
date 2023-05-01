@@ -372,7 +372,8 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         case "leftBookmarks":
             guard let vc = segue.destination as? BookmarkTableViewController else { fatalError("Load Failed") }
             vc.splitDelegate = self
-            vc.vm = BookmarkViewModel(iCloudDelegate: nil, browserSide: .left)
+            //TODO: Repass the VM
+//            vc.vm = BookmarkViewModel(iCloudDelegate: nil, browserSide: .left)
         case "rightHistory":
             guard let vc = segue.destination as? HistoryViewController else { fatalError("Load Failed") }
             vc.splitDelegate = self
@@ -383,7 +384,8 @@ class iPadSplitViewController: UIViewController, UITextFieldDelegate {
         case "rightBookmarks":
             guard let vc = segue.destination as? BookmarkTableViewController else { fatalError("Load Failed") }
             vc.splitDelegate = self
-            vc.vm = BookmarkViewModel(iCloudDelegate: nil, browserSide: .right)
+            //TODO: Repass the VM
+//            vc.vm = BookmarkViewModel(iCloudDelegate: nil, browserSide: .right)
         default:
             print("DEBUG: SPLIT CONTROLLER SEGUE NOT FOUND")
         }
