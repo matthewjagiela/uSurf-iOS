@@ -149,6 +149,8 @@ public class CoreDataHandler: NSObject {
     
     // MARK: - Bookmark Operations
     // MARK: Creation
+    /// Create a bookmark from BookmarkData
+    /// - Parameter bookmarkData: BookmarkData to be created and stored into core data
     func createBookmark(from bookmarkData: BookmarkData) throws {
         guard let managedContext else { throw CoreDataErrors.nilError }
         let bookmarkInsert = NSEntityDescription.insertNewObject(forEntityName: "Bookmark", into: managedContext) as? Bookmark
@@ -159,7 +161,9 @@ public class CoreDataHandler: NSObject {
         
     }
     // MARK: Getting
-    /// Get all bookmark data from CoreData + CloudKit
+    
+    /// Get all bookmark Data
+    /// - Returns: Returns all the bookmark data stored within CoreData
     func getBookmarkData() throws -> [BookmarkData] {
         let sortDescriptor = NSSortDescriptor(key: "nickname", ascending: true)
         guard let controller: NSFetchedResultsController<Bookmark> = fetch(entityName: "Bookmark", sortDescriptor: sortDescriptor) else { return []}
@@ -173,6 +177,9 @@ public class CoreDataHandler: NSObject {
         }) ?? []
     }
     
+    /// Get a specific bookmark based on the ID
+    /// - Parameter identifier: UUID of the bookmark being searched for
+    /// - Returns: A bookmark object if one is found
     func getBookmark(withID identifier: UUID) throws -> Bookmark? {
         let fetchRequest: NSFetchRequest<Bookmark> = Bookmark.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier.uuidString)
@@ -180,8 +187,9 @@ public class CoreDataHandler: NSObject {
         return result?.first
     }
     
-    
     // MARK: Deletion
+    /// Delete a bookmark from coredata
+    /// - Parameter data: The data of the bookmark
     func deleteBookmark(from data: BookmarkData) throws {
         guard let bookmark = try getBookmark(withID: data.identifier),
         let managedContext = managedContext
@@ -191,6 +199,8 @@ public class CoreDataHandler: NSObject {
         
     }
     
+    /// Delete multiple bookmarks
+    /// - Parameter bookmarks: The data of each bookmark that is going to be deleted
     func deleteBookmarks(bookmarks: [BookmarkData]) throws {
         guard let managedContext = managedContext else { throw CoreDataErrors.nilError }
         let identifiers = bookmarks.map { $0.identifier }
@@ -201,7 +211,8 @@ public class CoreDataHandler: NSObject {
         try managedContext.save()
     }
     
-    func deleteAllBookmarks(completion: @escaping() -> Void) throws {
+    /// Delete all bookmarks from CoreData
+    func deleteAllBookmarks() throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         try managedContext?.execute(deleteRequest)
