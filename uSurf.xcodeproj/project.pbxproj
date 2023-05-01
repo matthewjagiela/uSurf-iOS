@@ -227,6 +227,7 @@
 		2E30ED172815113D0055107B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */,
 				2E0511742861712100E97AA4 /* SettingsViewModel.swift */,
 				2E30ED18281511490055107B /* HomeViewModel.swift */,
 				2E06344528A04C1E00A24C92 /* TabViewModel.swift */,
@@ -239,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */,
-				2E44DBE8283B4F6900DE4E8A /* BookmarkViewModel.swift */,
 			);
 			path = Bookmarks;
 			sourceTree = "<group>";

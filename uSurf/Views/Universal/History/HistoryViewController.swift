@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum BrowserSide: Int {
-    case single = 0
-    case right = 1
-    case left = 2
-}
-
 class HistoryViewController: UIViewController, UISearchBarDelegate {
     // MARK: - Outlets
     @IBOutlet var tableView: UITableView!
