@@ -9,6 +9,13 @@
 import UIKit
 import WebKit
 import Toast
+
+enum BrowserSide: Int {
+    case single = 0
+    case right = 1
+    case left = 2
+}
+
 protocol SplitViewDelegate: AnyObject {
     func refresh(url: String, side: BrowserSide)
 }
