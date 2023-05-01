@@ -76,7 +76,7 @@ class TabViewModel {
     func deleteTab(at index: IndexPath) {
         let tab = tabs[index.row]
         tabHandler.deleteLocalTabs(tabs: [tab]) { [weak self] error in
-            if let error = error {
+            if error != nil {
                 self?.tabTableDelegate?.showError(error: "The Tab Could Not Be Deleted")
             }
             
