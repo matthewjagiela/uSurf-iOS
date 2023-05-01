@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast
 
 enum TabState: String {
     case neutral = "Edit"
@@ -16,6 +17,7 @@ enum TabState: String {
 
 protocol TabTableDelegate: AnyObject {
     func changeState(state: TabState)
+    func showError(error: String?)
 }
 
 class TabViewCell: UITableViewCell {
@@ -61,6 +63,18 @@ class TabViewController: UIViewController, TabTableDelegate {
     func changeState(state: TabState) {
         self.stateButton.title = state.rawValue
     }
+    
+    func showError(error: String?) {
+        var message = "An Error Has Occured"
+        if let error {
+            message = error
+        }
+        let toast = Toast.default(image: UIImage(), title: message)
+        DispatchQueue.main.async {
+            toast.show(haptic: .error)
+        }
+    }
+    
 }
 
 extension TabViewController: uAppsTableDelegate {
@@ -107,7 +121,7 @@ extension TabViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil, attributes: .destructive) { _ in
-             // delete tab here
+                self.vm.deleteTab(at: indexPath)
             }
             return UIMenu(children: [deleteAction])
         }

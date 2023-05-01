@@ -73,6 +73,18 @@ class TabViewModel {
         }
     }
     
+    func deleteTab(at index: IndexPath) {
+        let tab = tabs[index.row]
+        tabHandler.deleteLocalTabs(tabs: [tab]) { [weak self] error in
+            if let error = error {
+                self?.tabTableDelegate.showError(error: "The Tab Could Not Be Deleted")
+            }
+            
+            self?.tableViewDelegate?.removeRows(at: [index])
+            self?.refresh()
+        }
+    }
+    
     @objc private func iCloudUpdate(notification: NSNotification) {
         self.refresh()
     }
