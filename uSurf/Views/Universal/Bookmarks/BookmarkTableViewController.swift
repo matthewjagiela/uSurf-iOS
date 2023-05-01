@@ -13,7 +13,7 @@ protocol uAppsTableDelegate: AnyObject {
     func removeRows(at indexPath: [IndexPath])
 }
 
-class BookmarkTableViewController: UIViewController, UISearchBarDelegate {
+class BookmarkTableViewController: UIViewController {
 
     var theme = ThemeHandler.shared
     // Optional variables these do not take up memory until they are called by a method execution
