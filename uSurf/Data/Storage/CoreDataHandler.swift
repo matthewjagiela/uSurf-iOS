@@ -25,7 +25,7 @@ public class CoreDataHandler: NSObject {
             print("App Delegate is nil")
         }
     }
-    
+    // MARK: - Generic Fetch
     fileprivate func fetch<T>(entityName: String, sortDescriptor: NSSortDescriptor? = nil) -> NSFetchedResultsController<T>? where T: NSManagedObject {
         let fetchRequest = NSFetchRequest<T>(entityName: entityName)
         if let sortDescriptor = sortDescriptor {
@@ -46,6 +46,8 @@ public class CoreDataHandler: NSObject {
         }
     }
     
+    // MARK: - Tab Info
+    // MARK: Get Tab Data
     func getTabData() -> [TabData] {
         let sortDescriptor = NSSortDescriptor(key: "webName", ascending: true)
         guard let controller: NSFetchedResultsController<Tab> = fetch(entityName: "Tab", sortDescriptor: sortDescriptor)
@@ -84,6 +86,7 @@ public class CoreDataHandler: NSObject {
         }
     }
     
+    // MARK: Create Tab Data
     func createTab(tabData: TabData) {
         guard let managedContext else { return }
         let tabInsert = NSEntityDescription.insertNewObject(forEntityName: "Tab", into: managedContext) as? Tab
@@ -98,6 +101,7 @@ public class CoreDataHandler: NSObject {
         }
     }
     
+    // MARK: Delete Tab Data
     func deleteTab(data: TabData) {
         guard let tab = getTab(withId: data.identifier) else { return }
         if let context = managedContext {
@@ -139,6 +143,7 @@ public class CoreDataHandler: NSObject {
     }
 }
 
+// MARK: - Extensions
 extension CoreDataHandler: NSFetchedResultsControllerDelegate {
     public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         

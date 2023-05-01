@@ -9,6 +9,13 @@
 import Foundation
 import SwiftSoup
 
+/// A Container for custom bookmark information
+struct BookmarkData {
+    var name: String
+    var url: String
+    var identifier = UUID()
+}
+
 class BookmarkViewModel {
     
     init() {}
