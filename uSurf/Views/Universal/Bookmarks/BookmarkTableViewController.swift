@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol uAppsTableDelegate: AnyObject {
     func updateTable()
@@ -21,10 +22,23 @@ class BookmarkTableViewController: UIViewController {
     weak var homeDelegate: HomeViewDelegate?
     weak var splitDelegate: SplitViewDelegate?
     
+    var hostingView: UIHostingController<BookmarkTableView>?
+    
     var vm: BookmarkViewModel = BookmarkViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hostingView = UIHostingController(rootView: BookmarkTableView())
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if let hostingView = self.hostingView {
+            addChild(hostingView)
+            hostingView.view.frame = view.frame
+            hostingView.view.backgroundColor = .systemBackground
+            view.addSubview(hostingView.view)
+            hostingView.didMove(toParent: self)
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -33,7 +47,6 @@ class BookmarkTableViewController: UIViewController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        self.theme.regenTheme()
         
     }
     

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftSoup
 
 /// A Container for custom bookmark information
 struct BookmarkData {
