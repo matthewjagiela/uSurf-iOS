@@ -104,6 +104,15 @@ extension TabViewController: UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil, attributes: .destructive) { _ in
+             // delete tab here
+            }
+            return UIMenu(children: [deleteAction])
+        }
+    }
+    
 }
 
 extension TabViewController: UITableViewDataSource {
