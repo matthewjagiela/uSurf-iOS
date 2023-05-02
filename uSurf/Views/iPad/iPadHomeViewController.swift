@@ -171,7 +171,11 @@ class iPadHomeViewController: UIViewController, WKUIDelegate, UITextFieldDelegat
         alertController.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
-            self?.vm.addBookmark(name: bookmarkName.text, address: bookmarkAddress.text)
+            do {
+                try self?.vm.addBookmark(name: bookmarkName.text, address: bookmarkAddress.text)
+            } catch {
+                //TODO: Throw toast error
+            }
             
         }))
         // Add textfields

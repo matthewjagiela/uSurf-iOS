@@ -16,7 +16,20 @@ struct BookmarkData {
 }
 
 class BookmarkViewModel {
+    @Published var bookmarks: [BookmarkData] = []
     
-    init() {}
-
+    let coreData = CoreDataHandler()
+    
+    init() {
+        self.getBookmarks()
+    }
+    
+    func getBookmarks() {
+        do {
+            self.bookmarks = try self.coreData.getBookmarkData()
+            print(bookmarks)
+        } catch {
+            // TODO: Throw error toast
+        }
+    }
 }

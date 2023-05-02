@@ -128,6 +128,7 @@
 		2E6D1B16289B96C20009FCE8 /* NewTabHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTabHandler.swift; sourceTree = "<group>"; };
 		2E720CE2285FEEBB00688694 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		2E76967627C709B8007A835C /* TLDHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLDHandler.swift; sourceTree = "<group>"; };
+		2EA55D6E2A019529009D40D4 /* uAppsLibrary */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = uAppsLibrary; path = ../uAppsLibrary; sourceTree = "<group>"; };
 		2EBDA5AE29FF90170067AAB5 /* FavIconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavIconTests.swift; sourceTree = "<group>"; };
 		2ECC641323987EBD00FD504A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		2ECC64222398896F00FD504A /* hiPhone3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiPhone3x.png; sourceTree = "<group>"; };
@@ -497,6 +498,7 @@
 		34F95DF320C73F1D00411B9D = {
 			isa = PBXGroup;
 			children = (
+				2EA55D6E2A019529009D40D4 /* uAppsLibrary */,
 				2E482498231CAF5200F4C969 /* .swiftlint.yml */,
 				34F95DFE20C73F1D00411B9D /* uSurf */,
 				2E23167D2421B23F0003BB54 /* uSurfTests */,

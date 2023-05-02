@@ -13,11 +13,12 @@ class HomeViewModel {
     let iCloud = iCloudHandler()
     let savedData = SavedDataHandler()
     let tabHandler = TabHandler()
+    let coreData = CoreDataHandler()
     init() { }
     
-    func addBookmark(name: String?, address: String?) {
+    func addBookmark(name: String?, address: String?) throws {
         guard let name = name, let address = address else { return } // TODO: Throw error
-        self.iCloud.addToBookmarkArray(name: name, address: address)
+        try self.coreData.createBookmark(from: BookmarkData(name: name, url: address))
     }
     
     func addToTabs(url: URL?) {

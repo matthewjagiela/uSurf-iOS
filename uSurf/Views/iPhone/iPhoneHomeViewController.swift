@@ -142,14 +142,18 @@ class iPhoneHomeViewController: UIViewController {
         // Add the bookmark:
         alertController.addAction(UIAlertAction(title: "Save",
                                                 style: .default,
-                                                handler: { (_) in
+                                                handler: { [weak self] _ in
             let bookmarkName = alertController.textFields![0] as UITextField
             let bookmarkAddress = alertController.textFields![1] as UITextField
             if !(bookmarkName.text?.isEmpty ?? true) && !(bookmarkAddress.text?.isEmpty ?? true) {
                 // Save
-                self.vm.addBookmark(name: bookmarkName.text, address: bookmarkAddress.text)
+                do {
+                    try self?.vm.addBookmark(name: bookmarkName.text, address: bookmarkAddress.text)
+                } catch {
+                   // TODO: Throw Toast Error
+                }
             } else {
-                // Do something with the error
+                // TODO: Throw Toast Error
                 print("There is something wrong so we cannot add this")
             }
         }))
