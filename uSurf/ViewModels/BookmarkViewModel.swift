@@ -69,7 +69,7 @@ class BookmarkDataFetcher: CoreDataService {
 
 class MockBookmarkDataFetcher: CoreDataService {
     func getData() throws -> Any {
-        let bookmarkData = [BookmarkData(name: "Apple", url: "http://apple.com"), BookmarkData(name: "uApps", url: "https://uappsios.com")]
+        let bookmarkData = [BookmarkData(name: "Apple", url: "http://apple.com"), BookmarkData(name: "uApps", url: "https://uappsios.com"), BookmarkData(name: "Google", url: "https://google.com"), BookmarkData(name: "Youtube", url: "http://youtube.com")]
         return bookmarkData
     }
 }

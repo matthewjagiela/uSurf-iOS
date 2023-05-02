@@ -44,6 +44,7 @@
 		2ECC642D2398897000FD504A /* hicon_iPadPro.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64272398897000FD504A /* hicon_iPadPro.png */; };
 		2ECDB593287CEAC500328D97 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECDB592287CEAC500328D97 /* CloudKit.framework */; };
 		2EE99947287152C900887927 /* TLD.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EE99946287152C900887927 /* TLD.json */; };
+		2EFFB4012A01B18D00ACB2AC /* BookmarkViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFB4002A01B18D00ACB2AC /* BookmarkViewModelTests.swift */; };
 		340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
 		34265EFA2176B0B400C775F4 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */; };
 		342CBE1E218231D3006D2D04 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342CBE1D218231D3006D2D04 /* HistoryViewController.swift */; };
@@ -139,6 +140,7 @@
 		2ECC64272398897000FD504A /* hicon_iPadPro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hicon_iPadPro.png; sourceTree = "<group>"; };
 		2ECDB592287CEAC500328D97 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2EE99946287152C900887927 /* TLD.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TLD.json; sourceTree = "<group>"; };
+		2EFFB4002A01B18D00ACB2AC /* BookmarkViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModelTests.swift; sourceTree = "<group>"; };
 		340906D620D9C01D009F53F1 /* WebHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebHandler.swift; sourceTree = "<group>"; };
 		34265EF92176B0B400C775F4 /* BookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewController.swift; sourceTree = "<group>"; };
 		342CBE1D218231D3006D2D04 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				2E2316802421B23F0003BB54 /* Info.plist */,
+				2EFFB3FF2A01B17900ACB2AC /* View Model Tests */,
 				2E45396F2A00280800357691 /* Data */,
 				2E45396E2A0027F800357691 /* Web */,
 			);
@@ -317,6 +320,14 @@
 				2ECDB592287CEAC500328D97 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2EFFB3FF2A01B17900ACB2AC /* View Model Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2EFFB4002A01B18D00ACB2AC /* BookmarkViewModelTests.swift */,
+			);
+			path = "View Model Tests";
 			sourceTree = "<group>";
 		};
 		3417A40721FA861A00D7C7A2 /* iPhone */ = {
@@ -723,6 +734,7 @@
 				2E23168D2421B4390003BB54 /* VersionHandlerTests.swift in Sources */,
 				2E4539712A00282700357691 /* BookmarkCoreDataTests.swift in Sources */,
 				2E1C535B289C867800577AB4 /* TabTests.swift in Sources */,
+				2EFFB4012A01B18D00ACB2AC /* BookmarkViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
