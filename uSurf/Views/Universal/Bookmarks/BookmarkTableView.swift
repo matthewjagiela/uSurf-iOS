@@ -10,6 +10,7 @@ import SwiftUI
 
 struct BookmarkTableView: View {
     @ObservedObject var vm: BookmarkViewModel
+    @State var searchText: String = ""
     var body: some View {
         HStack {
             Spacer()
@@ -18,14 +19,16 @@ struct BookmarkTableView: View {
                     List {
                         ForEach(vm.bookmarks, id: \.self) { bookmark in
                             HStack {
-                                AsyncImage(url: vm.getFavIconURL(webURL: bookmark.url)).frame(minWidth: 32, minHeight: 32)
+                                AsyncImage(url: vm.getFavIconURL(webURL: bookmark.url))
+                                    .frame(minWidth: 32, minHeight: 32)
+                                
                                 Text(bookmark.name)
                                     .padding(.leading, 10)
                             }
                         }
                     }
                     HStack { Spacer() }
-                }
+                }.navigationTitle("Bookmarks")
             }.frame(width: 300)
             
         }

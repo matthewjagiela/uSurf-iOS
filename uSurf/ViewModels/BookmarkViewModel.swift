@@ -39,10 +39,10 @@ class BookmarkViewModel: ObservableObject {
         }
     }
     
-    func getFavIconURL(webURL: String) -> URL {
+    func getFavIconURL(webURL: String) -> URL? {
         let favicon = FavIconOperation()
         let faviconURL = favicon.getIconURL(domain: webURL)
-        return faviconURL!
+        return faviconURL
     }
 }
 
