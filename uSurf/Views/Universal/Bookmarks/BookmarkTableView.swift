@@ -9,22 +9,19 @@
 import SwiftUI
 
 struct BookmarkTableView: View {
+    @ObservedObject var vm: BookmarkViewModel
     var body: some View {
         HStack {
             Spacer()
             NavigationView {
                 VStack {
-                    ScrollView {
-                        Text("World")
-                        Text("World")
-                        Text("World")
-                        Text("World")
-                        Text("World")
-                        Text("World")
-                        Text("World")
+                    List {
+                        ForEach(vm.bookmarks, id: \.self) { bookmark in
+                            Text(bookmark.name)
+                        }
                     }
                     HStack { Spacer() }
-                }.background(Color.gray)
+                }
             }.frame(width: 300)
             
         }
@@ -33,6 +30,6 @@ struct BookmarkTableView: View {
 
 struct BookmarkTableView_Previews: PreviewProvider {
     static var previews: some View {
-        BookmarkTableView()
+        BookmarkTableView(vm: BookmarkViewModel(coreDataService: MockBookmarkDataFetcher()))
     }
 }

@@ -9,27 +9,47 @@
 import Foundation
 
 /// A Container for custom bookmark information
-struct BookmarkData {
+struct BookmarkData: Hashable {
     var name: String
     var url: String
     var identifier = UUID()
 }
 
-class BookmarkViewModel {
+protocol CoreDataService {
+    func getData() throws -> Any
+}
+
+class BookmarkViewModel: ObservableObject {
     @Published var bookmarks: [BookmarkData] = []
+    
+    var coreDataService: CoreDataService
     
     let coreData = CoreDataHandler()
     
-    init() {
+    init(coreDataService: CoreDataService) {
+        self.coreDataService = coreDataService
         self.getBookmarks()
     }
     
     func getBookmarks() {
         do {
-            self.bookmarks = try self.coreData.getBookmarkData()
-            print(bookmarks)
+            self.bookmarks = try self.coreDataService.getData() as? [BookmarkData] ?? []
         } catch {
-            // TODO: Throw error toast
+            // TODO: Throw error toast here
         }
+    }
+}
+
+class BookmarkDataFetcher: CoreDataService {
+    let coreData = CoreDataHandler()
+    func getData() throws -> Any {
+        return try coreData.getBookmarkData()
+    }
+}
+
+class MockBookmarkDataFetcher: CoreDataService {
+    func getData() throws -> Any {
+        let bookmarkData = [BookmarkData(name: "Apple", url: "http://apple.com"), BookmarkData(name: "uApps", url: "http://uAppsiOS.com")]
+        return bookmarkData
     }
 }

@@ -24,11 +24,11 @@ class BookmarkTableViewController: UIViewController {
     
     var hostingView: UIHostingController<BookmarkTableView>?
     
-    var vm: BookmarkViewModel = BookmarkViewModel()
+    var vm: BookmarkViewModel = BookmarkViewModel(coreDataService: BookmarkDataFetcher())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hostingView = UIHostingController(rootView: BookmarkTableView())
+        hostingView = UIHostingController(rootView: BookmarkTableView(vm: vm))
     }
     
     override func viewDidLayoutSubviews() {
