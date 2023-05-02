@@ -17,7 +17,7 @@ struct BookmarkTableView: View {
             NavigationView {
                 VStack {
                     List {
-                        ForEach(vm.bookmarks, id: \.self) { bookmark in
+                        ForEach(vm.filteredBookmarks, id: \.self) { bookmark in
                             HStack {
                                 AsyncImage(url: vm.getFavIconURL(webURL: bookmark.url))
                                     .frame(minWidth: 32, minHeight: 32)
@@ -26,7 +26,11 @@ struct BookmarkTableView: View {
                                     .padding(.leading, 10)
                             }
                         }
+                    }.searchable(text: $searchText)
+                        .onChange(of: searchText) { searchValue in
+                            vm.filterBookmarks(searchText: searchValue)
                     }
+                    
                     HStack { Spacer() }
                 }.navigationTitle("Bookmarks")
             }.frame(width: 300)

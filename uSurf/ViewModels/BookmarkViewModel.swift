@@ -21,6 +21,7 @@ protocol CoreDataService {
 
 class BookmarkViewModel: ObservableObject {
     @Published var bookmarks: [BookmarkData] = []
+    @Published var filteredBookmarks: [BookmarkData] = []
     
     var coreDataService: CoreDataService
     
@@ -34,9 +35,22 @@ class BookmarkViewModel: ObservableObject {
     func getBookmarks() {
         do {
             self.bookmarks = try self.coreDataService.getData() as? [BookmarkData] ?? []
+            self.filteredBookmarks = self.bookmarks
         } catch {
             // TODO: Throw error toast here
         }
+    }
+    
+    func filterBookmarks(searchText: String) {
+        if searchText.isEmpty {
+            filteredBookmarks = self.bookmarks
+            return
+        }
+        
+        self.filteredBookmarks = self.bookmarks.filter({ bookmarkData in
+            bookmarkData.name.lowercased().contains(searchText.lowercased()) || bookmarkData.url.lowercased().contains(searchText.lowercased())
+        })
+
     }
     
     func getFavIconURL(webURL: String) -> URL? {
