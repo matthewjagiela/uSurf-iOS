@@ -10,7 +10,24 @@ import SwiftUI
 
 struct BookmarkTableView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Spacer()
+            NavigationView {
+                VStack {
+                    ScrollView {
+                        Text("World")
+                        Text("World")
+                        Text("World")
+                        Text("World")
+                        Text("World")
+                        Text("World")
+                        Text("World")
+                    }
+                    HStack { Spacer() }
+                }.background(Color.gray)
+            }.frame(width: 300)
+            
+        }
     }
 }
 

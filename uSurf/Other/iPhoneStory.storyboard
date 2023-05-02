@@ -479,9 +479,6 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="navigationBar" destination="DKc-fv-6Iu" id="biI-3i-Ukx"/>
-                        <outlet property="searchBar" destination="R1T-tp-Osv" id="2Qb-fi-gzp"/>
-                        <outlet property="tableView" destination="kOW-Lq-GKO" id="mHt-4P-utC"/>
                         <segue destination="RAB-NY-IJG" kind="presentation" identifier="goHome" id="Ax6-gY-Pu2"/>
                     </connections>
                 </viewController>
@@ -731,7 +728,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aF8-y8-pvl"/>
+        <segue reference="Ax6-gY-Pu2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <resources>
