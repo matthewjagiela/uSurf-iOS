@@ -38,6 +38,12 @@ class BookmarkViewModel: ObservableObject {
             // TODO: Throw error toast here
         }
     }
+    
+    func getFavIconURL(webURL: String) -> URL {
+        let favicon = FavIconOperation()
+        let faviconURL = favicon.getIconURL(domain: webURL)
+        return faviconURL!
+    }
 }
 
 class BookmarkDataFetcher: CoreDataService {

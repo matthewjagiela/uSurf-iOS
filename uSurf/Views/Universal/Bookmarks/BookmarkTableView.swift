@@ -17,7 +17,11 @@ struct BookmarkTableView: View {
                 VStack {
                     List {
                         ForEach(vm.bookmarks, id: \.self) { bookmark in
-                            Text(bookmark.name)
+                            HStack {
+                                AsyncImage(url: vm.getFavIconURL(webURL: bookmark.url)).frame(minWidth: 32, minHeight: 32)
+                                Text(bookmark.name)
+                                    .padding(.leading, 10)
+                            }
                         }
                     }
                     HStack { Spacer() }
