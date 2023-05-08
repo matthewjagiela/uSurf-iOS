@@ -25,11 +25,15 @@ struct BookmarkTableView: View {
                                 Text(bookmark.name)
                                     .padding(.leading, 10)
                             }
+                        }.onDelete { indexSet in
+                            for index in indexSet {
+                                self.vm.deleteBookmark(at: index)
+                            }
                         }
                     }.searchable(text: $searchText)
                         .onChange(of: searchText) { searchValue in
                             vm.filterBookmarks(searchText: searchValue)
-                    }
+                        }
                     
                     HStack { Spacer() }
                 }.navigationTitle("Bookmarks")

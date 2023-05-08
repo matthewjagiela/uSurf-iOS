@@ -58,6 +58,19 @@ class BookmarkViewModel: ObservableObject {
         let faviconURL = favicon.getIconURL(domain: webURL)
         return faviconURL
     }
+    
+    func deleteBookmark(at index: Int) {
+        let deletionBookmark = filteredBookmarks[index]
+        do {
+            try coreData.deleteBookmark(from: deletionBookmark)
+            filteredBookmarks.remove(at: index)
+            bookmarks.removeAll { bookmarkData in
+                deletionBookmark.identifier == bookmarkData.identifier
+            }
+        } catch {
+            // TODO: Throw Toast Here
+        }
+    }
 }
 
 class BookmarkDataFetcher: CoreDataService {
