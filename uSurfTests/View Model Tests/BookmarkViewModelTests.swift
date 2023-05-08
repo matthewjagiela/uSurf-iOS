@@ -49,4 +49,6 @@ class BookmarkViewModelTests: XCTestCase {
         XCTAssertTrue(vm.filteredBookmarks.isEmpty)
     }
     
+    // TODO: Make Deletion Test
+    
 }
