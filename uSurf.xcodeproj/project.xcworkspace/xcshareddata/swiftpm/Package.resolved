@@ -84,7 +84,7 @@
     {
       "identity" : "uappslibrary",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/matthewjagiela/uAppsLibrary.git",
+      "location" : "git@github.com:matthewjagiela/uAppsLibrary.git",
       "state" : {
         "revision" : "406e39e57e639817950b4221f8b006fb073a5f27",
         "version" : "2.0.2"

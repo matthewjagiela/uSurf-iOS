@@ -11,11 +11,11 @@
 		2E06344228A04BFE00A24C92 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344128A04BFE00A24C92 /* TabViewController.swift */; };
 		2E06344428A04C0A00A24C92 /* iPadTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */; };
 		2E06344628A04C1E00A24C92 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344528A04C1E00A24C92 /* TabViewModel.swift */; };
-		2E13C0BC29D0001A0049902B /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E13C0BB29D0001A0049902B /* uAppsLibrary */; };
 		2E13C0BE29D0D7AD0049902B /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E13C0BD29D0D7AD0049902B /* ExportOptions.plist */; };
 		2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A880C232F2AF100D63F99 /* AppUtility.swift */; };
 		2E1C535B289C867800577AB4 /* TabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1C535A289C867800577AB4 /* TabTests.swift */; };
 		2E1EAEFB2564C0040058431D /* galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2E1EAEFA2564C0040058431D /* galaxy.jpg */; };
+		2E2170872A1684930085A87F /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E2170862A1684930085A87F /* uAppsLibrary */; };
 		2E23167F2421B23F0003BB54 /* uSurfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23167E2421B23F0003BB54 /* uSurfTests.swift */; };
 		2E23168D2421B4390003BB54 /* VersionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */; };
 		2E27462D27683DAE005E00B9 /* SideMenuHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */; };
@@ -192,8 +192,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E34B4202856D2A600F0976D /* GoogleMobileAds in Frameworks */,
+				2E2170872A1684930085A87F /* uAppsLibrary in Frameworks */,
 				2ECDB593287CEAC500328D97 /* CloudKit.framework in Frameworks */,
-				2E13C0BC29D0001A0049902B /* uAppsLibrary in Frameworks */,
 				2E6CA4AD29D622F400AD2E42 /* Toast in Frameworks */,
 				2E76967D27C74E91007A835C /* SideMenu in Frameworks */,
 			);
@@ -525,8 +525,8 @@
 			packageProductDependencies = (
 				2E76967C27C74E91007A835C /* SideMenu */,
 				2E34B41F2856D2A600F0976D /* GoogleMobileAds */,
-				2E13C0BB29D0001A0049902B /* uAppsLibrary */,
 				2E6CA4AC29D622F400AD2E42 /* Toast */,
+				2E2170862A1684930085A87F /* uAppsLibrary */,
 			);
 			productName = uSurf;
 			productReference = 34F95DFC20C73F1D00411B9D /* uSurf.app */;
@@ -572,8 +572,8 @@
 			packageReferences = (
 				2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */,
 				2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
-				2E13C0BA29D0001A0049902B /* XCRemoteSwiftPackageReference "uAppsLibrary" */,
 				2E6CA4AB29D622F400AD2E42 /* XCRemoteSwiftPackageReference "toast-swift" */,
+				2E2170852A1684930085A87F /* XCRemoteSwiftPackageReference "uAppsLibrary" */,
 			);
 			productRefGroup = 34F95DFD20C73F1D00411B9D /* Products */;
 			projectDirPath = "";
@@ -983,9 +983,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2E13C0BA29D0001A0049902B /* XCRemoteSwiftPackageReference "uAppsLibrary" */ = {
+		2E2170852A1684930085A87F /* XCRemoteSwiftPackageReference "uAppsLibrary" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/matthewjagiela/uAppsLibrary.git";
+			repositoryURL = "git@github.com:matthewjagiela/uAppsLibrary.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
@@ -1018,9 +1018,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2E13C0BB29D0001A0049902B /* uAppsLibrary */ = {
+		2E2170862A1684930085A87F /* uAppsLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2E13C0BA29D0001A0049902B /* XCRemoteSwiftPackageReference "uAppsLibrary" */;
+			package = 2E2170852A1684930085A87F /* XCRemoteSwiftPackageReference "uAppsLibrary" */;
 			productName = uAppsLibrary;
 		};
 		2E34B41F2856D2A600F0976D /* GoogleMobileAds */ = {
