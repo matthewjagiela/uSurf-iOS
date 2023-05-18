@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import GoogleMobileAds
 import SideMenu
 import CoreData
@@ -29,18 +30,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
     
+//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        TLDHandler.fetchTLD { _ in
+//            print("Fetch TLD Success")
+//        }
+//        // Override point for customization after application launch.
+//       // GADMobileAds.configure(withApplicationID: "ca-app-pub-7714978111013265~7068019503") depricated
+//        GADMobileAds.sharedInstance().start(completionHandler: nil)
+//        SideMenuController.preferences.basic.enablePanGesture = false
+//        SideMenuController.preferences.basic.menuWidth = 300
+//        SideMenuController.preferences.basic.position = .sideBySide
+//        return true
+//    }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        TLDHandler.fetchTLD { _ in
-            print("Fetch TLD Success")
-        }
-        // Override point for customization after application launch.
-       // GADMobileAds.configure(withApplicationID: "ca-app-pub-7714978111013265~7068019503") depricated
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
-        SideMenuController.preferences.basic.enablePanGesture = false
-        SideMenuController.preferences.basic.menuWidth = 300
-        SideMenuController.preferences.basic.position = .sideBySide
+        let viewModel = SubscriptionViewModel()
+        let subscriptionView = SubscriptionView(viewModel: viewModel)
+        let hostingController = UIHostingController(rootView: subscriptionView)
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = hostingController
+        window?.makeKeyAndVisible()
+        
         return true
     }
+
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return orientationLock

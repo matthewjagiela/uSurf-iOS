@@ -16,6 +16,8 @@
 		2E1C535B289C867800577AB4 /* TabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1C535A289C867800577AB4 /* TabTests.swift */; };
 		2E1EAEFB2564C0040058431D /* galaxy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2E1EAEFA2564C0040058431D /* galaxy.jpg */; };
 		2E2170872A1684930085A87F /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E2170862A1684930085A87F /* uAppsLibrary */; };
+		2E2170892A1685F40085A87F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2170882A1685F40085A87F /* StoreKit.framework */; };
+		2E21708B2A1686590085A87F /* InAppTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E21708A2A1686590085A87F /* InAppTest.swift */; };
 		2E23167F2421B23F0003BB54 /* uSurfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23167E2421B23F0003BB54 /* uSurfTests.swift */; };
 		2E23168D2421B4390003BB54 /* VersionHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23168C2421B4390003BB54 /* VersionHandlerTests.swift */; };
 		2E27462D27683DAE005E00B9 /* SideMenuHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27462C27683DAD005E00B9 /* SideMenuHostViewController.swift */; };
@@ -106,6 +108,8 @@
 		2E1A880C232F2AF100D63F99 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		2E1C535A289C867800577AB4 /* TabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTests.swift; sourceTree = "<group>"; };
 		2E1EAEFA2564C0040058431D /* galaxy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = galaxy.jpg; sourceTree = "<group>"; };
+		2E2170882A1685F40085A87F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		2E21708A2A1686590085A87F /* InAppTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppTest.swift; sourceTree = "<group>"; };
 		2E23167C2421B23F0003BB54 /* uSurfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uSurfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E23167E2421B23F0003BB54 /* uSurfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uSurfTests.swift; sourceTree = "<group>"; };
 		2E2316802421B23F0003BB54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				2E34B4202856D2A600F0976D /* GoogleMobileAds in Frameworks */,
 				2E2170872A1684930085A87F /* uAppsLibrary in Frameworks */,
 				2ECDB593287CEAC500328D97 /* CloudKit.framework in Frameworks */,
+				2E2170892A1685F40085A87F /* StoreKit.framework in Frameworks */,
 				2E6CA4AD29D622F400AD2E42 /* Toast in Frameworks */,
 				2E76967D27C74E91007A835C /* SideMenu in Frameworks */,
 			);
@@ -266,6 +271,7 @@
 		2ECDB591287CEAC500328D97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E2170882A1685F40085A87F /* StoreKit.framework */,
 				2ECDB592287CEAC500328D97 /* CloudKit.framework */,
 			);
 			name = Frameworks;
@@ -323,6 +329,7 @@
 				3417A40921FA862700D7C7A2 /* Universal */,
 				3417A40821FA862200D7C7A2 /* iPad */,
 				3417A40721FA861A00D7C7A2 /* iPhone */,
+				2E21708A2A1686590085A87F /* InAppTest.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -706,6 +713,7 @@
 				340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */,
 				2E6D1B17289B96C20009FCE8 /* NewTabHandler.swift in Sources */,
 				34C10F45214AC3D0005C9ACB /* SettingsViewController.swift in Sources */,
+				2E21708B2A1686590085A87F /* InAppTest.swift in Sources */,
 				34C4D1E5227FDB94005917B9 /* iPadSplitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
