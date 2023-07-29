@@ -11,7 +11,6 @@
 		2E06344228A04BFE00A24C92 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344128A04BFE00A24C92 /* TabViewController.swift */; };
 		2E06344428A04C0A00A24C92 /* iPadTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344328A04C0A00A24C92 /* iPadTabViewController.swift */; };
 		2E06344628A04C1E00A24C92 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06344528A04C1E00A24C92 /* TabViewModel.swift */; };
-		2E13C0BC29D0001A0049902B /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2E13C0BB29D0001A0049902B /* uAppsLibrary */; };
 		2E13C0BE29D0D7AD0049902B /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E13C0BD29D0D7AD0049902B /* ExportOptions.plist */; };
 		2E1A880D232F2AF100D63F99 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A880C232F2AF100D63F99 /* AppUtility.swift */; };
 		2E1C535B289C867800577AB4 /* TabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1C535A289C867800577AB4 /* TabTests.swift */; };
@@ -43,6 +42,7 @@
 		2ECC642C2398897000FD504A /* hicon_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64262398897000FD504A /* hicon_iPad.png */; };
 		2ECC642D2398897000FD504A /* hicon_iPadPro.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ECC64272398897000FD504A /* hicon_iPadPro.png */; };
 		2ECDB593287CEAC500328D97 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECDB592287CEAC500328D97 /* CloudKit.framework */; };
+		2EE4A06A2A74E4D900B3FA40 /* uAppsLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 2EE4A0692A74E4D900B3FA40 /* uAppsLibrary */; };
 		2EE99947287152C900887927 /* TLD.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EE99946287152C900887927 /* TLD.json */; };
 		2EFFB4012A01B18D00ACB2AC /* BookmarkViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFB4002A01B18D00ACB2AC /* BookmarkViewModelTests.swift */; };
 		340906D720D9C01D009F53F1 /* WebHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340906D620D9C01D009F53F1 /* WebHandler.swift */; };
@@ -203,8 +203,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E34B4202856D2A600F0976D /* GoogleMobileAds in Frameworks */,
+				2EE4A06A2A74E4D900B3FA40 /* uAppsLibrary in Frameworks */,
 				2ECDB593287CEAC500328D97 /* CloudKit.framework in Frameworks */,
-				2E13C0BC29D0001A0049902B /* uAppsLibrary in Frameworks */,
 				2E6CA4AD29D622F400AD2E42 /* Toast in Frameworks */,
 				2E76967D27C74E91007A835C /* SideMenu in Frameworks */,
 			);
@@ -582,8 +582,8 @@
 			packageProductDependencies = (
 				2E76967C27C74E91007A835C /* SideMenu */,
 				2E34B41F2856D2A600F0976D /* GoogleMobileAds */,
-				2E13C0BB29D0001A0049902B /* uAppsLibrary */,
 				2E6CA4AC29D622F400AD2E42 /* Toast */,
+				2EE4A0692A74E4D900B3FA40 /* uAppsLibrary */,
 			);
 			productName = uSurf;
 			productReference = 34F95DFC20C73F1D00411B9D /* uSurf.app */;
@@ -629,8 +629,8 @@
 			packageReferences = (
 				2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */,
 				2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
-				2E13C0BA29D0001A0049902B /* XCRemoteSwiftPackageReference "uAppsLibrary" */,
 				2E6CA4AB29D622F400AD2E42 /* XCRemoteSwiftPackageReference "toast-swift" */,
+				2EE4A0682A74E4D900B3FA40 /* XCRemoteSwiftPackageReference "uAppsLibrary" */,
 			);
 			productRefGroup = 34F95DFD20C73F1D00411B9D /* Products */;
 			projectDirPath = "";
@@ -960,6 +960,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = uSurf/uSurf.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = "";
@@ -989,7 +990,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = uSurf/uSurf.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = "";
@@ -1004,7 +1005,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.uapps.uSurf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.uapps.uSurf";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.uapps.uSurf";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
@@ -1045,14 +1046,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2E13C0BA29D0001A0049902B /* XCRemoteSwiftPackageReference "uAppsLibrary" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/matthewjagiela/uAppsLibrary.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
@@ -1077,14 +1070,17 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		2EE4A0682A74E4D900B3FA40 /* XCRemoteSwiftPackageReference "uAppsLibrary" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:matthewjagiela/uAppsLibrary.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2E13C0BB29D0001A0049902B /* uAppsLibrary */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2E13C0BA29D0001A0049902B /* XCRemoteSwiftPackageReference "uAppsLibrary" */;
-			productName = uAppsLibrary;
-		};
 		2E34B41F2856D2A600F0976D /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2E34B41E2856D2A600F0976D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
@@ -1099,6 +1095,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2E76967B27C74E91007A835C /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
+		};
+		2EE4A0692A74E4D900B3FA40 /* uAppsLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2EE4A0682A74E4D900B3FA40 /* XCRemoteSwiftPackageReference "uAppsLibrary" */;
+			productName = uAppsLibrary;
 		};
 /* End XCSwiftPackageProductDependency section */
 
